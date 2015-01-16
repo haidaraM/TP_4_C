@@ -1,0 +1,8 @@
+PATH=$PATH:../../
+geoEdit
+C c1 1 1 10
+R r1 1 1 10 10
+PL pl1 20 20 50 50
+UNDO
+LIST
+EXIT

@@ -1,0 +1,2 @@
+PATH=$PATH:../../Analog
+analog -g -x ../../Analog/test.log
