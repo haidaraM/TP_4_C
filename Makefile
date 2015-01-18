@@ -1,6 +1,3 @@
-# Makefile à completer pour vos besoins
-# Ce makefile n'est pas adapté à tout type d'organisation
-# Configurer par defaut pour le C++. Pour le C, remplacer g++ par gcc et cpp par c
 EXE 		= geoEdit
 
 # Compilateur et editeur de lien
@@ -42,5 +39,19 @@ $(OBJ_DIR)/%.o:$(SRC_DIR)/%.cpp
 .PHONY: clean
 
 clean:
+	$(ECHO) "Nettoyage du répertoire"
 	$(RM) -fv $(OBJ_DIR)/*.o $(EXE)
 
+backup: clean
+	$(ECHO) "Creation d'un dossier propre pour rendu et archivage des fichiers src, doc, Tests et Makefile..."
+	$(ECHO) "Creation de l'arborescence des répertoires..."
+	@mkdir -p B3425
+	$(ECHO) "Copie des repertoires..."
+	@cp -r $(SRC_DIR)/ $(OBJ_DIR)/ Makefile doc/ Tests/ B3425
+	$(ECHO) "Generation de l'archive B3425.tar..."
+	$(ECHO) "	=> Compréssion des fichiers"
+	@tar -cf "B3425.tar" B3425
+	$(ECHO) "	=> Archive crée"
+	$(ECHO)	"Backup terminé"
+
+	
