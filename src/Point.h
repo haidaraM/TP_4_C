@@ -21,7 +21,7 @@
 //
 //------------------------------------------------------------------------ 
 
-class Point : public Ancetre
+class Point
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -60,7 +60,7 @@ public:
     // Contrat :
     //
 
-    Point ( long absc, long ordo ):abscinne(absc), ordonne(ordo){};
+    Point ( long absc, long ordo );
     // Mode d'emploi :
     //
     // Contrat :

@@ -35,6 +35,8 @@ public:
     // Contrat : Aucun
     //
 
+    
+
 
 //------------------------------------------------- Surcharge d'opérateurs
     Cercle & operator = ( const Cercle & unCercle );

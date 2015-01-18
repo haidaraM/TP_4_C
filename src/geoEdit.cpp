@@ -1,8 +1,8 @@
 /*************************************************************************
-                           ${geoEdit}  -  description
+                           geoEdit  -  description
                              -------------------
     début                : ${16/01/2015}
-    copyright            : (C) ${2015} par ${ebai & mhaidara}
+    copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
 
 //---------------------------------------------------------------- INCLUDE
@@ -12,7 +12,7 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
-#include "Modele.h";
+//#include "Modele.h";
 
 //------------------------------------------------------------- Constantes
 
@@ -22,7 +22,6 @@ using namespace std;
 
 int main()
 {
-    Modele mod();
-    String input;
-
+  cout<<"Hello world"<<endl;
+  return 0;
 }

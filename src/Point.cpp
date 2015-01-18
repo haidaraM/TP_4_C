@@ -32,19 +32,19 @@ using namespace std;
 //
 //{
 //} //----- Fin de Méthode
-long GetAbscisse()const
+long Point::GetAbscisse()const
 {
-	return asbcisse;
+	return abscisse;
 }
 
-long GetOrdonnee()const
+long Point::GetOrdonnee()const
 {
 	return ordonnee;
 }
 
-void Deplacer(long dx, long dy)
+void Point::Deplacer(long dx, long dy)
 {
-	asbcisse += dx;
+	abscisse += dx;
 	ordonnee += dy;
 }
 
@@ -53,6 +53,7 @@ Point & Point::operator = ( const Point & unPoint )
 // Algorithme :
 //
 {
+    return *this;
 } //----- Fin de operator =
 
 
@@ -67,7 +68,7 @@ Point::Point ( const Point & unPoint )
 } //----- Fin de Point (constructeur de copie)
 
 
-Point::Point ( )
+Point::Point (long absc, long ordo  ):abscisse(absc), ordonnee(ordo)
 // Algorithme :
 //
 {

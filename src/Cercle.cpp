@@ -33,7 +33,7 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
-void Afficher()const
+void Cercle::Afficher()const
 {
 	
 }
@@ -43,6 +43,7 @@ Cercle & Cercle::operator = ( const Cercle & unCercle )
 // Algorithme :
 //
 {
+	return *this;
 } //----- Fin de operator =
 
 
@@ -57,7 +58,7 @@ Cercle::Cercle ( const Cercle & unCercle )
 } //----- Fin de Cercle (constructeur de copie)
 
 
-Cercle::Cercle ( )
+Cercle::Cercle ( unsigned int ray)
 // Algorithme :
 //
 {

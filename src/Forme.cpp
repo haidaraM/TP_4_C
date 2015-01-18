@@ -42,6 +42,7 @@ Forme & Forme::operator = ( const Forme & unForme )
 // Algorithme :
 //
 {
+	return *this;
 } //----- Fin de operator =
 
 
