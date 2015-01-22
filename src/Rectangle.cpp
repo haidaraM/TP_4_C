@@ -1,13 +1,11 @@
 /*************************************************************************
-                           Forme  -  Classe répresentant les formes
+                          Forme  -  description
                              -------------------
-    début                : 2015
+    début                : 16/01/2015
     copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
 
-//---------- Réalisation de la classe <Forme> (fichier Forme.cpp) --
-// Cette classe abstraite regroupe les points communs entre les differentes
-// formes. Les autres formes hériteront de cette classe.
+//---------- Réalisation de la classe <Rectangle> (fichier Rectangle.cpp) --
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -16,8 +14,7 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
-#include "Forme.h"
-
+#include "Rectangle.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -30,52 +27,55 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-// type Forme::Méthode ( liste de paramètres )
+// type Rectangle::Méthode ( liste de paramètres )
 // Algorithme :
 //
 //{
 //} //----- Fin de Méthode
 
+void Rectangle::Afficher() const
+{
+
+}
+
 
 //------------------------------------------------- Surcharge d'opérateurs
-Forme & Forme::operator = ( const Forme & unForme )
+Rectangle & Rectangle::operator = ( const Rectangle & unRectangle )
 // Algorithme :
 //
 {
-	return *this;
 } //----- Fin de operator =
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Forme::Forme ( const Forme & unForme )
+Rectangle::Rectangle ( const Rectangle & unRectangle )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Forme>" << endl;
+    cout << "Appel au constructeur de copie de <Rectangle>" << endl;
 #endif
-} //----- Fin de Forme (constructeur de copie)
+} //----- Fin de Rectangle (constructeur de copie)
 
 
-Forme::Forme ()
+Rectangle::Rectangle ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Forme>" << endl;
+    cout << "Appel au constructeur de <Rectangle>" << endl;
 #endif
+} //----- Fin de Rectangle
 
-} //----- Fin de Forme
 
-
-Forme::~Forme ( )
+Rectangle::~Rectangle ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Forme>" << endl;
+    cout << "Appel au destructeur de <Rectangle>" << endl;
 #endif
-} //----- Fin de ~Forme
+} //----- Fin de ~Rectangle
 
 
 //------------------------------------------------------------------ PRIVE

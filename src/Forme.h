@@ -11,7 +11,6 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include <string.h>
-#include <vector>
 using namespace std;
 
 #include "Point.h"
@@ -54,8 +53,8 @@ public:
     // Contrat :
     //
 
-    Forme ( );
-    // Mode d'emploi :
+    Forme ();
+    // Mode d'emploi : Contructeur par défaut
     //
     // Contrat :
     //
@@ -81,9 +80,6 @@ protected:
 
     // Le nom de la Forme
     string nom;
-
-    // Les points constituant la forme
-    vector<Point> points;
 
 private:
 //------------------------------------------------------- Attributs privés

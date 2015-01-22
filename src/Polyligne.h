@@ -1,76 +1,68 @@
 /*************************************************************************
-                           Point  -  description
+                         Forme  -  description
                              -------------------
-    début                : 2015
+    début                : 16/01/2015
     copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
 
-//---------- Interface de la classe <Point> (fichier Point.h) ------
-#if ! defined ( POINT_H )
-#define POINT_H
+//---------- Interface de la classe <Polyligne> (fichier Polyligne.h) 
+#if ! defined ( POLYLIGNE_H )
+#define POLYLIGNE_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include "Forme.h"
 
 //------------------------------------------------------------- Constantes 
 
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle de la classe <Point>
+// Rôle de la classe <Polyligne>
 //
 //
 //------------------------------------------------------------------------ 
 
-class Point
+class Polyligne : public Forme
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    long GetAbscisse()const;
-    // Mode d'emploi : Renvoie l'asbcisse du point
+    void Afficher()const;
+    // Mode d'emploi : Affiche les descripteurs du Polyligne
+    // Exemple: PL Name X1 Y1 X2 Y2 ... Xn Yn
     //
     // Contrat : Aucun
     //
 
-    long GetOrdonnee()const;
-    // Mode d'emploi : Renvoie l'ordonnée du point
-    //
-    // Contrat : Aucun
-    //
 
-    void Deplacer(long dx, long dy);
-    // Mode d'emploi : Déplace le point de dx en abscisse et dy en ordonnée
-    //
-    // Contrat : Aucun
-
-
-//------------------------------------------------- Surcharge d'opérateurs
-    Point & operator = ( const Point & unPoint );
-    // Mode d'emploi :
+    //------------------------------------------------- Surcharge d'opérateurs
+    Polyligne & operator = ( const Polyligne & unPolyligne );
+    // Mode d'emploi : Operateur d'affectation
     //
     // Contrat :
     //
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Point ( const Point & unPoint );
+    Polyligne ( const Polyligne & unPolyligne );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Point ( long absc, long ordo );
+    Polyligne ( );
+    // Mode d'emploi : constructeur par defaut
+    //
+    // Contrat :
+    //
+
+    virtual ~Polyligne ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Point ( );
-    // Mode d'emploi : Desctructeur
-    //
-    // Contrat :
-    //
 
 //------------------------------------------------------------------ PRIVE
 
@@ -85,8 +77,6 @@ protected:
 
 private:
 //------------------------------------------------------- Attributs privés
-    long abscisse;
-    long ordonnee;
 
 //---------------------------------------------------------- Classes amies
 
@@ -95,6 +85,4 @@ private:
 //----------------------------------------------------------- Types privés
 };
 
-//----------------------------------------- Types dépendants de <Point>
-
-#endif // POINT_H
+#endif // POLYLIGNE_H

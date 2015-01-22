@@ -29,8 +29,7 @@ public:
 //----------------------------------------------------- Méthodes publiques
     void Afficher()const;
     // Mode d'emploi : Affiche les descripteurs du cercle
-    // Exemple : C: C c11 12 15 45 pour un cercle de c11 de centre (12,12)
-    // et de rayon 45
+    // Exemple: C Name X1 Y1 R
     //
     // Contrat : Aucun
     //
@@ -40,7 +39,7 @@ public:
 
 //------------------------------------------------- Surcharge d'opérateurs
     Cercle & operator = ( const Cercle & unCercle );
-    // Mode d'emploi :
+    // Mode d'emploi : Operateur d'affectation
     //
     // Contrat :
     //
@@ -53,7 +52,7 @@ public:
     // Contrat :
     //
 
-    Cercle (unsigned int ray );
+    Cercle (unsigned int ray, long x, long y );
     // Mode d'emploi :
     //
     // Contrat :
@@ -78,7 +77,11 @@ protected:
 
 private:
 //------------------------------------------------------- Attributs privés
+    Point centre;
+    // centre du cercle
+
     unsigned int rayon;
+    // Rayon du cercle
 
 //---------------------------------------------------------- Classes amies
 

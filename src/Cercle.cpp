@@ -49,23 +49,23 @@ Cercle & Cercle::operator = ( const Cercle & unCercle )
 
 //-------------------------------------------- Constructeurs - destructeur
 Cercle::Cercle ( const Cercle & unCercle )
-// Algorithme :
-//
+        : centre(unCercle.centre), rayon(unCercle.rayon)
 {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Cercle>" << endl;
 #endif
+
 } //----- Fin de Cercle (constructeur de copie)
 
 
-Cercle::Cercle ( unsigned int ray)
+Cercle::Cercle ( unsigned int ray, long x, long y ):centre(x,y), rayon(ray)
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Cercle>" << endl;
 #endif
-} //----- Fin de Cercle
+} //----- Fin de Cercle (constructeur par défaut)
 
 
 Cercle::~Cercle ( )

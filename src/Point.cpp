@@ -53,6 +53,8 @@ Point & Point::operator = ( const Point & unPoint )
 // Algorithme :
 //
 {
+    abscisse = unPoint.abscisse;
+    ordonnee = unPoint.ordonnee;
     return *this;
 } //----- Fin de operator =
 
@@ -65,6 +67,8 @@ Point::Point ( const Point & unPoint )
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Point>" << endl;
 #endif
+    abscisse = unPoint.abscisse;
+    ordonnee = unPoint.ordonnee;
 } //----- Fin de Point (constructeur de copie)
 
 

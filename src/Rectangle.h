@@ -1,13 +1,15 @@
 /*************************************************************************
-                           Point  -  description
+                           Forme  -  description
                              -------------------
-    début                : 2015
+    début                : 16/01/2015
     copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
 
-//---------- Interface de la classe <Point> (fichier Point.h) ------
-#if ! defined ( POINT_H )
-#define POINT_H
+//---------- Interface de la classe <Rectangle> (fichier Rectangle.h) ------
+#include "Polyligne.h"
+
+#if ! defined (RECTANGLE__H )
+#define RECTANGLE__H
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -16,37 +18,28 @@
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle de la classe <Point>
+// Rôle de la classe <Rectangle>
 //
 //
 //------------------------------------------------------------------------ 
 
-class Point
+class Rectangle : public Polyligne
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    long GetAbscisse()const;
-    // Mode d'emploi : Renvoie l'asbcisse du point
-    //
-    // Contrat : Aucun
-    //
 
-    long GetOrdonnee()const;
-    // Mode d'emploi : Renvoie l'ordonnée du point
+    void Afficher()const;
+    // Mode d'emploi : Affiche les descripteurs du Rectangle
+    // Exemple: R Name X1 Y1 X2 Y2
     //
     // Contrat : Aucun
     //
-
-    void Deplacer(long dx, long dy);
-    // Mode d'emploi : Déplace le point de dx en abscisse et dy en ordonnée
-    //
-    // Contrat : Aucun
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    Point & operator = ( const Point & unPoint );
+    Rectangle & operator = ( const Rectangle & unRectangle );
     // Mode d'emploi :
     //
     // Contrat :
@@ -54,25 +47,25 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Point ( const Point & unPoint );
+    Rectangle ( const Rectangle & unRectangle );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Point ( long absc, long ordo );
+    Rectangle ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Point ( );
-    // Mode d'emploi : Desctructeur
+    virtual ~Rectangle ( );
+    // Mode d'emploi :
     //
     // Contrat :
     //
 
-//------------------------------------------------------------------ PRIVE
+//------------------------------------------------------------------ PRIVE 
 
 protected:
 //----------------------------------------------------- Méthodes protégées
@@ -85,16 +78,15 @@ protected:
 
 private:
 //------------------------------------------------------- Attributs privés
-    long abscisse;
-    long ordonnee;
 
 //---------------------------------------------------------- Classes amies
 
 //-------------------------------------------------------- Classes privées
 
 //----------------------------------------------------------- Types privés
+
 };
 
-//----------------------------------------- Types dépendants de <Point>
+//----------------------------------------- Types dépendants de <Rectangle>
 
-#endif // POINT_H
+#endif // RECTANGLE__H

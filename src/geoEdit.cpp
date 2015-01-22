@@ -1,15 +1,16 @@
 /*************************************************************************
                            geoEdit  -  description
                              -------------------
-    début                : ${16/01/2015}
+    dï¿½but                : ${16/01/2015}
     copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systï¿½me
 using namespace std;
 #include <iostream>
+#include "Point.h"
 
 //------------------------------------------------------ Include personnel
 //#include "Modele.h";
@@ -22,6 +23,7 @@ using namespace std;
 
 int main()
 {
-  cout<<"Hello world"<<endl;
-  return 0;
+    cout<<"Hello World"<<endl;
+    Point p(10,10);
+    return 0;
 }
