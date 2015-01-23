@@ -95,3 +95,7 @@ Polyligne::~Polyligne ( )
     cout << "Appel au destructeur de <Polyligne>" << endl;
 #endif
 }
+
+void Polyligne::Deplacer(long x, long y) {
+
+}

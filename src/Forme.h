@@ -39,6 +39,7 @@ public:
 
 
 
+
 //-------------------------------------------- Constructeurs - destructeur
     Forme ( const Forme & unForme );
     // Mode d'emploi (constructeur de copie) :
@@ -57,12 +58,11 @@ public:
     //
     // Contrat :
     //
-    
-    virtual bool InclusDans(Point p1, Point p2);
+
+    virtual bool InclusDans(Point p1, Point p2)const =0;
     virtual void Supprimer ();
-    virtual void Deplacer (long x, long y);
-    virtual void Afficher (ostream & sortie);
-    
+    virtual void Deplacer (long x, long y) =0;
+
 
 //------------------------------------------------------------------ PRIVE 
 

@@ -11,6 +11,7 @@
 using namespace std;
 #include <iostream>
 #include "Modele.h"
+#include "Forme.h"
 
 //------------------------------------------------------ Include personnel
 
@@ -27,10 +28,14 @@ int main()
     Commande macommande("C cercle 125 15 20");
     Commande macommande2("R rectangle 10 10 25 -58");
     Commande macommande3("PL polyligne 1 2 3 4 5 6 7 8 6 78");
-
+/*
     macommande.AjouterCercle();
     macommande2.AjouterRectangle();
     macommande3.AjouterPolyligne();
+    geoEdit.Afficher(); */
+
+    macommande3.Execute();
+
     geoEdit.Afficher();
 
     return 0;

@@ -139,7 +139,7 @@ bool Commande::AjouterPolyligne() {
         // Organisation des elements
         string name = resultat[1];
         vector<Point> lesPoints;
-        for(int i = 2; i<resultat.size()-1; i=i+2)
+        for(unsigned int i = 2; i<resultat.size()-1; i=i+2)
         {
             long x1 = strtol(resultat[i].c_str(), NULL, 10);
             long y1 = strtol(resultat[i+1].c_str(), NULL, 10);
@@ -199,4 +199,39 @@ vector<string> Commande::decoupe(char delim) const
     }
 
     return resultat;
+}
+
+bool Commande::Execute()
+{
+    stringstream stream(commande);
+    string commande;
+    getline(stream,commande,' ');
+    bool res;
+    if(commande == "C")
+    {
+        res=AjouterCercle();
+    }
+    else if(commande == "PL")
+    {
+        res=AjouterPolyligne();
+    }
+    else if(commande == "R")
+    {
+        res=AjouterRectangle();
+    }
+    else if(commande =="LIST")
+    {
+
+    }
+    else if(commande =="CLEAR")
+    {
+
+    }
+    else
+    {
+        cerr<<"Commande inconnue"<<endl;
+    }
+
+
+
 }

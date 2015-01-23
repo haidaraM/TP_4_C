@@ -42,6 +42,7 @@ void Forme::Supprimer()
 }
 
 
+
 //-------------------------------------------- Constructeurs - destructeur
 Forme::Forme ( const Forme & unForme )
 // Algorithme :

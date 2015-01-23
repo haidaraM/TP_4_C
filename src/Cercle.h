@@ -35,6 +35,7 @@ public:
     // Contrat : Aucun
     //
 
+    void Deplacer (long x, long y);
 
 //-------------------------------------------- Constructeurs - destructeur
     Cercle ( const Cercle & unCercle );

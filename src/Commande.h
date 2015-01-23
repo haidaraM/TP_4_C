@@ -40,6 +40,10 @@ class Commande
 
 public:
 
+    bool Execute();
+    // Mode d'emploi : Execute la commande courante
+    // Appelera les méthodes qu'il faut
+
     bool AjouterCercle();
     // Mode d'emploi : Ajout du cercle à la Map
     // Si le nom de la forme existe déja, l'ajout ne sera pas effectif

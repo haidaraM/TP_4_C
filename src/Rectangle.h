@@ -31,7 +31,7 @@ class Rectangle : public Polyligne
 public:
 //----------------------------------------------------- Méthodes publiques
 
-    void Afficher(ostream & flux)const;
+    virtual void Afficher(ostream & flux)const;
     // Mode d'emploi : Affiche les descripteurs du Rectangle
     // Exemple: R Name X1 Y1 X2 Y2
     //
