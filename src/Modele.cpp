@@ -53,6 +53,11 @@ Modele::~Modele ( )
 #ifdef MAP
     cout << "Appel au destructeur de <Modele>" << endl;
 #endif
+    // Libération des formes
+    for(Formes::iterator it = formes.begin(); it != formes.end(); it++)
+    {
+        delete it->second;
+    }
 } //----- Fin de ~Modele
 
 

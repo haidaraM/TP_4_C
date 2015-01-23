@@ -38,14 +38,6 @@ void Cercle::Afficher(ostream & flux)const
     flux<<"C "<<nom<<" "<<centre.GetAbscisse()<<" "<<centre.GetOrdonnee()<<" "<<rayon<<"\r\n";
 }
 
-//------------------------------------------------- Surcharge d'opérateurs
-Cercle & Cercle::operator = ( const Cercle & unCercle )
-// Algorithme :
-//
-{
-	return *this;
-} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
 Cercle::Cercle ( const Cercle & unCercle )

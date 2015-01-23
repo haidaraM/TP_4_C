@@ -10,6 +10,7 @@
 #define POLYLIGNE_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include <vector>
 #include "Forme.h"
 
 //------------------------------------------------------------- Constantes 
@@ -74,6 +75,7 @@ private:
 
 protected:
 //----------------------------------------------------- Attributs protégés
+    vector<Point> points;
 
 private:
 //------------------------------------------------------- Attributs privés

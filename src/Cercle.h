@@ -34,16 +34,6 @@ public:
     // Contrat : Aucun
     //
 
-    
-
-
-//------------------------------------------------- Surcharge d'opérateurs
-    Cercle & operator = ( const Cercle & unCercle );
-    // Mode d'emploi : Operateur d'affectation
-    //
-    // Contrat :
-    //
-
 
 //-------------------------------------------- Constructeurs - destructeur
     Cercle ( const Cercle & unCercle );
