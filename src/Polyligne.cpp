@@ -42,7 +42,7 @@ Polyligne & Polyligne::operator = ( const Polyligne & unPolyligne )
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Polyligne::Polyligne ( const Polyligne & unPolyligne )
+Polyligne::Polyligne ( const Polyligne & unPolyligne ) : Forme(unPolyligne.nom)
 {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Polyligne>" << endl;
@@ -50,7 +50,7 @@ Polyligne::Polyligne ( const Polyligne & unPolyligne )
 } 
 
 
-Polyligne::Polyligne ( )
+Polyligne::Polyligne (string name ):Forme(name)
 
 {
 #ifdef MAP

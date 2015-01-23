@@ -64,3 +64,16 @@ Modele::~Modele ( )
 Modele &Modele::Instance() {
     return m_modele;
 }
+
+void Modele::Ajouter(string name, Forme *uneForme)
+{
+    formes.insert(make_pair(name, uneForme));
+}
+
+void Modele::Afficher() const
+{
+    for(Formes::const_iterator it = formes.begin(); it != formes.end(); it++)
+    {
+        it->second->Afficher();
+    }
+}

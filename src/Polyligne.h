@@ -51,7 +51,7 @@ public:
     // Contrat :
     //
 
-    Polyligne ( );
+    Polyligne (string name );
     // Mode d'emploi : constructeur par defaut
     //
     // Contrat :

@@ -57,7 +57,7 @@ Forme::Forme ( const Forme & unForme )
 } //----- Fin de Forme (constructeur de copie)
 
 
-Forme::Forme ()
+Forme::Forme (string name):nom(name)
 // Algorithme :
 //
 {

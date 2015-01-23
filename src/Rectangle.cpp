@@ -49,7 +49,7 @@ Rectangle & Rectangle::operator = ( const Rectangle & unRectangle )
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Rectangle::Rectangle ( const Rectangle & unRectangle )
+Rectangle::Rectangle ( const Rectangle & unRectangle ) : Polyligne(unRectangle.nom)
 // Algorithme :
 //
 {
@@ -59,7 +59,7 @@ Rectangle::Rectangle ( const Rectangle & unRectangle )
 } //----- Fin de Rectangle (constructeur de copie)
 
 
-Rectangle::Rectangle ( )
+Rectangle::Rectangle (string name ): Polyligne(name)
 // Algorithme :
 //
 {

@@ -52,7 +52,7 @@ public:
     // Contrat :
     //
 
-    Cercle (unsigned int ray, long x, long y );
+    Cercle (string name, unsigned int ray, long x, long y );
     // Mode d'emploi :
     //
     // Contrat :

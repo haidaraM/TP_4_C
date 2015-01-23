@@ -49,8 +49,8 @@ bool CmdAjoutCercle::Execute()
     // Penser à ajouter le test si c'est les arguments sont bien des nombres
     if(resultat.size() != 5)
     {
-        cerr <<"ERR"<<endl;
-        cerr <<"#Paramètres invalides"<<endl;
+        cerr <<"ERR"<<"\r\n";
+        cerr <<"#Paramètres invalides"<<"\r\n";
         return false;
     }
     else
@@ -61,10 +61,11 @@ bool CmdAjoutCercle::Execute()
         long ordonnee = strtol(resultat[3].c_str(), NULL, 10);
         long rayon = strtol(resultat[3].c_str(), NULL, 10);
 
-        Cercle *c = new Cercle(rayon, abscisse, ordonnee);
+        Cercle *c = new Cercle(name,rayon, abscisse, ordonnee);
 
         // mettre la methode qui va mettre à jour la map et empiler la commande
 
+        geoEdit.Ajouter(name, c);
     }
 
 }

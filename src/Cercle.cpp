@@ -35,7 +35,7 @@ using namespace std;
 
 void Cercle::Afficher()const
 {
-	
+    cout<<"C "<<nom<<" "<<centre.GetAbscisse()<<" "<<centre.GetOrdonnee()<<" "<<rayon<<"\r\n";
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -49,7 +49,7 @@ Cercle & Cercle::operator = ( const Cercle & unCercle )
 
 //-------------------------------------------- Constructeurs - destructeur
 Cercle::Cercle ( const Cercle & unCercle )
-        : centre(unCercle.centre), rayon(unCercle.rayon)
+        :Forme(unCercle.nom), centre(unCercle.centre), rayon(unCercle.rayon)
 {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Cercle>" << endl;
@@ -58,7 +58,7 @@ Cercle::Cercle ( const Cercle & unCercle )
 } //----- Fin de Cercle (constructeur de copie)
 
 
-Cercle::Cercle ( unsigned int ray, long x, long y ):centre(x,y), rayon(ray)
+Cercle::Cercle (string name, unsigned int ray, long x, long y ):Forme(name),centre(x,y), rayon(ray)
 // Algorithme :
 //
 {

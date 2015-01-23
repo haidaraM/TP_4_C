@@ -25,8 +25,13 @@ int main()
 {
     Modele & geoEdit = Modele::Instance(); // Instance principale de l'appli
 
-    CmdAjoutCercle macommande("C c11 12 15 20");
+    CmdAjoutCercle macommande("C haidara 12 15 20");
+    CmdAjoutCercle macommande2("C emilien -152 98 45");
+
     macommande.Execute();
+    macommande2.Execute();
     cout<<endl;
+    geoEdit.Afficher();
+
     return 0;
 }

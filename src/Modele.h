@@ -41,10 +41,18 @@ public:
     //
     // Contrat :
 
+    void Ajouter(string name,  Forme *uneForme);
+    // Mode d'emploi : Ajoute une Forme à la Map
+    //
+    // Contrat :
+
+    void Afficher()const;
+    // Mode d'emploi : Afficher toutes les formes
+    //
+    // Contrat :
 
 
-
-//------------------------------------------------------------------ PRIVE 
+//------------------------------------------------------------------ PRIVE
 
 protected:
 //----------------------------------------------------- Méthodes protégées
@@ -75,10 +83,12 @@ private:
     // Attribut de Classe
 
 
-    typedef map<const string, Forme *> formes;
+    typedef map<const string, Forme *> Formes;
+    Formes formes;
     // La map contenant toutes les formes (Cercle, Rectangle...)
 
-    typedef stack<Commande*> cmdToUndo;
+    typedef stack<Commande*> CommandesUndo;
+    CommandesUndo cmdToUndo;
     // Pile des commandes exécutées et qui sont "UNDOABLE"
 
 

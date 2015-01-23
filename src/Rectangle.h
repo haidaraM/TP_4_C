@@ -53,7 +53,7 @@ public:
     // Contrat :
     //
 
-    Rectangle ( );
+    Rectangle (string name );
     // Mode d'emploi :
     //
     // Contrat :

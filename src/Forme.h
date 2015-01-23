@@ -56,7 +56,7 @@ public:
     // Contrat :
     //
 
-    Forme ();
+    Forme (string name);
     // Mode d'emploi : Contructeur par défaut
     //
     // Contrat :
