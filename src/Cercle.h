@@ -55,7 +55,7 @@ public:
     // Contrat :
     //
     
-    bool InclusDans(Point p1, Point p2);
+    bool InclusDans(Point p1, Point p2) const;
      // Mode d'emploi :
     //
     // Contrat :

@@ -12,6 +12,7 @@
 //--------------------------------------------------- Interfaces utilisées
 #include <vector>
 #include "Forme.h"
+#include "Point.h"
 
 //------------------------------------------------------------- Constantes 
 
@@ -35,6 +36,13 @@ public:
     //
     // Contrat : Aucun
     //
+    
+    bool InclusDans(Point p1, Point p2) const;
+    // Mode d'emploi : renvoie true si tous les points sont compris dans 
+    // le rectangle formé par p1, p2
+    //
+    // Contrat : Aucun
+    //
 
 
     //------------------------------------------------- Surcharge d'opérateurs
@@ -52,7 +60,7 @@ public:
     // Contrat :
     //
 
-    Polyligne (string name );
+    Polyligne (string name, vector <Point> p);
     // Mode d'emploi : constructeur par defaut
     //
     // Contrat :

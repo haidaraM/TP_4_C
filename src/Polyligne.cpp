@@ -31,7 +31,38 @@ using namespace std;
 
 void Polyligne::Afficher(ostream & flux)const
 {
+	flux<<"PL "<<nom;
+	long a;
+	long o;
+	for(vector<Point>:: const_iterator i = points.begin(); i != points.end();++i)
+	{
+			a = i->GetAbscisse();
+			o = i->GetOrdonnee();
+			flux<<" "<<a<<" "<<o;
+	}
+	flux<<"\r\n";
+}
 
+bool Polyligne::InclusDans(Point p1, Point p2) const
+{
+	long a;
+	long o;
+	long ap1 = p1.GetAbscisse();
+	long ap2 = p2.GetAbscisse();
+	long op1 = p1.GetOrdonnee();
+	long op2 = p2.GetOrdonnee(); 
+	for(vector<Point>:: const_iterator i = points.begin(); i != points.end();++i)
+	{
+			a = i->GetAbscisse();
+			o = i->GetOrdonnee();
+			
+			if ((a < ap1 && a< ap2) || (a > ap1 && a > ap2) || (o < op1 && o < op2)
+				|| (o > op1 && o > op2))
+				{
+					return false;
+				}
+	}
+	return true;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -50,8 +81,7 @@ Polyligne::Polyligne ( const Polyligne & unPolyligne ) : Forme(unPolyligne.nom)
 } 
 
 
-Polyligne::Polyligne (string name ):Forme(name)
-
+Polyligne::Polyligne (string name, vector <Point> p ):Forme(name), points(p)
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Polyligne>" << endl;
