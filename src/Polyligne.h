@@ -1,5 +1,5 @@
 /*************************************************************************
-                         Forme  -  description
+                         Polyligne  -  description
                              -------------------
     début                : 16/01/2015
     copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425

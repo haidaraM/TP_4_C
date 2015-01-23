@@ -1,5 +1,5 @@
 /*************************************************************************
-                           Forme  -  description
+                           Modele  -  description
                              -------------------
     début                : 16/01/2015
     copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
@@ -19,6 +19,7 @@ using namespace std;
 //------------------------------------------------------------- Constantes
 
 //---------------------------------------------------- Variables de classe
+Modele Modele::m_modele=Modele();
 
 //----------------------------------------------------------- Types privés
 
@@ -60,3 +61,6 @@ Modele::~Modele ( )
 //----------------------------------------------------- Méthodes protégées
 
 //------------------------------------------------------- Méthodes privées
+Modele &Modele::Instance() {
+    return m_modele;
+}

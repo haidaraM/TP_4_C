@@ -1,5 +1,5 @@
 /*************************************************************************
-                           Forme  -  description
+                           Rectangle  -  description
                              -------------------
     début                : 16/01/2015
     copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
@@ -19,7 +19,7 @@
 
 //------------------------------------------------------------------------ 
 // Rôle de la classe <Rectangle>
-// Classe permettant de gérer un Rectange
+// Classe permettant de gérer un Rectangle
 //
 //------------------------------------------------------------------------ 
 

@@ -1,5 +1,5 @@
 /*************************************************************************
-                           Forme  -  description
+                           Modele  -  description
                              -------------------
     début                : 16/01/2015
     copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
@@ -23,9 +23,11 @@
 
 //------------------------------------------------------------------------ 
 // Rôle de la classe <Modele>
-// Classe principale de l'application permettant de gerer touts les objets
+// Classe principale de l'application permettant de gerer touts les objets.
+// Il n'y aura qu'une seule instance de cette classe partagée par les
+// Commande. Ceci sera possible grâce au pattern Singleton.
 //
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
 class Modele
 {
@@ -34,9 +36,23 @@ class Modele
 public:
 //----------------------------------------------------- Méthodes publiques
 
+    static Modele & Instance();
+    // Mode d'emploi : Renvoie une reference sur la seule instance de cette classe
+    //
+    // Contrat :
 
+
+
+
+//------------------------------------------------------------------ PRIVE 
+
+protected:
+//----------------------------------------------------- Méthodes protégées
+
+private:
+//------------------------------------------------------- Méthodes privées
     Modele ( );
-    // Mode d'emploi :
+    // Mode d'emploi : Constructeur par défaut
     //
     // Contrat :
     //
@@ -47,13 +63,7 @@ public:
     // Contrat :
     //
 
-//------------------------------------------------------------------ PRIVE 
 
-protected:
-//----------------------------------------------------- Méthodes protégées
-
-private:
-//------------------------------------------------------- Méthodes privées
 
 protected:
 //----------------------------------------------------- Attributs protégés
@@ -61,9 +71,15 @@ protected:
 private:
 //------------------------------------------------------- Attributs privés
 
+    static Modele m_modele;
+    // Attribut de Classe
+
+
     typedef map<const string, Forme *> formes;
     // La map contenant toutes les formes (Cercle, Rectangle...)
 
+    typedef stack<Commande*> cmdToUndo;
+    // Pile des commandes exécutées et qui sont "UNDOABLE"
 
 
 //---------------------------------------------------------- Classes amies

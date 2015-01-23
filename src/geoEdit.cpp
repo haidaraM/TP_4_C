@@ -1,16 +1,17 @@
 /*************************************************************************
                            geoEdit  -  description
                              -------------------
-    d�but                : ${16/01/2015}
+    début                : ${16/01/2015}
     copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include syst�me
+//-------------------------------------------------------- Include systéme
 using namespace std;
 #include <iostream>
 #include "Modele.h"
+#include "CmdAjoutCercle.h"
 
 //------------------------------------------------------ Include personnel
 
@@ -22,7 +23,10 @@ using namespace std;
 
 int main()
 {
-    cout<<"Hello World"<<endl;
-    Point p(10,10);
+    Modele & geoEdit = Modele::Instance(); // Instance principale de l'appli
+
+    CmdAjoutCercle macommande("C c11 12 15 20");
+    macommande.Execute();
+    cout<<endl;
     return 0;
 }

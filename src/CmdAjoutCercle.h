@@ -1,60 +1,49 @@
 /*************************************************************************
-                           Commande  -  description
+                           CmdAjoutCercle  -  description
                              -------------------
     début                : 16/01/2015
     copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
 
-//---------- Interface de la classe <Commande> (fichier Commande.h) 
-#if ! defined ( COMMANDE_H )
-#define COMMANDE_H
+//---------- Interface de la classe <CmdAjoutCercle> (fichier CmdAjoutCercle.h) ------
+#if ! defined ( CMDAJOUTCERCLE_H )
+#define CMDAJOUTCERCLE_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include <string>
-
-using namespace std;
-
+#include "Commande.h"
 //------------------------------------------------------------- Constantes 
 
-//------------------------------------------------------------------ Types
+//------------------------------------------------------------------ Types 
 class Modele; // Déclaration anticipée
-
-//------------------------------------------------------------------------
-// Rôle de la classe <Commande>
-// Cette classe abstraite permettra de gerer les commandes grâce au design pattern
-// command. Il y'aura une classe par commande.
-// Design Pattern Command : Un objet Commande (ou ses descendants) sert à
-// communiquer une action à effectuer, ainsi que les arguments requis.
-// L'objet est envoyé à une seule méthode dans une classe, qui traite les 
-// Commandes du type requis.
+//------------------------------------------------------------------------ 
+// Réle de la classe <CmdAjoutCercle>
 //
-// Tous les objets Commande doivent avoir accès au Model pour mettre à jour
-// directement les formes
+//
 //------------------------------------------------------------------------ 
 
-class Commande
+class CmdAjoutCercle : public Commande
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
-    virtual bool Execute()=0;
-    // Mode d'emploi : Permet d'exectuer la commande
-    //
-    // Contrat :
 
-
-    Commande (string cmd );
-    // Mode d'emploi : constructeur par defaut
+    bool Execute();
+    // Mode d'emploi : Execute la commande permettant d'ajouter un cercle à la Map
     //
-    // Contrat :
+    // Contrat : Aucun
     //
 
-    virtual ~Commande ( );
+    CmdAjoutCercle (string nom );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
+    virtual ~CmdAjoutCercle ( );
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
 
 //------------------------------------------------------------------ PRIVE 
 
@@ -64,24 +53,23 @@ protected:
 private:
 //------------------------------------------------------- Méthodes privées
 
+
 protected:
 //----------------------------------------------------- Attributs protégés
 
-    string commande;
-    // Chaine de caractères representant la commande
-
-    static Modele & geoEdit;
-    // Reference vers la classe principale.
-    // Chaque commande pourra ainsi metre à jour la map et la pile des commandes
-
 private:
 //------------------------------------------------------- Attributs privés
+
+
 
 //---------------------------------------------------------- Classes amies
 
 //-------------------------------------------------------- Classes privées
 
 //----------------------------------------------------------- Types privés
+
 };
 
-#endif // COMMANDE_H
+//----------------------------------------- Types dépendants de <CmdAjoutCercle>
+
+#endif // CMDAJOUTCERCLE_H

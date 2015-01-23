@@ -1,15 +1,15 @@
 /*************************************************************************
-                           Forme  -  description
+                           Polyligne  -  description
                              -------------------
     début                : 16/01/2015
     copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
 
-//---------- R�alisation de la classe <Polyligne> (fichier Polyligne.cpp) --
+//---------- Réalisation de la classe <Polyligne> (fichier Polyligne.cpp) --
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include syst�me
+//-------------------------------------------------------- Include systéme
 using namespace std;
 #include <iostream>
 
@@ -20,23 +20,24 @@ using namespace std;
 
 //---------------------------------------------------- Variables de classe
 
-//----------------------------------------------------------- Types priv�s
+//----------------------------------------------------------- Types privés
 
-//----------------------------------------------------- M�thodes publiques
-// type Polyligne::M�thode ( liste de param�tres )
+//----------------------------------------------------- Méthodes publiques
+// type Polyligne::Méthode ( liste de paramétres )
 // Algorithme :
 //
 //{
-//} //----- Fin de M�thode
+//} //----- Fin de Méthode
 
 void Polyligne::Afficher()const
 {
 
 }
 
-//------------------------------------------------- Surcharge d'op�rateurs
+//------------------------------------------------- Surcharge d'opérateurs
 Polyligne & Polyligne::operator = ( const Polyligne & unPolyligne )
 {
+    return *this;
 }
 
 

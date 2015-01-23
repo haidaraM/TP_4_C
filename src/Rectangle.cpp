@@ -1,5 +1,5 @@
 /*************************************************************************
-                          Forme  -  description
+                          Rectangle  -  description
                              -------------------
     début                : 16/01/2015
     copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
@@ -44,6 +44,7 @@ Rectangle & Rectangle::operator = ( const Rectangle & unRectangle )
 // Algorithme :
 //
 {
+    return *this;
 } //----- Fin de operator =
 
 
