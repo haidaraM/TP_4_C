@@ -33,13 +33,18 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
-void Rectangle::Afficher(ostream & flux) const
-{
-
+void Rectangle::Afficher(ostream & flux)const
+{	
+	long a1 = points.at(0).GetAbscisse();
+	long o1 = points.at(0).GetOrdonnee();
+	long a2 = points.at(1).GetAbscisse();
+	long o2 = points.at(1).GetOrdonnee();
+	flux<<"R "<<nom<<" "<<a1<<" "<<o1<<" "<<a2<<" "<<o2<<"\r\n";
 }
 
+
 //-------------------------------------------- Constructeurs - destructeur
-Rectangle::Rectangle ( const Rectangle & unRectangle ) : Polyligne(unRectangle.nom)
+Rectangle::Rectangle ( const Rectangle & unRectangle ) : Polyligne(unRectangle.nom, unRectangle.points)
 // Algorithme :
 //
 {
@@ -49,7 +54,7 @@ Rectangle::Rectangle ( const Rectangle & unRectangle ) : Polyligne(unRectangle.n
 } //----- Fin de Rectangle (constructeur de copie)
 
 
-Rectangle::Rectangle (string name ): Polyligne(name)
+Rectangle::Rectangle (string name, vector <Point> p): Polyligne(name, p)
 // Algorithme :
 //
 {

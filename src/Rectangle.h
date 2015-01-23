@@ -7,6 +7,7 @@
 
 //---------- Interface de la classe <Rectangle> (fichier Rectangle.h) ------
 #include "Polyligne.h"
+#include "Point.h"
 
 #if ! defined (RECTANGLE__H )
 #define RECTANGLE__H
@@ -46,7 +47,7 @@ public:
     // Contrat :
     //
 
-    Rectangle (string name );
+    Rectangle (string name, vector <Point> p);
     // Mode d'emploi :
     //
     // Contrat :
