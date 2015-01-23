@@ -30,20 +30,13 @@ class Rectangle : public Polyligne
 public:
 //----------------------------------------------------- Méthodes publiques
 
-    void Afficher()const;
+    void Afficher(ostream & flux)const;
     // Mode d'emploi : Affiche les descripteurs du Rectangle
     // Exemple: R Name X1 Y1 X2 Y2
     //
     // Contrat : Aucun
     //
 
-
-//------------------------------------------------- Surcharge d'opérateurs
-    Rectangle & operator = ( const Rectangle & unRectangle );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
 
 //-------------------------------------------- Constructeurs - destructeur

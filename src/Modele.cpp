@@ -70,10 +70,10 @@ void Modele::Ajouter(string name, Forme *uneForme)
     formes.insert(make_pair(name, uneForme));
 }
 
-void Modele::Afficher() const
+void Modele::Afficher(ostream & flux) const
 {
     for(Formes::const_iterator it = formes.begin(); it != formes.end(); it++)
     {
-        it->second->Afficher();
+        it->second->Afficher(flux);
     }
 }

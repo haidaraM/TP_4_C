@@ -35,7 +35,6 @@ using namespace std;
 
 bool CmdAjoutCercle::Execute()
 {
-    bool res = true;
     char delim =' '; //délimiteur
     vector<string> resultat; // vecteur des elements de la ligne
     stringstream stream(commande); // conversion du string en string stream
@@ -64,8 +63,8 @@ bool CmdAjoutCercle::Execute()
         Cercle *c = new Cercle(name,rayon, abscisse, ordonnee);
 
         // mettre la methode qui va mettre à jour la map et empiler la commande
-
         geoEdit.Ajouter(name, c);
+        return true;
     }
 
 }

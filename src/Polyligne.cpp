@@ -29,7 +29,7 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
-void Polyligne::Afficher()const
+void Polyligne::Afficher(ostream & flux)const
 {
 
 }

@@ -33,20 +33,10 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
-void Rectangle::Afficher() const
+void Rectangle::Afficher(ostream & flux) const
 {
 
 }
-
-
-//------------------------------------------------- Surcharge d'opérateurs
-Rectangle & Rectangle::operator = ( const Rectangle & unRectangle )
-// Algorithme :
-//
-{
-    return *this;
-} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
 Rectangle::Rectangle ( const Rectangle & unRectangle ) : Polyligne(unRectangle.nom)

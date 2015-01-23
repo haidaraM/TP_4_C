@@ -27,7 +27,7 @@ class Cercle : public Forme
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void Afficher()const;
+    void Afficher(ostream & flux)const;
     // Mode d'emploi : Affiche les descripteurs du cercle
     // Exemple: C Name X1 Y1 R
     //

@@ -31,22 +31,13 @@ class Forme
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    virtual void Afficher()const = 0;
+    virtual void Afficher(ostream & flux)const = 0;
     // Mode d'emploi : Affiche les descripteurs de la forme c'est à la dire
     // commande utilisée lors de la création de l'objet.
     //
     // Contrat : Devra être reimplementé par les descendants
     //
 
-
-
-
-//------------------------------------------------- Surcharge d'opérateurs
-    Forme & operator = ( const Forme & unForme );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
 
 //-------------------------------------------- Constructeurs - destructeur

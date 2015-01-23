@@ -28,7 +28,7 @@ class Polyligne : public Forme
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void Afficher()const;
+    void Afficher(ostream & flux)const;
     // Mode d'emploi : Affiche les descripteurs du Polyligne
     // Exemple: PL Name X1 Y1 X2 Y2 ... Xn Yn
     //

@@ -33,9 +33,9 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
-void Cercle::Afficher()const
+void Cercle::Afficher(ostream & flux)const
 {
-    cout<<"C "<<nom<<" "<<centre.GetAbscisse()<<" "<<centre.GetOrdonnee()<<" "<<rayon<<"\r\n";
+    flux<<"C "<<nom<<" "<<centre.GetAbscisse()<<" "<<centre.GetOrdonnee()<<" "<<rayon<<"\r\n";
 }
 
 //------------------------------------------------- Surcharge d'opérateurs

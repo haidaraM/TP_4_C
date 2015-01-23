@@ -37,15 +37,6 @@ using namespace std;
 //} //----- Fin de Méthode
 
 
-//------------------------------------------------- Surcharge d'opérateurs
-Forme & Forme::operator = ( const Forme & unForme )
-// Algorithme :
-//
-{
-	return *this;
-} //----- Fin de operator =
-
-
 //-------------------------------------------- Constructeurs - destructeur
 Forme::Forme ( const Forme & unForme )
 // Algorithme :

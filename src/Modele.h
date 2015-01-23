@@ -43,12 +43,12 @@ public:
 
     void Ajouter(string name,  Forme *uneForme);
     // Mode d'emploi : Ajoute une Forme à la Map
-    //
+    // Si un nom de forme est déja présent, la forme sera ignorée
     // Contrat :
 
-    void Afficher()const;
-    // Mode d'emploi : Afficher toutes les formes
-    //
+    void Afficher(ostream & flux=cout)const;
+    // Mode d'emploi : Affiche toutes les formes soit sur la sortie standard ou dans
+    // un fichier
     // Contrat :
 
 
