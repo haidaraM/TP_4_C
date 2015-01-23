@@ -143,7 +143,6 @@ bool Commande::AjouterPolyligne() {
         {
             long x1 = strtol(resultat[i].c_str(), NULL, 10);
             long y1 = strtol(resultat[i+1].c_str(), NULL, 10);
-
             lesPoints.push_back(Point(x1,y1));
         }
 
@@ -221,17 +220,49 @@ bool Commande::Execute()
     }
     else if(commande =="LIST")
     {
-
+        geoEdit.Afficher();
     }
     else if(commande =="CLEAR")
     {
 
     }
-    else
+    else if(commande == "SAVE")
     {
-        cerr<<"Commande inconnue"<<endl;
+
+    }
+    else if(commande == "LOAD")
+    {
+
+    }
+    else if(commande == "UNDO")
+    {
+
+    }
+    else if(commande == "REDO")
+    {
+
+    }
+    else if(commande == "MOVE")
+    {
+
+    }
+    else if(commande =="DELETE")
+    {
+
     }
 
+    return res;
 
+}
 
+bool Commande::Deplacer() {
+    return false;
+}
+
+bool Commande::Supprimer() {
+    return false;
+}
+
+bool Commande::AjouterLigne() {
+    return false;
 }

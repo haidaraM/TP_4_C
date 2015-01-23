@@ -67,6 +67,7 @@ Modele::~Modele ( )
 
 //------------------------------------------------------- Méthodes privées
 Modele &Modele::Instance() {
+    cout<<"Appel de instance "<<endl;
     return m_modele;
 }
 

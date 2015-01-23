@@ -23,15 +23,9 @@ class Modele; // Déclaration anticipée
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Commande>
-// Cette classe abstraite permettra de gerer les commandes grâce au design pattern
-// command. Il y'aura une classe par commande.
-// Design Pattern Command : Un objet Commande (ou ses descendants) sert à
-// communiquer une action à effectuer, ainsi que les arguments requis.
-// L'objet est envoyé à une seule méthode dans une classe, qui traite les 
-// Commandes du type requis.
+// Cette classe permettra de gerer les commandes grâce à une utilisation partielle
+// du design pattern command
 //
-// Tous les objets Commande doivent avoir accès au Model pour mettre à jour
-// directement les formes
 //------------------------------------------------------------------------ 
 
 class Commande
@@ -45,20 +39,36 @@ public:
     // Appelera les méthodes qu'il faut
 
     bool AjouterCercle();
-    // Mode d'emploi : Ajout du cercle à la Map
+    // Mode d'emploi : Ajoute un cercle à la Map
     // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
 
     bool AjouterRectangle();
-    // Mode d'emploi : Ajout un rectangle à la Map
+    // Mode d'emploi : Ajoute un rectangle à la Map
     // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
 
     bool AjouterPolyligne();
-    // Mode d'emploi : Ajout un Polyligne à la Map
+    // Mode d'emploi : Ajoute un Polyligne à la Map
     // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
 
     bool AjouterSelection();
-    // Mode d'emploi : Ajout selection
+    // Mode d'emploi : Ajoute  une selection
     // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+
+    bool AjouterLigne();
+    // Mode d'emploi : Ajoute une ligne à la Map
+    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+
+
+
+    bool Deplacer();
+    // Mode d'emploi : Déplace une Forme ou une selection
+    //
+    // Contrat :
+
+    bool Supprimer();
+    // Mode d'emploi : Supprimer une Forme ou une selection
+    //
+    // Contrat :
 
 
     Commande (string cmd );
