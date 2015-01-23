@@ -36,17 +36,18 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
-/*void Forme::Supprimer()
+void Forme::Supprimer()
 {
 	supprimer = true;
 }
-*/
+
 
 //-------------------------------------------- Constructeurs - destructeur
 Forme::Forme ( const Forme & unForme )
 // Algorithme :
 //
 {
+	nom = unForme.nom;
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Forme>" << endl;
 #endif
@@ -57,6 +58,7 @@ Forme::Forme (string name):nom(name)
 // Algorithme :
 //
 {
+	supprimer = false;
 #ifdef MAP
     cout << "Appel au constructeur de <Forme>" << endl;
 #endif

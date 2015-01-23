@@ -1,11 +1,11 @@
 /*************************************************************************
-                          Ligne  -  description
+                          Selection  -  description
                              -------------------
     début                : 16/01/2015
     copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
 
-//---------- Réalisation de la classe <Ligne> (fichier Ligne.cpp) --
+//---------- Réalisation de la classe <Selection> (fichier Selection.cpp) --
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -14,7 +14,7 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
-#include "Ligne.h"
+#include "Selection.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -27,51 +27,69 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-// type Ligne::Méthode ( liste de paramètres )
+// type Selection::Méthode ( liste de paramètres )
 // Algorithme :
 //
 //{
 //} //----- Fin de Méthode
+void Selection::Afficher(ostream & flux)const
+{
+	//on n'affiche pas les selections
+}
 
-void Ligne::Afficher(ostream & flux)const
+void Selection::Supprimer()
 {	
-	long a1 = points[0].GetAbscisse();
-	long o1 = points[0].GetOrdonnee();
-	long a2 = points[1].GetAbscisse();
-	long o2 = points[1].GetOrdonnee();
-	flux<<"L "<<nom<<" "<<a1<<" "<<o1<<" "<<a2<<" "<<o2<<"\r\n";
+	for(vector<Forme*>::const_iterator i = contenues.begin(); i != contenues.end();++i)
+	{
+			(*i)->Supprimer();
+	}
+}
+
+void Selection::Deplacer(long abs, long ord)
+{
+	for(vector<Forme*>::const_iterator i = contenues.begin(); i != contenues.end();++i)
+	{
+			(*i)->Deplacer(abs, ord);
+	}
+}
+
+bool Selection::InclusDans(Point p1, Point p2)const
+{
+	return false;
 }
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Ligne::Ligne ( const Ligne & unLigne ) : Polyligne(unLigne.nom, unLigne.points)
+/*Selection::Selection (const Selection & unSelection) 
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Ligne>" << endl;
+    cout << "Appel au constructeur de copie de <Selection>" << endl;
 #endif
-} //----- Fin de Ligne (constructeur de copie)
+
+} //----- Fin de Selection (constructeur de copie)*/
 
 
-Ligne::Ligne (string name, vector <Point> p): Polyligne(name, p)
+Selection::Selection (string name, vector <Forme*> f): Forme(name)
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Ligne>" << endl;
+    cout << "Appel au constructeur de <Selection>" << endl;
 #endif
-} //----- Fin de Ligne
+	contenues = f;
+} //----- Fin de Selection
 
 
-Ligne::~Ligne ( )
+Selection::~Selection ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Ligne>" << endl;
+    cout << "Appel au destructeur de <Selection>" << endl;
 #endif
-} //----- Fin de ~Ligne
+} //----- Fin de ~Selection
 
 
 //------------------------------------------------------------------ PRIVE

@@ -35,10 +35,10 @@ using namespace std;
 
 void Rectangle::Afficher(ostream & flux)const
 {	
-	long a1 = points.at(0).GetAbscisse();
-	long o1 = points.at(0).GetOrdonnee();
-	long a2 = points.at(1).GetAbscisse();
-	long o2 = points.at(1).GetOrdonnee();
+	long a1 = points[0].GetAbscisse();
+	long o1 = points[0].GetOrdonnee();
+	long a2 = points[1].GetAbscisse();
+	long o2 = points[1].GetOrdonnee();
 	flux<<"R "<<nom<<" "<<a1<<" "<<o1<<" "<<a2<<" "<<o2<<"\r\n";
 }
 

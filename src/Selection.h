@@ -1,68 +1,82 @@
 /*************************************************************************
-                           Forme  -  description
+                           Selection  -  description
                              -------------------
     début                : 16/01/2015
     copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
 
-//---------- Interface de la classe <Forme> (fichier Forme.h) ------
-#if ! defined ( FORME_H )
-#define FORME_H
+//---------- Interface de la classe <Selection> (fichier Selection.h) ------
+#include "Polyligne.h"
+#include "Point.h"
+
+#if ! defined (SELECTION__H )
+#define SELECTION__H
 
 //--------------------------------------------------- Interfaces utilisées
-#include <string.h>
-using namespace std;
-#include "Point.h"
 
 //------------------------------------------------------------- Constantes 
 
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle de la classe <Forme>
-//
+// Rôle de la classe <Selection>
+// Classe permettant de gérer un Selection
 //
 //------------------------------------------------------------------------ 
 
-class Forme
+class Selection : public Forme
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    virtual void Afficher(ostream & flux)const = 0;
-    // Mode d'emploi : Affiche les descripteurs de la forme c'est à la dire
-    // commande utilisée lors de la création de l'objet.
+
+    void Afficher(ostream & flux)const;
+    // Mode d'emploi : N'affiche rien pour une Selection
     //
-    // Contrat : Devra être reimplementé par les descendants
+    // Contrat : Aucun
+    //
+    
+    void Supprimer();
+    // Mode d'emploi : supprime toutes les formes de la selection
+    //
+    // Contrat : aucun
+    //
+    
+    void Deplacer(long abs, long ord);
+    // Mode d'emploi : déplace toutes les formes de la selection selon le
+    // vecteur formé par abs, ord
+    //
+    // Contrat : aucun
+    //
+    
+    bool InclusDans(Point p1, Point p2)const;
+    // Mode d'emploi : Une selection ne peut pas être inclue dans une autre
+    //séléction. Renvoie systématiquement false
+    //
+    // Contrat :
     //
 
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Forme ( const Forme & unForme );
+    Selection ( const Selection & unSelection );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Forme (string name);
-    // Mode d'emploi : Contructeur par défaut
+    Selection (string name, vector<Forme*> f);
+    // Mode d'emploi : le nom de la selection et les formes qu'elle contient
     //
-    // Contrat :
+    // Contrat : Aucun
     //
 
-    virtual ~Forme ( );
+    virtual ~Selection ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
-    
-    virtual bool InclusDans(Point p1, Point p2);
-    virtual void Supprimer ();
-    virtual void Deplacer (long x, long y);
-    virtual void Afficher (ostream & sortie);
-    
 
 //------------------------------------------------------------------ PRIVE 
 
@@ -74,15 +88,10 @@ private:
 
 protected:
 //----------------------------------------------------- Attributs protégés
-    // L'etat de la Forme
-    bool supprimer;
-
-    // Le nom de la Forme
-    string nom;
 
 private:
 //------------------------------------------------------- Attributs privés
-    
+vector <Forme*> contenues;
 //---------------------------------------------------------- Classes amies
 
 //-------------------------------------------------------- Classes privées
@@ -91,6 +100,8 @@ private:
 
 };
 
-//----------------------------------------- Types dépendants de <Forme>
+//----------------------------------------- Types dépendants de <Selection>
 
-#endif // FORME_H
+#endif // Ligne__H
+
+
