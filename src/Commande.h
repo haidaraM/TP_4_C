@@ -37,10 +37,22 @@ class Commande
 //----------------------------------------------------------------- PUBLIC
 
 public:
-    virtual bool Execute()=0;
-    // Mode d'emploi : Permet d'exectuer la commande
-    //
-    // Contrat :
+
+    bool AjouterCercle();
+    // Mode d'emploi : Ajout du cercle à la Map
+    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+
+    bool AjouterRectangle();
+    // Mode d'emploi : Ajout un rectangle à la Map
+    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+
+    bool AjouterPolyligne();
+    // Mode d'emploi : Ajout un Polyligne à la Map
+    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+
+    bool AjouterSelection();
+    // Mode d'emploi : Ajout selection
+    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
 
 
     Commande (string cmd );

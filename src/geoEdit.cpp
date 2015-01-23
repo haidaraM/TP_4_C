@@ -11,7 +11,6 @@
 using namespace std;
 #include <iostream>
 #include "Modele.h"
-#include "CmdAjoutCercle.h"
 
 //------------------------------------------------------ Include personnel
 
@@ -25,11 +24,11 @@ int main()
 {
     Modele & geoEdit = Modele::Instance(); // Instance principale de l'appli
 
-    CmdAjoutCercle macommande("C haidara 12 15 20");
-    CmdAjoutCercle macommande2("C emilien -152 98 45");
+    Commande macommande("C haidara 12 15 20");
+    Commande macommande2("C emilien -152 98 45");
 
-    macommande.Execute();
-    macommande2.Execute();
+    macommande.AjouterCercle();
+    macommande2.AjouterCercle();
     cout<<endl;
     geoEdit.Afficher();
 
