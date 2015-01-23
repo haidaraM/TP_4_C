@@ -13,14 +13,14 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
+#include <sstream> // stringstream
+#include <cctype>
 
-#include <sstream>
-
-
+#include "Rectangle.h"
 #include "Commande.h"
 #include "Modele.h"
 #include "Cercle.h"
-#include <cctype>
+
 //------------------------------------------------------------- Constantes
 
 //---------------------------------------------------- Variables de classe
@@ -62,18 +62,10 @@ Commande::~Commande ( )
 //------------------------------------------------------- Méthodes privées
 bool Commande::AjouterCercle()
 {
-    char delim =' '; //délimiteur
-    vector<string> resultat; // vecteur des elements de la ligne
-    stringstream stream(commande); // conversion du string en string stream
-    string courant; // element courant
+    // découpage de la commande
+    vector<string> resultat = decoupe();
 
-    while(getline(stream, courant, delim))
-    {
-        //Ajout de l'element courant
-        resultat.push_back(courant);
-    }
-
-    if(resultat.size() != 5 || !allDigit(resultat, 2))
+    if(resultat.size() != 5 || !allDigit(resultat))
     {
         cerr <<"ERR"<<"\r\n";
         cerr <<"#Paramètres invalides"<<"\r\n";
@@ -85,18 +77,49 @@ bool Commande::AjouterCercle()
         string name = resultat[1];
         long abscisse = strtol(resultat[2].c_str(), NULL, 10);
         long ordonnee = strtol(resultat[3].c_str(), NULL, 10);
-        long rayon = strtol(resultat[4].c_str(), NULL, 10);
+        unsigned int rayon =(unsigned int) strtol(resultat[4].c_str(), NULL, 10);
 
         Cercle *c = new Cercle(name,rayon, abscisse, ordonnee);
 
-        // mettre la methode qui va mettre à jour la map et empiler la commande
+        //Mise à jour de la Map
         geoEdit.Ajouter(name, c);
+        // Empilement commande
         return true;
     }
 }
 
 bool Commande::AjouterRectangle() {
-    return false;
+    // découpage de la commande
+    vector<string> resultat = decoupe();
+
+    if(resultat.size() != 6 || !allDigit(resultat))
+    {
+        cerr <<"ERR"<<"\r\n";
+        cerr <<"#Paramètres invalides"<<"\r\n";
+        return false;
+    }
+    else
+    {
+        // Organisation des elements
+        string name = resultat[1];
+        vector<Point> lesPoints;
+        long x1 = strtol(resultat[2].c_str(), NULL, 10);
+        long y1 = strtol(resultat[3].c_str(), NULL, 10);
+        long x2 = strtol(resultat[4].c_str(), NULL, 10);
+        long y2 = strtol(resultat[5].c_str(), NULL, 10);
+
+        lesPoints.push_back(Point(x1,y1));
+        lesPoints.push_back(Point(x2,y2));
+
+        Rectangle *r = new Rectangle(name,lesPoints);
+
+        //Mise à jour de la Map
+        geoEdit.Ajouter(name, r);
+        // Empilement commande
+
+        return true;
+    }
+
 }
 
 bool Commande::AjouterPolyligne() {
@@ -107,9 +130,9 @@ bool Commande::AjouterSelection() {
     return false;
 }
 
-bool Commande::allDigit(vector<string> vect, int pos) {
+bool Commande::allDigit(vector<string> vect, int pos)const {
     bool estNombre = true;
-    int i = pos;
+    unsigned int i = pos;
     while(estNombre && i<vect.size())
     {
         if(!isDigit(vect[i]))
@@ -130,4 +153,19 @@ bool Commande::isDigit(string chaine) const
         i++;
     }
     return estNombre;
+}
+
+vector<string> Commande::decoupe(char delim) const
+{
+    vector<string> resultat; // vecteur des elements de la ligne
+    stringstream stream(commande); // conversion du string en string stream
+    string courant; // element courant
+
+    while(getline(stream, courant, delim))
+    {
+        //Ajout de l'element courant
+        resultat.push_back(courant);
+    }
+
+    return resultat;
 }

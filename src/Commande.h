@@ -74,12 +74,20 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
-    bool allDigit(std::vector<string> vect, int pos=0);
+    bool allDigit(std::vector<string> vect, int pos=2)const;
     // Mode d'emploi : Test si c'est un vecteur de string n'est composé que de
-    // chiffre
+    // chiffre.
     // Contrat : vect non vide
 
     bool isDigit(string chaine)const;
+    // Mode d'emploi : Test si une chaine représente un nombre
+    //
+    // Contrat : fournir une chaine non vide
+
+    vector<string> decoupe(char delim =' ')const;
+    // Mode d'emploi : Découpe la commande en tableau de string
+    //
+    // Contrat :
 
 private:
 //------------------------------------------------------- Méthodes privées
