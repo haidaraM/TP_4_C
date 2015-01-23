@@ -24,8 +24,8 @@ int main()
 {
     Modele & geoEdit = Modele::Instance(); // Instance principale de l'appli
 
-    Commande macommande("C haidara 12 15 20");
-    Commande macommande2("C emilien -152 98 45");
+    Commande macommande("C haidara 125 15 20");
+    Commande macommande2("C emilien -152- -98 45");
 
     macommande.AjouterCercle();
     macommande2.AjouterCercle();

@@ -36,11 +36,11 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
-void Forme::Supprimer() 
+/*void Forme::Supprimer()
 {
 	supprimer = true;
 }
-
+*/
 
 //-------------------------------------------- Constructeurs - destructeur
 Forme::Forme ( const Forme & unForme )

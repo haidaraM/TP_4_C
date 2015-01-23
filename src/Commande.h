@@ -10,6 +10,8 @@
 #define COMMANDE_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include <vector>
+
 #include <string>
 
 using namespace std;
@@ -72,6 +74,12 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
+    bool allDigit(std::vector<string> vect, int pos=0);
+    // Mode d'emploi : Test si c'est un vecteur de string n'est composé que de
+    // chiffre
+    // Contrat : vect non vide
+
+    bool isDigit(string chaine)const;
 
 private:
 //------------------------------------------------------- Méthodes privées
