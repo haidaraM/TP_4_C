@@ -5,74 +5,55 @@
     copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
 
-//---------- Interface de la classe <Point> (fichier Point.h) ------
-#if ! defined ( POINT_H )
-#define POINT_H
+//---------- Interface de la classe <Commande> (fichier Commande.h) 
+#if ! defined ( COMMANDE_H )
+#define COMMANDE_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include <string>
+using namespace std;
 
 //------------------------------------------------------------- Constantes 
 
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle de la classe <Point>
-// Classe permettant de gérer un Point
+// Rôle de la classe <Commande>
+// Cette classe permettra de gerer les commandes grâce au design pattern 
+// command
+// Design Pattern Command : Un objet Commande (ou ses descendants) sert à
+// communiquer une action à effectuer, ainsi que les arguments requis.
+// L'objet est envoyé à une seule méthode dans une classe, qui traite les 
+// Commandes du type requis.
+//
 //
 //------------------------------------------------------------------------ 
 
-class Point
+class Commande
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- Méthodes publiques
-    long GetAbscisse()const;
-    // Mode d'emploi : Renvoie l'asbcisse du point
+    virtual void Exectute() = 0;
+    // Mode d'emploi : Permet d'exectuer la commande
     //
-    // Contrat : Aucun
-    //
-
-    long GetOrdonnee()const;
-    // Mode d'emploi : Renvoie l'ordonnée du point
-    //
-    // Contrat : Aucun
-    //
-
-    void Deplacer(long dx, long dy);
-    // Mode d'emploi : Déplace le point de dx en abscisse et dy en ordonnée
-    //
-    // Contrat : Aucun
+    // Contrat :
 
 
-//------------------------------------------------- Surcharge d'opérateurs
-    Point & operator = ( const Point & unPoint );
+    Commande (string cmd );
+    // Mode d'emploi : constructeur par defaut
+    //
+    // Contrat :
+    //
+
+    virtual ~Commande ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
 
-//-------------------------------------------- Constructeurs - destructeur
-    Point ( const Point & unPoint );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
-    Point ( long absc, long ordo );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    virtual ~Point ( );
-    // Mode d'emploi : Desctructeur
-    //
-    // Contrat :
-    //
-
-//------------------------------------------------------------------ PRIVE
+//------------------------------------------------------------------ PRIVE 
 
 protected:
 //----------------------------------------------------- Méthodes protégées
@@ -83,10 +64,10 @@ private:
 protected:
 //----------------------------------------------------- Attributs protégés
 
+    string commande;
+
 private:
 //------------------------------------------------------- Attributs privés
-    long abscisse;
-    long ordonnee;
 
 //---------------------------------------------------------- Classes amies
 
@@ -95,6 +76,4 @@ private:
 //----------------------------------------------------------- Types privés
 };
 
-//----------------------------------------- Types dépendants de <Point>
-
-#endif // POINT_H
+#endif // COMMANDE_H

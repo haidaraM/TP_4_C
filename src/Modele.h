@@ -5,74 +5,49 @@
     copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
 
-//---------- Interface de la classe <Point> (fichier Point.h) ------
-#if ! defined ( POINT_H )
-#define POINT_H
+//---------- Interface de la classe <Modele> (fichier Modele.h) ------
+#if ! defined ( MODELE_H )
+#define MODELE_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include <map>
+#include <stack> //Pile
+#include <string>
 
-//------------------------------------------------------------- Constantes 
+#include "Point.h"
+#include "Forme.h"
+#include "Commande.h"
+//------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle de la classe <Point>
-// Classe permettant de gérer un Point
+// Rôle de la classe <Modele>
+// Classe principale de l'application permettant de gerer touts les objets
 //
 //------------------------------------------------------------------------ 
 
-class Point
+class Modele
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    long GetAbscisse()const;
-    // Mode d'emploi : Renvoie l'asbcisse du point
-    //
-    // Contrat : Aucun
-    //
-
-    long GetOrdonnee()const;
-    // Mode d'emploi : Renvoie l'ordonnée du point
-    //
-    // Contrat : Aucun
-    //
-
-    void Deplacer(long dx, long dy);
-    // Mode d'emploi : Déplace le point de dx en abscisse et dy en ordonnée
-    //
-    // Contrat : Aucun
 
 
-//------------------------------------------------- Surcharge d'opérateurs
-    Point & operator = ( const Point & unPoint );
+    Modele ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-
-//-------------------------------------------- Constructeurs - destructeur
-    Point ( const Point & unPoint );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
-    Point ( long absc, long ordo );
+    virtual ~Modele ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Point ( );
-    // Mode d'emploi : Desctructeur
-    //
-    // Contrat :
-    //
-
-//------------------------------------------------------------------ PRIVE
+//------------------------------------------------------------------ PRIVE 
 
 protected:
 //----------------------------------------------------- Méthodes protégées
@@ -85,16 +60,20 @@ protected:
 
 private:
 //------------------------------------------------------- Attributs privés
-    long abscisse;
-    long ordonnee;
+
+    typedef map<const string, Forme *> formes;
+    // La map contenant toutes les formes (Cercle, Rectangle...)
+
+
 
 //---------------------------------------------------------- Classes amies
 
 //-------------------------------------------------------- Classes privées
 
 //----------------------------------------------------------- Types privés
+
 };
 
-//----------------------------------------- Types dépendants de <Point>
+//----------------------------------------- Types dépendants de <Modele>
 
-#endif // POINT_H
+#endif // MODELE_H

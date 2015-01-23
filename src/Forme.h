@@ -38,6 +38,9 @@ public:
     // Contrat : Devra être reimplementé par les descendants
     //
 
+
+
+
 //------------------------------------------------- Surcharge d'opérateurs
     Forme & operator = ( const Forme & unForme );
     // Mode d'emploi :

@@ -10,10 +10,9 @@
 //-------------------------------------------------------- Include syst�me
 using namespace std;
 #include <iostream>
-#include "Point.h"
+#include "Modele.h"
 
 //------------------------------------------------------ Include personnel
-//#include "Modele.h";
 
 //------------------------------------------------------------- Constantes
 

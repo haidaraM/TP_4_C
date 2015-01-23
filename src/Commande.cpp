@@ -4,8 +4,7 @@
     début                : 16/01/2015
     copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
-
-//---------- R�alisation de la classe <Polyligne> (fichier Polyligne.cpp) --
+//---------- R�alisation de la classe <Commande> (fichier Commande.cpp) --
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -14,7 +13,7 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
-#include "Polyligne.h"
+#include "Commande.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -22,45 +21,35 @@ using namespace std;
 
 //----------------------------------------------------------- Types priv�s
 
+
+//----------------------------------------------------------------- PUBLIC
+//-------------------------------------------------------- Fonctions amies
+
 //----------------------------------------------------- M�thodes publiques
-// type Polyligne::M�thode ( liste de param�tres )
+
+
+Commande::Commande (string cmd ):commande(cmd)
 // Algorithme :
 //
-//{
-//} //----- Fin de M�thode
-
-void Polyligne::Afficher()const
-{
-
-}
-
-//------------------------------------------------- Surcharge d'op�rateurs
-Polyligne & Polyligne::operator = ( const Polyligne & unPolyligne )
-{
-}
-
-
-//-------------------------------------------- Constructeurs - destructeur
-Polyligne::Polyligne ( const Polyligne & unPolyligne )
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Polyligne>" << endl;
+    cout << "Appel au constructeur de <Commande>" << endl;
 #endif
-} 
+} //----- Fin de Commande
 
 
-Polyligne::Polyligne ( )
-
+Commande::~Commande ( )
+// Algorithme :
+//
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Polyligne>" << endl;
+    cout << "Appel au destructeur de <Commande>" << endl;
 #endif
-}
+} //----- Fin de ~Commande
 
 
-Polyligne::~Polyligne ( )
-{
-#ifdef MAP
-    cout << "Appel au destructeur de <Polyligne>" << endl;
-#endif
-}
+//------------------------------------------------------------------ PRIVE
+
+//----------------------------------------------------- M�thodes prot�g�es
+
+//------------------------------------------------------- M�thodes priv�es
