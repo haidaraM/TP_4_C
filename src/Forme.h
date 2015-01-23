@@ -12,7 +12,6 @@
 //--------------------------------------------------- Interfaces utilisées
 #include <string.h>
 using namespace std;
-
 #include "Point.h"
 
 //------------------------------------------------------------- Constantes 
@@ -58,6 +57,12 @@ public:
     //
     // Contrat :
     //
+    
+    virtual bool InclusDans(Point p1, Point p2);
+    virtual void Supprimer ();
+    virtual void Deplacer (long x, long y);
+    virtual void Afficher (ostream & sortie);
+    
 
 //------------------------------------------------------------------ PRIVE 
 
