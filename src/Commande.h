@@ -24,20 +24,38 @@ class Modele; // Déclaration anticipée
 //------------------------------------------------------------------------
 // Rôle de la classe <Commande>
 // Cette classe permettra de gerer les commandes grâce à une utilisation partielle
-// du design pattern command
-//
-//------------------------------------------------------------------------ 
+// du design pattern command.
+// Elle se chargera d'appeler les méthodes de la classe Modele en fonction de la
+// commande
+//------------------------------------------------------------------------
 
 class Commande
 {
 //----------------------------------------------------------------- PUBLIC
-
 public:
 
     bool Execute();
-    // Mode d'emploi : Execute la commande courante
+    // Mode d'emploi : Execute la commande courante et l'empile si c'est une
+    // commande UNDOABLE
     // Appelera les méthodes qu'il faut
 
+    Commande (string cmd );
+    // Mode d'emploi : constructeur par defaut
+    //
+    // Contrat :
+    //
+
+    virtual ~Commande ( );
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+
+//------------------------------------------------------------------ PRIVE 
+
+protected:
+//----------------------------------------------------- Méthodes protégées
     bool AjouterCercle();
     // Mode d'emploi : Ajoute un cercle à la Map
     // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
@@ -58,37 +76,19 @@ public:
     // Mode d'emploi : Ajoute une ligne à la Map
     // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
 
-
-
     bool Deplacer();
     // Mode d'emploi : Déplace une Forme ou une selection
     //
     // Contrat :
 
+    bool Sauvegarder()const;
+    // Mode d'emploi
+
     bool Supprimer();
     // Mode d'emploi : Supprimer une Forme ou une selection
     //
     // Contrat :
-
-
-    Commande (string cmd );
-    // Mode d'emploi : constructeur par defaut
-    //
-    // Contrat :
-    //
-
-    virtual ~Commande ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-
-//------------------------------------------------------------------ PRIVE 
-
-protected:
-//----------------------------------------------------- Méthodes protégées
-    bool allDigit(std::vector<string> vect, int pos=2)const;
+    bool allDigit(std::vector<string> vect, unsigned int pos=2)const;
     // Mode d'emploi : Test si c'est un vecteur de string n'est composé que de
     // chiffre.
     // Contrat : vect non vide
@@ -114,7 +114,7 @@ protected:
 
     static Modele & geoEdit;
     // Reference vers la classe principale.
-    // Chaque commande pourra ainsi metre à jour la map et la pile des commandes
+    // Chaque commande pourra ainsi metre à jour la map
 
 private:
 //------------------------------------------------------- Attributs privés

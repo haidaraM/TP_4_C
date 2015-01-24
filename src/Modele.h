@@ -51,11 +51,22 @@ public:
     // un fichier
     // Contrat :
 
+    void Sauvegarder(string filename)const;
+    //Mode d'emploi : Sauvegarde les formes dans un fichier
+    //
+    // Contrat : fournir non vide
+
+    void empiler(Commande uneCommande);
+    //Mode d'emploi : Empile la Commande sur la Pile des commandes
+    //
+    // Contrat : uneCommande valide
+
 
 //------------------------------------------------------------------ PRIVE
 
 protected:
 //----------------------------------------------------- Méthodes protégées
+
 
 private:
 //------------------------------------------------------- Méthodes privées
@@ -66,11 +77,10 @@ private:
     //
 
     virtual ~Modele ( );
-    // Mode d'emploi :
+    // Mode d'emploi : Destructeur
     //
     // Contrat :
     //
-
 
 
 protected:
@@ -87,9 +97,15 @@ private:
     Formes formes;
     // La map contenant toutes les formes (Cercle, Rectangle...)
 
-    typedef stack<Commande*> CommandesUndo;
-    CommandesUndo cmdToUndo;
-    // Pile des commandes exécutées et qui sont "UNDOABLE"
+    typedef stack<Commande> Commandes;
+    Commandes cmdToUndo;
+    // Pile de Pointeur vers les commandes exécutées et qui sont "UNDOABLE"
+    //
+
+    Commandes cmdToRedo;
+    // Pile de Pointeur vers les commandes exécutées a REDO"
+    //
+
 
 
 //---------------------------------------------------------- Classes amies

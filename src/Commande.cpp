@@ -14,7 +14,6 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include <sstream> // stringstream
-#include <cctype>
 
 #include "Rectangle.h"
 #include "Commande.h"
@@ -160,7 +159,7 @@ bool Commande::AjouterSelection() {
     return false;
 }
 
-bool Commande::allDigit(vector<string> vect, int pos)const {
+bool Commande::allDigit(vector<string> vect, unsigned int pos)const {
     bool estNombre = true;
     unsigned int i = pos;
     while(estNombre && i<vect.size())
@@ -194,10 +193,44 @@ vector<string> Commande::decoupe(char delim) const
     while(getline(stream, courant, delim))
     {
         //Ajout de l'element courant
-        resultat.push_back(courant);
+        if(courant.size()!=0)
+            resultat.push_back(courant);
     }
 
     return resultat;
+}
+
+
+
+bool Commande::Deplacer() {
+    return false;
+}
+
+bool Commande::Supprimer() {
+    return false;
+}
+
+bool Commande::AjouterLigne()
+{
+    return false;
+}
+
+bool Commande::Sauvegarder()const
+{
+    // découpage de la commande
+    vector<string> resultat = decoupe();
+
+    if(resultat.size() != 2)
+    {
+        cerr <<"ERR"<<"\r\n";
+        cerr <<"#Paramètres invalides"<<"\r\n";
+        return false;
+    }
+    else
+    {
+        geoEdit.Sauvegarder(resultat[1]);
+        return true;
+    }
 }
 
 bool Commande::Execute()
@@ -209,14 +242,26 @@ bool Commande::Execute()
     if(commande == "C")
     {
         res=AjouterCercle();
+        if(res)
+        {
+            geoEdit.empiler(*this);
+        }
     }
     else if(commande == "PL")
     {
-        res=AjouterPolyligne();
+        res = AjouterPolyligne();
+        if(res)
+        {
+            geoEdit.empiler(*this);
+        }
     }
     else if(commande == "R")
     {
-        res=AjouterRectangle();
+        res = AjouterRectangle();
+        if(res)
+        {
+            geoEdit.empiler(*this);
+        }
     }
     else if(commande =="LIST")
     {
@@ -228,7 +273,7 @@ bool Commande::Execute()
     }
     else if(commande == "SAVE")
     {
-
+        Sauvegarder();
     }
     else if(commande == "LOAD")
     {
@@ -253,16 +298,4 @@ bool Commande::Execute()
 
     return res;
 
-}
-
-bool Commande::Deplacer() {
-    return false;
-}
-
-bool Commande::Supprimer() {
-    return false;
-}
-
-bool Commande::AjouterLigne() {
-    return false;
 }
