@@ -88,6 +88,9 @@ protected:
     // Mode d'emploi : Supprimer une Forme ou une selection
     //
     // Contrat :
+
+
+
     bool allDigit(std::vector<string> vect, unsigned int pos=2)const;
     // Mode d'emploi : Test si c'est un vecteur de string n'est composé que de
     // chiffre.
@@ -125,5 +128,8 @@ private:
 
 //----------------------------------------------------------- Types privés
 };
+
+void AfficherErreurCommande();
+// Mode d'emploi : Affiche un message d'erreur sur la sortie d'erreur
 
 #endif // COMMANDE_H

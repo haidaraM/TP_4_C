@@ -19,8 +19,12 @@ using namespace std;
 #include "Commande.h"
 #include "Modele.h"
 #include "Cercle.h"
+#include "Ligne.h"
 
 //------------------------------------------------------------- Constantes
+const string COMMENTAIRES("#");
+const string CMD_PARAM_ERR("paramètres invalides");
+const string ERREUR("ERR");
 
 //---------------------------------------------------- Variables de classe
 
@@ -66,8 +70,7 @@ bool Commande::AjouterCercle()
 
     if(resultat.size() != 5 || !allDigit(resultat))
     {
-        cerr <<"ERR"<<"\r\n";
-        cerr <<"#Paramètres invalides"<<"\r\n";
+        AfficherErreurCommande();
         return false;
     }
     else
@@ -93,8 +96,7 @@ bool Commande::AjouterRectangle() {
 
     if(resultat.size() != 6 || !allDigit(resultat))
     {
-        cerr <<"ERR"<<"\r\n";
-        cerr <<"#Paramètres invalides"<<"\r\n";
+        AfficherErreurCommande();
         return false;
     }
     else
@@ -114,7 +116,6 @@ bool Commande::AjouterRectangle() {
 
         //Mise à jour de la Map
         geoEdit.Ajouter(name, r);
-        // Empilement commande
 
         return true;
     }
@@ -129,8 +130,7 @@ bool Commande::AjouterPolyligne() {
     if(resultat.size() < 6 || !allDigit(resultat) ||
             resultat.size()%2 != 0)
     {
-        cerr <<"ERR"<<"\r\n";
-        cerr <<"#Paramètres invalides"<<"\r\n";
+        AfficherErreurCommande();
         return false;
     }
     else
@@ -212,7 +212,35 @@ bool Commande::Supprimer() {
 
 bool Commande::AjouterLigne()
 {
-    return false;
+    // découpage de la commande
+    vector<string> resultat = decoupe();
+
+    if(resultat.size() != 6 || !allDigit(resultat))
+    {
+        AfficherErreurCommande();
+        return false;
+    }
+    else
+    {
+        // Organisation des elements
+        string name = resultat[1];
+        vector<Point> lesPoints;
+        long x1 = strtol(resultat[2].c_str(), NULL, 10);
+        long y1 = strtol(resultat[3].c_str(), NULL, 10);
+        long x2 = strtol(resultat[4].c_str(), NULL, 10);
+        long y2 = strtol(resultat[5].c_str(), NULL, 10);
+
+        lesPoints.push_back(Point(x1,y1));
+        lesPoints.push_back(Point(x2,y2));
+
+        Ligne *ligne = new Ligne(name,lesPoints);
+
+        //Mise à jour de la Map
+        geoEdit.Ajouter(name, ligne);
+
+        return true;
+
+    }
 }
 
 bool Commande::Sauvegarder()const
@@ -222,8 +250,7 @@ bool Commande::Sauvegarder()const
 
     if(resultat.size() != 2)
     {
-        cerr <<"ERR"<<"\r\n";
-        cerr <<"#Paramètres invalides"<<"\r\n";
+        AfficherErreurCommande();
         return false;
     }
     else
@@ -258,6 +285,14 @@ bool Commande::Execute()
     else if(commande == "R")
     {
         res = AjouterRectangle();
+        if(res)
+        {
+            geoEdit.empiler(*this);
+        }
+    }
+    else if(commande == "L")
+    {
+        res = AjouterLigne();
         if(res)
         {
             geoEdit.empiler(*this);
@@ -298,4 +333,10 @@ bool Commande::Execute()
 
     return res;
 
+}
+
+void AfficherErreurCommande() {
+
+    cout<<ERREUR<<"\r\n";
+    cout<<COMMENTAIRES<<CMD_PARAM_ERR<<"\r\n";
 }
