@@ -63,7 +63,7 @@ Commande::~Commande ( )
 //----------------------------------------------------- Méthodes protégées
 
 //------------------------------------------------------- Méthodes privées
-codeRetour Commande::AjouterCercle()
+CODERETOUR Commande::AjouterCercle()
 {
     // découpage de la commande
     vector<string> resultat = decoupe();
@@ -90,7 +90,7 @@ codeRetour Commande::AjouterCercle()
     }
 }
 
-codeRetour Commande::AjouterRectangle() {
+CODERETOUR Commande::AjouterRectangle() {
     // découpage de la commande
     vector<string> resultat = decoupe();
 
@@ -122,7 +122,7 @@ codeRetour Commande::AjouterRectangle() {
 
 }
 
-codeRetour Commande::AjouterPolyligne() {
+CODERETOUR Commande::AjouterPolyligne() {
     // découpage de la commande
     vector<string> resultat = decoupe();
 
@@ -155,7 +155,7 @@ codeRetour Commande::AjouterPolyligne() {
 
 }
 
-codeRetour Commande::AjouterSelection() {
+CODERETOUR Commande::AjouterSelection() {
     return GOOD;
 }
 
@@ -202,15 +202,15 @@ vector<string> Commande::decoupe(char delim) const
 
 
 
-codeRetour Commande::Deplacer() {
+CODERETOUR Commande::Deplacer() {
     return GOOD;
 }
 
-codeRetour Commande::Supprimer() {
+CODERETOUR Commande::Supprimer() {
     return GOOD;
 }
 
-codeRetour Commande::AjouterLigne()
+CODERETOUR Commande::AjouterLigne()
 {
     // découpage de la commande
     vector<string> resultat = decoupe();
@@ -243,7 +243,7 @@ codeRetour Commande::AjouterLigne()
     }
 }
 
-codeRetour Commande::Sauvegarder()const
+CODERETOUR Commande::Sauvegarder()const
 {
     // découpage de la commande
     vector<string> resultat = decoupe();
@@ -260,16 +260,16 @@ codeRetour Commande::Sauvegarder()const
     }
 }
 
-codeRetour Commande::Execute(int simulation)
+CODERETOUR Commande::Execute()
 {
     stringstream stream(commande);
     string commande;
     getline(stream,commande,' ');
-    codeRetour res;
+    CODERETOUR res;
     if(commande == "C")
     {
         res=AjouterCercle();
-        if(res && !simulation)
+        if(res)
         {
             geoEdit.Empiler(*this);
         }
@@ -277,7 +277,7 @@ codeRetour Commande::Execute(int simulation)
     else if(commande == "PL")
     {
         res = AjouterPolyligne();
-        if(res && !simulation)
+        if(res)
         {
             geoEdit.Empiler(*this);
         }
@@ -285,7 +285,7 @@ codeRetour Commande::Execute(int simulation)
     else if(commande == "R")
     {
         res = AjouterRectangle();
-        if(res && !simulation)
+        if(res)
         {
             geoEdit.Empiler(*this);
         }
@@ -293,7 +293,7 @@ codeRetour Commande::Execute(int simulation)
     else if(commande == "L")
     {
         res = AjouterLigne();
-        if(res && !simulation)
+        if(res)
         {
             geoEdit.Empiler(*this);
         }
