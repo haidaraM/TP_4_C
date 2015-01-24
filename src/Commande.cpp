@@ -202,12 +202,12 @@ vector<string> Commande::decoupe(char delim) const
 
 
 
-bool Commande::Deplacer() {
-    return false;
+codeRetour Commande::Deplacer() {
+    return GOOD;
 }
 
-bool Commande::Supprimer() {
-    return false;
+codeRetour Commande::Supprimer() {
+    return GOOD;
 }
 
 codeRetour Commande::AjouterLigne()
@@ -269,7 +269,7 @@ codeRetour Commande::Execute(int simulation)
     if(commande == "C")
     {
         res=AjouterCercle();
-        if(res)
+        if(res && !simulation)
         {
             geoEdit.Empiler(*this);
         }
@@ -277,7 +277,7 @@ codeRetour Commande::Execute(int simulation)
     else if(commande == "PL")
     {
         res = AjouterPolyligne();
-        if(res)
+        if(res && !simulation)
         {
             geoEdit.Empiler(*this);
         }
@@ -285,7 +285,7 @@ codeRetour Commande::Execute(int simulation)
     else if(commande == "R")
     {
         res = AjouterRectangle();
-        if(res)
+        if(res && !simulation)
         {
             geoEdit.Empiler(*this);
         }
@@ -293,7 +293,7 @@ codeRetour Commande::Execute(int simulation)
     else if(commande == "L")
     {
         res = AjouterLigne();
-        if(res)
+        if(res && !simulation)
         {
             geoEdit.Empiler(*this);
         }

@@ -104,3 +104,7 @@ void Modele::Empiler(Commande uneCommande)
 {
     cmdToUndo.push(uneCommande);
 }
+
+bool Modele::NomExiste(string nom) const {
+    return formes.find(nom) != formes.end();
+}

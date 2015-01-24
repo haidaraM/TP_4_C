@@ -36,11 +36,6 @@ class Modele
 public:
 //----------------------------------------------------- Méthodes publiques
 
-    static Modele & Instance();
-    // Mode d'emploi : Renvoie une reference sur la seule instance de cette classe
-    //
-    // Contrat :
-
     void Ajouter(string name,  Forme *uneForme);
     // Mode d'emploi : Ajoute une Forme à la Map
     // Si un nom de forme est déja présent, la forme sera ignorée
@@ -59,7 +54,18 @@ public:
     void Empiler(Commande uneCommande);
     //Mode d'emploi : Empile la Commande sur la Pile des commandes
     //
-    // Contrat : uneCommande valide
+    // Contrat : Commande valide
+
+    static Modele & Instance();
+    // Mode d'emploi : Renvoie une reference sur la seule instance de cette classe
+    //
+    // Contrat :
+
+    bool NomExiste(string nom)const;
+    // Mode d'emploi : Verifie si le nom passé par en paramètre existe dans la map
+    // Renvoie vrai si le nom existe, faux sinon
+    // Contrat :
+
 
 
 //------------------------------------------------------------------ PRIVE

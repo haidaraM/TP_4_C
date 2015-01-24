@@ -21,8 +21,9 @@ using namespace std;
 //------------------------------------------------------------------ Types
 class Modele; // Déclaration anticipée
 
+// Code de retour des Commandes
 enum codeRetour {
-    GOOD=1, ERR_SYNTAXE=0, ERR_NAME_EXIST=-1
+    GOOD=1, ERR_SYNTAXE=0, ERR_NAME_EXISTS=-1,ERR_UNKNOWN_NAME=2
 };
 
 //------------------------------------------------------------------------
@@ -40,7 +41,9 @@ public:
 
     codeRetour Execute(int simulation = 0);
     // Mode d'emploi : Execute la commande courante et l'empile si c'est une
-    // commande UNDOABLE
+    // commande UNDOABLE.
+    // Par défaut les commandes sont exécutées. Si simulation vaut = 1, on verifie
+    // que la commande se serait bien executée.
     // Appelera les méthodes qu'il faut
 
     Commande (string cmd );
@@ -97,7 +100,7 @@ protected:
     //          0 si la syntaxe est incorrecte
     //          -1 si le nom de la selection existe déja
 
-    bool Deplacer();
+    codeRetour Deplacer();
     // Mode d'emploi : Déplace une Forme ou une selection
     //
     // Contrat :
@@ -105,7 +108,7 @@ protected:
     codeRetour Sauvegarder()const;
     // Mode d'emploi
 
-    bool Supprimer();
+    codeRetour Supprimer();
     // Mode d'emploi : Supprimer une Forme ou une selection
     //
     // Contrat :
@@ -151,6 +154,7 @@ private:
 };
 
 void AfficherErreurCommande();
-// Mode d'emploi : Affiche un message d'erreur sur la sortie d'erreur
+// Mode d'emploi : Affiche un message d'erreur sur la sortie d'erreur si la
+// syntaxe de la commande est incorrecte
 
 #endif // COMMANDE_H
