@@ -100,7 +100,7 @@ void Modele::Sauvegarder(string filename)const
 
 }
 
-void Modele::empiler(Commande uneCommande)
+void Modele::Empiler(Commande uneCommande)
 {
     cmdToUndo.push(uneCommande);
 }

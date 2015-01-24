@@ -56,7 +56,7 @@ public:
     //
     // Contrat : fournir non vide
 
-    void empiler(Commande uneCommande);
+    void Empiler(Commande uneCommande);
     //Mode d'emploi : Empile la Commande sur la Pile des commandes
     //
     // Contrat : uneCommande valide

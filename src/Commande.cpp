@@ -63,7 +63,7 @@ Commande::~Commande ( )
 //----------------------------------------------------- Méthodes protégées
 
 //------------------------------------------------------- Méthodes privées
-bool Commande::AjouterCercle()
+codeRetour Commande::AjouterCercle()
 {
     // découpage de la commande
     vector<string> resultat = decoupe();
@@ -71,7 +71,7 @@ bool Commande::AjouterCercle()
     if(resultat.size() != 5 || !allDigit(resultat))
     {
         AfficherErreurCommande();
-        return false;
+        return ERR_SYNTAXE;
     }
     else
     {
@@ -86,18 +86,18 @@ bool Commande::AjouterCercle()
         //Mise à jour de la Map
         geoEdit.Ajouter(name, c);
         // Empilement commande
-        return true;
+        return GOOD;
     }
 }
 
-bool Commande::AjouterRectangle() {
+codeRetour Commande::AjouterRectangle() {
     // découpage de la commande
     vector<string> resultat = decoupe();
 
     if(resultat.size() != 6 || !allDigit(resultat))
     {
         AfficherErreurCommande();
-        return false;
+        return ERR_SYNTAXE;
     }
     else
     {
@@ -117,12 +117,12 @@ bool Commande::AjouterRectangle() {
         //Mise à jour de la Map
         geoEdit.Ajouter(name, r);
 
-        return true;
+        return GOOD;
     }
 
 }
 
-bool Commande::AjouterPolyligne() {
+codeRetour Commande::AjouterPolyligne() {
     // découpage de la commande
     vector<string> resultat = decoupe();
 
@@ -131,7 +131,7 @@ bool Commande::AjouterPolyligne() {
             resultat.size()%2 != 0)
     {
         AfficherErreurCommande();
-        return false;
+        return ERR_SYNTAXE;
     }
     else
     {
@@ -149,14 +149,14 @@ bool Commande::AjouterPolyligne() {
 
         //Mise à jour de la Map
         geoEdit.Ajouter(name, pl);
-        return true;
+        return GOOD;
     }
 
 
 }
 
-bool Commande::AjouterSelection() {
-    return false;
+codeRetour Commande::AjouterSelection() {
+    return GOOD;
 }
 
 bool Commande::allDigit(vector<string> vect, unsigned int pos)const {
@@ -210,7 +210,7 @@ bool Commande::Supprimer() {
     return false;
 }
 
-bool Commande::AjouterLigne()
+codeRetour Commande::AjouterLigne()
 {
     // découpage de la commande
     vector<string> resultat = decoupe();
@@ -218,7 +218,7 @@ bool Commande::AjouterLigne()
     if(resultat.size() != 6 || !allDigit(resultat))
     {
         AfficherErreurCommande();
-        return false;
+        return ERR_SYNTAXE;
     }
     else
     {
@@ -238,12 +238,12 @@ bool Commande::AjouterLigne()
         //Mise à jour de la Map
         geoEdit.Ajouter(name, ligne);
 
-        return true;
+        return GOOD;
 
     }
 }
 
-bool Commande::Sauvegarder()const
+codeRetour Commande::Sauvegarder()const
 {
     // découpage de la commande
     vector<string> resultat = decoupe();
@@ -251,27 +251,27 @@ bool Commande::Sauvegarder()const
     if(resultat.size() != 2)
     {
         AfficherErreurCommande();
-        return false;
+        return ERR_SYNTAXE;
     }
     else
     {
         geoEdit.Sauvegarder(resultat[1]);
-        return true;
+        return GOOD;
     }
 }
 
-bool Commande::Execute()
+codeRetour Commande::Execute(int simulation)
 {
     stringstream stream(commande);
     string commande;
     getline(stream,commande,' ');
-    bool res;
+    codeRetour res;
     if(commande == "C")
     {
         res=AjouterCercle();
         if(res)
         {
-            geoEdit.empiler(*this);
+            geoEdit.Empiler(*this);
         }
     }
     else if(commande == "PL")
@@ -279,7 +279,7 @@ bool Commande::Execute()
         res = AjouterPolyligne();
         if(res)
         {
-            geoEdit.empiler(*this);
+            geoEdit.Empiler(*this);
         }
     }
     else if(commande == "R")
@@ -287,7 +287,7 @@ bool Commande::Execute()
         res = AjouterRectangle();
         if(res)
         {
-            geoEdit.empiler(*this);
+            geoEdit.Empiler(*this);
         }
     }
     else if(commande == "L")
@@ -295,7 +295,7 @@ bool Commande::Execute()
         res = AjouterLigne();
         if(res)
         {
-            geoEdit.empiler(*this);
+            geoEdit.Empiler(*this);
         }
     }
     else if(commande =="LIST")

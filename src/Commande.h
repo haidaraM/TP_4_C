@@ -21,6 +21,10 @@ using namespace std;
 //------------------------------------------------------------------ Types
 class Modele; // Déclaration anticipée
 
+enum codeRetour {
+    GOOD=1, ERR_SYNTAXE=0, ERR_NAME_EXIST=-1
+};
+
 //------------------------------------------------------------------------
 // Rôle de la classe <Commande>
 // Cette classe permettra de gerer les commandes grâce à une utilisation partielle
@@ -34,7 +38,7 @@ class Commande
 //----------------------------------------------------------------- PUBLIC
 public:
 
-    bool Execute();
+    codeRetour Execute(int simulation = 0);
     // Mode d'emploi : Execute la commande courante et l'empile si c'est une
     // commande UNDOABLE
     // Appelera les méthodes qu'il faut
@@ -56,32 +60,49 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
-    bool AjouterCercle();
+    codeRetour AjouterCercle();
     // Mode d'emploi : Ajoute un cercle à la Map
     // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+    // Retour : 1 si la commande s'est bien exécutée
+    //          0 si la syntaxe est incorrecte
+    //          -1 si le nom de la forme existe déja
 
-    bool AjouterRectangle();
+    codeRetour AjouterRectangle();
     // Mode d'emploi : Ajoute un rectangle à la Map
     // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+    // Retour : 1 si la commande s'est bien exécutée
+    //          0 si la syntaxe est incorrecte
+    //          -1 si le nom de la forme existe déja
 
-    bool AjouterPolyligne();
+
+    codeRetour AjouterPolyligne();
     // Mode d'emploi : Ajoute un Polyligne à la Map
     // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+    // Retour : 1 si la commande s'est bien exécutée
+    //          0 si la syntaxe est incorrecte
+    //          -1 si le nom de la forme existe déja
 
-    bool AjouterSelection();
-    // Mode d'emploi : Ajoute  une selection
-    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
 
-    bool AjouterLigne();
+    codeRetour AjouterLigne();
     // Mode d'emploi : Ajoute une ligne à la Map
     // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+    // Retour : 1 si la commande s'est bien exécutée
+    //          0 si la syntaxe est incorrecte
+    //          -1 si le nom de la forme existe déja
+
+    codeRetour AjouterSelection();
+    // Mode d'emploi : Ajoute  une selection
+    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+    // Retour : 1 si la commande s'est bien exécutée
+    //          0 si la syntaxe est incorrecte
+    //          -1 si le nom de la selection existe déja
 
     bool Deplacer();
     // Mode d'emploi : Déplace une Forme ou une selection
     //
     // Contrat :
 
-    bool Sauvegarder()const;
+    codeRetour Sauvegarder()const;
     // Mode d'emploi
 
     bool Supprimer();
