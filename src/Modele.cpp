@@ -29,12 +29,6 @@ Modele Modele::m_modele=Modele();
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-// type Modele::Méthode ( liste de paramétres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-
 
 
 Modele::Modele ( )
@@ -59,6 +53,20 @@ Modele::~Modele ( )
     {
         delete it->second;
     }
+
+    // liberation des commandes restantes
+    while(!cmdToUndo.empty())
+    {
+        delete cmdToUndo.top();
+        cmdToUndo.pop();
+    }
+
+    while(!cmdToRedo.empty())
+    {
+        delete cmdToRedo.top();
+        cmdToRedo.pop();
+    }
+
 
 } //----- Fin de ~Modele
 
@@ -100,11 +108,29 @@ void Modele::Sauvegarder(string filename)const
 
 }
 
-void Modele::Empiler(Commande uneCommande)
+void Modele::Empiler(Commande *uneCommande)
 {
     cmdToUndo.push(uneCommande);
 }
 
 bool Modele::NomExiste(string nom) const {
     return formes.find(nom) != formes.end();
+}
+
+Forme *Modele::getForme(string name)const  {
+    if(NomExiste(name))
+        return formes.find(name)->second;
+    else
+        return nullptr;
+}
+
+void Modele::UNDO() {
+    cmdToRedo.push(cmdToUndo.top());// empile sur REDO
+    cmdToUndo.top()->UnExecute(); // Annulation de la commande
+    cmdToUndo.pop(); //
+}
+
+void Modele::EraseForme(string name) {
+    formes.erase(name);
+
 }

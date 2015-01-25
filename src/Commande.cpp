@@ -63,32 +63,7 @@ Commande::~Commande ( )
 //----------------------------------------------------- Méthodes protégées
 
 //------------------------------------------------------- Méthodes privées
-CODERETOUR Commande::AjouterCercle()
-{
-    // découpage de la commande
-    vector<string> resultat = decoupe();
 
-    if(resultat.size() != 5 || !allDigit(resultat))
-    {
-        AfficherErreurCommande();
-        return ERR_SYNTAXE;
-    }
-    else
-    {
-        // Organisation des elements
-        string name = resultat[1];
-        long abscisse = strtol(resultat[2].c_str(), NULL, 10);
-        long ordonnee = strtol(resultat[3].c_str(), NULL, 10);
-        unsigned int rayon =(unsigned int) strtol(resultat[4].c_str(), NULL, 10);
-
-        Cercle *c = new Cercle(name,rayon, abscisse, ordonnee);
-
-        //Mise à jour de la Map
-        geoEdit.Ajouter(name, c);
-        // Empilement commande
-        return GOOD;
-    }
-}
 
 CODERETOUR Commande::AjouterRectangle() {
     // découpage de la commande
@@ -265,9 +240,10 @@ CODERETOUR Commande::Execute()
     stringstream stream(commande);
     string commande;
     getline(stream,commande,' ');
-    CODERETOUR res;
-    if(commande == "C")
+    CODERETOUR res = GOOD;
+    /*if(commande == "C")
     {
+        CmdA
         res=AjouterCercle();
         if(res)
         {
@@ -329,7 +305,7 @@ CODERETOUR Commande::Execute()
     else if(commande =="DELETE")
     {
 
-    }
+    }*/
 
     return res;
 

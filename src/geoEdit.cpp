@@ -10,6 +10,8 @@
 //-------------------------------------------------------- Include systéme
 using namespace std;
 #include <iostream>
+#include <sstream>
+#include "CmdAjoutCercle.h"
 //------------------------------------------------------ Include personnel
 
 #include "Modele.h"
@@ -21,11 +23,26 @@ using namespace std;
 int main()
 {
     Modele & geoEdit = Modele::Instance(); // Instance principale de l'appli
-    string courant; // commande courante
+    string courant; // chaine representant la commande courante
+    Commande * cmd = NULL;
     do{
-        getline(cin, courant, '\n');
-        Commande cmd(courant);
-        cmd.Execute();
+        getline(cin, courant, '\n'); // recuperation de la ligne
+        size_t pos = courant.find(' ');
+        string type = courant.substr(0, pos);// recuperation du type de commande
+        if(type == "C")
+        {
+            cmd = new CmdAjoutCercle(courant);
+            cmd->Execute();
+        }
+        else if(type =="LIST")
+        {
+            geoEdit.Afficher();
+        }
+        else if(type =="UNDO")
+        {
+            geoEdit.UNDO();
+        }
+
     }while (courant != "EXIT");
     return 0;
 }

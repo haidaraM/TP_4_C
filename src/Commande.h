@@ -39,11 +39,13 @@ class Commande
 //----------------------------------------------------------------- PUBLIC
 public:
 
-    CODERETOUR Execute();
+    virtual CODERETOUR Execute()=0;
     // Mode d'emploi : Execute la commande courante et l'empile si c'est une
     // commande UNDOABLE.
-    //
     // Appelera les méthodes qu'il faut
+
+    virtual CODERETOUR UnExecute()=0;
+    // Execute la commande inverse pour UNDO
 
     Commande (string cmd );
     // Mode d'emploi : constructeur par defaut
@@ -62,12 +64,6 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
-    CODERETOUR AjouterCercle();
-    // Mode d'emploi : Ajoute un cercle à la Map
-    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
-    // Retour : 1 si la commande s'est bien exécutée
-    //          0 si la syntaxe est incorrecte
-    //          -1 si le nom de la forme existe déja
 
     CODERETOUR AjouterRectangle();
     // Mode d'emploi : Ajoute un rectangle à la Map
