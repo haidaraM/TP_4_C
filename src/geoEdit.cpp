@@ -34,6 +34,10 @@ int main()
             cmd = new CmdAjoutCercle(courant);
             cmd->Execute();
         }
+        else if(type == "PL")
+        {
+            //
+        }
         else if(type =="LIST")
         {
             geoEdit.Afficher();
@@ -41,6 +45,10 @@ int main()
         else if(type =="UNDO")
         {
             geoEdit.UNDO();
+        }
+        else if(type =="REDO")
+        {
+            geoEdit.REDO();
         }
 
     }while (courant != "EXIT");

@@ -78,6 +78,7 @@ CODERETOUR CmdAjoutCercle::Execute() {
         {
             geoEdit.Ajouter(name, c);
             // Empilement commande
+            // penser à liberer la pile de redo
             geoEdit.Empiler(this);
             return GOOD;
         }
@@ -88,8 +89,14 @@ CODERETOUR CmdAjoutCercle::Execute() {
 
 CODERETOUR CmdAjoutCercle::UnExecute()
 {
-    Forme *f = geoEdit.getForme("c1");
+    string nom = GetNom();
+    Forme *f = geoEdit.getForme(nom);
     delete f;
-    geoEdit.EraseForme("c1");
+    geoEdit.EraseForme(nom);
     return GOOD;
+}
+
+string CmdAjoutCercle::GetNom() const
+{
+    return commande.substr(2, commande.find(' ', 2)-2);
 }

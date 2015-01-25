@@ -45,6 +45,10 @@ public:
     // Annule la derniere commande
     //
 
+    void REDO();
+    // Execute la derniere commande annuler
+    //
+
     void Afficher(ostream & flux=cout)const;
     // Mode d'emploi : Affiche toutes les formes soit sur la sortie standard ou dans
     // un fichier
@@ -98,6 +102,13 @@ private:
     //
     // Contrat :
     //
+
+    void liberePileUndo();
+    // Mode d'emploi : libere la pile de UNDO
+
+    void liberePileRedo();
+    // Mode d'emploi : libere la pile de REDO
+
 
 
 protected:

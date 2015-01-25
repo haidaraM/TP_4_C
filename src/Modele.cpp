@@ -54,18 +54,9 @@ Modele::~Modele ( )
         delete it->second;
     }
 
-    // liberation des commandes restantes
-    while(!cmdToUndo.empty())
-    {
-        delete cmdToUndo.top();
-        cmdToUndo.pop();
-    }
+    liberePileUndo();
+    liberePileRedo();
 
-    while(!cmdToRedo.empty())
-    {
-        delete cmdToRedo.top();
-        cmdToRedo.pop();
-    }
 
 
 } //----- Fin de ~Modele
@@ -125,12 +116,38 @@ Forme *Modele::getForme(string name)const  {
 }
 
 void Modele::UNDO() {
-    cmdToRedo.push(cmdToUndo.top());// empile sur REDO
-    cmdToUndo.top()->UnExecute(); // Annulation de la commande
-    cmdToUndo.pop(); //
+    if(!cmdToUndo.empty())    {
+        cmdToRedo.push(cmdToUndo.top());// empile sur REDO
+        cmdToUndo.top()->UnExecute(); // Annulation de la derniere commande
+        cmdToUndo.pop(); //
+    }
+}
+
+void Modele::REDO() {
+    if(!cmdToRedo.empty()){
+        cmdToRedo.top()->Execute(); // l'execution empilera la commande sur UNDO
+        cmdToRedo.pop();
+    }
+
+
 }
 
 void Modele::EraseForme(string name) {
     formes.erase(name);
+}
 
+void Modele::liberePileUndo() {
+    while(!cmdToUndo.empty())
+    {
+        delete cmdToUndo.top();
+        cmdToUndo.pop();
+    }
+}
+
+void Modele::liberePileRedo() {
+    while(!cmdToRedo.empty())
+    {
+        delete cmdToRedo.top();
+        cmdToRedo.pop();
+    }
 }

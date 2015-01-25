@@ -241,16 +241,7 @@ CODERETOUR Commande::Execute()
     string commande;
     getline(stream,commande,' ');
     CODERETOUR res = GOOD;
-    /*if(commande == "C")
-    {
-        CmdA
-        res=AjouterCercle();
-        if(res)
-        {
-            geoEdit.Empiler(*this);
-        }
-    }
-    else if(commande == "PL")
+    /* if(commande == "PL")
     {
         res = AjouterPolyligne();
         if(res)

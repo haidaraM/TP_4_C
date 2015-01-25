@@ -6,8 +6,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <CmdAjoutCercle> (fichier CmdAjoutCercle.h) ------
-#if ! defined ( XXX_H )
-#define XXX_H
+#if ! defined ( CMDAJOUTCERCLE_H )
+#define CMDAJOUTCERCLE_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Commande.h"
@@ -37,7 +37,8 @@ public:
     CODERETOUR UnExecute();
     // Mode d'emploi execute la commande inverse => supprimer
 
-
+    string GetNom()const;
+    // Mode d'emploi : renvoie le nom de la Forme correspondant à la commande
 
     CmdAjoutCercle (string cmd );
     // Mode d'emploi :
@@ -75,4 +76,4 @@ private:
 
 //----------------------------------------- Types dépendants de <CmdAjoutCercle>
 
-#endif // XXX_H
+#endif // CMDAJOUTCERCLE_H
