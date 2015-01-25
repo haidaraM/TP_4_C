@@ -10,8 +10,8 @@
 #define CMDAJOUTCERCLE_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include "Commande.h"
-//------------------------------------------------------------- Constantes 
+#include "CmdSimple.h"
+//------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types 
 
@@ -21,7 +21,7 @@
 //
 //------------------------------------------------------------------------ 
 
-class CmdAjoutCercle : public Commande
+class CmdAjoutCercle : public CmdSimple
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -37,8 +37,6 @@ public:
     CODERETOUR UnExecute();
     // Mode d'emploi execute la commande inverse => supprimer
 
-    string GetNom()const;
-    // Mode d'emploi : renvoie le nom de la Forme correspondant à la commande
 
     CmdAjoutCercle (string cmd );
     // Mode d'emploi :

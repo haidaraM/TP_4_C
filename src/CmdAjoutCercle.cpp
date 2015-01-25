@@ -29,7 +29,7 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-CmdAjoutCercle::CmdAjoutCercle (string cmd ):Commande(cmd)
+CmdAjoutCercle::CmdAjoutCercle (string cmd ):CmdSimple(cmd)
 // Algorithme :
 //
 {
@@ -96,7 +96,3 @@ CODERETOUR CmdAjoutCercle::UnExecute()
     return GOOD;
 }
 
-string CmdAjoutCercle::GetNom() const
-{
-    return commande.substr(2, commande.find(' ', 2)-2);
-}
