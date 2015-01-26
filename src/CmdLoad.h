@@ -10,7 +10,7 @@
 #define CMDLOAD_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include <stack>
+#include <vector>
 
 #include "Commande.h"
 #include "CmdSimple.h"
@@ -63,7 +63,9 @@ protected:
 
 private:
 //------------------------------------------------------- Attributs privés
-    typedef stack<CmdSimple *> commandes;
+    typedef vector<CmdSimple *> Commandes;
+    Commandes cmds;
+    // Vecteur de commande lues dans le fichier
 
 //---------------------------------------------------------- Classes amies
 

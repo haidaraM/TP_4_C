@@ -15,6 +15,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "Modele.h"
+#include "CmdLoad.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -24,19 +25,17 @@ int main()
 {
     Modele & geoEdit = Modele::Instance(); // Instance principale de l'appli
     string courant; // chaine representant la commande courante
-    Commande * cmd = NULL;
     do{
         getline(cin, courant, '\n'); // recuperation de la ligne
         size_t pos = courant.find(' ');
         string type = courant.substr(0, pos);// recuperation du type de commande
-        if(type == "C")
+        if(type == "C" || type =="PL" || type =="R")
         {
-            cmd = new CmdAjoutCercle(courant);
-            cmd->Execute();
-        }
-        else if(type == "PL")
-        {
-            //
+            CmdSimple *cmd = new CmdSimple(courant);
+            if(cmd->Execute() ==GOOD )
+            {
+                geoEdit.Empiler(cmd);
+            }
         }
         else if(type =="LIST")
         {
@@ -49,6 +48,14 @@ int main()
         else if(type =="REDO")
         {
             geoEdit.REDO();
+        }
+        else if(type =="LOAD")
+        {
+            CmdLoad *cmd = new CmdLoad(courant);
+            if(cmd->Execute() ==GOOD)
+            {
+                geoEdit.Empiler(cmd);
+            }
         }
 
     }while (courant != "EXIT");

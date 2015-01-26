@@ -34,9 +34,6 @@ public:
     //          0 si la syntaxe est incorrecte
     //          -1 si le nom de la forme existe déja
 
-    CODERETOUR UnExecute();
-    // Mode d'emploi execute la commande inverse => supprimer
-
 
     CmdAjoutCercle (string cmd );
     // Mode d'emploi :

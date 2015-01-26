@@ -125,7 +125,7 @@ void Modele::UNDO() {
 
 void Modele::REDO() {
     if(!cmdToRedo.empty()){
-        cmdToRedo.top()->Execute(); // l'execution empilera la commande sur UNDO
+        cmdToRedo.top()->Execute();
         cmdToRedo.pop();
     }
 

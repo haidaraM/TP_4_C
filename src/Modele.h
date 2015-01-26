@@ -46,7 +46,7 @@ public:
     //
 
     void REDO();
-    // Execute la derniere commande annuler
+    // Execute la derniere commande annuler s'il y'en a
     //
 
     void Afficher(ostream & flux=cout)const;

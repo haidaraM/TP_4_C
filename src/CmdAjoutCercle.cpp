@@ -77,22 +77,10 @@ CODERETOUR CmdAjoutCercle::Execute() {
         if(!geoEdit.NomExiste(name))
         {
             geoEdit.Ajouter(name, c);
-            // Empilement commande
-            // penser à liberer la pile de redo
-            geoEdit.Empiler(this);
             return GOOD;
         }
         else
             return ERR_NAME_EXISTS;
     }
-}
-
-CODERETOUR CmdAjoutCercle::UnExecute()
-{
-    string nom = GetNom();
-    Forme *f = geoEdit.getForme(nom);
-    delete f;
-    geoEdit.EraseForme(nom);
-    return GOOD;
 }
 

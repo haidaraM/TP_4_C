@@ -1,8 +1,8 @@
 /*************************************************************************
-                           CmdSimple  -  description
-                             -------------------
-    début                : ${date}
-    copyright            : (C) ${year} par ${user}
+                    CmdSimple  -  description
+-------------------
+début                : ${date}
+copyright            : (C) ${year} par ${user}
 *************************************************************************/
 
 //---------- Réalisation de la classe <CmdSimple> (fichier CmdSimple.cpp) --
@@ -12,9 +12,13 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <sstream>
 
 //------------------------------------------------------ Include personnel
 #include "CmdSimple.h"
+#include "CmdAjoutCercle.h"
+#include "Forme.h"
+#include "Modele.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -29,7 +33,7 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 
 
-CmdSimple::CmdSimple ( )
+CmdSimple::CmdSimple (string name ):Commande(name)
 // Algorithme :
 //
 {
@@ -48,9 +52,35 @@ CmdSimple::~CmdSimple ( )
 #endif
 } //----- Fin de ~CmdSimple
 
+string CmdSimple::GetNom() const
+{
+    return commande.substr(2, commande.find(' ', 2)-2);
+}
+
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
 
 //------------------------------------------------------- Méthodes privées
+CODERETOUR CmdSimple::Execute() {
+    stringstream stream(commande);
+    string type;
+    getline(stream,type,' ');
+
+    if(type =="C")
+    {
+        CmdSimple *cmd = new CmdAjoutCercle(commande);
+        cmd->Execute();
+    }
+
+}
+
+CODERETOUR CmdSimple::UnExecute() {
+    string nom = GetNom();
+    Forme *f = geoEdit.getForme(nom);
+    delete f;
+    geoEdit.EraseForme(nom);
+    return GOOD;
+
+}
