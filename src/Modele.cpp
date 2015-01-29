@@ -133,17 +133,17 @@ void Modele::UNDO() {
     }
 }
 
-void Modele::REDO() {
+void Modele::REDO()
+{
     if(!cmdToRedo.empty())
     {
-        cmdToRedo.top()->Execute();
-        cmdToRedo.pop();
+        cmdToRedo.top()->Execute(); // Execution
+        cmdToRedo.pop(); // Depilement
     }
-
-
 }
 
-void Modele::EraseForme(string name) {
+void Modele::EraseForme(string name)
+{
     formes.erase(name);
 }
 

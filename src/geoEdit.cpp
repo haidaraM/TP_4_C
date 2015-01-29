@@ -59,6 +59,8 @@ int main()
             }
         }
 
+
     }while (courant != "EXIT");
+
     return 0;
 }

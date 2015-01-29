@@ -75,12 +75,14 @@ CODERETOUR CmdSimple::Execute() {
     }
 
 }
-
+/* NOTE : Pour la suppression je n'utilise pas la variable supprimer dans Forme pour le moment
+        C'est juste une version de test en attendant tes commentaires
+ */
 CODERETOUR CmdSimple::UnExecute() {
-    string nom = GetNom();
-    Forme *f = geoEdit.getForme(nom);
-    delete f;
-    geoEdit.EraseForme(nom);
+    string nom = GetNom(); // Recuperation du nom de la forme
+    Forme *f = geoEdit.getForme(nom); // recuperation de la forme
+    delete f; //
+    geoEdit.EraseForme(nom); // Suppression de la MAP
     return GOOD;
 
 }
