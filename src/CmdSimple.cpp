@@ -71,7 +71,7 @@ CODERETOUR CmdSimple::Execute() {
     if(type =="C")
     {
         CmdSimple *cmd = new CmdAjoutCercle(commande);
-        cmd->Execute();
+        return cmd->Execute();
     }
 
 }

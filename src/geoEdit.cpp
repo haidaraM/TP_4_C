@@ -29,10 +29,11 @@ int main()
         getline(cin, courant, '\n'); // recuperation de la ligne
         size_t pos = courant.find(' ');
         string type = courant.substr(0, pos);// recuperation du type de commande
-        if(type == "C" || type =="PL" || type =="R")
+        if(type == "C" || type =="PL" || type =="R" || type =="L")
         {
             CmdSimple *cmd = new CmdSimple(courant);
-            if(cmd->Execute() ==GOOD )
+            CODERETOUR resCmd = cmd->Execute();
+            if(resCmd == GOOD)
             {
                 geoEdit.Empiler(cmd);
             }

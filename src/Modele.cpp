@@ -101,7 +101,16 @@ void Modele::Sauvegarder(string filename)const
 
 void Modele::Empiler(Commande *uneCommande)
 {
+#ifdef MAP
+        cout <<"Empilement de la commande "<<endl;
+#endif
     cmdToUndo.push(uneCommande);
+
+    liberePileRedo(); // vide la pile des REDO
+
+#ifdef MAP
+    cout<<" Taille de la pile "<<cmdToUndo.size()<<endl;
+#endif
 }
 
 bool Modele::NomExiste(string nom) const {
@@ -116,15 +125,17 @@ Forme *Modele::getForme(string name)const  {
 }
 
 void Modele::UNDO() {
-    if(!cmdToUndo.empty())    {
-        cmdToRedo.push(cmdToUndo.top());// empile sur REDO
-        cmdToUndo.top()->UnExecute(); // Annulation de la derniere commande
-        cmdToUndo.pop(); //
+    if(!cmdToUndo.empty())
+    {
+        cmdToRedo.push(cmdToUndo.top());// met la commande sur les commandes à REDO
+        cmdToUndo.top()->UnExecute(); // Annule la commande
+        cmdToUndo.pop(); // Depilement
     }
 }
 
 void Modele::REDO() {
-    if(!cmdToRedo.empty()){
+    if(!cmdToRedo.empty())
+    {
         cmdToRedo.top()->Execute();
         cmdToRedo.pop();
     }

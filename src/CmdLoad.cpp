@@ -61,47 +61,50 @@ CmdLoad::~CmdLoad ( )
 
 //------------------------------------------------------- Méthodes privées
 CODERETOUR CmdLoad::UnExecute() {
-    for (int i = 0; i < cmds.size(); ++i)
-    {
-        cmds[i]->UnExecute();
-    }
+   while(!cmds.empty())
+   {
+       cmds.top()->UnExecute();
+       delete cmds.top();
+       cmds.pop();
+   }
 
 }
 
-CODERETOUR CmdLoad::Execute() {
-    if(cmds.size() == 0)
-    {
+CODERETOUR CmdLoad::Execute()
+{
         vector<string> resultat = decoupe();
-        if (resultat.size() != 2) {
+        CODERETOUR resCmd = GOOD;
+        if (resultat.size() != 2)
+        {
             AfficherErreurCommande();
             return ERR_SYNTAXE;
         }
-        else {
+        else
+        {
             string fileName = resultat[1];
-            string courant;
+            string ligne;
             ifstream file(fileName);
             if (file.good())
             {
-                while (getline(file, courant))
+                while(std::getline(file, ligne) && resCmd == GOOD)
                 {
-                    //cout <<"'"<<courant<<"'"<<endl;
-                    CmdSimple *cmd = new CmdSimple(courant);
-                    cmd->Execute();
-                    cmds.push_back(cmd);
+                    CmdSimple * cmd = new CmdSimple(ligne);
+                    resCmd = cmd->Execute(); // execution
+                    cmds.push(cmd); // ajout dans la pile
+                    if(resCmd != GOOD)
+                    {
+                        /* Si une commande échoue on annule toutes les commandes et
+                         on arrete la lecture du fichier*/
+                        UnExecute();
+                    }
                 }
-            }
-            else {
-                cerr << "Probleme fichier " << endl;
-                return ERR_SYNTAXE;
-            }
-        }
-    }
-    else
-    {
-        for (int i = 0; i < cmds.size(); ++i)
-        {
-            cmds[i]->Execute();
-        }
-    }
 
+                return resCmd;
+            }
+            else
+            {
+                cerr << "Probleme fichier " << endl;
+                return ERR_FILE;
+            }
+        }
 }

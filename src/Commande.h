@@ -23,7 +23,7 @@ class Modele; // Déclaration anticipée
 
 // Code de retour des Commandes
 enum CODERETOUR {
-    ERR_NAME_EXISTS=-1,ERR_SYNTAXE=0, GOOD=1,  ERR_UNKNOWN_NAME=2
+    ERR_NAME_EXISTS=-1,ERR_SYNTAXE=0, GOOD=1,  ERR_UNKNOWN_NAME=2, ERR_FILE=3
 };
 
 //------------------------------------------------------------------------
