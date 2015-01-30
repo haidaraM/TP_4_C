@@ -13,7 +13,7 @@
 #include <stack>
 
 #include "Commande.h"
-#include "CmdSimple.h"
+#include "CmdAjout.h"
 //------------------------------------------------------------- Constantes 
 
 //------------------------------------------------------------------ Types 
@@ -61,7 +61,7 @@ protected:
 
 private:
 //------------------------------------------------------- Attributs privés
-    typedef stack<CmdSimple *> Commandes;
+    typedef stack<CmdAjout *> Commandes;
     Commandes cmds;
     // pile de commande lues dans le fichier
 

@@ -1,13 +1,13 @@
 /*************************************************************************
-                           CmdAjoutPoyligne  -  description
+                           CmdAjout  -  description
                              -------------------
     début                : 16/05/2015
     copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
 
-//---------- Interface de la classe <CmdAjoutPoyligne> (fichier CmdAjoutPoyligne.h) ------
-#if ! defined ( CmdAjoutPoyligne_H )
-#define CmdAjoutPoyligne_H
+//---------- Interface de la classe <CmdAjout> (fichier CmdAjout.h) ------
+#if ! defined ( CmdAjout_H )
+#define CmdAjout_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include "CmdSimple.h"
@@ -16,32 +16,42 @@
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Réle de la classe <CmdAjoutPoyligne>
+// Réle de la classe <CmdAjout>
 //
 //
 //------------------------------------------------------------------------ 
 
-class CmdAjoutPoyligne : public CmdSimple
+class CmdAjout : public CmdSimple
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    CODERETOUR Execute();
-    // Mode d'emploi : Ajoute un polyligne à la Map
+
+    CODERETOUR AjouterCercle();
+    // Mode d'emploi : Ajout d'un cercle
     // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
-    // Retour : 
-    //          
-    //          
+
+    CODERETOUR AjouterPolyligne();
+    // Mode d'emploi : AJout d'un polyligne
+    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+
+    CODERETOUR AjouterRectangle();
+    // Mode d'emploi : Ajoute un rectangle à la Map
+    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+
+    CODERETOUR AjouterLigne();
+    // Mode d'emploi : Ajoute une ligne à la Map
+    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
 
 
-    CmdAjoutPoyligne (string cmd );
+    CmdAjout (string cmd );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~CmdAjoutPoyligne ( );
+    virtual ~CmdAjout ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -69,6 +79,6 @@ private:
 
 };
 
-//----------------------------------------- Types dépendants de <CmdAjoutPoyligne>
+//----------------------------------------- Types dépendants de <CmdAjout>
 
-#endif // CmdAjoutPoyligne_H
+#endif // CmdAjout_H

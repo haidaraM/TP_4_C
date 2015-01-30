@@ -65,42 +65,6 @@ Commande::~Commande ( )
 //------------------------------------------------------- Méthodes privées
 
 
-CODERETOUR Commande::AjouterRectangle() {
-    // découpage de la commande
-    vector<string> resultat = decoupe();
-
-    if(resultat.size() != 6 || !allDigit(resultat))
-    {
-        AfficherErreurCommande();
-        return ERR_SYNTAXE;
-    }
-    else
-    {
-        // Organisation des elements
-        string name = resultat[1];
-        vector<Point> lesPoints;
-        long x1 = strtol(resultat[2].c_str(), NULL, 10);
-        long y1 = strtol(resultat[3].c_str(), NULL, 10);
-        long x2 = strtol(resultat[4].c_str(), NULL, 10);
-        long y2 = strtol(resultat[5].c_str(), NULL, 10);
-
-        lesPoints.push_back(Point(x1,y1));
-        lesPoints.push_back(Point(x2,y2));
-
-        Rectangle *r = new Rectangle(name,lesPoints);
-
-        //Mise à jour de la Map
-        geoEdit.Ajouter(name, r);
-
-        return GOOD;
-    }
-
-}
-
-CODERETOUR Commande::AjouterPolyligne() {
-
-}
-
 CODERETOUR Commande::AjouterSelection() {
     return GOOD;
 }
@@ -142,7 +106,6 @@ vector<string> Commande::decoupe(char delim) const
         if(courant.size()!=0)
             resultat.push_back(courant);
     }
-
     return resultat;
 }
 
@@ -154,111 +117,6 @@ CODERETOUR Commande::Deplacer() {
 
 CODERETOUR Commande::Supprimer() {
     return GOOD;
-}
-
-CODERETOUR Commande::AjouterLigne()
-{
-    // découpage de la commande
-    vector<string> resultat = decoupe();
-
-    if(resultat.size() != 6 || !allDigit(resultat))
-    {
-        AfficherErreurCommande();
-        return ERR_SYNTAXE;
-    }
-    else
-    {
-        // Organisation des elements
-        string name = resultat[1];
-        vector<Point> lesPoints;
-        long x1 = strtol(resultat[2].c_str(), NULL, 10);
-        long y1 = strtol(resultat[3].c_str(), NULL, 10);
-        long x2 = strtol(resultat[4].c_str(), NULL, 10);
-        long y2 = strtol(resultat[5].c_str(), NULL, 10);
-
-        lesPoints.push_back(Point(x1,y1));
-        lesPoints.push_back(Point(x2,y2));
-
-        Ligne *ligne = new Ligne(name,lesPoints);
-
-        //Mise à jour de la Map
-        geoEdit.Ajouter(name, ligne);
-
-        return GOOD;
-
-    }
-}
-
-CODERETOUR Commande::Sauvegarder()const
-{
-
-}
-
-CODERETOUR Commande::Execute()
-{
-    stringstream stream(commande);
-    string commande;
-    getline(stream,commande,' ');
-    CODERETOUR res = GOOD;
-    /* if(commande == "PL")
-    {
-        res = AjouterPolyligne();
-        if(res)
-        {
-            geoEdit.Empiler(*this);
-        }
-    }
-    else if(commande == "R")
-    {
-        res = AjouterRectangle();
-        if(res)
-        {
-            geoEdit.Empiler(*this);
-        }
-    }
-    else if(commande == "L")
-    {
-        res = AjouterLigne();
-        if(res)
-        {
-            geoEdit.Empiler(*this);
-        }
-    }
-    else if(commande =="LIST")
-    {
-        geoEdit.Afficher();
-    }
-    else if(commande =="CLEAR")
-    {
-
-    }
-    else if(commande == "SAVE")
-    {
-        Sauvegarder();
-    }
-    else if(commande == "LOAD")
-    {
-
-    }
-    else if(commande == "UNDO")
-    {
-
-    }
-    else if(commande == "REDO")
-    {
-
-    }
-    else if(commande == "MOVE")
-    {
-
-    }
-    else if(commande =="DELETE")
-    {
-
-    }*/
-
-    return res;
-
 }
 
 void AfficherErreurCommande() {

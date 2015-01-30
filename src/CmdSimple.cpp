@@ -16,11 +16,9 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "CmdSimple.h"
-#include "CmdAjoutCercle.h"
-#include "CmdAjoutPolyligne.h"
 #include "Forme.h"
 #include "Modele.h"
-
+#include "CmdAjout.h"
 //------------------------------------------------------------- Constantes
 
 //---------------------------------------------------- Variables de classe
@@ -55,7 +53,8 @@ CmdSimple::~CmdSimple ( )
 
 string CmdSimple::GetNom() const
 {
-    return commande.substr(2, commande.find(' ', 2)-2);
+    vector <string> res = decoupe();
+    return res[1];
 }
 
 
@@ -68,18 +67,30 @@ CODERETOUR CmdSimple::Execute() {
     stringstream stream(commande);
     string type;
     getline(stream,type,' ');
+    CODERETOUR resultat = ERR_SYNTAXE;
 
     if(type =="C")
     {
-        CmdAjoutCercle cmd(commande);
-        return cmd.Execute();
+        CmdAjout cmd(commande);
+        resultat = cmd.AjouterCercle();
     }
     else if (type =="PL")
     {
-        CmdAjoutPoyligne cmd(commande);
-        return cmd.Execute();
+        CmdAjout cmd(commande);
+        resultat= cmd.AjouterPolyligne();
+    }
+    else if(type =="L")
+    {
+        CmdAjout cmd(commande);
+        resultat= cmd.AjouterLigne();
+    }
+    else if(type =="R")
+    {
+        CmdAjout cmd(commande);
+        resultat= cmd.AjouterRectangle();
     }
 
+    return resultat;
 }
 /* NOTE : Pour la suppression je n'utilise pas la variable supprimer dans Forme pour le moment
         C'est juste une version de test en attendant tes commentaires

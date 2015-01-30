@@ -14,7 +14,6 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "Modele.h"
-#include "CmdAjoutCercle.h"
 #include "CmdLoad.h"
 #include "CmdSave.h"
 
@@ -26,12 +25,16 @@ int main()
 {
     Modele & geoEdit = Modele::Instance(); // Instance principale de l'appli
     string courant; // chaine representant la commande courante
-    do{
-        getline(cin, courant, '\n'); // recuperation de la ligne
-        size_t pos = courant.find(' ');
-        string type = courant.substr(0, pos);// recuperation du type de la Commande
 
-        // Traitement de la Commande
+    do{
+        // recuperation de la ligne
+        getline(cin, courant, '\n');
+
+        // recuperation du type de la Commande
+        size_t pos = courant.find(' ');
+        string type = courant.substr(0, pos);
+
+        // Commande simple d'ajout
         if(type == "C" || type =="PL" || type =="R" || type =="L")
         {
             CmdSimple *cmd = new CmdSimple(courant);
@@ -41,10 +44,12 @@ int main()
                 geoEdit.Empiler(cmd);
             }
         }
+        // Affichage de Forme
         else if(type =="LIST")
         {
             geoEdit.Afficher();
         }
+        // Annulation de la derniere commande
         else if(type =="UNDO")
         {
             geoEdit.UNDO();

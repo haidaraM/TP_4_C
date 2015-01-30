@@ -96,7 +96,7 @@ CODERETOUR CmdLoad::Execute()
             {
                 while(std::getline(file, ligne) && resCmd == GOOD)
                 {
-                    CmdSimple * cmd = new CmdSimple(ligne);
+                    CmdAjout * cmd = new CmdAjout(ligne);
                     resCmd = cmd->Execute(); // execution
                     cmds.push(cmd); // ajout dans la pile
                     if(resCmd != GOOD)

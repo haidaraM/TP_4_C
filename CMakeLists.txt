@@ -27,16 +27,14 @@ set(SOURCE_FILES
     src/Ligne.h
     src/Selection.cpp
     src/Selection.h
-    src/CmdAjoutCercle.h
-    src/CmdAjoutCercle.cpp
     src/CmdSimple.h
     src/CmdSimple.cpp
     src/CmdLoad.cpp
     src/CmdLoad.h
     src/CmdSave.cpp
     src/CmdSave.h
-    src/CmdAjoutPolyligne.h
-    src/CmdAjoutPolyligne.cpp
+    src/CmdAjout.h
+    src/CmdAjout.cpp
     )
 
 add_executable(TP4 ${SOURCE_FILES})
