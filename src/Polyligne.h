@@ -46,13 +46,6 @@ public:
 
     virtual void Deplacer (long x, long y);
 
-    //------------------------------------------------- Surcharge d'opérateurs
-    Polyligne & operator = ( const Polyligne & unPolyligne );
-    // Mode d'emploi : Operateur d'affectation
-    //
-    // Contrat :
-    //
-
 
 //-------------------------------------------- Constructeurs - destructeur
     Polyligne ( const Polyligne & unPolyligne );

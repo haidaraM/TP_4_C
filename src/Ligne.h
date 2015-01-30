@@ -20,7 +20,7 @@
 
 //------------------------------------------------------------------------ 
 // Rôle de la classe <Ligne>
-// Classe permettant de gérer un Ligne
+// Classe permettant de gérer une Ligne
 //
 //------------------------------------------------------------------------ 
 
@@ -33,7 +33,7 @@ public:
 
     void Afficher(ostream & flux)const;
     // Mode d'emploi : Affiche les descripteurs du Ligne
-    // Exemple: R Name X1 Y1 X2 Y2
+    // Exemple: L Name X1 Y1 X2 Y2
     //
     // Contrat : Aucun
     //

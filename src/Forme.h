@@ -84,7 +84,6 @@ protected:
     // Le nom de la Forme
     string nom;
 
-    // Ensemble des Selection dans lequel la Forme se trouve
 
 
 private:

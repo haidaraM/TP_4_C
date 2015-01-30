@@ -65,14 +65,7 @@ bool Polyligne::InclusDans(Point p1, Point p2) const
 	return true;
 }
 
-
-//------------------------------------------------- Surcharge d'opérateurs
-Polyligne & Polyligne::operator = ( const Polyligne & unPolyligne )
-{
-    return *this;
-}
-
-void Polyligne::Deplacer(long x, long y) 
+void Polyligne::Deplacer(long x, long y)
 {
 	for(unsigned int i=0; i<points.size();++i)
 	{
