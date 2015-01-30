@@ -76,12 +76,12 @@ int main()
             geoEdit.Afficher();
         }
         // Annulation de la derniere commande
-        else if(type =="Undo")
+        else if(type =="UNDO")
         {
             geoEdit.Undo();
         }
         // execution de la derniere commande annulée
-        else if(type =="Redo")
+        else if(type =="REDO")
         {
             geoEdit.Redo();
         }

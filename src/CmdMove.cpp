@@ -85,5 +85,13 @@ CODERETOUR CmdMove::Execute()
 
 CODERETOUR CmdMove::UnExecute()
 {
+    vector<string> arguments = decoupe();
+    string name = arguments[1];
+    long dx = strtol(arguments[2].c_str(), NULL, 10);
+    long dy = strtol(arguments[3].c_str(), NULL, 10);
+
+    geoEdit.GetForme(name)->Deplacer(-dx, -dy);
+
     return GOOD;
+
 }

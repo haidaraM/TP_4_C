@@ -96,12 +96,14 @@ void Modele::Sauvegarder(ofstream& file)const
 
 void Modele::Empiler(Commande *uneCommande)
 {
+
 #ifdef MAP
-        cout <<"Empilement de la commande "<<endl;
+cout <<"Empilement de la commande "<<endl;
 #endif
     cmdToUndo.push(uneCommande);
 
     liberePileRedo(); // vide la pile des Redo
+
 
 #ifdef MAP
     cout<<" Taille de la pile "<<cmdToUndo.size()<<endl;
