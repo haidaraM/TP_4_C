@@ -20,7 +20,7 @@
 
 //------------------------------------------------------------------------ 
 // Rôle de la classe <Selection>
-// Classe permettant de gérer un Selection
+// Classe permettant de gérer une Selection
 //
 //------------------------------------------------------------------------ 
 
