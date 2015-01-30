@@ -61,7 +61,7 @@ Point & Point::operator = ( const Point & unPoint )
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Point::Point ( const Point & unPoint )
+Point::Point (const Point & unPoint )
 // Algorithme :
 //
 {

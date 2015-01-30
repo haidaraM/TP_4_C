@@ -65,13 +65,20 @@ bool Polyligne::InclusDans(Point p1, Point p2) const
 	return true;
 }
 
+
 //------------------------------------------------- Surcharge d'opérateurs
 Polyligne & Polyligne::operator = ( const Polyligne & unPolyligne )
 {
     return *this;
 }
 
-
+void Polyligne::Deplacer(long x, long y) 
+{
+	for(unsigned int i=0; i<points.size();++i)
+	{
+		points[i].Deplacer(x, y);
+	}
+}
 //-------------------------------------------- Constructeurs - destructeur
 Polyligne::Polyligne ( const Polyligne & unPolyligne ) : Forme(unPolyligne.nom)
 {
@@ -96,6 +103,4 @@ Polyligne::~Polyligne ( )
 #endif
 }
 
-void Polyligne::Deplacer(long x, long y) {
 
-}
