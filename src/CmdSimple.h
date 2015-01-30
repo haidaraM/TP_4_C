@@ -43,6 +43,7 @@ public:
 
     string GetNom()const;
     // Mode d'emploi : renvoie le nom de la Forme correspondant à la commande
+    // ou le second Argument de la commande
 
     virtual ~CmdSimple ( );
     // Mode d'emploi :

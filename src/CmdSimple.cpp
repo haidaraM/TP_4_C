@@ -70,8 +70,12 @@ CODERETOUR CmdSimple::Execute() {
 
     if(type =="C")
     {
-        CmdSimple *cmd = new CmdAjoutCercle(commande);
+        CmdAjoutCercle *cmd = new CmdAjoutCercle(commande);
         return cmd->Execute();
+    }
+    else if (type =="PL")
+    {
+
     }
 
 }

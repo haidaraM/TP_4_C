@@ -28,10 +28,10 @@ enum CODERETOUR {
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Commande>
-// Cette classe permettra de gerer les commandes grâce à une utilisation partielle
-// du design pattern command.
+// Cette classe permettra de gerer les commandes grâce à une utilisation
+// du design pattern Command.
 // Elle se chargera d'appeler les méthodes de la classe Modele en fonction de la
-// commande
+// commande. C'est elle qui dirigera l'application.
 //------------------------------------------------------------------------
 
 class Commande

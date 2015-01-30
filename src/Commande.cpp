@@ -220,19 +220,7 @@ CODERETOUR Commande::AjouterLigne()
 
 CODERETOUR Commande::Sauvegarder()const
 {
-    // découpage de la commande
-    vector<string> resultat = decoupe();
 
-    if(resultat.size() != 2)
-    {
-        AfficherErreurCommande();
-        return ERR_SYNTAXE;
-    }
-    else
-    {
-        geoEdit.Sauvegarder(resultat[1]);
-        return GOOD;
-    }
 }
 
 CODERETOUR Commande::Execute()

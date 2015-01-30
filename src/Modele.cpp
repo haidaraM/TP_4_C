@@ -16,6 +16,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Modele.h"
+#include <fstream>
 
 //------------------------------------------------------------- Constantes
 
@@ -84,19 +85,13 @@ void Modele::Afficher(ostream & flux) const
     }
 }
 
-void Modele::Sauvegarder(string filename)const
+void Modele::Sauvegarder(ofstream& file)const
 {
-    ofstream file(filename.c_str());
-
-    if(file.good())
+    Formes::const_iterator it;
+    for(it = formes.begin(); it != formes.end(); it++)
     {
-        Formes::const_iterator it;
-        for(it = formes.begin(); it != formes.end(); it++)
-        {
-            it->second->Afficher(file);
-        }
+        it->second->Afficher(file);
     }
-
 }
 
 void Modele::Empiler(Commande *uneCommande)

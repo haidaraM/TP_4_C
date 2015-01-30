@@ -67,6 +67,7 @@ CODERETOUR CmdLoad::UnExecute() {
        delete cmds.top();
        cmds.pop();
    }
+    return GOOD;
 
 }
 
@@ -98,7 +99,6 @@ CODERETOUR CmdLoad::Execute()
                         UnExecute();
                     }
                 }
-
                 return resCmd;
             }
             else

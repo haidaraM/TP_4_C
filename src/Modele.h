@@ -54,7 +54,7 @@ public:
     // un fichier
     // Contrat :
 
-    void Sauvegarder(string filename)const;
+    void Sauvegarder(ofstream &file)const;
     //Mode d'emploi : Sauvegarde les formes dans un fichier
     //
     // Contrat : fournir non vide

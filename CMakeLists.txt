@@ -33,6 +33,8 @@ set(SOURCE_FILES
     src/CmdSimple.cpp
     src/CmdLoad.cpp
     src/CmdLoad.h
+    src/CmdSave.cpp
+    src/CmdSave.h
     )
 
 add_executable(TP4 ${SOURCE_FILES})

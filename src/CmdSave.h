@@ -1,30 +1,29 @@
 /*************************************************************************
-                           CmdLoad  -  description
+                           CmdSave  -  description
                              -------------------
     début                : ${date}
     copyright            : (C) ${year} par ${user}
 *************************************************************************/
 
-//---------- Interface de la classe <CmdLoad> (fichier CmdLoad.h) ------
-#if ! defined ( CMDLOAD_H )
-#define CMDLOAD_H
+//---------- Interface de la classe <CmdSave> (fichier CmdSave.h) ------
+#if ! defined ( CmdSave_H )
+#define CmdSave_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include <stack>
 
-#include "Commande.h"
 #include "CmdSimple.h"
 //------------------------------------------------------------- Constantes 
 
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle de la classe <CmdLoad>
-// Gestion de la Commande LOAD qui prend en paramètre un fichier et va ajouter
-// la description des Forme se trouvant dans le fichier
+// Rôle de la classe <CmdSave>
+// Gestion de la Commande Save qui prend en paramètre un fichier et va 
+// sauvegarder le Modele courant dans un fichier
 //------------------------------------------------------------------------ 
 
-class CmdLoad : public Commande
+class CmdSave : public CmdSimple
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -33,16 +32,14 @@ public:
     CODERETOUR Execute();
     // Mode d'emploi : Execute toutes les commande du fichier
 
-    CODERETOUR UnExecute();
-    // Mode d'emploi : Annule toutes les commandes du fichier
 
-    CmdLoad (string name );
+    CmdSave (string name );
     // Mode d'emploi : Constructeur par défaut
     //
     // Contrat :
     //
 
-    virtual ~CmdLoad ( );
+    virtual ~CmdSave ( );
     // Mode d'emploi : Destructeur
     //
     // Contrat :
@@ -61,9 +58,6 @@ protected:
 
 private:
 //------------------------------------------------------- Attributs privés
-    typedef stack<CmdSimple *> Commandes;
-    Commandes cmds;
-    // pile de commande lues dans le fichier
 
 //---------------------------------------------------------- Classes amies
 
@@ -73,6 +67,6 @@ private:
 
 };
 
-//----------------------------------------- Types dépendants de <CmdLoad>
+//----------------------------------------- Types dépendants de <CmdSave>
 
-#endif // CMDLOAD_H
+#endif // CmdSave_H

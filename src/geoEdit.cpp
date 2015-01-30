@@ -11,11 +11,12 @@
 using namespace std;
 #include <iostream>
 #include <sstream>
-#include "CmdAjoutCercle.h"
 //------------------------------------------------------ Include personnel
 
 #include "Modele.h"
+#include "CmdAjoutCercle.h"
 #include "CmdLoad.h"
+#include "CmdSave.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -28,7 +29,9 @@ int main()
     do{
         getline(cin, courant, '\n'); // recuperation de la ligne
         size_t pos = courant.find(' ');
-        string type = courant.substr(0, pos);// recuperation du type de commande
+        string type = courant.substr(0, pos);// recuperation du type de la Commande
+
+        // Traitement de la Commande
         if(type == "C" || type =="PL" || type =="R" || type =="L")
         {
             CmdSimple *cmd = new CmdSimple(courant);
@@ -58,7 +61,11 @@ int main()
                 geoEdit.Empiler(cmd);
             }
         }
-
+        else if(type =="SAVE")
+        {
+            CmdSave save(courant);
+            save.Execute();
+        }
 
     }while (courant != "EXIT");
 
