@@ -65,13 +65,6 @@ public:
 protected:
 //----------------------------------------------------- Méthodes protégées
 
-    CODERETOUR AjouterSelection();
-    // Mode d'emploi : Ajoute  une selection
-    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
-    // Retour : 1 si la commande s'est bien exécutée
-    //          0 si la syntaxe est incorrecte
-    //          -1 si le nom de la selection existe déja
-
     CODERETOUR Deplacer();
     // Mode d'emploi : Déplace une Forme ou une selection
     //

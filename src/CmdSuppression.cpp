@@ -101,5 +101,5 @@ CODERETOUR CmdSuppression::Execute()
 
 //------------------------------------------------------- Méthodes privées
 CODERETOUR CmdSuppression::UnExecute() {
-
+    return GOOD;
 }

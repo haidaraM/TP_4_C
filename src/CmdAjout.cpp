@@ -20,6 +20,7 @@ using namespace std;
 #include "Polyligne.h"
 #include "Rectangle.h"
 #include "Ligne.h"
+#include "Selection.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -87,9 +88,8 @@ CODERETOUR CmdAjout::AjouterPolyligne() {
     // découpage de la commande
     vector<string> arguments = decoupe();
 
-    // Minimum 2 points => min 6 arguments
-    if(arguments.size() < 6 || !allDigit(arguments) ||
-            arguments.size()%2 != 0)
+    // Au moins un point => au minimum 4 arguments
+    if(arguments.size() < 4 || !allDigit(arguments) || arguments.size()%2 != 0)
     {
         AfficherErreurCommande();
         return ERR_SYNTAXE;
@@ -142,10 +142,14 @@ CODERETOUR CmdAjout::AjouterRectangle() {
 
         Rectangle *r = new Rectangle(name,lesPoints);
 
-        //Mise à jour de la Map
-        geoEdit.Ajouter(name, r);
+        if(!geoEdit.NomExiste(name))
+        {
+            geoEdit.Ajouter(name, r);
+            return GOOD;
+        }
+        else
+            return ERR_NAME_EXISTS;
 
-        return GOOD;
     }
 }
 
@@ -173,10 +177,46 @@ CODERETOUR CmdAjout::AjouterLigne() {
 
         Ligne *ligne = new Ligne(name,lesPoints);
 
-        //Mise à jour de la Map
-        geoEdit.Ajouter(name, ligne);
+        if(!geoEdit.NomExiste(name))
+        {
+            geoEdit.Ajouter(name, ligne);
+            return GOOD;
+        }
+        else
+            return ERR_NAME_EXISTS;
+    }
+}
 
-        return GOOD;
+CODERETOUR CmdAjout::AjouterSelection() {
+    // decoupage de la commande
+    vector<string> arguments = decoupe();
+    if(arguments.size() != 6)
+    {
+        AfficherErreurCommande();
+        return ERR_SYNTAXE;
+    }
+    else
+    {
+        // Organisation des elements
+        string name = arguments[1];
+        long x1 = strtol(arguments[2].c_str(), NULL, 10);
+        long y1 = strtol(arguments[3].c_str(), NULL, 10);
+        long x2 = strtol(arguments[4].c_str(), NULL, 10);
+        long y2 = strtol(arguments[5].c_str(), NULL, 10);
 
+        Point p1(x1,y1);
+        Point p2(x2,y2);
+
+        vector<Forme *> formesSelectionnes = geoEdit.GetFormeSelection(p1, p2);
+
+        Selection *sc = new Selection(name, formesSelectionnes);
+
+        if(!geoEdit.NomExiste(name))
+        {
+            geoEdit.Ajouter(name, sc);
+            return GOOD;
+        }
+        else
+            return ERR_NAME_EXISTS;
     }
 }

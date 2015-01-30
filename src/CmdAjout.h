@@ -44,6 +44,13 @@ public:
     // Mode d'emploi : Ajoute une ligne à la Map
     // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
 
+    CODERETOUR AjouterSelection();
+    // Mode d'emploi : Ajoute  une selection
+    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+    // Retour : 1 si la commande s'est bien exécutée
+    //          0 si la syntaxe est incorrecte
+    //          -1 si le nom de la selection existe déja
+
 
     CmdAjout (string cmd );
     // Mode d'emploi :

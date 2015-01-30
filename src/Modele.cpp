@@ -158,3 +158,18 @@ void Modele::liberePileRedo() {
         cmdToRedo.pop();
     }
 }
+
+vector<Forme *> Modele::GetFormeSelection(Point p1, Point p2) const
+{
+    vector<Forme *> formesSelectionnees;
+    Formes::const_iterator it;
+    for(it=formes.begin(); it!=formes.end(); it++)
+    {
+        if(it->second->InclusDans(p1, p2))
+        {
+            formesSelectionnees.push_back(it->second);
+        }
+    }
+
+    return formesSelectionnees;
+}

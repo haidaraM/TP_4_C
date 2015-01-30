@@ -89,6 +89,11 @@ CODERETOUR CmdSimple::Execute() {
         CmdAjout cmd(commande);
         resultat= cmd.AjouterRectangle();
     }
+    else if(type =="S")
+    {
+        CmdAjout cmd(commande);
+        resultat = cmd.AjouterSelection();
+    }
 
     return resultat;
 }

@@ -45,19 +45,19 @@ void Polyligne::Afficher(ostream & flux)const
 
 bool Polyligne::InclusDans(Point p1, Point p2) const
 {
-	long a;
-	long o;
+	long x;
+	long y;
 	long ap1 = p1.GetAbscisse();
 	long ap2 = p2.GetAbscisse();
 	long op1 = p1.GetOrdonnee();
 	long op2 = p2.GetOrdonnee(); 
 	for(vector<Point>:: const_iterator i = points.begin(); i != points.end();++i)
 	{
-			a = i->GetAbscisse();
-			o = i->GetOrdonnee();
+			x = i->GetAbscisse();
+			y = i->GetOrdonnee();
 			
-			if ((a < ap1 && a< ap2) || (a > ap1 && a > ap2) || (o < op1 && o < op2)
-				|| (o > op1 && o > op2))
+			if ((x < ap1 && x < ap2) || (x > ap1 && x > ap2) || (y < op1 && y < op2)
+				|| (y > op1 && y > op2))
 				{
 					return false;
 				}

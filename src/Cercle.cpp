@@ -40,10 +40,10 @@ void Cercle::Afficher(ostream & flux)const
 
 bool Cercle::InclusDans(Point p1, Point p2)const
 {
-	int absmin = centre.GetAbscisse() - rayon;
-	int absmax = centre.GetAbscisse() + rayon;
-	int ordmin = centre.GetOrdonnee() - rayon;
-	int ordmax = centre.GetOrdonnee() + rayon;
+	long absmin = centre.GetAbscisse() - rayon;
+	long absmax = centre.GetAbscisse() + rayon;
+	long ordmin = centre.GetOrdonnee() - rayon;
+	long ordmax = centre.GetOrdonnee() + rayon;
 	
 	if((absmin >= p1.GetAbscisse() && absmax <= p2.GetAbscisse()) || 
 		(absmin >= p2.GetAbscisse() && absmax <= p1.GetAbscisse()))

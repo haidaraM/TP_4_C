@@ -57,17 +57,8 @@ public:
     // Contrat :
     //
 
-
-
-//-------------------------------------------- Constructeurs - destructeur
-    Selection ( const Selection & unSelection );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
     Selection (string name, vector<Forme*> f);
-    // Mode d'emploi : le nom de la selection et les formes qu'elle contient
+    // Mode d'emploi : le nom de la selection et les formes qu'elle contiendra
     //
     // Contrat : Aucun
     //

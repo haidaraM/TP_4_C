@@ -34,11 +34,15 @@ public:
     // Mode d'emploi : Affiche les descripteurs de la forme c'est à la dire
     // commande utilisée lors de la création de l'objet.
     //
-    // Contrat : Devra être reimplementé par les descendants
+    // Contrat : fournir un flux valide
     //
 
+    virtual bool InclusDans(Point p1, Point p2)const =0;
+    // Mode d'emploi : Verifie si la forme se trouve entre p1 et p2
+    // Renvoie vrai si c'est le cas, 0 sinon
 
-
+    virtual void Deplacer (long x, long y) =0;
+    // Mode d'emploi : Deplace tous les points de la forme
 
 //-------------------------------------------- Constructeurs - destructeur
     Forme ( const Forme & unForme );
@@ -59,9 +63,9 @@ public:
     // Contrat :
     //
 
-    virtual bool InclusDans(Point p1, Point p2)const =0;
+
     virtual void Supprimer ();
-    virtual void Deplacer (long x, long y) =0;
+
 
 
 //------------------------------------------------------------------ PRIVE 
@@ -79,6 +83,9 @@ protected:
 
     // Le nom de la Forme
     string nom;
+
+    // Ensemble des Selection dans lequel la Forme se trouve
+
 
 private:
 //------------------------------------------------------- Attributs privés
