@@ -6,8 +6,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <CmdSave> (fichier CmdSave.h) ------
-#if ! defined ( CmdSave_H )
-#define CmdSave_H
+#if ! defined ( CMD_SAVE_H )
+#define CMD_SAVE_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include <stack>
@@ -53,4 +53,4 @@ private:
 
 //----------------------------------------- Types dépendants de <CmdSave>
 
-#endif // CmdSave_H
+#endif // CMD_SAVE_H

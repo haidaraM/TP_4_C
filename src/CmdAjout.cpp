@@ -55,9 +55,9 @@ CmdAjout::~CmdAjout ( )
 
 CODERETOUR CmdAjout::AjouterCercle() {
     // découpage de la commande
-    vector<string> resultat = decoupe();
+    vector<string> arguments = decoupe();
 
-    if(resultat.size() != 5 || !allDigit(resultat))
+    if(arguments.size() != 5 || !allDigit(arguments))
     {
         AfficherErreurCommande();
         return ERR_SYNTAXE;
@@ -65,10 +65,10 @@ CODERETOUR CmdAjout::AjouterCercle() {
     else
     {
         // Organisation des elements
-        string name = resultat[1];
-        long abscisse = strtol(resultat[2].c_str(), NULL, 10);
-        long ordonnee = strtol(resultat[3].c_str(), NULL, 10);
-        unsigned int rayon =(unsigned int) strtol(resultat[4].c_str(), NULL, 10);
+        string name = arguments[1];
+        long abscisse = strtol(arguments[2].c_str(), NULL, 10);
+        long ordonnee = strtol(arguments[3].c_str(), NULL, 10);
+        unsigned int rayon =(unsigned int) strtol(arguments[4].c_str(), NULL, 10);
 
         Cercle *c = new Cercle(name,rayon, abscisse, ordonnee);
 
@@ -85,11 +85,11 @@ CODERETOUR CmdAjout::AjouterCercle() {
 
 CODERETOUR CmdAjout::AjouterPolyligne() {
     // découpage de la commande
-    vector<string> resultat = decoupe();
+    vector<string> arguments = decoupe();
 
     // Minimum 2 points => min 6 arguments
-    if(resultat.size() < 6 || !allDigit(resultat) ||
-            resultat.size()%2 != 0)
+    if(arguments.size() < 6 || !allDigit(arguments) ||
+            arguments.size()%2 != 0)
     {
         AfficherErreurCommande();
         return ERR_SYNTAXE;
@@ -97,12 +97,12 @@ CODERETOUR CmdAjout::AjouterPolyligne() {
     else
     {
         // Organisation des elements
-        string name = resultat[1];
+        string name = arguments[1];
         vector<Point> lesPoints;
-        for(unsigned int i = 2; i<resultat.size()-1; i=i+2)
+        for(unsigned int i = 2; i<arguments.size()-1; i=i+2)
         {
-            long x1 = strtol(resultat[i].c_str(), NULL, 10);
-            long y1 = strtol(resultat[i+1].c_str(), NULL, 10);
+            long x1 = strtol(arguments[i].c_str(), NULL, 10);
+            long y1 = strtol(arguments[i+1].c_str(), NULL, 10);
             lesPoints.push_back(Point(x1,y1));
         }
 
@@ -120,9 +120,9 @@ CODERETOUR CmdAjout::AjouterPolyligne() {
 
 CODERETOUR CmdAjout::AjouterRectangle() {
     // découpage de la commande
-    vector<string> resultat = decoupe();
+    vector<string> arguments = decoupe();
 
-    if(resultat.size() != 6 || !allDigit(resultat))
+    if(arguments.size() != 6 || !allDigit(arguments))
     {
         AfficherErreurCommande();
         return ERR_SYNTAXE;
@@ -130,12 +130,12 @@ CODERETOUR CmdAjout::AjouterRectangle() {
     else
     {
         // Organisation des elements
-        string name = resultat[1];
+        string name = arguments[1];
         vector<Point> lesPoints;
-        long x1 = strtol(resultat[2].c_str(), NULL, 10);
-        long y1 = strtol(resultat[3].c_str(), NULL, 10);
-        long x2 = strtol(resultat[4].c_str(), NULL, 10);
-        long y2 = strtol(resultat[5].c_str(), NULL, 10);
+        long x1 = strtol(arguments[2].c_str(), NULL, 10);
+        long y1 = strtol(arguments[3].c_str(), NULL, 10);
+        long x2 = strtol(arguments[4].c_str(), NULL, 10);
+        long y2 = strtol(arguments[5].c_str(), NULL, 10);
 
         lesPoints.push_back(Point(x1,y1));
         lesPoints.push_back(Point(x2,y2));
@@ -151,9 +151,9 @@ CODERETOUR CmdAjout::AjouterRectangle() {
 
 CODERETOUR CmdAjout::AjouterLigne() {
     // découpage de la commande
-    vector<string> resultat = decoupe();
+    vector<string> arguments = decoupe();
 
-    if(resultat.size() != 6 || !allDigit(resultat))
+    if(arguments.size() != 6 || !allDigit(arguments))
     {
         AfficherErreurCommande();
         return ERR_SYNTAXE;
@@ -161,12 +161,12 @@ CODERETOUR CmdAjout::AjouterLigne() {
     else
     {
         // Organisation des elements
-        string name = resultat[1];
+        string name = arguments[1];
         vector<Point> lesPoints;
-        long x1 = strtol(resultat[2].c_str(), NULL, 10);
-        long y1 = strtol(resultat[3].c_str(), NULL, 10);
-        long x2 = strtol(resultat[4].c_str(), NULL, 10);
-        long y2 = strtol(resultat[5].c_str(), NULL, 10);
+        long x1 = strtol(arguments[2].c_str(), NULL, 10);
+        long y1 = strtol(arguments[3].c_str(), NULL, 10);
+        long x2 = strtol(arguments[4].c_str(), NULL, 10);
+        long y2 = strtol(arguments[5].c_str(), NULL, 10);
 
         lesPoints.push_back(Point(x1,y1));
         lesPoints.push_back(Point(x2,y2));

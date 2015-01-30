@@ -6,8 +6,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <CmdAjout> (fichier CmdAjout.h) ------
-#if ! defined ( CmdAjout_H )
-#define CmdAjout_H
+#if ! defined ( CMD_AJOUT_H )
+#define CMD_AJOUT_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include "CmdSimple.h"
@@ -81,4 +81,4 @@ private:
 
 //----------------------------------------- Types dépendants de <CmdAjout>
 
-#endif // CmdAjout_H
+#endif // CMD_AJOUT_H
