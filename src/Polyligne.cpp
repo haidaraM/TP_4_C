@@ -80,7 +80,8 @@ void Polyligne::Deplacer(long x, long y)
 	}
 }
 //-------------------------------------------- Constructeurs - destructeur
-Polyligne::Polyligne ( const Polyligne & unPolyligne ) : Forme(unPolyligne.nom)
+Polyligne::Polyligne ( const Polyligne & unPolyligne ) : Forme(unPolyligne.nom),
+                                                         points(unPolyligne.points)
 {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Polyligne>" << endl;
@@ -102,5 +103,3 @@ Polyligne::~Polyligne ( )
     cout << "Appel au destructeur de <Polyligne>" << endl;
 #endif
 }
-
-

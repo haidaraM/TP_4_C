@@ -5,7 +5,7 @@
     copyright            : (C) ${year} par ${user}
 *************************************************************************/
 
-//---------- Réalisation de la classe <CmdSuppression> (fichier CmdSuppression.cpp) --
+//---------- Réalisation de la classe <CmdDelete> (fichier CmdDelete.cpp) --
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -14,7 +14,7 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
-#include "CmdSuppression.h"
+#include "CmdDelete.h"
 #include "Modele.h"
 
 //------------------------------------------------------------- Constantes
@@ -28,43 +28,40 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-// type CmdSuppression::Méthode ( liste de paramètres )
+// type CmdDelete::Méthode ( liste de paramètres )
 // Algorithme :
 //
 //{
 //} //----- Fin de Méthode
 
 
-CmdSuppression::CmdSuppression (string name ):Commande(name)
+CmdDelete::CmdDelete(string name ):Commande(name)
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <CmdSuppression>" << endl;
+    cout << "Appel au constructeur de <CmdDelete>" << endl;
 #endif
-} //----- Fin de CmdSuppression
+} //----- Fin de CmdDelete
 
 
-CmdSuppression::~CmdSuppression ( )
+CmdDelete::~CmdDelete( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <CmdSuppression>" << endl;
+    cout << "Appel au destructeur de <CmdDelete>" << endl;
 #endif
     for (unsigned int i = 0; i < formesSupprimees.size(); ++i)
     {
         delete formesSupprimees[i];
     }
 
-} //----- Fin de ~CmdSuppression
-
-
-//------------------------------------------------------------------ PRIVE
+} //----- Fin de CmdDelete------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
 
-CODERETOUR CmdSuppression::Execute()
+CODERETOUR CmdDelete::Execute()
 {
     vector<string> arguments = decoupe();
 
@@ -79,7 +76,7 @@ CODERETOUR CmdSuppression::Execute()
         // Vérification de la présence de toutes les Formes
         for(unsigned int i = 1; i < arguments.size(); ++i)
         {
-            if(!geoEdit.NomExiste(arguments[i]))
+            if(!geoEdit.FormeExiste(arguments[i]))
             {
                 cout <<"Forme : "<<arguments[i]<<" inconnue!"<<endl;
                 return ERR_UNKNOWN_NAME;
@@ -90,7 +87,7 @@ CODERETOUR CmdSuppression::Execute()
         for(unsigned int i = 1; i<arguments.size(); ++i)
         {
             // ajout dans le vecteur de Formes supprimées
-            formesSupprimees.push_back(geoEdit.getForme(arguments[i]));
+            formesSupprimees.push_back(geoEdit.GetForme(arguments[i]));
             // Suppression de la Map
             geoEdit.EraseForme(arguments[i]);
         }
@@ -100,6 +97,6 @@ CODERETOUR CmdSuppression::Execute()
 }
 
 //------------------------------------------------------- Méthodes privées
-CODERETOUR CmdSuppression::UnExecute() {
+CODERETOUR CmdDelete::UnExecute() {
     return GOOD;
 }

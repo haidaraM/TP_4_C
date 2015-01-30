@@ -44,7 +44,7 @@ public:
     // Contrat : Aucun
     //
 
-    void Deplacer (long x, long y);
+    virtual void Deplacer (long x, long y);
 
     //------------------------------------------------- Surcharge d'opérateurs
     Polyligne & operator = ( const Polyligne & unPolyligne );
