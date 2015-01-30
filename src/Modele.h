@@ -131,7 +131,7 @@ private:
     //
 
     Commandes cmdToRedo;
-    // Pile de Pointeur vers les commandes exécutées a REDO"
+    // Pile de Pointeur vers les commandes exécutées a "REDO"
     //
 
 

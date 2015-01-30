@@ -20,7 +20,7 @@
 //------------------------------------------------------------------------ 
 // Rôle de la classe <CmdSave>
 // Gestion de la Commande Save qui prend en paramètre un fichier et va 
-// sauvegarder le Modele courant dans un fichier
+// sauvegarder le Modele courant dans ce fichier
 //------------------------------------------------------------------------ 
 
 class CmdSave : public CmdSimple
@@ -30,7 +30,8 @@ class CmdSave : public CmdSimple
 public:
 //----------------------------------------------------- Méthodes publiques
     CODERETOUR Execute();
-    // Mode d'emploi : Execute toutes les commande du fichier
+    // Mode d'emploi : Sauvegarde le modele courant dans un fichier
+    // COntrat :
 
 
     CmdSave (string name );

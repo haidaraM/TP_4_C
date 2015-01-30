@@ -75,43 +75,42 @@ CODERETOUR CmdLoad::UnExecute() {
        cmds.pop();
    }
     return GOOD;
-
 }
 
 CODERETOUR CmdLoad::Execute()
 {
-        vector<string> resultat = decoupe();
-        CODERETOUR resCmd = GOOD;
-        if (resultat.size() != 2)
+    vector<string> resultat = decoupe();
+    CODERETOUR resCmd = GOOD;
+    if (resultat.size() != 2)
+    {
+        AfficherErreurCommande();
+        return ERR_SYNTAXE;
+    }
+    else
+    {
+        string fileName = resultat[1];
+        string ligne;
+        ifstream file(fileName);
+        if (file.good())
         {
-            AfficherErreurCommande();
-            return ERR_SYNTAXE;
+            while(std::getline(file, ligne) && resCmd == GOOD)
+            {
+                CmdAjout * cmd = new CmdAjout(ligne);
+                resCmd = cmd->Execute(); // execution
+                cmds.push(cmd); // ajout dans la pile
+                if(resCmd != GOOD)
+                {
+                    /* Si une commande échoue on annule toutes les commandes et
+                     on arrete la lecture du fichier*/
+                    UnExecute();
+                }
+            }
+            return resCmd;
         }
         else
         {
-            string fileName = resultat[1];
-            string ligne;
-            ifstream file(fileName);
-            if (file.good())
-            {
-                while(std::getline(file, ligne) && resCmd == GOOD)
-                {
-                    CmdAjout * cmd = new CmdAjout(ligne);
-                    resCmd = cmd->Execute(); // execution
-                    cmds.push(cmd); // ajout dans la pile
-                    if(resCmd != GOOD)
-                    {
-                        /* Si une commande échoue on annule toutes les commandes et
-                         on arrete la lecture du fichier*/
-                        UnExecute();
-                    }
-                }
-                return resCmd;
-            }
-            else
-            {
-                cerr << "Probleme fichier " << endl;
-                return ERR_FILE;
-            }
+            cerr << "Probleme fichier " << endl;
+            return ERR_FILE;
         }
+    }
 }

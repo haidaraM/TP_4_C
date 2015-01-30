@@ -35,6 +35,8 @@ set(SOURCE_FILES
     src/CmdSave.h
     src/CmdAjout.h
     src/CmdAjout.cpp
+    src/CmdClear.cpp
+    src/CmdClear.h
     )
 
 add_executable(TP4 ${SOURCE_FILES})

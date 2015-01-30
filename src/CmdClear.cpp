@@ -1,11 +1,11 @@
 /*************************************************************************
-                           CmdSave  -  description
+                           CmdClear  -  description
                              -------------------
     début                : ${date}
     copyright            : (C) ${year} par ${user}
 *************************************************************************/
 
-//---------- Réalisation de la classe <CmdSave> (fichier CmdSave.cpp) --
+//---------- Réalisation de la classe <CmdClear> (fichier CmdClear.cpp) --
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -15,8 +15,7 @@ using namespace std;
 #include <fstream>
 
 //------------------------------------------------------ Include personnel
-#include "CmdSave.h"
-#include "Modele.h"
+#include "CmdClear.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -29,53 +28,48 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-// type CmdSave::Méthode ( liste de paramètres )
+// type CmdClear::Méthode ( liste de paramètres )
 // Algorithme :
 //
 //{
 //} //----- Fin de Méthode
 
 
-CmdSave::CmdSave (string name ):CmdSimple(name)
+CmdClear::CmdClear (string name ):Commande(name)
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <CmdSave>" << endl;
+    cout << "Appel au constructeur de <CmdClear>" << endl;
 #endif
-} //----- Fin de CmdSave
+} //----- Fin de CmdClear
 
 
-CmdSave::~CmdSave ( )
+CmdClear::~CmdClear ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <CmdSave>" << endl;
+    cout << "Appel au destructeur de <CmdClear>" << endl;
 #endif
-} //----- Fin de ~CmdSave
+
+   
+} //----- Fin de ~CmdClear
 
 
-CODERETOUR CmdSave::Execute()
-{
-    // découpage de la commande
-    vector<string> resultat = decoupe();
+//------------------------------------------------------------------ PRIVE
 
-    if(resultat.size() != 2)
-    {
-        AfficherErreurCommande();
-        return ERR_SYNTAXE;
-    }
-    else
-    {
-        ofstream file(resultat[1].c_str());
-        if(file.good())
-        {
-            geoEdit.Sauvegarder(file);
-            return GOOD;
-        }
-        else
-            return ERR_FILE;
-    }
+//----------------------------------------------------- Méthodes protégées
+
+//------------------------------------------------------- Méthodes privées
+CODERETOUR CmdClear::UnExecute() {
+ 
+    return GOOD;
 }
 
+CODERETOUR CmdClear::Execute()
+{
+
+
+    return GOOD;
+}
