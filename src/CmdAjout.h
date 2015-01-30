@@ -6,8 +6,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <CmdAjout> (fichier CmdAjout.h) ------
-#if ! defined ( CmdAjout_H )
-#define CmdAjout_H
+#if ! defined ( CMD_AJOUT_H )
+#define CMD_AJOUT_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include "CmdSimple.h"
@@ -43,6 +43,13 @@ public:
     CODERETOUR AjouterLigne();
     // Mode d'emploi : Ajoute une ligne à la Map
     // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+
+    CODERETOUR AjouterSelection();
+    // Mode d'emploi : Ajoute  une selection
+    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+    // Retour : 1 si la commande s'est bien exécutée
+    //          0 si la syntaxe est incorrecte
+    //          -1 si le nom de la selection existe déja
 
 
     CmdAjout (string cmd );
@@ -81,4 +88,4 @@ private:
 
 //----------------------------------------- Types dépendants de <CmdAjout>
 
-#endif // CmdAjout_H
+#endif // CMD_AJOUT_H

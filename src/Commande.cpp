@@ -64,11 +64,6 @@ Commande::~Commande ( )
 
 //------------------------------------------------------- Méthodes privées
 
-
-CODERETOUR Commande::AjouterSelection() {
-    return GOOD;
-}
-
 bool Commande::allDigit(vector<string> vect, unsigned int pos)const {
     bool estNombre = true;
     unsigned int i = pos;

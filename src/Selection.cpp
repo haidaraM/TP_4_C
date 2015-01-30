@@ -55,21 +55,12 @@ void Selection::Deplacer(long abs, long ord)
 
 bool Selection::InclusDans(Point p1, Point p2)const
 {
-	return false;
+	// Une selection ne peut pas être selectionnée
+    return false;
 }
 
 
 //-------------------------------------------- Constructeurs - destructeur
-/*Selection::Selection (const Selection & unSelection) 
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Selection>" << endl;
-#endif
-
-} //----- Fin de Selection (constructeur de copie)*/
-
 
 Selection::Selection (string name, vector <Forme*> f): Forme(name)
 // Algorithme :
