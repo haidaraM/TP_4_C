@@ -60,6 +60,10 @@ int main()
             {
                 geoEdit.Empiler(cmd);
             }
+            else
+            {   // liberation de la memoire
+                delete cmd;
+            }
         }
         else if(type =="SAVE")
         {

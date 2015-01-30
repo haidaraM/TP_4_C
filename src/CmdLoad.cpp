@@ -52,6 +52,13 @@ CmdLoad::~CmdLoad ( )
 #ifdef MAP
     cout << "Appel au destructeur de <CmdLoad>" << endl;
 #endif
+
+    while(!cmds.empty())
+    {
+        delete cmds.top();
+        cmds.pop();
+    }
+
 } //----- Fin de ~CmdLoad
 
 

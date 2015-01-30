@@ -17,6 +17,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "CmdSimple.h"
 #include "CmdAjoutCercle.h"
+#include "CmdAjoutPolyligne.h"
 #include "Forme.h"
 #include "Modele.h"
 
@@ -70,12 +71,13 @@ CODERETOUR CmdSimple::Execute() {
 
     if(type =="C")
     {
-        CmdAjoutCercle *cmd = new CmdAjoutCercle(commande);
-        return cmd->Execute();
+        CmdAjoutCercle cmd(commande);
+        return cmd.Execute();
     }
     else if (type =="PL")
     {
-
+        CmdAjoutPoyligne cmd(commande);
+        return cmd.Execute();
     }
 
 }

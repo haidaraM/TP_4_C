@@ -98,35 +98,6 @@ CODERETOUR Commande::AjouterRectangle() {
 }
 
 CODERETOUR Commande::AjouterPolyligne() {
-    // découpage de la commande
-    vector<string> resultat = decoupe();
-
-    // Minimum 2 points => min 6 arguments
-    if(resultat.size() < 6 || !allDigit(resultat) ||
-            resultat.size()%2 != 0)
-    {
-        AfficherErreurCommande();
-        return ERR_SYNTAXE;
-    }
-    else
-    {
-        // Organisation des elements
-        string name = resultat[1];
-        vector<Point> lesPoints;
-        for(unsigned int i = 2; i<resultat.size()-1; i=i+2)
-        {
-            long x1 = strtol(resultat[i].c_str(), NULL, 10);
-            long y1 = strtol(resultat[i+1].c_str(), NULL, 10);
-            lesPoints.push_back(Point(x1,y1));
-        }
-
-        Polyligne * pl = new Polyligne(name, lesPoints);
-
-        //Mise à jour de la Map
-        geoEdit.Ajouter(name, pl);
-        return GOOD;
-    }
-
 
 }
 

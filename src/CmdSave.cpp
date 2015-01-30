@@ -56,11 +56,6 @@ CmdSave::~CmdSave ( )
 } //----- Fin de ~CmdSave
 
 
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées
-
-//------------------------------------------------------- Méthodes privées
 CODERETOUR CmdSave::Execute()
 {
     // découpage de la commande

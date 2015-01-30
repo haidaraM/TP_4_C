@@ -35,6 +35,8 @@ set(SOURCE_FILES
     src/CmdLoad.h
     src/CmdSave.cpp
     src/CmdSave.h
+    src/CmdAjoutPolyligne.h
+    src/CmdAjoutPolyligne.cpp
     )
 
 add_executable(TP4 ${SOURCE_FILES})
