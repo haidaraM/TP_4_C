@@ -41,17 +41,25 @@ public:
     // Si un nom de forme est déja présent, la forme sera ignorée
     // Contrat :
 
+    void UNDO();
+    // Annule la derniere commande
+    //
+
+    void REDO();
+    // Execute la derniere commande annulée s'il y'en a
+    //
+
     void Afficher(ostream & flux=cout)const;
     // Mode d'emploi : Affiche toutes les formes soit sur la sortie standard ou dans
     // un fichier
     // Contrat :
 
-    void Sauvegarder(string filename)const;
+    void Sauvegarder(ofstream &file)const;
     //Mode d'emploi : Sauvegarde les formes dans un fichier
     //
     // Contrat : fournir non vide
 
-    void Empiler(Commande uneCommande);
+    void Empiler(Commande *uneCommande);
     //Mode d'emploi : Empile la Commande sur la Pile des commandes
     //
     // Contrat : Commande valide
@@ -66,6 +74,13 @@ public:
     // Renvoie vrai si le nom existe, faux sinon
     // Contrat :
 
+    Forme * getForme(string name )const;
+    // Mode d'emploi : renvoie un pointeur sur la Forme si elle existe,
+    // Null sinon
+
+    void EraseForme(string name);
+    // Mode d'emploi supprime la forme de la map
+    //
 
 
 //------------------------------------------------------------------ PRIVE
@@ -88,6 +103,13 @@ private:
     // Contrat :
     //
 
+    void liberePileUndo();
+    // Mode d'emploi : libere la pile de UNDO
+
+    void liberePileRedo();
+    // Mode d'emploi : libere la pile de REDO
+
+
 
 protected:
 //----------------------------------------------------- Attributs protégés
@@ -103,13 +125,13 @@ private:
     Formes formes;
     // La map contenant toutes les formes (Cercle, Rectangle...)
 
-    typedef stack<Commande> Commandes;
+    typedef stack<Commande*> Commandes;
     Commandes cmdToUndo;
     // Pile de Pointeur vers les commandes exécutées et qui sont "UNDOABLE"
     //
 
     Commandes cmdToRedo;
-    // Pile de Pointeur vers les commandes exécutées a REDO"
+    // Pile de Pointeur vers les commandes exécutées a "REDO"
     //
 
 

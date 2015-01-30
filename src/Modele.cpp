@@ -16,6 +16,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Modele.h"
+#include <fstream>
 
 //------------------------------------------------------------- Constantes
 
@@ -29,12 +30,6 @@ Modele Modele::m_modele=Modele();
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-// type Modele::Méthode ( liste de paramétres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-
 
 
 Modele::Modele ( )
@@ -59,6 +54,11 @@ Modele::~Modele ( )
     {
         delete it->second;
     }
+
+    liberePileUndo();
+    liberePileRedo();
+
+
 
 } //----- Fin de ~Modele
 
@@ -85,26 +85,76 @@ void Modele::Afficher(ostream & flux) const
     }
 }
 
-void Modele::Sauvegarder(string filename)const
+void Modele::Sauvegarder(ofstream& file)const
 {
-    ofstream file(filename.c_str());
-
-    if(file.good())
+    Formes::const_iterator it;
+    for(it = formes.begin(); it != formes.end(); it++)
     {
-        Formes::const_iterator it;
-        for(it = formes.begin(); it != formes.end(); it++)
-        {
-            it->second->Afficher(file);
-        }
+        it->second->Afficher(file);
     }
-
 }
 
-void Modele::Empiler(Commande uneCommande)
+void Modele::Empiler(Commande *uneCommande)
 {
+#ifdef MAP
+        cout <<"Empilement de la commande "<<endl;
+#endif
     cmdToUndo.push(uneCommande);
+
+    liberePileRedo(); // vide la pile des REDO
+
+#ifdef MAP
+    cout<<" Taille de la pile "<<cmdToUndo.size()<<endl;
+#endif
 }
 
 bool Modele::NomExiste(string nom) const {
     return formes.find(nom) != formes.end();
+}
+
+Forme *Modele::getForme(string name)const  {
+    if(NomExiste(name))
+        return formes.find(name)->second;
+    else
+        return nullptr;
+}
+
+void Modele::UNDO() {
+    if(!cmdToUndo.empty())
+    {
+        cmdToRedo.push(cmdToUndo.top());// met la commande sur les commandes à REDO
+        cmdToUndo.top()->UnExecute(); // Annule la commande
+        cmdToUndo.pop(); // Depilement
+    }
+}
+
+void Modele::REDO()
+{
+    if(!cmdToRedo.empty())
+    {
+        cmdToRedo.top()->Execute(); // Execution
+        cmdToUndo.push(cmdToRedo.top()); //Empilement sur UNDO
+        cmdToRedo.pop(); // Depilement de REDO
+    }
+}
+
+void Modele::EraseForme(string name)
+{
+    formes.erase(name);
+}
+
+void Modele::liberePileUndo() {
+    while(!cmdToUndo.empty())
+    {
+        delete cmdToUndo.top();
+        cmdToUndo.pop();
+    }
+}
+
+void Modele::liberePileRedo() {
+    while(!cmdToRedo.empty())
+    {
+        delete cmdToRedo.top();
+        cmdToRedo.pop();
+    }
 }

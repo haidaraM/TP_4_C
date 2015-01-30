@@ -27,6 +27,16 @@ set(SOURCE_FILES
     src/Ligne.h
     src/Selection.cpp
     src/Selection.h
+    src/CmdSimple.h
+    src/CmdSimple.cpp
+    src/CmdLoad.cpp
+    src/CmdLoad.h
+    src/CmdSave.cpp
+    src/CmdSave.h
+    src/CmdAjout.h
+    src/CmdAjout.cpp
+    src/CmdClear.cpp
+    src/CmdClear.h
     )
 
 add_executable(TP4 ${SOURCE_FILES})
