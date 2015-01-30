@@ -133,7 +133,8 @@ void Modele::REDO()
     if(!cmdToRedo.empty())
     {
         cmdToRedo.top()->Execute(); // Execution
-        cmdToRedo.pop(); // Depilement
+        cmdToUndo.push(cmdToRedo.top()); //Empilement sur UNDO
+        cmdToRedo.pop(); // Depilement de REDO
     }
 }
 
