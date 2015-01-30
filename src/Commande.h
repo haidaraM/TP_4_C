@@ -21,45 +21,29 @@ using namespace std;
 //------------------------------------------------------------------ Types
 class Modele; // Déclaration anticipée
 
+// Code de retour des Commandes
+enum CODERETOUR {
+    ERR_NAME_EXISTS=-1,ERR_SYNTAXE=0, GOOD=1,  ERR_UNKNOWN_NAME=2
+};
+
 //------------------------------------------------------------------------
 // Rôle de la classe <Commande>
-// Cette classe abstraite permettra de gerer les commandes grâce au design pattern
-// command. Il y'aura une classe par commande.
-// Design Pattern Command : Un objet Commande (ou ses descendants) sert à
-// communiquer une action à effectuer, ainsi que les arguments requis.
-// L'objet est envoyé à une seule méthode dans une classe, qui traite les 
-// Commandes du type requis.
-//
-// Tous les objets Commande doivent avoir accès au Model pour mettre à jour
-// directement les formes
-//------------------------------------------------------------------------ 
+// Cette classe permettra de gerer les commandes grâce à une utilisation partielle
+// du design pattern command.
+// Elle se chargera d'appeler les méthodes de la classe Modele en fonction de la
+// commande
+//------------------------------------------------------------------------
 
 class Commande
 {
 //----------------------------------------------------------------- PUBLIC
-
 public:
 
-    bool Execute();
-    // Mode d'emploi : Execute la commande courante
+    CODERETOUR Execute();
+    // Mode d'emploi : Execute la commande courante et l'empile si c'est une
+    // commande UNDOABLE.
+    //
     // Appelera les méthodes qu'il faut
-
-    bool AjouterCercle();
-    // Mode d'emploi : Ajout du cercle à la Map
-    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
-
-    bool AjouterRectangle();
-    // Mode d'emploi : Ajout un rectangle à la Map
-    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
-
-    bool AjouterPolyligne();
-    // Mode d'emploi : Ajout un Polyligne à la Map
-    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
-
-    bool AjouterSelection();
-    // Mode d'emploi : Ajout selection
-    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
-
 
     Commande (string cmd );
     // Mode d'emploi : constructeur par defaut
@@ -78,7 +62,58 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
-    bool allDigit(std::vector<string> vect, int pos=2)const;
+    CODERETOUR AjouterCercle();
+    // Mode d'emploi : Ajoute un cercle à la Map
+    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+    // Retour : 1 si la commande s'est bien exécutée
+    //          0 si la syntaxe est incorrecte
+    //          -1 si le nom de la forme existe déja
+
+    CODERETOUR AjouterRectangle();
+    // Mode d'emploi : Ajoute un rectangle à la Map
+    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+    // Retour : 1 si la commande s'est bien exécutée
+    //          0 si la syntaxe est incorrecte
+    //          -1 si le nom de la forme existe déja
+
+
+    CODERETOUR AjouterPolyligne();
+    // Mode d'emploi : Ajoute un Polyligne à la Map
+    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+    // Retour : 1 si la commande s'est bien exécutée
+    //          0 si la syntaxe est incorrecte
+    //          -1 si le nom de la forme existe déja
+
+
+    CODERETOUR AjouterLigne();
+    // Mode d'emploi : Ajoute une ligne à la Map
+    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+    // Retour : 1 si la commande s'est bien exécutée
+    //          0 si la syntaxe est incorrecte
+    //          -1 si le nom de la forme existe déja
+
+    CODERETOUR AjouterSelection();
+    // Mode d'emploi : Ajoute  une selection
+    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+    // Retour : 1 si la commande s'est bien exécutée
+    //          0 si la syntaxe est incorrecte
+    //          -1 si le nom de la selection existe déja
+
+    CODERETOUR Deplacer();
+    // Mode d'emploi : Déplace une Forme ou une selection
+    //
+    // Contrat :
+
+    CODERETOUR Sauvegarder()const;
+    // Mode d'emploi
+
+    CODERETOUR Supprimer();
+    // Mode d'emploi : Supprimer une Forme ou une selection
+    //
+    // Contrat :
+
+
+    bool allDigit(std::vector<string> vect, unsigned int pos=2)const;
     // Mode d'emploi : Test si c'est un vecteur de string n'est composé que de
     // chiffre.
     // Contrat : vect non vide
@@ -104,7 +139,7 @@ protected:
 
     static Modele & geoEdit;
     // Reference vers la classe principale.
-    // Chaque commande pourra ainsi metre à jour la map et la pile des commandes
+    // Chaque commande pourra ainsi metre à jour la map
 
 private:
 //------------------------------------------------------- Attributs privés
@@ -115,5 +150,9 @@ private:
 
 //----------------------------------------------------------- Types privés
 };
+
+void AfficherErreurCommande();
+// Mode d'emploi : Affiche un message d'erreur sur la sortie d'erreur si la
+// syntaxe de la commande est incorrecte
 
 #endif // COMMANDE_H

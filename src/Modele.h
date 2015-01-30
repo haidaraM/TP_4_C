@@ -36,11 +36,6 @@ class Modele
 public:
 //----------------------------------------------------- Méthodes publiques
 
-    static Modele & Instance();
-    // Mode d'emploi : Renvoie une reference sur la seule instance de cette classe
-    //
-    // Contrat :
-
     void Ajouter(string name,  Forme *uneForme);
     // Mode d'emploi : Ajoute une Forme à la Map
     // Si un nom de forme est déja présent, la forme sera ignorée
@@ -51,11 +46,33 @@ public:
     // un fichier
     // Contrat :
 
+    void Sauvegarder(string filename)const;
+    //Mode d'emploi : Sauvegarde les formes dans un fichier
+    //
+    // Contrat : fournir non vide
+
+    void Empiler(Commande uneCommande);
+    //Mode d'emploi : Empile la Commande sur la Pile des commandes
+    //
+    // Contrat : Commande valide
+
+    static Modele & Instance();
+    // Mode d'emploi : Renvoie une reference sur la seule instance de cette classe
+    //
+    // Contrat :
+
+    bool NomExiste(string nom)const;
+    // Mode d'emploi : Verifie si le nom passé par en paramètre existe dans la map
+    // Renvoie vrai si le nom existe, faux sinon
+    // Contrat :
+
+
 
 //------------------------------------------------------------------ PRIVE
 
 protected:
 //----------------------------------------------------- Méthodes protégées
+
 
 private:
 //------------------------------------------------------- Méthodes privées
@@ -66,11 +83,10 @@ private:
     //
 
     virtual ~Modele ( );
-    // Mode d'emploi :
+    // Mode d'emploi : Destructeur
     //
     // Contrat :
     //
-
 
 
 protected:
@@ -87,9 +103,15 @@ private:
     Formes formes;
     // La map contenant toutes les formes (Cercle, Rectangle...)
 
-    typedef stack<Commande*> CommandesUndo;
-    CommandesUndo cmdToUndo;
-    // Pile des commandes exécutées et qui sont "UNDOABLE"
+    typedef stack<Commande> Commandes;
+    Commandes cmdToUndo;
+    // Pile de Pointeur vers les commandes exécutées et qui sont "UNDOABLE"
+    //
+
+    Commandes cmdToRedo;
+    // Pile de Pointeur vers les commandes exécutées a REDO"
+    //
+
 
 
 //---------------------------------------------------------- Classes amies

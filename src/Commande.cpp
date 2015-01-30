@@ -14,14 +14,17 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include <sstream> // stringstream
-#include <cctype>
 
 #include "Rectangle.h"
 #include "Commande.h"
 #include "Modele.h"
 #include "Cercle.h"
+#include "Ligne.h"
 
 //------------------------------------------------------------- Constantes
+const string COMMENTAIRES("#");
+const string CMD_PARAM_ERR("paramètres invalides");
+const string ERREUR("ERR");
 
 //---------------------------------------------------- Variables de classe
 
@@ -60,16 +63,15 @@ Commande::~Commande ( )
 //----------------------------------------------------- Méthodes protégées
 
 //------------------------------------------------------- Méthodes privées
-bool Commande::AjouterCercle()
+CODERETOUR Commande::AjouterCercle()
 {
     // découpage de la commande
     vector<string> resultat = decoupe();
 
     if(resultat.size() != 5 || !allDigit(resultat))
     {
-        cerr <<"ERR"<<"\r\n";
-        cerr <<"#Paramètres invalides"<<"\r\n";
-        return false;
+        AfficherErreurCommande();
+        return ERR_SYNTAXE;
     }
     else
     {
@@ -84,19 +86,18 @@ bool Commande::AjouterCercle()
         //Mise à jour de la Map
         geoEdit.Ajouter(name, c);
         // Empilement commande
-        return true;
+        return GOOD;
     }
 }
 
-bool Commande::AjouterRectangle() {
+CODERETOUR Commande::AjouterRectangle() {
     // découpage de la commande
     vector<string> resultat = decoupe();
 
     if(resultat.size() != 6 || !allDigit(resultat))
     {
-        cerr <<"ERR"<<"\r\n";
-        cerr <<"#Paramètres invalides"<<"\r\n";
-        return false;
+        AfficherErreurCommande();
+        return ERR_SYNTAXE;
     }
     else
     {
@@ -115,14 +116,13 @@ bool Commande::AjouterRectangle() {
 
         //Mise à jour de la Map
         geoEdit.Ajouter(name, r);
-        // Empilement commande
 
-        return true;
+        return GOOD;
     }
 
 }
 
-bool Commande::AjouterPolyligne() {
+CODERETOUR Commande::AjouterPolyligne() {
     // découpage de la commande
     vector<string> resultat = decoupe();
 
@@ -130,9 +130,8 @@ bool Commande::AjouterPolyligne() {
     if(resultat.size() < 6 || !allDigit(resultat) ||
             resultat.size()%2 != 0)
     {
-        cerr <<"ERR"<<"\r\n";
-        cerr <<"#Paramètres invalides"<<"\r\n";
-        return false;
+        AfficherErreurCommande();
+        return ERR_SYNTAXE;
     }
     else
     {
@@ -143,7 +142,6 @@ bool Commande::AjouterPolyligne() {
         {
             long x1 = strtol(resultat[i].c_str(), NULL, 10);
             long y1 = strtol(resultat[i+1].c_str(), NULL, 10);
-
             lesPoints.push_back(Point(x1,y1));
         }
 
@@ -151,17 +149,17 @@ bool Commande::AjouterPolyligne() {
 
         //Mise à jour de la Map
         geoEdit.Ajouter(name, pl);
-        return true;
+        return GOOD;
     }
 
 
 }
 
-bool Commande::AjouterSelection() {
-    return false;
+CODERETOUR Commande::AjouterSelection() {
+    return GOOD;
 }
 
-bool Commande::allDigit(vector<string> vect, int pos)const {
+bool Commande::allDigit(vector<string> vect, unsigned int pos)const {
     bool estNombre = true;
     unsigned int i = pos;
     while(estNombre && i<vect.size())
@@ -195,43 +193,150 @@ vector<string> Commande::decoupe(char delim) const
     while(getline(stream, courant, delim))
     {
         //Ajout de l'element courant
-        resultat.push_back(courant);
+        if(courant.size()!=0)
+            resultat.push_back(courant);
     }
 
     return resultat;
 }
 
-bool Commande::Execute()
+
+
+CODERETOUR Commande::Deplacer() {
+    return GOOD;
+}
+
+CODERETOUR Commande::Supprimer() {
+    return GOOD;
+}
+
+CODERETOUR Commande::AjouterLigne()
+{
+    // découpage de la commande
+    vector<string> resultat = decoupe();
+
+    if(resultat.size() != 6 || !allDigit(resultat))
+    {
+        AfficherErreurCommande();
+        return ERR_SYNTAXE;
+    }
+    else
+    {
+        // Organisation des elements
+        string name = resultat[1];
+        vector<Point> lesPoints;
+        long x1 = strtol(resultat[2].c_str(), NULL, 10);
+        long y1 = strtol(resultat[3].c_str(), NULL, 10);
+        long x2 = strtol(resultat[4].c_str(), NULL, 10);
+        long y2 = strtol(resultat[5].c_str(), NULL, 10);
+
+        lesPoints.push_back(Point(x1,y1));
+        lesPoints.push_back(Point(x2,y2));
+
+        Ligne *ligne = new Ligne(name,lesPoints);
+
+        //Mise à jour de la Map
+        geoEdit.Ajouter(name, ligne);
+
+        return GOOD;
+
+    }
+}
+
+CODERETOUR Commande::Sauvegarder()const
+{
+    // découpage de la commande
+    vector<string> resultat = decoupe();
+
+    if(resultat.size() != 2)
+    {
+        AfficherErreurCommande();
+        return ERR_SYNTAXE;
+    }
+    else
+    {
+        geoEdit.Sauvegarder(resultat[1]);
+        return GOOD;
+    }
+}
+
+CODERETOUR Commande::Execute()
 {
     stringstream stream(commande);
     string commande;
     getline(stream,commande,' ');
-    bool res;
+    CODERETOUR res;
     if(commande == "C")
     {
         res=AjouterCercle();
+        if(res)
+        {
+            geoEdit.Empiler(*this);
+        }
     }
     else if(commande == "PL")
     {
-        res=AjouterPolyligne();
+        res = AjouterPolyligne();
+        if(res)
+        {
+            geoEdit.Empiler(*this);
+        }
     }
     else if(commande == "R")
     {
-        res=AjouterRectangle();
+        res = AjouterRectangle();
+        if(res)
+        {
+            geoEdit.Empiler(*this);
+        }
+    }
+    else if(commande == "L")
+    {
+        res = AjouterLigne();
+        if(res)
+        {
+            geoEdit.Empiler(*this);
+        }
     }
     else if(commande =="LIST")
     {
-
+        geoEdit.Afficher();
     }
     else if(commande =="CLEAR")
     {
 
     }
-    else
+    else if(commande == "SAVE")
     {
-        cerr<<"Commande inconnue"<<endl;
+        Sauvegarder();
+    }
+    else if(commande == "LOAD")
+    {
+
+    }
+    else if(commande == "UNDO")
+    {
+
+    }
+    else if(commande == "REDO")
+    {
+
+    }
+    else if(commande == "MOVE")
+    {
+
+    }
+    else if(commande =="DELETE")
+    {
+
     }
 
+    return res;
 
+}
 
+void AfficherErreurCommande() {
+
+    cout<<ERREUR<<"\r\n";
+    cout<<COMMENTAIRES<<CMD_PARAM_ERR<<"\r\n";
 }

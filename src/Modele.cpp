@@ -12,6 +12,7 @@
 //-------------------------------------------------------- Include systéme
 using namespace std;
 #include <iostream>
+#include <fstream>
 
 //------------------------------------------------------ Include personnel
 #include "Modele.h"
@@ -58,6 +59,7 @@ Modele::~Modele ( )
     {
         delete it->second;
     }
+
 } //----- Fin de ~Modele
 
 
@@ -81,4 +83,28 @@ void Modele::Afficher(ostream & flux) const
     {
         it->second->Afficher(flux);
     }
+}
+
+void Modele::Sauvegarder(string filename)const
+{
+    ofstream file(filename.c_str());
+
+    if(file.good())
+    {
+        Formes::const_iterator it;
+        for(it = formes.begin(); it != formes.end(); it++)
+        {
+            it->second->Afficher(file);
+        }
+    }
+
+}
+
+void Modele::Empiler(Commande uneCommande)
+{
+    cmdToUndo.push(uneCommande);
+}
+
+bool Modele::NomExiste(string nom) const {
+    return formes.find(nom) != formes.end();
 }
