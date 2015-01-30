@@ -41,12 +41,12 @@ public:
     // Si un nom de forme est déja présent, la forme sera ignorée
     // Contrat :
 
-    void UNDO();
-    // Annule la derniere commande
+    void Undo();
+    // Mode d'emploi : Annule la derniere commande
     //
 
-    void REDO();
-    // Execute la derniere commande annulée s'il y'en a
+    void Redo();
+    // Mode d'emploi : Execute la derniere commande annulée s'il y'en a
     //
 
     void Afficher(ostream & flux=cout)const;
@@ -69,12 +69,12 @@ public:
     //
     // Contrat :
 
-    bool NomExiste(string nom)const;
+    bool FormeExiste(string nom)const;
     // Mode d'emploi : Verifie si le nom passé par en paramètre existe dans la map
     // Renvoie vrai si le nom existe, faux sinon
     // Contrat :
 
-    Forme * getForme(string name )const;
+    Forme *GetForme(string name)const;
     // Mode d'emploi : renvoie un pointeur sur la Forme si elle existe,
     // Null sinon
 
@@ -108,10 +108,10 @@ private:
     //
 
     void liberePileUndo();
-    // Mode d'emploi : libere la pile de UNDO
+    // Mode d'emploi : libere la pile de Undo
 
     void liberePileRedo();
-    // Mode d'emploi : libere la pile de REDO
+    // Mode d'emploi : libere la pile de Redo
 
 
 
@@ -135,7 +135,7 @@ private:
     //
 
     Commandes cmdToRedo;
-    // Pile de Pointeur vers les commandes exécutées a "REDO"
+    // Pile de Pointeur vers les commandes exécutées a "Redo"
     //
 
 

@@ -14,7 +14,7 @@ OBJ_DIR		= obj
 
 #Fichiers
 INTERFACES_FILES		= Cercle.h Forme.h Point.h Rectangle.h Polyligne.h Modele.h Commande.h Ligne.h Selection.h \
-							CmdSimple.h	CmdLoad.h CmdSave.h CmdAjout.h CmdSuppression.h # Mettre les .h ici
+							CmdSimple.h	CmdLoad.h CmdSave.h CmdAjout.h CmdDelete.h CmdMove.h # Mettre les .h ici
 INT 		            = $(addprefix $(SRC_DIR)/, $(INTERFACES_FILES))					# construit le chemin des sources
 OBJ			            = $(addprefix $(OBJ_DIR)/, $(INTERFACES_FILES:.h=.o))			# Génération du nom des fichiers obj
 MAIN_OBJ             	= $(OBJ_DIR)/geoEdit.o 											# .o du fichier ou se trouve le main

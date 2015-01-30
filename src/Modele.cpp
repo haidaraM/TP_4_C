@@ -101,40 +101,40 @@ void Modele::Empiler(Commande *uneCommande)
 #endif
     cmdToUndo.push(uneCommande);
 
-    liberePileRedo(); // vide la pile des REDO
+    liberePileRedo(); // vide la pile des Redo
 
 #ifdef MAP
     cout<<" Taille de la pile "<<cmdToUndo.size()<<endl;
 #endif
 }
 
-bool Modele::NomExiste(string nom) const {
+bool Modele::FormeExiste(string nom) const {
     return formes.find(nom) != formes.end();
 }
 
-Forme *Modele::getForme(string name)const  {
-    if(NomExiste(name))
+Forme *Modele::GetForme(string name)const  {
+    if(FormeExiste(name))
         return formes.find(name)->second;
     else
         return nullptr;
 }
 
-void Modele::UNDO() {
+void Modele::Undo() {
     if(!cmdToUndo.empty())
     {
-        cmdToRedo.push(cmdToUndo.top());// met la commande sur les commandes à REDO
+        cmdToRedo.push(cmdToUndo.top());// met la commande sur les commandes à Redo
         cmdToUndo.top()->UnExecute(); // Annule la commande
         cmdToUndo.pop(); // Depilement
     }
 }
 
-void Modele::REDO()
+void Modele::Redo()
 {
     if(!cmdToRedo.empty())
     {
         cmdToRedo.top()->Execute(); // Execution
-        cmdToUndo.push(cmdToRedo.top()); //Empilement sur UNDO
-        cmdToRedo.pop(); // Depilement de REDO
+        cmdToUndo.push(cmdToRedo.top()); //Empilement sur Undo
+        cmdToRedo.pop(); // Depilement de Redo
     }
 }
 

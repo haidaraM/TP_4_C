@@ -16,7 +16,8 @@ using namespace std;
 #include "Modele.h"
 #include "CmdLoad.h"
 #include "CmdSave.h"
-#include "CmdSuppression.h"
+#include "CmdDelete.h"
+#include "CmdMove.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -49,25 +50,40 @@ int main()
                 delete cmd;
             }
         }
+        // Ajout d'une Selection
         else if(type =="S")
         {
             CmdSimple cmd(courant);
             cmd.Execute();
         }
-        // Affichage de Forme
+        // Deplacement d'un objet
+        else if(type =="MOVE")
+        {
+            CmdMove *cmd = new CmdMove(courant);
+            CODERETOUR resCmd = cmd->Execute();
+            if(resCmd == GOOD)
+            {
+                geoEdit.Empiler(cmd);
+            }
+            else
+            {
+                delete cmd;
+            }
+        }
+        // Affichage des Forme
         else if(type =="LIST")
         {
             geoEdit.Afficher();
         }
         // Annulation de la derniere commande
-        else if(type =="UNDO")
+        else if(type =="Undo")
         {
-            geoEdit.UNDO();
+            geoEdit.Undo();
         }
         // execution de la derniere commande annulée
-        else if(type =="REDO")
+        else if(type =="Redo")
         {
-            geoEdit.REDO();
+            geoEdit.Redo();
         }
         // Chargement d'un fichier
         else if(type =="LOAD")
@@ -91,7 +107,7 @@ int main()
         // Suppression de Forme
         else if(type=="DELETE")
         {
-            CmdSuppression cmd(courant);
+            CmdDelete cmd(courant);
             cmd.Execute();
         }
 

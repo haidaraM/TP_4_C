@@ -74,7 +74,7 @@ CODERETOUR CmdAjout::AjouterCercle() {
         Cercle *c = new Cercle(name,rayon, abscisse, ordonnee);
 
         //Mise à jour de la Map
-        if(!geoEdit.NomExiste(name))
+        if(!geoEdit.FormeExiste(name))
         {
             geoEdit.Ajouter(name, c);
             return GOOD;
@@ -108,7 +108,7 @@ CODERETOUR CmdAjout::AjouterPolyligne() {
 
         Polyligne * pl = new Polyligne(name, lesPoints);
 
-        if(!geoEdit.NomExiste(name))
+        if(!geoEdit.FormeExiste(name))
         {
             geoEdit.Ajouter(name, pl);
             return GOOD;
@@ -142,7 +142,7 @@ CODERETOUR CmdAjout::AjouterRectangle() {
 
         Rectangle *r = new Rectangle(name,lesPoints);
 
-        if(!geoEdit.NomExiste(name))
+        if(!geoEdit.FormeExiste(name))
         {
             geoEdit.Ajouter(name, r);
             return GOOD;
@@ -177,7 +177,7 @@ CODERETOUR CmdAjout::AjouterLigne() {
 
         Ligne *ligne = new Ligne(name,lesPoints);
 
-        if(!geoEdit.NomExiste(name))
+        if(!geoEdit.FormeExiste(name))
         {
             geoEdit.Ajouter(name, ligne);
             return GOOD;
@@ -209,9 +209,11 @@ CODERETOUR CmdAjout::AjouterSelection() {
 
         vector<Forme *> formesSelectionnes = geoEdit.GetFormeSelection(p1, p2);
 
+        cout <<"#Nombre d'objet dans la selection : "<<formesSelectionnes.size()<<endl;
+
         Selection *sc = new Selection(name, formesSelectionnes);
 
-        if(!geoEdit.NomExiste(name))
+        if(!geoEdit.FormeExiste(name))
         {
             geoEdit.Ajouter(name, sc);
             return GOOD;

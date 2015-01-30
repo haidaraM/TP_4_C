@@ -45,7 +45,7 @@ public:
     // Appelera les méthodes qu'il faut
 
     virtual CODERETOUR UnExecute()=0;
-    // Execute la commande inverse pour UNDO
+    // Execute la commande inverse pour Undo
 
     Commande (string cmd );
     // Mode d'emploi : constructeur par defaut

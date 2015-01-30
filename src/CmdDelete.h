@@ -5,25 +5,25 @@
     copyright            : (C) ${year} par ${user}
 *************************************************************************/
 
-//---------- Interface de la classe <CmdSuppression> (fichier CmdSuppression.h) ------
+//---------- Interface de la classe <CmdDelete> (fichier CmdDelete.h) ------
 #if ! defined ( CMD_SUPPRESSION_H )
 #define CMD_SUPPRESSION_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Commande.h"
-#include "CmdSuppression.h"
+#include "CmdDelete.h"
 #include "Forme.h"
 //------------------------------------------------------------- Constantes 
 
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle de la classe <CmdSuppression>
+// Rôle de la classe <CmdDelete>
 // Gestion de la Commande LOAD qui prend en paramètre un fichier et va ajouter
 // la description des Forme se trouvant dans le fichier
 //------------------------------------------------------------------------ 
 
-class CmdSuppression : public Commande
+class CmdDelete : public Commande
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -35,13 +35,13 @@ public:
     CODERETOUR UnExecute();
     // Mode d'emploi : Annule toutes les commandes du fichier
 
-    CmdSuppression (string name );
+    CmdDelete(string name );
     // Mode d'emploi : Constructeur par défaut
     //
     // Contrat :
     //
 
-    virtual ~CmdSuppression ( );
+    virtual ~CmdDelete( );
     // Mode d'emploi : Destructeur
     //
     // Contrat :
@@ -71,6 +71,6 @@ private:
 
 };
 
-//----------------------------------------- Types dépendants de <CmdSuppression>
+//----------------------------------------- Types dépendants de <CmdDelete>
 
 #endif // CMD_SUPPRESSION_H
