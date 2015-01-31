@@ -106,8 +106,8 @@ CODERETOUR CmdSimple::UnExecute() {
 #ifdef MAP
     cout <<"Addresse de l'objet recupére :"<<f<<endl;
 #endif
+    geoEdit.SupprimerForme(f);
     delete f;
-    f = NULL;
     geoEdit.EraseForme(nom); // Suppression de la MAP
     return GOOD;
 

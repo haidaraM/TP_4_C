@@ -39,6 +39,9 @@ using namespace std;
 void Forme::Supprimer()
 {
 	supprimer = true;
+
+    // On vide le tableau
+    selections.clear();
 }
 
 
@@ -72,3 +75,19 @@ Forme::~Forme ( )
 //----------------------------------------------------- Méthodes protégées
 
 //------------------------------------------------------- Méthodes privées
+void Forme::AjouteSelection(string nomSelection) {
+    selections.push_back(nomSelection);
+}
+
+vector<string> Forme::GetSelections() const {
+    return selections;
+}
+
+string Forme::GetNom() const {
+    return nom;
+}
+
+void Forme::CasserLienVersForme(string nomForme) {
+    // Ne fais rien si c'est pas une selection
+    // Pourra etre reutilisée pour des amériolations futures
+}
