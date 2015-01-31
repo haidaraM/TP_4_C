@@ -18,14 +18,9 @@ using namespace std;
 #include "Rectangle.h"
 #include "Commande.h"
 #include "Modele.h"
-#include "Cercle.h"
-#include "Ligne.h"
 
 //------------------------------------------------------------- Constantes
-const string COMMENTAIRES("#");
 const string CMD_PARAM_ERR("paramètres invalides");
-const string ERREUR("ERR");
-
 //---------------------------------------------------- Variables de classe
 
 //----------------------------------------------------------- Types privés
@@ -104,18 +99,12 @@ vector<string> Commande::decoupe(char delim) const
     return resultat;
 }
 
-
-
-CODERETOUR Commande::Deplacer() {
-    return GOOD;
-}
-
 CODERETOUR Commande::Supprimer() {
     return GOOD;
 }
 
 void AfficherErreurCommande() {
 
-    cout<<ERREUR<<"\r\n";
-    cout<<COMMENTAIRES<<CMD_PARAM_ERR<<"\r\n";
+    cout<<ERREUR<<endl;
+    cout<<COMMENTAIRES<<CMD_PARAM_ERR<<endl;
 }

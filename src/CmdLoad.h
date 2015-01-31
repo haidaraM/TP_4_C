@@ -36,6 +36,8 @@ public:
     CODERETOUR UnExecute();
     // Mode d'emploi : Annule toutes les commandes du fichier
 
+
+//-------------------------------------------- Constructeurs - destructeur
     CmdLoad (string name );
     // Mode d'emploi : Constructeur par défaut
     //
@@ -55,6 +57,9 @@ protected:
 
 private:
 //------------------------------------------------------- Méthodes privées
+
+    void afficherConfirmation(string file,int nbFormes)const;
+    // Mode d'emploi : Affiche une confirmation de la lecture du fichier
 
 protected:
 //----------------------------------------------------- Attributs protégés

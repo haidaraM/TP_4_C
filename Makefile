@@ -1,11 +1,18 @@
 EXE 		= geoEdit
 
+#Directives du préprocesseur pour les #ifdef
+VERBOSE     = VERBOSE
+#VERBOSE    = NO_VERBOSE
+#MAP         = MAP
+MAP        = NO_MAP
+DEFINE      = -D$(VERBOSE) -D$(MAP)
+
 # Compilateur et editeur de lien
 COMP		= @g++
 LINK		= @g++
 
 # Options de compilation et editions de liens
-CPPFLAGS	= -Wall -ansi -ggdb -std=c++11
+CPPFLAGS	= $(DEFINE) -Wall -ansi -ggdb -std=c++11
 EDLFLAGS	=
 
 #Dossiers
@@ -22,7 +29,7 @@ MAIN_OBJ             	= $(OBJ_DIR)/geoEdit.o 											# .o du fichier ou se tr
 #Autres commandes et message
 ECHO		= @echo
 RM			= @rm
-MESSAGE		= "Compilation réussie" 
+MESSAGE		= "Compilation réussie"
 
 
 $(EXE): $(OBJ) $(MAIN_OBJ)

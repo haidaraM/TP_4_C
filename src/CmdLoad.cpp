@@ -75,7 +75,7 @@ CODERETOUR CmdLoad::UnExecute() {
        cmds.pop();
    }
     return GOOD;
-}
+}//----- Fin de UnExecute
 
 CODERETOUR CmdLoad::Execute()
 {
@@ -90,11 +90,13 @@ CODERETOUR CmdLoad::Execute()
     {
         string fileName = resultat[1];
         string ligne;
+        int nbFormes = 0;
         ifstream file(fileName);
         if (file.good())
         {
-            while(std::getline(file, ligne) && resCmd == GOOD)
+            while(std::getline(file, ligne))
             {
+                nbFormes++;
                 CmdAjout * cmd = new CmdAjout(ligne);
                 resCmd = cmd->Execute(); // execution
                 cmds.push(cmd); // ajout dans la pile
@@ -103,14 +105,25 @@ CODERETOUR CmdLoad::Execute()
                     /* Si une commande échoue on annule toutes les commandes et
                      on arrete la lecture du fichier*/
                     UnExecute();
+                    return ERR_READING_FILE;
                 }
             }
+
+#ifdef VERBOSE
+        afficherConfirmation(fileName,nbFormes);
+#endif
             return resCmd;
         }
         else
         {
-            cerr << "Probleme fichier " << endl;
+            cerr <<ERREUR<<endl;
+            cerr << COMMENTAIRES<<"Probleme de lecture du fichier "<<fileName << endl;
             return ERR_FILE;
         }
     }
+}//----- Fin de Execute
+
+void CmdLoad::afficherConfirmation(string file,int nbFormes) const {
+    cout<<"OK"<<endl;
+    cout<<COMMENTAIRES<<"Fichier "<<file<< " ajouté avec " <<nbFormes<< " Forme(s) ajoutée(s) "<<endl;
 }

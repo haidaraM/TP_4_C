@@ -12,7 +12,6 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
-#include <fstream>
 
 //------------------------------------------------------ Include personnel
 #include "CmdMove.h"
@@ -81,7 +80,7 @@ CODERETOUR CmdMove::Execute()
             return ERR_UNKNOWN_NAME;
     }
 
-}
+}//----- Fin de Execute
 
 CODERETOUR CmdMove::UnExecute()
 {
@@ -93,5 +92,4 @@ CODERETOUR CmdMove::UnExecute()
     geoEdit.GetForme(name)->Deplacer(-dx, -dy);
 
     return GOOD;
-
-}
+} //----- Fin de UnExecute

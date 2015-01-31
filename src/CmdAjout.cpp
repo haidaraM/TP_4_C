@@ -71,18 +71,27 @@ CODERETOUR CmdAjout::AjouterCercle() {
         long ordonnee = strtol(arguments[3].c_str(), NULL, 10);
         unsigned int rayon =(unsigned int) strtol(arguments[4].c_str(), NULL, 10);
 
-        Cercle *c = new Cercle(name,rayon, abscisse, ordonnee);
-
-        //Mise à jour de la Map
+        // Verification de la présence d'une autre Forme ayant le meme nom
         if(!geoEdit.FormeExiste(name))
         {
+            Cercle *c = new Cercle(name,rayon, abscisse, ordonnee);
+            // Ajout à la MAP
             geoEdit.Ajouter(name, c);
+#ifdef VERBOSE
+            afficheConfirmation("Cercle",name);
+#endif
             return GOOD;
         }
         else
+        {
+#ifdef VERBOSE
+            cerr<<ERREUR<<endl;
+            cerr<<COMMENTAIRES<<"Une Forme avec le nom \""<<name<<"\" existe déjà."<<endl;
+#endif
             return ERR_NAME_EXISTS;
+        }
     }
-}
+}//----- Fin de ~AjouterCercle
 
 CODERETOUR CmdAjout::AjouterPolyligne() {
     // découpage de la commande
@@ -106,17 +115,21 @@ CODERETOUR CmdAjout::AjouterPolyligne() {
             lesPoints.push_back(Point(x1,y1));
         }
 
-        Polyligne * pl = new Polyligne(name, lesPoints);
-
+        // Verification de la présence d'une autre Forme ayant le meme nom
         if(!geoEdit.FormeExiste(name))
         {
+            Polyligne * pl = new Polyligne(name, lesPoints);
+            // Ajout à la MAP
             geoEdit.Ajouter(name, pl);
+#ifdef VERBOSE
+            afficheConfirmation("Polyligne",name);
+#endif
             return GOOD;
         }
         else
             return ERR_NAME_EXISTS;
     }
-}
+}//----- Fin de ~AjouterPolyligne
 
 CODERETOUR CmdAjout::AjouterRectangle() {
     // découpage de la commande
@@ -140,18 +153,22 @@ CODERETOUR CmdAjout::AjouterRectangle() {
         lesPoints.push_back(Point(x1,y1));
         lesPoints.push_back(Point(x2,y2));
 
-        Rectangle *r = new Rectangle(name,lesPoints);
-
+        // Verification de la présence d'une autre Forme ayant le meme nom
         if(!geoEdit.FormeExiste(name))
         {
+            Rectangle *r = new Rectangle(name,lesPoints);
+            // Ajout à la MAP
             geoEdit.Ajouter(name, r);
+#ifdef VERBOSE
+            afficheConfirmation("Rectangle",name);
+#endif
             return GOOD;
         }
         else
             return ERR_NAME_EXISTS;
 
     }
-}
+}//----- Fin de ~AjouterRectangle
 
 CODERETOUR CmdAjout::AjouterLigne() {
     // découpage de la commande
@@ -175,17 +192,21 @@ CODERETOUR CmdAjout::AjouterLigne() {
         lesPoints.push_back(Point(x1,y1));
         lesPoints.push_back(Point(x2,y2));
 
-        Ligne *ligne = new Ligne(name,lesPoints);
-
+        // Verification de la présence d'une autre Forme ayant le meme nom
         if(!geoEdit.FormeExiste(name))
         {
+            Ligne *ligne = new Ligne(name,lesPoints);
+            // Ajout à la MAP
             geoEdit.Ajouter(name, ligne);
+#ifdef VERBOSE
+            afficheConfirmation("Ligne",name);
+#endif
             return GOOD;
         }
         else
             return ERR_NAME_EXISTS;
     }
-}
+}//----- Fin de ~AjouterLigne
 
 CODERETOUR CmdAjout::AjouterSelection() {
     // decoupage de la commande
@@ -207,18 +228,26 @@ CODERETOUR CmdAjout::AjouterSelection() {
         Point p1(x1,y1);
         Point p2(x2,y2);
 
-        vector<Forme *> formesSelectionnes = geoEdit.GetFormeSelection(p1, p2);
-
-        cout <<"#Nombre d'objet dans la selection : "<<formesSelectionnes.size()<<endl;
-
-        Selection *sc = new Selection(name, formesSelectionnes);
-
+        // Verification de la présence d'une autre Forme ayant le meme nom
         if(!geoEdit.FormeExiste(name))
         {
+            // Recuperation des Formes qui se trouvent dans la selection
+            vector<Forme *> formesSelectionnes = geoEdit.GetFormeSelection(p1, p2);
+
+            Selection *sc = new Selection(name, formesSelectionnes);
             geoEdit.Ajouter(name, sc);
+#ifdef VERBOSE
+            afficheConfirmation("Selection",name);
+            cout <<COMMENTAIRES<<"Nombre d'objets dans la selection : "<<formesSelectionnes.size()<<endl;
+#endif
             return GOOD;
         }
         else
             return ERR_NAME_EXISTS;
     }
+}//----- Fin de ~AjouterSelection
+
+void CmdAjout::afficheConfirmation(string type, string nom) const {
+    cout <<"OK"<<endl;
+    cout <<COMMENTAIRES<<"Nouvelle Objet => "<<type<<" : "<<nom<<endl;
 }

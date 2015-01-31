@@ -35,6 +35,8 @@ public:
     virtual CODERETOUR UnExecute();
     // Mode d'emploi : Annule la commande simple
 
+
+//-------------------------------------------- Constructeurs - destructeur
     CmdSimple (string name );
     // Mode d'emploi :
     //

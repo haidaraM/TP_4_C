@@ -10,7 +10,6 @@
 //-------------------------------------------------------- Include systéme
 using namespace std;
 #include <iostream>
-#include <sstream>
 //------------------------------------------------------ Include personnel
 
 #include "Modele.h"

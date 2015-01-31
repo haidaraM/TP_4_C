@@ -51,7 +51,7 @@ public:
     //          0 si la syntaxe est incorrecte
     //          -1 si le nom de la selection existe déja
 
-
+//-------------------------------------------- Constructeurs - destructeur
     CmdAjout (string cmd );
     // Mode d'emploi :
     //
@@ -64,19 +64,10 @@ public:
     // Contrat :
     //
 
-//------------------------------------------------------------------ PRIVE 
-
-protected:
-//----------------------------------------------------- Méthodes protégées
-
-private:
-//------------------------------------------------------- Méthodes privées
-
-protected:
-//----------------------------------------------------- Attributs protégés
-
 private:
 //------------------------------------------------------- Attributs privés
+    void afficheConfirmation(string type, string nom)const;
+    // Mode d'emploi : Affiche un message de confirmation d'Ajout
 
 //---------------------------------------------------------- Classes amies
 

@@ -12,7 +12,6 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
-#include <fstream>
 
 //------------------------------------------------------ Include personnel
 #include "CmdClear.h"

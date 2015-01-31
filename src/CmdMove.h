@@ -33,6 +33,7 @@ public:
     CODERETOUR UnExecute();
     // Mode d'emploi : Annule toutes les commandes du fichier
 
+//-------------------------------------------- Constructeurs - destructeur
     CmdMove (string name );
     // Mode d'emploi : Constructeur par défaut
     //

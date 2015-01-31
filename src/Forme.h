@@ -44,6 +44,7 @@ public:
     virtual void Deplacer (long x, long y) =0;
     // Mode d'emploi : Deplace tous les points de la forme
 
+
 //-------------------------------------------- Constructeurs - destructeur
     Forme ( const Forme & unForme );
     // Mode d'emploi (constructeur de copie) :

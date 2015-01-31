@@ -34,6 +34,7 @@ public:
     // COntrat :
 
 
+//-------------------------------------------- Constructeurs - destructeur
     CmdSave (string name );
     // Mode d'emploi : Constructeur par défaut
     //

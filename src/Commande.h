@@ -17,13 +17,15 @@
 using namespace std;
 
 //------------------------------------------------------------- Constantes 
-
+const string COMMENTAIRES("#");
+const string ERREUR("ERR");
 //------------------------------------------------------------------ Types
 class Modele; // Déclaration anticipée
 
 // Code de retour des Commandes
 enum CODERETOUR {
-    ERR_NAME_EXISTS=-1,ERR_SYNTAXE=0, GOOD=1,  ERR_UNKNOWN_NAME=2, ERR_FILE=3
+    ERR_NAME_EXISTS=-1,ERR_SYNTAXE=0, GOOD=1,  ERR_UNKNOWN_NAME=2, ERR_FILE=3,
+    ERR_READING_FILE=4
 };
 
 //------------------------------------------------------------------------
@@ -64,11 +66,6 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
-
-    CODERETOUR Deplacer();
-    // Mode d'emploi : Déplace une Forme ou une selection
-    //
-    // Contrat :
 
     CODERETOUR Supprimer();
     // Mode d'emploi : Supprimer une Forme ou une selection
