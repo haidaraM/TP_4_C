@@ -77,12 +77,16 @@ protected:
 private:
 //------------------------------------------------------- Méthodes privées
 
+    void majFormeSelectionnees();
+    // Mode d'emploi : signale aux Formes qu'il font partis de la selection
+
 protected:
 //----------------------------------------------------- Attributs protégés
 
 private:
 //------------------------------------------------------- Attributs privés
-vector <Forme*> contenues;
+    vector <Forme*> contenues;
+    // Pointeur vers les formes se trouvant dans la selection
 //---------------------------------------------------------- Classes amies
 
 //-------------------------------------------------------- Classes privées

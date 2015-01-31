@@ -267,6 +267,7 @@ CODERETOUR CmdAjout::AjouterSelection() {
             // Recuperation des Formes qui se trouvent dans la selection
             vector<Forme *> formesSelectionnes = geoEdit.GetFormeSelection(p1, p2);
 
+            // creation de la selection
             Selection *sc = new Selection(name, formesSelectionnes);
 
             geoEdit.Ajouter(name, sc);

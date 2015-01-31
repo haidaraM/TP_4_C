@@ -38,7 +38,7 @@ public:
 
     void Ajouter(string name,  Forme *uneForme);
     // Mode d'emploi : Ajoute une Forme à la Map
-    // Si un nom de forme est déja présent, la forme sera ignorée
+    //
     // Contrat :
 
     void Undo();
@@ -86,6 +86,8 @@ public:
     // Mode d'emploi : Renvoi les Formes qui sont comprises entre
     // p1 et p2
 
+    void SupprimerForme(Forme *uneForme);
+    // Mode d'emploi : Supprime la forme des selections dans lesquelles elle se trouve
 
 //------------------------------------------------------------------ PRIVE
 
@@ -114,7 +116,6 @@ private:
     // Mode d'emploi : libere la pile de Redo
 
 
-
 protected:
 //----------------------------------------------------- Attributs protégés
 
@@ -132,11 +133,10 @@ private:
     typedef stack<Commande*> Commandes;
     Commandes cmdToUndo;
     // Pile de Pointeur vers les commandes exécutées et qui sont "UNDOABLE"
-    //
 
     Commandes cmdToRedo;
     // Pile de Pointeur vers les commandes exécutées a "Redo"
-    //
+
 
 
 

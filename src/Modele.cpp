@@ -177,3 +177,7 @@ vector<Forme *> Modele::GetFormeSelection(Point p1, Point p2) const
     }
     return formesSelectionnees;
 }
+
+void Modele::SupprimerForme(Forme *uneForme) {
+
+}

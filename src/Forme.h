@@ -10,7 +10,8 @@
 #define FORME_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include <string.h>
+#include <string>
+#include <vector>
 using namespace std;
 #include "Point.h"
 
@@ -44,15 +45,16 @@ public:
     virtual void Deplacer (long x, long y) =0;
     // Mode d'emploi : Deplace tous les points de la forme
     // Si la Forme est une selection, toutes les formes de la selection
-    // seront déplacées
+    // seront déplacées.
 
-
-//-------------------------------------------- Constructeurs - destructeur
-    Forme ( const Forme & unForme );
-    // Mode d'emploi (constructeur de copie) :
-    //
+    virtual void Supprimer ();
+    // Mode d'emploi : Supprime la Forme dans les selections dans lesquelles
+    // elle se trouve
     // Contrat :
     //
+
+    virtual void AjouteSelection(string nomSelection);
+    // Mode d'emploi : Ajoute un bom de selection dans le tableau
 
     Forme (string name);
     // Mode d'emploi : Contructeur par défaut
@@ -66,11 +68,6 @@ public:
     // Contrat :
     //
 
-
-    virtual void Supprimer ();
-
-
-
 //------------------------------------------------------------------ PRIVE 
 
 protected:
@@ -81,12 +78,15 @@ private:
 
 protected:
 //----------------------------------------------------- Attributs protégés
-    // L'etat de la Forme
+
     bool supprimer;
+    // L'etat de la Forme
 
-    // Le nom de la Forme
     string nom;
+    // Le nom de la Forme
 
+    vector<string> selections;
+    // vecteur de nom des selections dans lesquelles la forme se trouve
 
 
 private:

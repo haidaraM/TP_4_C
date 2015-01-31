@@ -80,6 +80,7 @@ Selection::Selection (string name, vector <Forme*> f): Forme(name), contenues(f)
 #ifdef MAP
     cout << "Appel au constructeur de <Selection>" << endl;
 #endif
+    majFormeSelectionnees();
 
 } //----- Fin de Selection
 
@@ -101,3 +102,10 @@ Selection::~Selection ( )
 
 //------------------------------------------------------- Méthodes privées
 
+void Selection::majFormeSelectionnees() {
+    for(unsigned int i=0; i<contenues.size(); i++)
+    {
+        contenues[i]->AjouteSelection(nom);
+    }
+
+}

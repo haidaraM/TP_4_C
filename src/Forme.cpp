@@ -39,6 +39,9 @@ using namespace std;
 void Forme::Supprimer()
 {
 	supprimer = true;
+
+    // On vide le tableau
+    selections.clear();
 }
 
 
@@ -72,3 +75,6 @@ Forme::~Forme ( )
 //----------------------------------------------------- Méthodes protégées
 
 //------------------------------------------------------- Méthodes privées
+void Forme::AjouteSelection(string nomSelection) {
+    selections.push_back(nomSelection);
+}
