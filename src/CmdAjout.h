@@ -16,9 +16,9 @@
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Réle de la classe <CmdAjout>
-//
-//
+// Rôle de la classe <CmdAjout>
+// Cette classe gère l'ajout d'une forme dans le Modele : Cercle, Ligne
+// Polyligne, Ligne et Selection
 //------------------------------------------------------------------------ 
 
 class CmdAjout : public CmdSimple

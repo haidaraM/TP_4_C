@@ -86,7 +86,7 @@ Cercle::~Cercle ( )
 //----------------------------------------------------- Méthodes protégées
 
 //------------------------------------------------------- Méthodes privées
-void Cercle::Deplacer(long x, long y)
+void Cercle::Deplacer(long dx, long dy)
 {
-    centre.Deplacer(x, y);
+    centre.Deplacer(dx, dy);
 }

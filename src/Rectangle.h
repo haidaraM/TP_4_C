@@ -20,7 +20,7 @@
 
 //------------------------------------------------------------------------ 
 // Rôle de la classe <Rectangle>
-// Classe permettant de gérer un Rectangle
+// Classe permettant de gérer un Rectangle définit par deux points
 //
 //------------------------------------------------------------------------ 
 

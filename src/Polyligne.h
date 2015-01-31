@@ -32,7 +32,7 @@ public:
 //----------------------------------------------------- Méthodes publiques
     virtual void Afficher(ostream & flux)const;
     // Mode d'emploi : Affiche les descripteurs du Polyligne
-    // Exemple: PL Name X1 Y1 X2 Y2 ... Xn Yn
+    // Exemple: PL Name X1 Y1 X2 Y2 ... Xn Yn avec n >=1
     //
     // Contrat : Aucun
     //
@@ -44,7 +44,9 @@ public:
     // Contrat : Aucun
     //
 
-    virtual void Deplacer (long x, long y);
+    virtual void Deplacer (long dx, long dy);
+    // Mode d'emploi : Deplace tous les points du polyligne
+    //
 
 
 //-------------------------------------------- Constructeurs - destructeur

@@ -20,8 +20,8 @@
 
 //------------------------------------------------------------------------ 
 // Rôle de la classe <Selection>
-// Classe permettant de gérer une Selection
-//
+// Classe permettant de gérer une Selection qui contient des pointeurs vers
+// des Forme
 //------------------------------------------------------------------------ 
 
 class Selection : public Forme

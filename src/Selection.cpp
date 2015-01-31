@@ -66,7 +66,7 @@ void Selection::Deplacer(long abs, long ord)
 
 bool Selection::InclusDans(Point p1, Point p2)const
 {
-	// Une selection ne peut pas être selectionnée
+	// Une selection ne peut pas être selectionnée donc pas de vérification d'inclusion
     return false;
 }
 
@@ -80,7 +80,7 @@ Selection::Selection (string name, vector <Forme*> f): Forme(name), contenues(f)
 #ifdef MAP
     cout << "Appel au constructeur de <Selection>" << endl;
 #endif
-	//contenues.assign(f.begin(),f.end());
+
 } //----- Fin de Selection
 
 

@@ -34,7 +34,8 @@ public:
 
     CODERETOUR UnExecute();
     // Mode d'emploi : Annule toutes les commandes du fichier
-
+    //
+    // Contrat : commande excutée une fois
 
 //-------------------------------------------- Constructeurs - destructeur
     CmdLoad (string name );

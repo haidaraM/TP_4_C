@@ -78,6 +78,9 @@ CODERETOUR CmdLoad::UnExecute() {
 }//----- Fin de UnExecute
 
 CODERETOUR CmdLoad::Execute()
+// Algorithme : Lecture séquentielle du fichier en exécutant les commandes.
+// Si erreur, annulation des commandes exécutées. Le fichier ne sera lue
+// qu'une seule fois.
 {
     vector<string> resultat = decoupe();
     CODERETOUR resCmd = GOOD;

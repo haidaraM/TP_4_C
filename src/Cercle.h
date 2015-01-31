@@ -17,7 +17,7 @@
 
 //------------------------------------------------------------------------ 
 // Rôle de la classe <Cercle>
-// Classe permettant de gérer un cercle
+// Classe permettant de gérer un cercle définit par un centre et un rayon
 //
 //------------------------------------------------------------------------ 
 
@@ -34,9 +34,18 @@ public:
     // Contrat : Aucun
     //
 
-    void Deplacer (long x, long y);
+    void Deplacer (long dx, long dy);
+    // Mode d'emploi : Deplace le centre du cercle
+    //
 
-//-------------------------------------------- Constructeurs - destructeur
+    bool InclusDans(Point p1, Point p2) const;
+    // Mode d'emploi : Renvoie vrai le cercle est inclus dans le rectangle definis
+    // par p1 et p2.
+    // Contrat :
+    //
+
+
+    //-------------------------------------------- Constructeurs - destructeur
     Cercle ( const Cercle & unCercle );
     // Mode d'emploi (constructeur de copie) :
     //
@@ -54,15 +63,7 @@ public:
     //
     // Contrat :
     //
-    
-    bool InclusDans(Point p1, Point p2) const;
-     // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-
-//------------------------------------------------------------------ PRIVE 
+//------------------------------------------------------------------ PRIVE
 
 protected:
 //----------------------------------------------------- Méthodes protégées

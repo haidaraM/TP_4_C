@@ -17,20 +17,24 @@
 
 //------------------------------------------------------------------------ 
 // Rôle de la classe <CmdMove>
-// Gestion de la MOVE qui deplace une Forme
+// Gestion de la commande MOVE qui deplace une Forme
 //------------------------------------------------------------------------ 
 
 class CmdMove : public Commande
 {
 //----------------------------------------------------------------- PUBLIC
-
 public:
 //----------------------------------------------------- Méthodes publiques
     CODERETOUR Execute();
-    // Mode d'emploi : Execute toutes les commande du fichier
+    // Mode d'emploi : Execute la commande
+    //
+    // Contrat :
 
     CODERETOUR UnExecute();
-    // Mode d'emploi : Annule toutes les commandes du fichier
+    // Mode d'emploi : Annule la commande c'est à dire le déplacement de la
+    // forme
+    //
+    // Contrat : commande excutée une fois
 
 //-------------------------------------------- Constructeurs - destructeur
     CmdMove (string name );

@@ -17,8 +17,9 @@
 
 //------------------------------------------------------------------------
 // Rôle de la classe <CmdSimple>
-//
-//
+// Cette classe regroupe les commandes qui ont un comportement similaire
+// et qui ne necessite pas un traitement particulier : commandes d'ajout et
+// et de sauvegarde
 //------------------------------------------------------------------------
 
 class CmdSimple : public Commande
@@ -28,12 +29,13 @@ class CmdSimple : public Commande
 public:
 //----------------------------------------------------- Méthodes publiques
 
-
     virtual CODERETOUR Execute();
-    // Mode d'emploi :
+    // Mode d'emploi : Execute la commande
 
     virtual CODERETOUR UnExecute();
-    // Mode d'emploi : Annule la commande simple
+    // Mode d'emploi : Annule la commande
+    //
+    // Contrat : commande excutée une fois
 
 
 //-------------------------------------------- Constructeurs - destructeur

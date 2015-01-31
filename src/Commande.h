@@ -46,12 +46,13 @@ class Commande
 public:
 
     virtual CODERETOUR Execute()=0;
-    // Mode d'emploi : Execute la commande courante et l'empile si c'est une
-    // commande UNDOABLE.
-    // Appelera les méthodes qu'il faut
+    // Mode d'emploi : Execute la commande
+
 
     virtual CODERETOUR UnExecute()=0;
-    // Execute la commande inverse pour Undo
+    // Mode d'emploi : Annule la commande
+    //
+    // Contrat : commande excutée une fois
 
     Commande (string cmd );
     // Mode d'emploi : constructeur par defaut
@@ -103,7 +104,8 @@ protected:
 
     static Modele & geoEdit;
     // Reference vers la classe principale.
-    // Chaque commande pourra ainsi metre à jour la map
+    // Chaque commande pourra ainsi mettre à jour la map sans en créer une
+    // nouvelle instance
 
 private:
 //------------------------------------------------------- Attributs privés

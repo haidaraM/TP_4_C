@@ -43,6 +43,8 @@ public:
 
     virtual void Deplacer (long x, long y) =0;
     // Mode d'emploi : Deplace tous les points de la forme
+    // Si la Forme est une selection, toutes les formes de la selection
+    // seront déplacées
 
 
 //-------------------------------------------- Constructeurs - destructeur
