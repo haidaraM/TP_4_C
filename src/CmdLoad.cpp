@@ -116,14 +116,16 @@ CODERETOUR CmdLoad::Execute()
         }
         else
         {
+#ifdef VERBOSE
             cerr <<ERREUR<<endl;
             cerr << COMMENTAIRES<<"Probleme de lecture du fichier "<<fileName << endl;
+#endif
             return ERR_FILE;
         }
     }
 }//----- Fin de Execute
 
 void CmdLoad::afficherConfirmation(string file,int nbFormes) const {
-    cout<<"OK"<<endl;
+    cout<<OK<<endl;
     cout<<COMMENTAIRES<<"Fichier "<<file<< " ajouté avec " <<nbFormes<< " Forme(s) ajoutée(s) "<<endl;
 }

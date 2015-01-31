@@ -74,12 +74,19 @@ CODERETOUR CmdMove::Execute()
 
         if(geoEdit.FormeExiste(name))
         {
-           // cout<<"1 : Appel de CmdMove::Execute() "<<endl;
+            // cout<<"1 : Appel de CmdMove::Execute() "<<endl;
             geoEdit.GetForme(name)->Deplacer(dx, dy);
             return GOOD;
         }
         else
+        {
+
+#ifdef VERBOSE
+            cout<<ERREUR<<endl;
+            cout <<COMMENTAIRES<<"Aucune Forme du nom de : "<<name<<endl;
+#endif
             return ERR_UNKNOWN_NAME;
+        }
     }
 
 }//----- Fin de Execute

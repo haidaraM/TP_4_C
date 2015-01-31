@@ -96,7 +96,7 @@ CODERETOUR CmdAjout::AjouterCercle() {
             return ERR_NAME_EXISTS;
         }
     }
-}//----- Fin de ~AjouterCercle
+}//----- Fin de AjouterCercle
 
 CODERETOUR CmdAjout::AjouterPolyligne() {
     // découpage de la commande
@@ -136,9 +136,15 @@ CODERETOUR CmdAjout::AjouterPolyligne() {
             return GOOD;
         }
         else
+        {
+#ifdef VERBOSE
+            cerr<<ERREUR<<endl;
+            cerr<<COMMENTAIRES<<"Une Forme avec le nom \""<<name<<"\" existe déjà."<<endl;
+#endif
             return ERR_NAME_EXISTS;
+        }
     }
-}//----- Fin de ~AjouterPolyligne
+}//----- Fin de AjouterPolyligne
 
 CODERETOUR CmdAjout::AjouterRectangle() {
     // découpage de la commande
@@ -177,10 +183,16 @@ CODERETOUR CmdAjout::AjouterRectangle() {
             return GOOD;
         }
         else
+        {
+#ifdef VERBOSE
+            cerr<<ERREUR<<endl;
+            cerr<<COMMENTAIRES<<"Une Forme avec le nom \""<<name<<"\" existe déjà."<<endl;
+#endif
             return ERR_NAME_EXISTS;
+        }
 
     }
-}//----- Fin de ~AjouterRectangle
+}//----- Fin de AjouterRectangle
 
 CODERETOUR CmdAjout::AjouterLigne() {
     // découpage de la commande
@@ -219,9 +231,15 @@ CODERETOUR CmdAjout::AjouterLigne() {
             return GOOD;
         }
         else
+        {
+#ifdef VERBOSE
+            cerr<<ERREUR<<endl;
+            cerr<<COMMENTAIRES<<"Une Forme avec le nom \""<<name<<"\" existe déjà."<<endl;
+#endif
             return ERR_NAME_EXISTS;
+        }
     }
-}//----- Fin de ~AjouterLigne
+}//----- Fin de AjouterLigne
 
 CODERETOUR CmdAjout::AjouterSelection() {
     // decoupage de la commande
@@ -259,11 +277,17 @@ CODERETOUR CmdAjout::AjouterSelection() {
             return GOOD;
         }
         else
+        {
+#ifdef VERBOSE
+            cerr<<ERREUR<<endl;
+            cerr<<COMMENTAIRES<<"Une Forme avec le nom \""<<name<<"\" existe déjà."<<endl;
+#endif
             return ERR_NAME_EXISTS;
+        }
     }
-}//----- Fin de ~AjouterSelection
+}//----- Fin de AjouterSelection
 
 void CmdAjout::afficheConfirmation(string type, string nom) const {
-    cout <<"OK"<<endl;
+    cout <<OK<<endl;
     cout <<COMMENTAIRES<<"Nouvelle Objet => "<<type<<" : "<<nom<<endl;
 }

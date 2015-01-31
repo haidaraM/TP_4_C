@@ -18,6 +18,7 @@ using namespace std;
 //------------------------------------------------------------- Constantes 
 const string COMMENTAIRES("#");
 const string ERREUR("ERR");
+const string OK("OK");
 
 // Code de retour des Commandes
 enum CODERETOUR {
