@@ -28,6 +28,7 @@ using namespace std;
 
 //----------------------------------------------------------- Types privés
 
+//#define MAP //Pour la mise au Point
 
 //----------------------------------------------------------------- PUBLIC
 //-------------------------------------------------------- Fonctions amies
@@ -75,6 +76,10 @@ CODERETOUR CmdAjout::AjouterCercle() {
         if(!geoEdit.FormeExiste(name))
         {
             Cercle *c = new Cercle(name,rayon, abscisse, ordonnee);
+#ifdef MAP
+            cout<<"Addresse de l'objet cree : "<<c<<endl;
+#endif
+
             // Ajout à la MAP
             geoEdit.Ajouter(name, c);
 #ifdef VERBOSE
@@ -119,6 +124,10 @@ CODERETOUR CmdAjout::AjouterPolyligne() {
         if(!geoEdit.FormeExiste(name))
         {
             Polyligne * pl = new Polyligne(name, lesPoints);
+#ifdef MAP
+            cout<<"Addresse de l'objet cree : "<<pl<<endl;
+#endif
+
             // Ajout à la MAP
             geoEdit.Ajouter(name, pl);
 #ifdef VERBOSE
@@ -157,6 +166,9 @@ CODERETOUR CmdAjout::AjouterRectangle() {
         if(!geoEdit.FormeExiste(name))
         {
             Rectangle *r = new Rectangle(name,lesPoints);
+#ifdef MAP
+            cout<<"Addresse de l'objet cree : "<<r<<endl;
+#endif
             // Ajout à la MAP
             geoEdit.Ajouter(name, r);
 #ifdef VERBOSE
@@ -196,6 +208,9 @@ CODERETOUR CmdAjout::AjouterLigne() {
         if(!geoEdit.FormeExiste(name))
         {
             Ligne *ligne = new Ligne(name,lesPoints);
+#ifdef MAP
+            cout<<"Addresse de l'objet cree : "<<ligne<<endl;
+#endif
             // Ajout à la MAP
             geoEdit.Ajouter(name, ligne);
 #ifdef VERBOSE
@@ -235,6 +250,7 @@ CODERETOUR CmdAjout::AjouterSelection() {
             vector<Forme *> formesSelectionnes = geoEdit.GetFormeSelection(p1, p2);
 
             Selection *sc = new Selection(name, formesSelectionnes);
+
             geoEdit.Ajouter(name, sc);
 #ifdef VERBOSE
             afficheConfirmation("Selection",name);

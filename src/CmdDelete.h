@@ -10,9 +10,8 @@
 #define CMD_SUPPRESSION_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include "Commande.h"
-#include "CmdDelete.h"
 #include "Forme.h"
+#include "Commande.h"
 //------------------------------------------------------------- Constantes 
 
 //------------------------------------------------------------------ Types 

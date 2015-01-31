@@ -11,7 +11,7 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include <map>
-#include <stack> //Pile
+#include <stack>
 #include <string>
 
 #include "Point.h"

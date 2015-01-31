@@ -13,9 +13,8 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
-#include <sstream> // stringstream
+#include <sstream>
 
-#include "Rectangle.h"
 #include "Commande.h"
 #include "Modele.h"
 

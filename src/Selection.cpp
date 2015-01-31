@@ -47,10 +47,21 @@ void Selection::Supprimer()
 
 void Selection::Deplacer(long abs, long ord)
 {
-	for(vector<Forme*>::const_iterator i = contenues.begin(); i != contenues.end();++i)
+	for(unsigned int i = 0; i < contenues.size();++i)
 	{
-			(*i)->Deplacer(abs, ord);
-	}
+        if(contenues[i] != NULL)
+        {
+#ifdef MAP
+            cout<<"Appel de Selection::Deplacer(long,long) "<<endl;
+            cout<<"Addresse de l'objet en deplacement : "<<contenues[i]<<endl;
+#endif
+            contenues[i]->Deplacer(abs, ord);
+        }
+        else
+        {
+            cout<<"C'est null"<<endl;
+        }
+    }
 }
 
 bool Selection::InclusDans(Point p1, Point p2)const
@@ -62,14 +73,14 @@ bool Selection::InclusDans(Point p1, Point p2)const
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Selection::Selection (string name, vector <Forme*> f): Forme(name)
+Selection::Selection (string name, vector <Forme*> f): Forme(name), contenues(f)
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Selection>" << endl;
 #endif
-	contenues = f;
+	//contenues.assign(f.begin(),f.end());
 } //----- Fin de Selection
 
 
@@ -80,6 +91,7 @@ Selection::~Selection ( )
 #ifdef MAP
     cout << "Appel au destructeur de <Selection>" << endl;
 #endif
+
 } //----- Fin de ~Selection
 
 

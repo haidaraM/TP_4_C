@@ -10,7 +10,6 @@
 #define CMD_MOVE_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include "Commande.h"
 #include "CmdAjout.h"
 //------------------------------------------------------------- Constantes 
 

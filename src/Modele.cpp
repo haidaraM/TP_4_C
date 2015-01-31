@@ -16,7 +16,6 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Modele.h"
-#include <fstream>
 
 //------------------------------------------------------------- Constantes
 
@@ -116,9 +115,13 @@ bool Modele::FormeExiste(string nom) const {
 
 Forme *Modele::GetForme(string name)const  {
     if(FormeExiste(name))
+    {
         return formes.find(name)->second;
+    }
     else
-        return nullptr;
+    {
+        return NULL;
+    }
 }
 
 void Modele::Undo() {
@@ -172,6 +175,5 @@ vector<Forme *> Modele::GetFormeSelection(Point p1, Point p2) const
             formesSelectionnees.push_back(it->second);
         }
     }
-
     return formesSelectionnees;
 }

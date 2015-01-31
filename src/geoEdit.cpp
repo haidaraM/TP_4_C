@@ -25,20 +25,20 @@ using namespace std;
 int main()
 {
     Modele & geoEdit = Modele::Instance(); // Instance principale de l'appli
-    string courant; // chaine representant la commande courante
+    string ligneCourante; // chaine representant la commande courante
 
     do{
         // recuperation de la ligne
-        getline(cin, courant, '\n');
+        getline(cin, ligneCourante, '\n');
 
         // recuperation du type de la Commande
-        size_t pos = courant.find(' ');
-        string type = courant.substr(0, pos);
+        size_t pos = ligneCourante.find(' ');
+        string type = ligneCourante.substr(0, pos);
 
         // Commande d'ajout de Forme
         if(type == "C" || type =="PL" || type =="R" || type =="L")
         {
-            CmdSimple *cmd = new CmdSimple(courant);
+            CmdSimple *cmd = new CmdSimple(ligneCourante);
             CODERETOUR resCmd = cmd->Execute();
             if(resCmd == GOOD)
             {
@@ -50,15 +50,15 @@ int main()
             }
         }
         // Ajout d'une Selection
-        else if(type =="S")
+        else if(type=="S")
         {
-            CmdSimple cmd(courant);
+            CmdSimple cmd(ligneCourante);
             cmd.Execute();
         }
         // Deplacement d'un objet
         else if(type =="MOVE")
         {
-            CmdMove *cmd = new CmdMove(courant);
+            CmdMove *cmd = new CmdMove(ligneCourante);
             CODERETOUR resCmd = cmd->Execute();
             if(resCmd == GOOD)
             {
@@ -87,7 +87,7 @@ int main()
         // Chargement d'un fichier
         else if(type =="LOAD")
         {
-            CmdLoad *cmd = new CmdLoad(courant);
+            CmdLoad *cmd = new CmdLoad(ligneCourante);
             if(cmd->Execute() ==GOOD)
             {
                 geoEdit.Empiler(cmd);
@@ -100,17 +100,17 @@ int main()
         // Sauvegarde du Modele
         else if(type =="SAVE")
         {
-            CmdSave save(courant);
+            CmdSave save(ligneCourante);
             save.Execute();
         }
         // Suppression de Forme
         else if(type=="DELETE")
         {
-            CmdDelete cmd(courant);
+            CmdDelete cmd(ligneCourante);
             cmd.Execute();
         }
 
-    }while (courant != "EXIT");
+    }while (ligneCourante != "EXIT");
 
     return 0;
 }

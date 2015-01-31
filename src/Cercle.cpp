@@ -60,15 +60,6 @@ bool Cercle::InclusDans(Point p1, Point p2)const
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Cercle::Cercle ( const Cercle & unCercle )
-        :Forme(unCercle.nom), centre(unCercle.centre), rayon(unCercle.rayon)
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Cercle>" << endl;
-#endif
-
-} //----- Fin de Cercle (constructeur de copie)
-
 
 Cercle::Cercle (string name, unsigned int ray, long x, long y ):Forme(name),centre(x,y), rayon(ray)
 // Algorithme :

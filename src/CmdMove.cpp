@@ -67,12 +67,14 @@ CODERETOUR CmdMove::Execute()
     }
     else
     {
+
         string name = arguments[1];
         long dx = strtol(arguments[2].c_str(), NULL, 10);
         long dy = strtol(arguments[3].c_str(), NULL, 10);
 
         if(geoEdit.FormeExiste(name))
         {
+           // cout<<"1 : Appel de CmdMove::Execute() "<<endl;
             geoEdit.GetForme(name)->Deplacer(dx, dy);
             return GOOD;
         }
@@ -84,6 +86,7 @@ CODERETOUR CmdMove::Execute()
 
 CODERETOUR CmdMove::UnExecute()
 {
+   // cout<<"Appel de CmdMove::UnExecute() "<<endl;
     vector<string> arguments = decoupe();
     string name = arguments[1];
     long dx = strtol(arguments[2].c_str(), NULL, 10);

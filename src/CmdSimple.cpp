@@ -103,7 +103,11 @@ CODERETOUR CmdSimple::Execute() {
 CODERETOUR CmdSimple::UnExecute() {
     string nom = GetNom(); // Recuperation du nom de la forme
     Forme *f = geoEdit.GetForme(nom); // recuperation de la forme
-    delete f; //
+#ifdef MAP
+    cout <<"Addresse de l'objet recupére :"<<f<<endl;
+#endif
+    delete f;
+    f = NULL;
     geoEdit.EraseForme(nom); // Suppression de la MAP
     return GOOD;
 

@@ -44,16 +44,6 @@ void Forme::Supprimer()
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Forme::Forme ( const Forme & unForme )
-// Algorithme :
-//
-{
-	nom = unForme.nom;
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Forme>" << endl;
-#endif
-} //----- Fin de Forme (constructeur de copie)
-
 
 Forme::Forme (string name):nom(name)
 // Algorithme :

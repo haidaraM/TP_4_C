@@ -44,15 +44,6 @@ void Ligne::Afficher(ostream & flux)const
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Ligne::Ligne ( const Ligne & unLigne ) : Polyligne(unLigne.nom, unLigne.points)
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Ligne>" << endl;
-#endif
-} //----- Fin de Ligne (constructeur de copie)
-
 
 Ligne::Ligne (string name, vector <Point> p): Polyligne(name, p)
 // Algorithme :

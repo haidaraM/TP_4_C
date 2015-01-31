@@ -12,7 +12,6 @@
 //--------------------------------------------------- Interfaces utilisées
 #include <stack>
 
-#include "Commande.h"
 #include "CmdAjout.h"
 //------------------------------------------------------------- Constantes 
 
