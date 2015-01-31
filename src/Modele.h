@@ -64,11 +64,6 @@ public:
     //
     // Contrat : Commande valide
 
-    static Modele & Instance();
-    // Mode d'emploi : Renvoie une reference sur la seule instance de cette classe
-    //
-    // Contrat :
-
     bool FormeExiste(string nom)const;
     // Mode d'emploi : Verifie si le nom passé par en paramètre existe dans la map
     // Renvoie vrai si le nom existe, faux sinon
@@ -88,6 +83,11 @@ public:
 
     void SupprimerForme(Forme *uneForme);
     // Mode d'emploi : Supprime la forme des selections dans lesquelles elle se trouve
+
+    static Modele & Instance();
+    // Mode d'emploi : Renvoie une reference sur la seule instance de cette classe
+    //
+    // Contrat :
 
 //------------------------------------------------------------------ PRIVE
 
@@ -124,7 +124,6 @@ private:
 
     static Modele m_modele;
     // Attribut de Classe
-
 
     typedef map<const string, Forme *> Formes;
     Formes formes;

@@ -53,8 +53,18 @@ public:
     // Contrat :
     //
 
-    virtual void AjouteSelection(string nomSelection);
-    // Mode d'emploi : Ajoute un bom de selection dans le tableau
+    virtual void CasserLienVersForme(string nomForme);
+    // Mode d'emploi : Utilisée par la selection pour casser le lien avec les formes
+
+    string GetNom()const;
+    // Mode d'emploi : Renvoie le nom de la Forme
+
+    void AjouteSelection(string nomSelection);
+    // Mode d'emploi : Ajoute un nom de selection dans le tableau des selections
+    // signale à la Forme qu'elle fait partie d'une selection.
+
+    vector<string> GetSelections()const;
+    // Mode d'emploi : Recupère la liste des selections
 
     Forme (string name);
     // Mode d'emploi : Contructeur par défaut

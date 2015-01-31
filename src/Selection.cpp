@@ -39,9 +39,10 @@ void Selection::Afficher(ostream & flux)const
 
 void Selection::Supprimer()
 {	
-	for(vector<Forme*>::const_iterator i = contenues.begin(); i != contenues.end();++i)
+	for(unsigned int i = 0; i <contenues.size();++i)
 	{
-			(*i)->Supprimer();
+        if(contenues[i] != NULL)
+			contenues[i]->Supprimer();
 	}
 }
 
@@ -57,16 +58,13 @@ void Selection::Deplacer(long abs, long ord)
 #endif
             contenues[i]->Deplacer(abs, ord);
         }
-        else
-        {
-            cout<<"C'est null"<<endl;
-        }
     }
 }
 
 bool Selection::InclusDans(Point p1, Point p2)const
 {
 	// Une selection ne peut pas être selectionnée donc pas de vérification d'inclusion
+    // Dans le futur il suffira de modifier cette méthode si on souhaite cette fonctionnalité
     return false;
 }
 
@@ -108,4 +106,16 @@ void Selection::majFormeSelectionnees() {
         contenues[i]->AjouteSelection(nom);
     }
 
+}
+
+void Selection::CasserLienVersForme(string nomForme) {
+    bool ok = false;
+    for(unsigned int i=0; i<contenues.size() && !ok; ++i)
+    {
+        if(contenues[i]->GetNom() == nomForme)
+        {
+            contenues[i] = NULL;
+            ok = true;
+        }
+    }
 }

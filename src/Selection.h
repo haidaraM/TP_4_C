@@ -57,6 +57,10 @@ public:
     // Contrat :
     //
 
+    void CasserLienVersForme(string nomForme);
+    // Mode d'emploi : Casse le lien entre de la Selection vers la Forme
+
+
     Selection (string name, vector<Forme*> f);
     // Mode d'emploi : le nom de la selection et les formes qu'elle contiendra
     //
@@ -78,7 +82,7 @@ private:
 //------------------------------------------------------- Méthodes privées
 
     void majFormeSelectionnees();
-    // Mode d'emploi : signale aux Formes qu'il font partis de la selection
+    // Mode d'emploi : signale aux Forme qu'il font partis de la selection
 
 protected:
 //----------------------------------------------------- Attributs protégés
