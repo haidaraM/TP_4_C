@@ -121,7 +121,8 @@ CODERETOUR CmdDelete::Execute(bool afficheMsg)
 CODERETOUR CmdDelete::UnExecute(bool afficheMsg) {
     for(unsigned int i=0; i<formesSupprimees.size(); ++i)
     {
-        geoEdit.Ajouter(formesSupprimees[i]->GetNom(), formesSupprimees[i]);
+        if(formesSupprimees[i]!=NULL)
+            geoEdit.Ajouter(formesSupprimees[i]->GetNom(), formesSupprimees[i]);
     }
     formesSupprimees.clear();
 
@@ -131,8 +132,11 @@ CODERETOUR CmdDelete::UnExecute(bool afficheMsg) {
 void CmdDelete::deplacerFormes(vector<Forme *> &vector1) {
     for(unsigned int i = 0; i<vector1.size(); ++i)
     {
-        formesSupprimees.push_back(vector1[i]);
-        geoEdit.EraseForme(vector1[i]->GetNom());
+        if(vector1[i]!=NULL)
+        {
+            formesSupprimees.push_back(vector1[i]);
+            geoEdit.EraseForme(vector1[i]->GetNom());
+        }
     }
 
 }
