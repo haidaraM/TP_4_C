@@ -20,7 +20,8 @@
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types 
-
+typedef map<const string, Forme *> Formes;
+typedef stack<Commande*> Commandes;
 //------------------------------------------------------------------------ 
 // Rôle de la classe <Modele>
 // Classe principale de l'application permettant de gerer touts les objets.
@@ -77,6 +78,17 @@ public:
     // Mode d'emploi supprime la forme de la map
     //
 
+    Formes GetMAPFormes()const;
+    // Mode d'emploi : Renvoie la map de Forme
+
+    void Clear();
+    // Mode d'emploi : Vide le modèle actuelle
+
+    void SetMAP(Formes &uneMap);
+    // Mode d'emploi : Remplace l'ancienne map par une nouvelle
+    //
+    // Contrat : ancienne map vide
+
     vector<Forme *> GetFormeSelection(Point p1, Point p2) const;
     // Mode d'emploi : Renvoi les Formes qui sont comprises entre
     // p1 et p2
@@ -126,11 +138,10 @@ private:
     static Modele m_modele;
     // Attribut de Classe
 
-    typedef map<const string, Forme *> Formes;
     Formes formes;
     // La map contenant toutes les formes (Cercle, Rectangle...)
 
-    typedef stack<Commande*> Commandes;
+
     Commandes cmdToUndo;
     // Pile de Pointeur vers les commandes exécutées et qui sont "UNDOABLE"
 

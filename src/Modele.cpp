@@ -192,3 +192,15 @@ void Modele::CasserLien(Forme *uneForme) {
         f->CasserLienVersForme(nomForme);
     }
 }
+
+Formes Modele::GetMAPFormes() const {
+    return formes;
+}
+
+void Modele::Clear() {
+    formes.clear();
+}
+
+void Modele::SetMAP(Formes &uneMap) {
+    formes = uneMap;
+}

@@ -17,6 +17,7 @@ using namespace std;
 #include "CmdSave.h"
 #include "CmdDelete.h"
 #include "CmdMove.h"
+#include "CmdClear.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -115,6 +116,13 @@ int main()
             {
                 delete cmd;
             }
+        }
+        // suppression de toutes les formes
+        else if(type =="CLEAR")
+        {
+            CmdClear *cmd = new CmdClear(ligneCourante);
+            cmd->Execute();
+            geoEdit.Empiler(cmd);
         }
 
     }while (ligneCourante != "EXIT");

@@ -51,7 +51,11 @@ CmdClear::~CmdClear ( )
 #ifdef MAP
     cout << "Appel au destructeur de <CmdClear>" << endl;
 #endif
-
+    Formes::iterator it;
+    for(it=formes.begin(); it != formes.end(); it++)
+    {
+        delete it->second;
+    }
    
 } //----- Fin de ~CmdClear
 
@@ -62,13 +66,14 @@ CmdClear::~CmdClear ( )
 
 //------------------------------------------------------- Méthodes privées
 CODERETOUR CmdClear::UnExecute() {
- 
+    geoEdit.SetMAP(formes);
+    formes.clear();
     return GOOD;
 }
 
 CODERETOUR CmdClear::Execute()
 {
-
-
+    formes = geoEdit.GetMAPFormes();
+    geoEdit.Clear();
     return GOOD;
 }

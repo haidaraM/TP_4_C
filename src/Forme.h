@@ -61,6 +61,8 @@ public:
 
     string GetNom()const;
     // Mode d'emploi : Renvoie le nom de la Forme
+    //
+    // Contrat : Aucun
 
     void AjouteSelection(string nomSelection);
     // Mode d'emploi : Ajoute un nom de selection dans le tableau des selections
@@ -91,9 +93,6 @@ private:
 
 protected:
 //----------------------------------------------------- Attributs protégés
-
-    bool supprimer;
-    // L'etat de la Forme
 
     string nom;
     // Le nom de la Forme

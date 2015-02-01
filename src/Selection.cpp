@@ -84,7 +84,7 @@ Selection::Selection (string name, vector <Forme*> f): Forme(name), contenues(f)
 
 
 Selection::~Selection ( )
-// Algorithme :
+// Algorithme : Aucun! L'application principale se chargera de liberer la mémoire
 //
 {
 #ifdef MAP
