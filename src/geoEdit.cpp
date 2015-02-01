@@ -106,8 +106,15 @@ int main()
         // Suppression de Forme
         else if(type=="DELETE")
         {
-            CmdDelete cmd(ligneCourante);
-            cmd.Execute();
+            CmdDelete *cmd = new CmdDelete(ligneCourante);
+            if(cmd->Execute() == GOOD)
+            {
+                geoEdit.Empiler(cmd);
+            }
+            else
+            {
+                delete cmd;
+            }
         }
 
     }while (ligneCourante != "EXIT");

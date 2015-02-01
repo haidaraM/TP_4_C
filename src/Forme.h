@@ -56,6 +56,9 @@ public:
     virtual void CasserLienVersForme(string nomForme);
     // Mode d'emploi : Utilisée par la selection pour casser le lien avec les formes
 
+    virtual vector <Forme*> GetFormesSelectionnees()const;
+    // Mode d'emploi : Utilisée par la selection pour
+
     string GetNom()const;
     // Mode d'emploi : Renvoie le nom de la Forme
 

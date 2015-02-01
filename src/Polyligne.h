@@ -44,7 +44,7 @@ public:
     // Contrat : Aucun
     //
 
-    virtual void Deplacer (long dx, long dy);
+    virtual void Deplacer (long dx, long y);
     // Mode d'emploi : Deplace tous les points du polyligne
     //
 

@@ -29,10 +29,13 @@ class CmdDelete : public Commande
 public:
 //----------------------------------------------------- Méthodes publiques
     CODERETOUR Execute();
-    // Mode d'emploi : Execute toutes les commande du fichier
+    // Mode d'emploi : Execute la commande
 
     CODERETOUR UnExecute();
-    // Mode d'emploi : Annule toutes les commandes du fichier
+    // Mode d'emploi : Annule la commande
+    // Remarque :le UNDO de la suppression d'une forme n'entraine pas sa remise dans les
+    // selections dans lesquelles elles étaient
+    // Contrat : commande excutée une fois
 
 //-------------------------------------------- Constructeurs - destructeur
     CmdDelete(string name );
@@ -54,6 +57,8 @@ protected:
 
 private:
 //------------------------------------------------------- Méthodes privées
+    void deplacerFormes(vector<Forme *>&);
+    // Mode d'emploi : Deplace un ensemble dans les Formes supprimées
 
 protected:
 //----------------------------------------------------- Attributs protégés

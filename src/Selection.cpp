@@ -119,3 +119,7 @@ void Selection::CasserLienVersForme(string nomForme) {
         }
     }
 }
+
+vector<Forme *> Selection::GetFormesSelectionnees() const {
+    return contenues;
+}

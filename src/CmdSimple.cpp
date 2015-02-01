@@ -97,16 +97,14 @@ CODERETOUR CmdSimple::Execute() {
 
     return resultat;
 }
-/* NOTE : Pour la suppression je n'utilise pas la variable supprimer dans Forme pour le moment
-        C'est juste une version de test en attendant tes commentaires
- */
+
 CODERETOUR CmdSimple::UnExecute() {
     string nom = GetNom(); // Recuperation du nom de la forme
     Forme *f = geoEdit.GetForme(nom); // recuperation de la forme
 #ifdef MAP
     cout <<"Addresse de l'objet recupére :"<<f<<endl;
 #endif
-    geoEdit.SupprimerForme(f);
+    geoEdit.CasserLien(f); // casse les liens
     delete f;
     geoEdit.EraseForme(nom); // Suppression de la MAP
     return GOOD;

@@ -81,8 +81,9 @@ public:
     // Mode d'emploi : Renvoi les Formes qui sont comprises entre
     // p1 et p2
 
-    void SupprimerForme(Forme *uneForme);
-    // Mode d'emploi : Supprime la forme des selections dans lesquelles elle se trouve
+    void CasserLien(Forme *uneForme);
+    // Mode d'emploi : Casse les liens Selection -> Forme de la forme
+    // passée en paramètre
 
     static Modele & Instance();
     // Mode d'emploi : Renvoie une reference sur la seule instance de cette classe

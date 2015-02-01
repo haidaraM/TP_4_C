@@ -38,13 +38,9 @@ using namespace std;
 
 void Forme::Supprimer()
 {
-	supprimer = true;
-
     // On vide le tableau
     selections.clear();
 }
-
-
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -52,7 +48,6 @@ Forme::Forme (string name):nom(name)
 // Algorithme :
 //
 {
-	supprimer = false;
 #ifdef MAP
     cout << "Appel au constructeur de <Forme>" << endl;
 #endif
@@ -90,4 +85,10 @@ string Forme::GetNom() const {
 void Forme::CasserLienVersForme(string nomForme) {
     // Ne fais rien si c'est pas une selection
     // Pourra etre reutilisée pour des amériolations futures
+}
+
+vector<Forme *> Forme::GetFormesSelectionnees() const {
+    // Ne fais rien si c'est pas une selection
+    vector<Forme*> vf;
+    return vf;
 }
