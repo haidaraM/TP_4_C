@@ -98,18 +98,23 @@ CODERETOUR CmdLoad::Execute(bool afficheMsg)
             int nbFormes = 0;
             ifstream file(fileName);
             if (file.good()) {
-                while (std::getline(file, ligne)) {
-                    nbFormes++;
-                    CmdAjout *cmd = new CmdAjout(ligne);
-                    resCmd = cmd->Execute(afficheMsg); // execution
-                    if (resCmd != GOOD) {
-                        /* Si une commande échoue on annule toutes les commandes et
+                while (std::getline(file, ligne))
+                {
+                    // on ignore les commentaires
+                    if(ligne[0] !='#')
+                    {
+                        CmdAjout *cmd = new CmdAjout(ligne);
+                        resCmd = cmd->Execute(afficheMsg); // execution
+                        if (resCmd != GOOD) {
+                            /* Si une commande échoue on annule toutes les commandes et
                      on arrete la lecture du fichier*/
-                        UnExecute(afficheMsg);
-                        delete cmd;
-                        return ERR_READING_FILE;
+                            UnExecute(afficheMsg);
+                            delete cmd;
+                            return ERR_READING_FILE;
+                        }
+                        nbFormes++;
+                        cmds.push_back(cmd); // ajout dans la pile
                     }
-                    cmds.push_back(cmd); // ajout dans la pile
                 }
 #ifdef VERBOSE
         afficherConfirmation(fileName,nbFormes);
