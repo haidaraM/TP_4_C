@@ -22,6 +22,7 @@ using namespace std;
 #include "Ligne.h"
 #include "Selection.h"
 
+
 //------------------------------------------------------------- Constantes
 
 //---------------------------------------------------- Variables de classe
@@ -55,7 +56,7 @@ CmdAjout::~CmdAjout ( )
 
 
 
-CODERETOUR CmdAjout::AjouterCercle() {
+CODERETOUR CmdAjout::AjouterCercle(bool afficheMsg) {
     // découpage de la commande
     vector<string> arguments = decoupe();
 
@@ -83,6 +84,7 @@ CODERETOUR CmdAjout::AjouterCercle() {
             // Ajout à la MAP
             geoEdit.Ajouter(name, c);
 #ifdef VERBOSE
+        if(afficheMsg)
             afficheConfirmation("Cercle",name);
 #endif
             return GOOD;
@@ -98,7 +100,7 @@ CODERETOUR CmdAjout::AjouterCercle() {
     }
 }//----- Fin de AjouterCercle
 
-CODERETOUR CmdAjout::AjouterPolyligne() {
+CODERETOUR CmdAjout::AjouterPolyligne(bool afficheMsg) {
     // découpage de la commande
     vector<string> arguments = decoupe();
 
@@ -131,6 +133,7 @@ CODERETOUR CmdAjout::AjouterPolyligne() {
             // Ajout à la MAP
             geoEdit.Ajouter(name, pl);
 #ifdef VERBOSE
+        if(afficheMsg)
             afficheConfirmation("Polyligne",name);
 #endif
             return GOOD;
@@ -146,7 +149,7 @@ CODERETOUR CmdAjout::AjouterPolyligne() {
     }
 }//----- Fin de AjouterPolyligne
 
-CODERETOUR CmdAjout::AjouterRectangle() {
+CODERETOUR CmdAjout::AjouterRectangle(bool afficheMsg) {
     // découpage de la commande
     vector<string> arguments = decoupe();
 
@@ -178,6 +181,7 @@ CODERETOUR CmdAjout::AjouterRectangle() {
             // Ajout à la MAP
             geoEdit.Ajouter(name, r);
 #ifdef VERBOSE
+        if(afficheMsg)
             afficheConfirmation("Rectangle",name);
 #endif
             return GOOD;
@@ -194,7 +198,7 @@ CODERETOUR CmdAjout::AjouterRectangle() {
     }
 }//----- Fin de AjouterRectangle
 
-CODERETOUR CmdAjout::AjouterLigne() {
+CODERETOUR CmdAjout::AjouterLigne(bool afficheMsg) {
     // découpage de la commande
     vector<string> arguments = decoupe();
 
@@ -226,6 +230,7 @@ CODERETOUR CmdAjout::AjouterLigne() {
             // Ajout à la MAP
             geoEdit.Ajouter(name, ligne);
 #ifdef VERBOSE
+        if(afficheMsg)
             afficheConfirmation("Ligne",name);
 #endif
             return GOOD;
@@ -241,7 +246,7 @@ CODERETOUR CmdAjout::AjouterLigne() {
     }
 }//----- Fin de AjouterLigne
 
-CODERETOUR CmdAjout::AjouterSelection() {
+CODERETOUR CmdAjout::AjouterSelection(bool afficheMsg) {
     // decoupage de la commande
     vector<string> arguments = decoupe();
     if(arguments.size() != 6)

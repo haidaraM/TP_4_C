@@ -11,6 +11,7 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "CmdSimple.h"
+
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types 
@@ -28,23 +29,23 @@ class CmdAjout : public CmdSimple
 public:
 //----------------------------------------------------- Méthodes publiques
 
-    CODERETOUR AjouterCercle();
+    CODERETOUR AjouterCercle(bool afficheMsg = true);
     // Mode d'emploi : Ajout d'un cercle
     // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
 
-    CODERETOUR AjouterPolyligne();
+    CODERETOUR AjouterPolyligne(bool afficheMsg = true);
     // Mode d'emploi : AJout d'un polyligne
     // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
 
-    CODERETOUR AjouterRectangle();
+    CODERETOUR AjouterRectangle(bool afficheMsg = true);
     // Mode d'emploi : Ajoute un rectangle à la Map
     // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
 
-    CODERETOUR AjouterLigne();
+    CODERETOUR AjouterLigne(bool afficheMsg = true);
     // Mode d'emploi : Ajoute une ligne à la Map
     // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
 
-    CODERETOUR AjouterSelection();
+    CODERETOUR AjouterSelection(bool afficheMsg = true);
     // Mode d'emploi : Ajoute  une selection
     // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
     // Retour : 1 si la commande s'est bien exécutée

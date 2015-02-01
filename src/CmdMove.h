@@ -25,12 +25,12 @@ class CmdMove : public Commande
 //----------------------------------------------------------------- PUBLIC
 public:
 //----------------------------------------------------- Méthodes publiques
-    CODERETOUR Execute();
+    CODERETOUR Execute(bool afficheMsg = true);
     // Mode d'emploi : Execute la commande
     //
     // Contrat :
 
-    CODERETOUR UnExecute();
+    CODERETOUR UnExecute(bool afficheMsg = true);
     // Mode d'emploi : Annule la commande c'est à dire le déplacement de la
     // forme
     //

@@ -56,7 +56,7 @@ CmdMove::~CmdMove ( )
 
 } //----- Fin de ~CmdMove
 
-CODERETOUR CmdMove::Execute()
+CODERETOUR CmdMove::Execute(bool afficheMsg)
 {
     // découpage de la commande
     vector<string> arguments = decoupe();
@@ -74,13 +74,15 @@ CODERETOUR CmdMove::Execute()
 
         if(geoEdit.FormeExiste(name))
         {
-            // cout<<"1 : Appel de CmdMove::Execute() "<<endl;
             geoEdit.GetForme(name)->Deplacer(dx, dy);
+#ifdef VERBOSE
+            cout<<OK<<endl;
+            cout<<COMMENTAIRES<<"Forme : "<<name<<" déplaceé."<<endl;
+#endif
             return GOOD;
         }
         else
         {
-
 #ifdef VERBOSE
             cout<<ERREUR<<endl;
             cout <<COMMENTAIRES<<"Aucune Forme du nom de : "<<name<<endl;
@@ -91,15 +93,18 @@ CODERETOUR CmdMove::Execute()
 
 }//----- Fin de Execute
 
-CODERETOUR CmdMove::UnExecute()
+CODERETOUR CmdMove::UnExecute(bool afficheMsg)
 {
-   // cout<<"Appel de CmdMove::UnExecute() "<<endl;
+
     vector<string> arguments = decoupe();
     string name = arguments[1];
     long dx = strtol(arguments[2].c_str(), NULL, 10);
     long dy = strtol(arguments[3].c_str(), NULL, 10);
 
     geoEdit.GetForme(name)->Deplacer(-dx, -dy);
+#ifdef VERBOSE
+    cout<<OK<<endl;
+#endif
 
     return GOOD;
 } //----- Fin de UnExecute

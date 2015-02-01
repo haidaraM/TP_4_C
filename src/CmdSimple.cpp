@@ -63,7 +63,7 @@ string CmdSimple::GetNom() const
 //----------------------------------------------------- Méthodes protégées
 
 //------------------------------------------------------- Méthodes privées
-CODERETOUR CmdSimple::Execute() {
+CODERETOUR CmdSimple::Execute(bool afficheMsg) {
     stringstream stream(commande);
     string type;
     getline(stream,type,' ');
@@ -72,22 +72,22 @@ CODERETOUR CmdSimple::Execute() {
     if(type =="C")
     {
         CmdAjout cmd(commande);
-        resultat = cmd.AjouterCercle();
+        resultat = cmd.AjouterCercle(afficheMsg);
     }
     else if (type =="PL")
     {
         CmdAjout cmd(commande);
-        resultat= cmd.AjouterPolyligne();
+        resultat= cmd.AjouterPolyligne(afficheMsg);
     }
     else if(type =="L")
     {
         CmdAjout cmd(commande);
-        resultat= cmd.AjouterLigne();
+        resultat= cmd.AjouterLigne(afficheMsg);
     }
     else if(type =="R")
     {
         CmdAjout cmd(commande);
-        resultat= cmd.AjouterRectangle();
+        resultat= cmd.AjouterRectangle(afficheMsg);
     }
     else if(type =="S")
     {
@@ -98,7 +98,7 @@ CODERETOUR CmdSimple::Execute() {
     return resultat;
 }
 
-CODERETOUR CmdSimple::UnExecute() {
+CODERETOUR CmdSimple::UnExecute(bool afficheMsg) {
     string nom = GetNom(); // Recuperation du nom de la forme
     Forme *f = geoEdit.GetForme(nom); // recuperation de la forme
 #ifdef MAP
@@ -107,6 +107,11 @@ CODERETOUR CmdSimple::UnExecute() {
     geoEdit.CasserLien(f); // casse les liens
     delete f;
     geoEdit.EraseForme(nom); // Suppression de la MAP
-    return GOOD;
 
+#ifdef VERBOSE
+    if(afficheMsg)
+        cout<<OK<<endl;
+#endif
+
+    return GOOD;
 }

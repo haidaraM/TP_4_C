@@ -112,7 +112,7 @@ void Selection::CasserLienVersForme(string nomForme) {
     bool ok = false;
     for(unsigned int i=0; i<contenues.size() && !ok; ++i)
     {
-        if(contenues[i]->GetNom() == nomForme)
+        if(contenues[i]!= NULL && contenues[i]->GetNom() == nomForme)
         {
             contenues[i] = NULL;
             ok = true;

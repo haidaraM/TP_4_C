@@ -29,11 +29,11 @@ class CmdSave : public CmdSimple
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    CODERETOUR Execute();
+    CODERETOUR Execute(bool afficheMsg = true);
     // Mode d'emploi : Sauvegarde le modele courant dans un fichier
     // COntrat :
 
-    CODERETOUR UnExecute();
+    CODERETOUR UnExecute(bool afficheMsg = true);
     // Mode d'emploi : Ne fais rien car une sauvegarde n'est pas UNDOABLE
     // Contrat : Aucun
 

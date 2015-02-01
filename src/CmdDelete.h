@@ -28,10 +28,10 @@ class CmdDelete : public Commande
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    CODERETOUR Execute();
+    CODERETOUR Execute(bool afficheMsg = true);
     // Mode d'emploi : Execute la commande
 
-    CODERETOUR UnExecute();
+    CODERETOUR UnExecute(bool afficheMsg = true);
     // Mode d'emploi : Annule la commande
     // Remarque :le UNDO de la suppression d'une forme n'entraine pas sa remise dans les
     // selections dans lesquelles elles étaient

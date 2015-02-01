@@ -61,7 +61,7 @@ CmdDelete::~CmdDelete( )
 
 //----------------------------------------------------- Méthodes protégées
 
-CODERETOUR CmdDelete::Execute()
+CODERETOUR CmdDelete::Execute(bool afficheMsg)
 {
     vector<string> arguments = decoupe();
 
@@ -115,12 +115,17 @@ CODERETOUR CmdDelete::Execute()
 }
 
 //------------------------------------------------------- Méthodes privées
-CODERETOUR CmdDelete::UnExecute() {
+CODERETOUR CmdDelete::UnExecute(bool afficheMsg) {
     for(unsigned int i=0; i<formesSupprimees.size(); ++i)
     {
         geoEdit.Ajouter(formesSupprimees[i]->GetNom(), formesSupprimees[i]);
     }
     formesSupprimees.clear();
+#ifdef VERBOSE
+        if(afficheMsg)
+            cout<<OK<<endl;
+#endif
+
     return GOOD;
 }
 

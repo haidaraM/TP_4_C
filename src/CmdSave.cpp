@@ -56,7 +56,7 @@ CmdSave::~CmdSave ( )
 } //----- Fin de ~CmdSave
 
 
-CODERETOUR CmdSave::Execute() {
+CODERETOUR CmdSave::Execute(bool afficheMsg) {
     // découpage de la commande
     vector<string> resultat = decoupe();
 
@@ -78,6 +78,6 @@ CODERETOUR CmdSave::Execute() {
     }
 }//----- Fin de Execute
 
-CODERETOUR CmdSave::UnExecute() {
+CODERETOUR CmdSave::UnExecute(bool afficheMsg) {
     return GOOD;
 }

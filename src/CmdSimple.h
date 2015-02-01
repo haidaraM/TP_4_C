@@ -29,12 +29,13 @@ class CmdSimple : public Commande
 public:
 //----------------------------------------------------- Méthodes publiques
 
-    virtual CODERETOUR Execute();
+    virtual CODERETOUR Execute(bool afficheMsg = true);
     // Mode d'emploi : Execute la commande
+    // Par défaut on affiche un message de confirmation
 
-    virtual CODERETOUR UnExecute();
+    virtual CODERETOUR UnExecute(bool afficheMsg = true);
     // Mode d'emploi : Annule la commande
-    //
+    // Par défaut on affiche un message de confirmation.
     // Contrat : commande excutée une fois
 
 

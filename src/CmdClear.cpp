@@ -65,13 +65,18 @@ CmdClear::~CmdClear ( )
 //----------------------------------------------------- Méthodes protégées
 
 //------------------------------------------------------- Méthodes privées
-CODERETOUR CmdClear::UnExecute() {
+CODERETOUR CmdClear::UnExecute(bool afficheMsg) {
     geoEdit.SetMAP(formes);
     formes.clear();
+#ifdef VERBOSE
+    if(afficheMsg)
+        cout<<OK<<endl;
+#endif
+
     return GOOD;
 }
 
-CODERETOUR CmdClear::Execute()
+CODERETOUR CmdClear::Execute(bool afficheMsg)
 {
     formes = geoEdit.GetMAPFormes();
     geoEdit.Clear();

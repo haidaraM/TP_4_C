@@ -29,10 +29,10 @@ class CmdLoad : public Commande
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    CODERETOUR Execute();
+    CODERETOUR Execute(bool afficheMsg = true);
     // Mode d'emploi : Execute toutes les commande du fichier
 
-    CODERETOUR UnExecute();
+    CODERETOUR UnExecute(bool afficheMsg = true);
     // Mode d'emploi : Annule toutes les commandes du fichier
     //
     // Contrat : commande excutée une fois

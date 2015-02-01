@@ -67,21 +67,29 @@ CmdLoad::~CmdLoad ( )
 //----------------------------------------------------- Méthodes protégées
 
 //------------------------------------------------------- Méthodes privées
-CODERETOUR CmdLoad::UnExecute() {
+CODERETOUR CmdLoad::UnExecute(bool afficheMsg) {
+    //desactivation des messages
+    afficheMsg = false;
    while(!cmds.empty())
    {
-       cmds.top()->UnExecute();
+       cmds.top()->UnExecute(afficheMsg);
        delete cmds.top();
        cmds.pop();
    }
+#ifdef VERBOSE
+            cout<<OK<<endl;
+#endif
+
     return GOOD;
 }//----- Fin de UnExecute
 
-CODERETOUR CmdLoad::Execute()
+CODERETOUR CmdLoad::Execute(bool afficheMsg)
 // Algorithme : Lecture séquentielle du fichier en exécutant les commandes.
 // Si erreur, annulation des commandes exécutées. Le fichier ne sera lue
 // qu'une seule fois.
 {
+    //desactivation des messages d'ajout
+    afficheMsg = false;
     vector<string> resultat = decoupe();
     CODERETOUR resCmd = GOOD;
     if (resultat.size() != 2)
@@ -101,7 +109,7 @@ CODERETOUR CmdLoad::Execute()
             {
                 nbFormes++;
                 CmdAjout * cmd = new CmdAjout(ligne);
-                resCmd = cmd->Execute(); // execution
+                resCmd = cmd->Execute(afficheMsg); // execution
                 cmds.push(cmd); // ajout dans la pile
                 if(resCmd != GOOD)
                 {
@@ -130,5 +138,5 @@ CODERETOUR CmdLoad::Execute()
 
 void CmdLoad::afficherConfirmation(string file,int nbFormes) const {
     cout<<OK<<endl;
-    cout<<COMMENTAIRES<<"Fichier "<<file<< " ajouté avec " <<nbFormes<< " Forme(s) ajoutée(s) "<<endl;
+    cout<<COMMENTAIRES<<"Fichier "<<file<< " ajouté avec " <<nbFormes<< " Forme(s). "<<endl;
 }

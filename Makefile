@@ -39,6 +39,12 @@ $(EXE): $(OBJ) $(MAIN_OBJ)
 #Mettre les dependances particulieres ici
 $(MAIN_OBJ): $(INT)
 
+$(OBJ_DIR)/CmdSimple.o: $(SRC_DIR)/Commande.h $(SRC_DIR)/Forme.h $(SRC_DIR)/Modele.h $(SRC_DIR)/Commande.h $(SRC_DIR)/CmdAjout.h
+
+$(OBJ_DIR)/CmdDelete.o: $(SRC_DIR)/Commande.h $(SRC_DIR)/Forme.h $(SRC_DIR)/Modele.h
+
+$(OBJ_DIR)/CmdAjout.o: $(SRC_DIR)/CmdSimple.h $(SRC_DIR)/Modele.h
+
 #Generation des fichiers obj
 $(OBJ_DIR)/%.o:$(SRC_DIR)/%.cpp
 	$(ECHO) "Compilation de $< (generation de $@)"

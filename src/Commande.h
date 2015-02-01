@@ -45,11 +45,11 @@ class Commande
 //----------------------------------------------------------------- PUBLIC
 public:
 
-    virtual CODERETOUR Execute()=0;
+    virtual CODERETOUR Execute(bool afficheMsg = true)=0;
     // Mode d'emploi : Execute la commande
 
 
-    virtual CODERETOUR UnExecute()=0;
+    virtual CODERETOUR UnExecute(bool afficheMsg = true)=0;
     // Mode d'emploi : Annule la commande
     //
     // Contrat : commande excutée une fois

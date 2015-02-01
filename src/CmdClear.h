@@ -30,10 +30,10 @@ class CmdClear : public Commande
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    CODERETOUR Execute();
+    CODERETOUR Execute(bool afficheMsg = true);
     // Mode d'emploi : Execute la commande
 
-    CODERETOUR UnExecute();
+    CODERETOUR UnExecute(bool afficheMsg = true);
     // Mode d'emploi : Annule la commande
     //
     // Contrat : commande excutée une fois
