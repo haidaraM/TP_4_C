@@ -17,6 +17,7 @@ using namespace std;
 #include "CmdSave.h"
 #include "CmdDelete.h"
 #include "CmdMove.h"
+#include "CmdClear.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -106,8 +107,22 @@ int main()
         // Suppression de Forme
         else if(type=="DELETE")
         {
-            CmdDelete cmd(ligneCourante);
-            cmd.Execute();
+            CmdDelete *cmd = new CmdDelete(ligneCourante);
+            if(cmd->Execute() == GOOD)
+            {
+                geoEdit.Empiler(cmd);
+            }
+            else
+            {
+                delete cmd;
+            }
+        }
+        // suppression de toutes les formes
+        else if(type =="CLEAR")
+        {
+            CmdClear *cmd = new CmdClear(ligneCourante);
+            cmd->Execute();
+            geoEdit.Empiler(cmd);
         }
 
     }while (ligneCourante != "EXIT");

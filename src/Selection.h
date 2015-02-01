@@ -60,6 +60,8 @@ public:
     void CasserLienVersForme(string nomForme);
     // Mode d'emploi : Casse le lien entre de la Selection vers la Forme
 
+    vector <Forme*> GetFormesSelectionnees()const;
+    // Mode d'emploi : Renvoie un vecteur de Forme composant la selection
 
     Selection (string name, vector<Forme*> f);
     // Mode d'emploi : le nom de la selection et les formes qu'elle contiendra
@@ -91,6 +93,7 @@ private:
 //------------------------------------------------------- Attributs privés
     vector <Forme*> contenues;
     // Pointeur vers les formes se trouvant dans la selection
+
 //---------------------------------------------------------- Classes amies
 
 //-------------------------------------------------------- Classes privées

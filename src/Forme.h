@@ -56,8 +56,13 @@ public:
     virtual void CasserLienVersForme(string nomForme);
     // Mode d'emploi : Utilisée par la selection pour casser le lien avec les formes
 
+    virtual vector <Forme*> GetFormesSelectionnees()const;
+    // Mode d'emploi : Utilisée par la selection pour
+
     string GetNom()const;
     // Mode d'emploi : Renvoie le nom de la Forme
+    //
+    // Contrat : Aucun
 
     void AjouteSelection(string nomSelection);
     // Mode d'emploi : Ajoute un nom de selection dans le tableau des selections
@@ -88,9 +93,6 @@ private:
 
 protected:
 //----------------------------------------------------- Attributs protégés
-
-    bool supprimer;
-    // L'etat de la Forme
 
     string nom;
     // Le nom de la Forme

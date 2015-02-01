@@ -10,9 +10,10 @@
 #define CMD_CLEAR_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include <stack>
-
+#include <map>
+#include "Forme.h"
 #include "Commande.h"
+#include "Modele.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types 
@@ -30,10 +31,12 @@ class CmdClear : public Commande
 public:
 //----------------------------------------------------- Méthodes publiques
     CODERETOUR Execute();
-    // Mode d'emploi : Execute toutes les commande du fichier
+    // Mode d'emploi : Execute la commande
 
     CODERETOUR UnExecute();
-    // Mode d'emploi : Annule toutes les commandes du fichier
+    // Mode d'emploi : Annule la commande
+    //
+    // Contrat : commande excutée une fois
 
     CmdClear (string name );
     // Mode d'emploi : Constructeur par défaut
@@ -60,7 +63,9 @@ protected:
 
 private:
 //------------------------------------------------------- Attributs privés
-   
+
+    Formes formes;
+    // La map contenant toutes les formes (Cercle, Rectangle...)
 
 //---------------------------------------------------------- Classes amies
 
