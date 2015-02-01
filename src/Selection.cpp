@@ -71,7 +71,7 @@ bool Selection::InclusDans(Point p1, Point p2)const
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Selection::Selection (string name, vector <Forme*> f): Forme(name), contenues(f)
+Selection::Selection (string name, vector <Forme*>& f): Forme(name), contenues(f)
 // Algorithme :
 //
 {

@@ -63,7 +63,7 @@ public:
     vector <Forme*> GetFormesSelectionnees()const;
     // Mode d'emploi : Renvoie un vecteur de Forme composant la selection
 
-    Selection (string name, vector<Forme*> f);
+    Selection (string name, vector<Forme*>& f);
     // Mode d'emploi : le nom de la selection et les formes qu'elle contiendra
     //
     // Contrat : Aucun
