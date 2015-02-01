@@ -2,7 +2,7 @@
                            CmdLoad  -  description
                              -------------------
     début                : ${date}
-    copyright            : (C) ${year} par ${user}
+    copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
 
 //---------- Interface de la classe <CmdLoad> (fichier CmdLoad.h) ------
@@ -29,10 +29,10 @@ class CmdLoad : public Commande
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    CODERETOUR Execute(bool afficheMsg = true);
+    CODERETOUR Execute(bool afficheMsg = false);
     // Mode d'emploi : Execute toutes les commande du fichier
 
-    CODERETOUR UnExecute(bool afficheMsg = true);
+    CODERETOUR UnExecute(bool afficheMsg = false);
     // Mode d'emploi : Annule toutes les commandes du fichier
     //
     // Contrat : commande excutée une fois
@@ -61,14 +61,18 @@ private:
     void afficherConfirmation(string file,int nbFormes)const;
     // Mode d'emploi : Affiche une confirmation de la lecture du fichier
 
+    void reExecute();
+    // Mode d'emploi : Execute les commandes déjà enregistrées lorsqu'on fait
+    // un REDO
+
 protected:
 //----------------------------------------------------- Attributs protégés
 
 private:
 //------------------------------------------------------- Attributs privés
-    typedef stack<CmdAjout *> Commandes;
-    Commandes cmds;
-    // pile de commande lues dans le fichier
+
+    vector<CmdAjout*>cmds;
+    // Vecteur de commandes qui ont été lues dans le fichier
 
 //---------------------------------------------------------- Classes amies
 

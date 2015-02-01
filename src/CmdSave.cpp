@@ -1,8 +1,8 @@
 /*************************************************************************
                            CmdSave  -  description
                              -------------------
-    début                : ${date}
-    copyright            : (C) ${year} par ${user}
+    début                : 26/01/2015
+    copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
 
 //---------- Réalisation de la classe <CmdSave> (fichier CmdSave.cpp) --

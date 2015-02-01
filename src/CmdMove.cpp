@@ -1,8 +1,8 @@
 /*************************************************************************
                            CmdMove  -  description
                              -------------------
-    début                : ${date}
-    copyright            : (C) ${year} par ${user}
+    début                : 27/01/2015
+    copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
 
 //---------- Réalisation de la classe <CmdMove> (fichier CmdMove.cpp) --
@@ -67,7 +67,6 @@ CODERETOUR CmdMove::Execute(bool afficheMsg)
     }
     else
     {
-
         string name = arguments[1];
         long dx = strtol(arguments[2].c_str(), NULL, 10);
         long dy = strtol(arguments[3].c_str(), NULL, 10);
@@ -102,9 +101,6 @@ CODERETOUR CmdMove::UnExecute(bool afficheMsg)
     long dy = strtol(arguments[3].c_str(), NULL, 10);
 
     geoEdit.GetForme(name)->Deplacer(-dx, -dy);
-#ifdef VERBOSE
-    cout<<OK<<endl;
-#endif
 
     return GOOD;
 } //----- Fin de UnExecute

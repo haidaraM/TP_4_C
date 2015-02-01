@@ -2,7 +2,7 @@
                            CmdClear  -  description
                              -------------------
     début                : 30/01/2015
-    copyright            : (C) 2015 par ${user}
+    copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
 
 //---------- Interface de la classe <CmdClear> (fichier CmdClear.h) ------

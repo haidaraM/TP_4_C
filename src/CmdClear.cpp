@@ -68,11 +68,6 @@ CmdClear::~CmdClear ( )
 CODERETOUR CmdClear::UnExecute(bool afficheMsg) {
     geoEdit.SetMAP(formes);
     formes.clear();
-#ifdef VERBOSE
-    if(afficheMsg)
-        cout<<OK<<endl;
-#endif
-
     return GOOD;
 }
 
@@ -80,5 +75,9 @@ CODERETOUR CmdClear::Execute(bool afficheMsg)
 {
     formes = geoEdit.GetMAPFormes();
     geoEdit.Clear();
+#ifdef VERBOSE
+           cout<<OK<<endl;
+           cout<<COMMENTAIRES<<"Modèle vidé"<<endl;
+#endif
     return GOOD;
 }

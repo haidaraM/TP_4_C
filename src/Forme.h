@@ -71,6 +71,7 @@ public:
     vector<string> GetSelections()const;
     // Mode d'emploi : Recupère la liste des selections
 
+//-------------------------------------------- Constructeurs - destructeur
     Forme (string name);
     // Mode d'emploi : Contructeur par défaut
     //

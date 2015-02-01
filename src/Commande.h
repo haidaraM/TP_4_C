@@ -49,7 +49,7 @@ public:
     // Mode d'emploi : Execute la commande
 
 
-    virtual CODERETOUR UnExecute(bool afficheMsg = true)=0;
+    virtual CODERETOUR UnExecute(bool afficheMsg = false)=0;
     // Mode d'emploi : Annule la commande
     //
     // Contrat : commande excutée une fois
@@ -71,12 +71,6 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
-
-    CODERETOUR Supprimer();
-    // Mode d'emploi : Supprimer une Forme ou une selection
-    //
-    // Contrat :
-
 
     bool allDigit(std::vector<string> vect, unsigned int pos=2)const;
     // Mode d'emploi : Test si c'est un vecteur de string n'est composé que de

@@ -53,11 +53,11 @@ CmdLoad::~CmdLoad ( )
     cout << "Appel au destructeur de <CmdLoad>" << endl;
 #endif
 
-    while(!cmds.empty())
+    for(unsigned int i =0; i<cmds.size(); i++)
     {
-        delete cmds.top();
-        cmds.pop();
+        delete cmds[i];
     }
+    cmds.clear();
 
 } //----- Fin de ~CmdLoad
 
@@ -70,16 +70,10 @@ CmdLoad::~CmdLoad ( )
 CODERETOUR CmdLoad::UnExecute(bool afficheMsg) {
     //desactivation des messages
     afficheMsg = false;
-   while(!cmds.empty())
-   {
-       cmds.top()->UnExecute(afficheMsg);
-       delete cmds.top();
-       cmds.pop();
-   }
-#ifdef VERBOSE
-            cout<<OK<<endl;
-#endif
-
+    for(unsigned int i =0; i<cmds.size(); i++)
+    {
+        cmds[i]->UnExecute(afficheMsg);
+    }
     return GOOD;
 }//----- Fin de UnExecute
 
@@ -90,53 +84,62 @@ CODERETOUR CmdLoad::Execute(bool afficheMsg)
 {
     //desactivation des messages d'ajout
     afficheMsg = false;
-    vector<string> resultat = decoupe();
-    CODERETOUR resCmd = GOOD;
-    if (resultat.size() != 2)
+    if(cmds.empty()) // s'il n'ya pas de commandes déjà enregistrée
     {
-        AfficherErreurCommande();
-        return ERR_SYNTAXE;
-    }
-    else
-    {
-        string fileName = resultat[1];
-        string ligne;
-        int nbFormes = 0;
-        ifstream file(fileName);
-        if (file.good())
-        {
-            while(std::getline(file, ligne))
-            {
-                nbFormes++;
-                CmdAjout * cmd = new CmdAjout(ligne);
-                resCmd = cmd->Execute(afficheMsg); // execution
-                cmds.push(cmd); // ajout dans la pile
-                if(resCmd != GOOD)
-                {
-                    /* Si une commande échoue on annule toutes les commandes et
+        vector<string> resultat = decoupe();
+        CODERETOUR resCmd = GOOD;
+        if (resultat.size() != 2) {
+            AfficherErreurCommande();
+            return ERR_SYNTAXE;
+        }
+        else {
+            string fileName = resultat[1];
+            string ligne;
+            int nbFormes = 0;
+            ifstream file(fileName);
+            if (file.good()) {
+                while (std::getline(file, ligne)) {
+                    nbFormes++;
+                    CmdAjout *cmd = new CmdAjout(ligne);
+                    resCmd = cmd->Execute(afficheMsg); // execution
+                    if (resCmd != GOOD) {
+                        /* Si une commande échoue on annule toutes les commandes et
                      on arrete la lecture du fichier*/
-                    UnExecute();
-                    return ERR_READING_FILE;
+                        UnExecute(afficheMsg);
+                        delete cmd;
+                        return ERR_READING_FILE;
+                    }
+                    cmds.push_back(cmd); // ajout dans la pile
                 }
-            }
-
 #ifdef VERBOSE
         afficherConfirmation(fileName,nbFormes);
 #endif
-            return resCmd;
-        }
-        else
-        {
+                return resCmd;
+            }
+            else {
 #ifdef VERBOSE
             cerr <<ERREUR<<endl;
             cerr << COMMENTAIRES<<"Probleme de lecture du fichier "<<fileName << endl;
 #endif
-            return ERR_FILE;
-        }
+                return ERR_FILE;
+            }
+        } // fin else arguments valides
+    } // fin if empty
+    else
+    {
+        reExecute();
+        return GOOD;
     }
 }//----- Fin de Execute
 
 void CmdLoad::afficherConfirmation(string file,int nbFormes) const {
     cout<<OK<<endl;
     cout<<COMMENTAIRES<<"Fichier "<<file<< " ajouté avec " <<nbFormes<< " Forme(s). "<<endl;
+}
+
+void CmdLoad::reExecute() {
+    for(unsigned int i =0; i<cmds.size(); i++)
+    {
+        cmds[i]->Execute(false);
+    }
 }

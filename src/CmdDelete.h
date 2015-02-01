@@ -1,8 +1,8 @@
 /*************************************************************************
-                           CmdSuppression  -  description
+                           CmdDelete  -  description
                              -------------------
-    début                : ${date}
-    copyright            : (C) ${year} par ${user}
+    début                : 30/01/2015
+    copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
 
 //---------- Interface de la classe <CmdDelete> (fichier CmdDelete.h) ------

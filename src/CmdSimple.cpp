@@ -108,10 +108,5 @@ CODERETOUR CmdSimple::UnExecute(bool afficheMsg) {
     delete f;
     geoEdit.EraseForme(nom); // Suppression de la MAP
 
-#ifdef VERBOSE
-    if(afficheMsg)
-        cout<<OK<<endl;
-#endif
-
     return GOOD;
 }

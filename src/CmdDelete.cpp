@@ -1,9 +1,10 @@
 /*************************************************************************
-                           CmdSuppression  -  description
-                             -------------------
-    début                : ${date}
-    copyright            : (C) ${year} par ${user}
+                        CmdDelete  -  description
+                            -------------------
+début                : 30/01/2015
+copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
+
 
 //---------- Réalisation de la classe <CmdDelete> (fichier CmdDelete.cpp) --
 
@@ -108,7 +109,9 @@ CODERETOUR CmdDelete::Execute(bool afficheMsg)
                 geoEdit.EraseForme(arguments[i]); //
             }
         }
-        cout<<OK<<endl;
+#ifdef VERBOSE
+           cout<<OK<<endl;
+#endif
         return GOOD;
 
     }
@@ -121,10 +124,6 @@ CODERETOUR CmdDelete::UnExecute(bool afficheMsg) {
         geoEdit.Ajouter(formesSupprimees[i]->GetNom(), formesSupprimees[i]);
     }
     formesSupprimees.clear();
-#ifdef VERBOSE
-        if(afficheMsg)
-            cout<<OK<<endl;
-#endif
 
     return GOOD;
 }

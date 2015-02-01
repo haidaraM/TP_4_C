@@ -98,12 +98,8 @@ vector<string> Commande::decoupe(char delim) const
     return resultat;
 }
 
-CODERETOUR Commande::Supprimer() {
-    return GOOD;
-}
-
 void AfficherErreurCommande() {
 
-    cout<<ERREUR<<endl;
-    cout<<COMMENTAIRES<<CMD_PARAM_ERR<<endl;
+    cerr<<ERREUR<<endl;
+    cerr<<COMMENTAIRES<<CMD_PARAM_ERR<<endl;
 }

@@ -131,6 +131,9 @@ void Modele::Undo() {
         cmdToRedo.push(cmdToUndo.top());// met la commande sur les commandes à Redo
         cmdToUndo.top()->UnExecute(); // Annule la commande
         cmdToUndo.pop(); // Depilement
+#ifdef VERBOSE
+           cout<<OK<<endl;
+#endif
     }
 }
 
@@ -141,6 +144,10 @@ void Modele::Redo()
         cmdToRedo.top()->Execute(); // Execution
         cmdToUndo.push(cmdToRedo.top()); //Empilement sur Undo
         cmdToRedo.pop(); // Depilement de Redo
+#ifdef VERBOSE
+           cout<<OK<<endl;
+#endif
+
     }
 }
 
