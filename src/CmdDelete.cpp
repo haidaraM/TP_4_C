@@ -87,29 +87,30 @@ CODERETOUR CmdDelete::Execute(bool afficheMsg)
         // Sauvegarde puis suppression des formes
         for(unsigned int i = 1; i<arguments.size(); ++i)
         {
-            /*
-            // ajout dans le vecteur de Formes supprimées
-            formesSupprimees.push_back(geoEdit.GetForme(arguments[i]));
-            // Suppression de la Map
-            geoEdit.EraseForme(arguments[i]); */
-
             Forme *f = geoEdit.GetForme(arguments[i]);
             if(f != NULL)
             {
-                geoEdit.CasserLien(f); // casse les liens
+                // Casse le lien que la Forme a avec les Selections
+                geoEdit.CasserLien(f);
 
-                // supprime la forme : selection et autres
 
-                f->Supprimer();
-                formesSupprimees.push_back(f);
-
-                // si c'est une selection on deplace les formes qu'elle contient
+                /* Dans le cas ou c'est une selection, on va aussi recuperer les Formes qu'elle
+                contient pour les mettres dans le vecteur de Formes supprimées
+                 */
                 vector<Forme *> formesAdeplacer = f->GetFormesSelectionnees();
                 deplacerFormes(formesAdeplacer);
-                geoEdit.EraseForme(arguments[i]); //
+
+                // on vide la Forme
+                f->Supprimer();
+                // on met la Forme dans le vecteur des Formes supprimées
+                formesSupprimees.push_back(f);
+
+                //On supprime la Forme de la MAP après l'avoir sauvegarder
+                geoEdit.EraseForme(arguments[i]);
             }
         }
 #ifdef VERBOSE
+        if(afficheMsg)
            cout<<OK<<endl;
 #endif
         return GOOD;
@@ -138,5 +139,4 @@ void CmdDelete::deplacerFormes(vector<Forme *> &vector1) {
             geoEdit.EraseForme(vector1[i]->GetNom());
         }
     }
-
 }

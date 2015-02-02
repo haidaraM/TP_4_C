@@ -141,7 +141,7 @@ void Modele::Redo()
 {
     if(!cmdToRedo.empty())
     {
-        cmdToRedo.top()->Execute(); // Execution
+        cmdToRedo.top()->Execute(false); // Execution
         cmdToUndo.push(cmdToRedo.top()); //Empilement sur Undo
         cmdToRedo.pop(); // Depilement de Redo
 #ifdef VERBOSE

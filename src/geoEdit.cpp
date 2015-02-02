@@ -50,7 +50,7 @@ int main()
                 delete cmd;
             }
         }
-        // Ajout d'une Selection
+        // Ajout d'une Selection : la commande de création de la selection n'est pas UNDOABLE
         else if(type=="S")
         {
             CmdSimple cmd(ligneCourante);

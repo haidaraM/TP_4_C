@@ -1,10 +1,8 @@
 #!/bin/bash
 # Ce script test le temps que mon programme fait en moyenne pour lire dans un fichier lors l'un LOAD
 # Commandes utilisées : time, grep, cut, echo.
-# Il prend en paramètre un le nombre de commande d'ajout d'ajout que qui doit genéré dans le fichier qui sera lu par le programme
-# Le premiere parametre correspond au nombre de commandes d'ajout du fichier à generer
+# Il prend en premier paramètre le nombre de commande d'ajout qui doit être genéré dans le fichier qui sera lu par le programme
 # le second correpond au nombre de tests.
-# La moyenne est réalisée sur 10 tests par défaut
 
 if ! [[ $# -eq 2 ]]; then
 	echo "Paramètres Invalides"
@@ -31,7 +29,7 @@ done 2> file.temp
 # On recupere le usr et le sys time
 grep -v real file.temp | cut -d"m" -f 2,3 | cut -d"s" -f1 > temps.temp
 
-#on supprime les lignes vides
+#on supprime les lignes vides meme si je crois que c'est pas nécéssaire
 cat temps.temp | grep -v ^$ > temps2.temp
 
 #echo "Compilation du programme calculant la moyenne..."

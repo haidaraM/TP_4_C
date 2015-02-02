@@ -39,7 +39,7 @@ void Rectangle::Afficher(ostream & flux)const
 	long o1 = points[0].GetOrdonnee();
 	long a2 = points[1].GetAbscisse();
 	long o2 = points[1].GetOrdonnee();
-	flux<<"R "<<nom<<" "<<a1<<" "<<o1<<" "<<a2<<" "<<o2<<"\r\n";
+	flux<<"R "<<nom<<" "<<a1<<" "<<o1<<" "<<a2<<" "<<o2<<endl;
 }
 
 

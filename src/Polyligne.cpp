@@ -40,7 +40,7 @@ void Polyligne::Afficher(ostream & flux)const
 			o = i->GetOrdonnee();
 			flux<<" "<<a<<" "<<o;
 	}
-	flux<<"\r\n";
+	flux<<endl;
 }
 
 bool Polyligne::InclusDans(Point p1, Point p2) const
