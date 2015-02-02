@@ -1,0 +1,10 @@
+OK
+#Nouvel Objet => Cercle : c1
+OK
+#Nouvel Objet => Rectangle : r1
+OK
+#Nouvel Objet => Polyligne : pl1
+OK
+C c1 0 0 10
+R r1 0 0 10 10
+
