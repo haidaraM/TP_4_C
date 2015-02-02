@@ -295,5 +295,5 @@ CODERETOUR CmdAjout::AjouterSelection(bool afficheMsg) {
 
 void CmdAjout::afficheConfirmation(string type, string nom) const {
     cout <<OK<<endl;
-    cout <<COMMENTAIRES<<"Nouvelle Objet => "<<type<<" : "<<nom<<endl;
+    cout <<COMMENTAIRES<<"Nouvel Objet => "<<type<<" : "<<nom<<endl;
 }
