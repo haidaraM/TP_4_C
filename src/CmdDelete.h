@@ -31,7 +31,7 @@ public:
     CODERETOUR Execute(bool afficheMsg = true);
     // Mode d'emploi : Execute la commande
 
-    CODERETOUR UnExecute(bool afficheMsg = true);
+    CODERETOUR UnExecute(bool afficheMsg = false);
     // Mode d'emploi : Annule la commande
     // Remarque :le UNDO de la suppression d'une forme n'entraine pas sa remise dans les
     // selections dans lesquelles elles étaient

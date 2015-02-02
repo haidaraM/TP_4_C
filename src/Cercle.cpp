@@ -35,7 +35,7 @@ using namespace std;
 
 void Cercle::Afficher(ostream & flux)const
 {
-    flux<<"C "<<nom<<" "<<centre.GetAbscisse()<<" "<<centre.GetOrdonnee()<<" "<<rayon<<"\r\n";
+    flux<<"C "<<nom<<" "<<centre.GetAbscisse()<<" "<<centre.GetOrdonnee()<<" "<<rayon<<endl;
 }
 
 bool Cercle::InclusDans(Point p1, Point p2)const

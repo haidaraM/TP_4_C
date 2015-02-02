@@ -44,6 +44,7 @@ void Selection::Supprimer()
         if(contenues[i] != NULL)
 			contenues[i]->Supprimer();
 	}
+    contenues.clear();
 }
 
 void Selection::Deplacer(long abs, long ord)
