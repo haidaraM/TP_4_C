@@ -35,6 +35,7 @@ MESSAGE		= "Compilation réussie"
 $(EXE): $(OBJ) $(MAIN_OBJ)
 	$(LINK) -o $(EXE) $^ $(EDLFLAGS)
 	$(ECHO) $(MESSAGE)
+	cp $(EXE) ./Tests/
 
 #Mettre les dependances particulieres ici
 $(MAIN_OBJ): $(INT)
@@ -55,6 +56,7 @@ $(OBJ_DIR)/%.o:$(SRC_DIR)/%.cpp
 clean:
 	$(ECHO) "Nettoyage..."
 	$(RM) -fv $(OBJ_DIR)/*.o $(EXE)
+	$(RM) ./Tests/$(EXE)
 
 backup: clean
 	$(ECHO) "Creation d'un dossier propre pour rendu et archivage des répertoires src, doc, Tests et Makefile..."
