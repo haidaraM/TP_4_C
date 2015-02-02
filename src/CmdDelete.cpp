@@ -139,5 +139,4 @@ void CmdDelete::deplacerFormes(vector<Forme *> &vector1) {
             geoEdit.EraseForme(vector1[i]->GetNom());
         }
     }
-
 }
