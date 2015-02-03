@@ -71,6 +71,10 @@ CODERETOUR CmdSave::Execute(bool afficheMsg) {
         if(file.good())
         {
             geoEdit.Sauvegarder(file);
+
+#ifdef VERBOSE
+        cout<<OK<<endl;
+#endif
             return GOOD;
         }
         else

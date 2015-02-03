@@ -186,7 +186,8 @@ vector<Forme *> Modele::GetFormeSelection(Point p1, Point p2) const
     return formesSelectionnees;
 }
 
-void Modele::CasserLien(const Forme *uneForme) {
+void Modele::CasserLien(const Forme *uneForme)
+{
     /* récuperation de la liste des Selection à qui on doit signaler qu'une
      de leur forme vient d'etre supprimée */
     vector<string> lesSelections = uneForme->GetSelections();
@@ -196,11 +197,12 @@ void Modele::CasserLien(const Forme *uneForme) {
     for(unsigned int i =0; i<lesSelections.size(); ++i)
     {
         Forme * f = GetForme(lesSelections[i]);
-        f->CasserLienVersForme(nomForme);
+        f->EnleveForme(nomForme);
     }
 }
 
-Formes Modele::GetMAPFormes() const {
+Formes Modele::GetMAPFormes() const
+{
     return formes;
 }
 

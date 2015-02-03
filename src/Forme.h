@@ -32,7 +32,7 @@ class Forme
 public:
 //----------------------------------------------------- Méthodes publiques
     virtual void Afficher(ostream & flux)const = 0;
-    // Mode d'emploi : Affiche les descripteurs de la forme c'est à la dire
+    // Mode d'emploi : Affiche les descripteurs de la forme c'est à dire la
     // commande utilisée lors de la création de l'objet.
     //
     // Contrat : fournir un flux valide
@@ -41,23 +41,29 @@ public:
     virtual bool InclusDans(Point p1, Point p2)const =0;
     // Mode d'emploi : Verifie si la forme se trouve entre p1 et p2
     // Renvoie vrai si c'est le cas, 0 sinon
+    //
+    // Contrat :
 
     virtual void Deplacer (long x, long y) =0;
-    // Mode d'emploi : Deplace tous les points de la forme
-    // Si la Forme est une selection, toutes les formes de la selection
-    // seront déplacées.
+    // Mode d'emploi : Deplace le Forme
+    //
+    // Contrat :
 
     virtual void Supprimer ();
     // Mode d'emploi : Supprime la Forme dans les selections dans lesquelles
-    // elle se trouve
-    // Contrat :
+    // elle se trouve.
     //
+    // Contrat :
 
-    virtual void CasserLienVersForme(string nomForme);
-    // Mode d'emploi : Utilisée par la selection pour casser le lien avec les formes
+    virtual void EnleveForme(string nomForme);
+    // Mode d'emploi : Enlève une Forme de la selection
+    //
+    // Contrat :
 
     virtual vector <Forme*> GetFormesSelectionnees()const;
-    // Mode d'emploi : Utilisée par la selection pour
+    // Mode d'emploi : Renvoie les Formes composant une selection
+    //
+    // Contrat :
 
     string GetNom()const;
     // Mode d'emploi : Renvoie le nom de la Forme
@@ -65,11 +71,15 @@ public:
     // Contrat : Aucun
 
     void AjouteSelection(string nomSelection);
-    // Mode d'emploi : Ajoute un nom de selection dans le tableau des selections
-    // signale à la Forme qu'elle fait partie d'une selection.
+    // Mode d'emploi : Signale à la forme qu'elle fait partie de la selection
+    // dont le nom est passé en paramètre
+    //
+    // Contrat : nomSelection non vide
 
     vector<string> GetSelections()const;
-    // Mode d'emploi : Recupère la liste des selections
+    // Mode d'emploi : Recupère la liste des selections d'une forme
+    //
+    // Contrat : Aucun
 
 //-------------------------------------------- Constructeurs - destructeur
     Forme (string name);
