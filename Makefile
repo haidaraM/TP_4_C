@@ -1,8 +1,8 @@
 EXE 		= geoEdit
 
 #Directives du préprocesseur pour les #ifdef
-VERBOSE     = VERBOSE
-#VERBOSE    = NO_VERBOSE
+#VERBOSE     = VERBOSE
+VERBOSE    = NO_VERBOSE
 #MAP         = MAP
 MAP        = NO_MAP
 DEFINE      = -D$(VERBOSE) -D$(MAP)

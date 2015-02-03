@@ -120,7 +120,7 @@ CODERETOUR CmdLoad::Execute(bool afficheMsg)
                 }
 #ifdef CALCUL_PERF
                 double fin = give_time();
-                cout<<fin - debut<<endl;
+                cerr<<fin - debut<<endl;
 #endif
 
 #ifdef VERBOSE
@@ -128,7 +128,8 @@ CODERETOUR CmdLoad::Execute(bool afficheMsg)
 #endif
                 return resCmd;
             }
-            else {
+            else
+            {
 #ifdef VERBOSE
             cerr <<ERREUR<<endl;
             cerr << COMMENTAIRES<<"Probleme de lecture du fichier "<<fileName << endl;

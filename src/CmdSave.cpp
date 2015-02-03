@@ -71,7 +71,7 @@ CODERETOUR CmdSave::Execute(bool afficheMsg) {
             geoEdit.Sauvegarder(file);
 #ifdef CALCUL_PERF
                 double fin = give_time();
-                cout<<fin - debut<<endl;
+                cerr<<fin - debut<<endl;
 #endif
 
 #ifdef VERBOSE
