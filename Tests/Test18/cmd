@@ -1,0 +1,6 @@
+C c1 1 1 2
+C c2 2 2 5
+DELETE c1
+MOVE c1 10 10
+LIST
+EXIT
