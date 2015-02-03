@@ -23,7 +23,7 @@ echo "Création du fichier en cours..."
 echo "Exécution des tests en cours..."
 for I in `seq 1 ${NB_TEST}`; do
 	echo "Test numéro $I..." 
-	time ../geoEdit <gros_test.temp; 
+	time ../geoEdit < load.txt; 
 done 2> file.temp
 
 # On recupere le usr et le sys time
