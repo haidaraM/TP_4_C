@@ -5,10 +5,8 @@ OK
 OK
 #Nouvel Objet => Polyligne : pl1
 OK
-C c1 1 1 10
-R r1 1 1 10 10
+#Nouvel Objet => Selection : sel1
+#Nombre d'objets dans la selection : 1
 OK
-C c1 1 1 10
 PL pl1 20 20 50 50
-R r1 1 1 10 10
 

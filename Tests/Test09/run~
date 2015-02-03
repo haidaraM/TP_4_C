@@ -1,0 +1,4 @@
+PATH=$PATH:../../Tests/
+geoEdit < cmd1
+geoEdit < cmd2
+

@@ -1,0 +1,6 @@
+R r1 10 20 30 40
+PL pl1 10 10 20 20 30 30
+LIST
+LOAD a.txt
+LIST
+EXIT

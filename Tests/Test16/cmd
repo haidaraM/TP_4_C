@@ -1,0 +1,7 @@
+LOAD a.txt
+LIST
+UNDO
+LIST
+REDO
+LIST
+EXIT
