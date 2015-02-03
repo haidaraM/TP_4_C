@@ -25,6 +25,6 @@ int main(int argc, char const *argv[])
     cout << "UNDO" << endl;
     cout << "REDO" << endl;
     cout << "LIST" << endl; */
-    //cout << "EXIT" << endl; 
+    cout << "EXIT" << endl; 
     return 0;
 }

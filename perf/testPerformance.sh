@@ -1,5 +1,5 @@
 #!/bin/bash
-# Ce script test le temps que mon programme fait en moyenne pour lire dans un fichier lors l'un LOAD
+# Ce script test le temps que mon programme fait en moyenne pour lire sur l'entrée standard
 # Commandes utilisées : time, grep, cut, echo.
 # Il prend en premier paramètre le nombre de commande d'ajout qui doit être genéré dans le fichier qui sera lu par le programme
 # le second correpond au nombre de tests.
@@ -23,7 +23,7 @@ echo "Création du fichier en cours..."
 echo "Exécution des tests en cours..."
 for I in `seq 1 ${NB_TEST}`; do
 	echo "Test numéro $I..." 
-	time ../geoEdit < load.txt; 
+	time ../geoEdit < gros_test.temp; 
 done 2> file.temp
 
 # On recupere le usr et le sys time
