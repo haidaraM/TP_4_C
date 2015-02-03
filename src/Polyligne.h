@@ -44,9 +44,11 @@ public:
     // Contrat : Aucun
     //
 
-    virtual void Deplacer (long dx, long y);
-    // Mode d'emploi : Deplace tous les points du polyligne
+    virtual void Deplacer (long dx, long dy);
+    // Mode d'emploi : Deplace tous les points du polyligne de dx vers l'abscisse
+    // et dy vers les ordonnées.
     //
+    // COntrat :
 
 
 //-------------------------------------------- Constructeurs - destructeur

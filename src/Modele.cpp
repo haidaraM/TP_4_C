@@ -210,6 +210,6 @@ void Modele::Clear() {
     formes.clear();
 }
 
-void Modele::SetMAP(Formes &uneMap) {
+void Modele::SetMAP(const Formes &uneMap) {
     formes = uneMap;
 }

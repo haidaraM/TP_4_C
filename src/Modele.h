@@ -26,7 +26,7 @@ typedef stack<Commande*> Commandes;
 // Rôle de la classe <Modele>
 // Classe principale de l'application permettant de gerer touts les objets.
 // Il n'y aura qu'une seule instance de cette classe partagée par les
-// Commande. Ceci sera possible grâce au pattern Singleton.
+// Commande. Ceci sera assuré grâce au pattern Singleton.
 //
 //------------------------------------------------------------------------
 
@@ -40,51 +40,64 @@ public:
     void Ajouter(string name,  Forme *uneForme);
     // Mode d'emploi : Ajoute une Forme à la Map
     //
-    // Contrat :
+    // Contrat : Aucun
 
     void Undo();
-    // Mode d'emploi : Annule la derniere commande
+    // Mode d'emploi : Annule la derniere commande (s'il y en a) effectuée qui a eu un effet sur
+    // le modèle
     //
+    // Contrat : Aucun
 
     void Redo();
-    // Mode d'emploi : Execute la derniere commande annulée s'il y'en a
+    // Mode d'emploi : Execute la derniere commande annulée  (s'il y'en a)
     //
+    // Contrat : Aucun
 
     void Afficher(ostream & flux=cout)const;
     // Mode d'emploi : Affiche toutes les formes soit sur la sortie standard ou dans
-    // un fichier
+    // un fichier.
+    //
     // Contrat :
 
     void Sauvegarder(ofstream &file)const;
-    //Mode d'emploi : Sauvegarde les formes dans un fichier
+    //Mode d'emploi : Sauvegarde les formes dans un fichier.
     //
     // Contrat : fournir non vide
 
     void Empiler(Commande *uneCommande);
-    //Mode d'emploi : Empile la Commande sur la Pile des commandes
+    //Mode d'emploi : Ajoute la Commande sur la Pile des commandes.
     //
     // Contrat : Commande valide
 
-    bool FormeExiste(string nom)const;
-    // Mode d'emploi : Verifie si le nom passé par en paramètre existe dans la map
-    // Renvoie vrai si le nom existe, faux sinon
+    void Clear();
+    // Mode d'emploi : Vide le modèle actuelle c'est à dire supprime toutes les formes
+    // actuellement présente.
+    //
     // Contrat :
+
+    bool FormeExiste(string nom)const;
+    // Mode d'emploi : Verifie si le nom passé en paramètre existe dans la map
+    // Renvoie vrai si le nom existe, faux sinon
+    //
+    // Contrat : Aucun
 
     Forme *GetForme(string name)const;
     // Mode d'emploi : renvoie un pointeur sur la Forme si elle existe,
     // Null sinon
+    //
+    // Contrat :
 
     void EraseForme(string name);
-    // Mode d'emploi supprime la forme de la map
+    // Mode d'emploi : Supprime la forme dont le nom est passé en paramètre de la map
     //
+    // COntrat :
 
     Formes GetMAPFormes()const;
-    // Mode d'emploi : Renvoie la map de Forme
+    // Mode d'emploi : Renvoie toutes les formes actuellement présente
+    //
+    // Contrat :
 
-    void Clear();
-    // Mode d'emploi : Vide le modèle actuelle
-
-    void SetMAP(Formes &uneMap);
+    void SetMAP(const Formes &uneMap);
     // Mode d'emploi : Remplace l'ancienne map par une nouvelle
     //
     // Contrat : ancienne map vide
@@ -140,7 +153,6 @@ private:
 
     Formes formes;
     // La map contenant toutes les formes (Cercle, Rectangle...)
-
 
     Commandes cmdToUndo;
     // Pile de Pointeur vers les commandes exécutées et qui sont "UNDOABLE"
