@@ -13,6 +13,7 @@
 using namespace std;
 #include <iostream>
 #include <fstream>
+#include <ctime>
 
 //------------------------------------------------------ Include personnel
 #include "CmdLoad.h"
@@ -97,7 +98,9 @@ CODERETOUR CmdLoad::Execute(bool afficheMsg)
             string ligne;
             int nbFormes = 0;
             ifstream file(fileName);
-            if (file.good()) {
+            if (file.good())
+            {
+
                 while (std::getline(file, ligne))
                 {
                     // on ignore les commentaires
@@ -105,9 +108,11 @@ CODERETOUR CmdLoad::Execute(bool afficheMsg)
                     {
                         CmdAjout *cmd = new CmdAjout(ligne);
                         resCmd = cmd->Execute(afficheMsg); // execution
-                        if (resCmd != GOOD) {
+                        if (resCmd != GOOD)
+                        {
                             /* Si une commande échoue on annule toutes les commandes et
                      on arrete la lecture du fichier*/
+                            cerr<<COMMENTAIRES<<"Problème lors de la lecture du fichier"<<endl;
                             UnExecute(afficheMsg);
                             delete cmd;
                             return ERR_READING_FILE;
@@ -116,6 +121,8 @@ CODERETOUR CmdLoad::Execute(bool afficheMsg)
                         cmds.push_back(cmd); // ajout dans la pile
                     }
                 }
+
+
 #ifdef VERBOSE
         afficherConfirmation(fileName,nbFormes);
 #endif

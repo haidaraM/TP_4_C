@@ -93,7 +93,7 @@ public:
     // Mode d'emploi : Renvoi les Formes qui sont comprises entre
     // p1 et p2
 
-    void CasserLien(Forme *uneForme);
+    void CasserLien(const Forme *uneForme);
     // Mode d'emploi : Casse les liens Selection -> Forme de la forme
     // passée en paramètre
 
