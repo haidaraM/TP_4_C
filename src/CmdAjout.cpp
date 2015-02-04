@@ -193,9 +193,9 @@ CODERETOUR CmdAjout::AjouterRectangle(bool afficheMsg) {
             cerr<<COMMENTAIRES<<"Une Forme avec le nom \""<<name<<"\" existe déjà."<<endl;
 #endif
             return ERR_NAME_EXISTS;
-        }
+        } // fin if nomExiste
 
-    }
+    } // fin else paramètres valides
 }//----- Fin de AjouterRectangle
 
 CODERETOUR CmdAjout::AjouterLigne(bool afficheMsg) {

@@ -56,7 +56,7 @@ $(OBJ_DIR)/%.o:$(SRC_DIR)/%.cpp
 clean:
 	$(ECHO) "Nettoyage..."
 	$(RM) -fv $(OBJ_DIR)/*.o $(EXE)
-	$(RM) ./Tests/$(EXE)
+	$(RM) -fv ./Tests/$(EXE)
 
 backup: clean
 	$(ECHO) "Creation d'un dossier propre pour rendu et archivage des répertoires src, doc, Tests et Makefile..."

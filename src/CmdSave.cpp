@@ -17,7 +17,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "CmdSave.h"
 #include "Modele.h"
-
+#include "Heure.h"
 //------------------------------------------------------------- Constantes
 
 //---------------------------------------------------- Variables de classe
@@ -29,12 +29,7 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-// type CmdSave::Méthode ( liste de paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-
+//#define CALCUL_PERF // A decomenter pour voir le temps du SAVE
 
 CmdSave::CmdSave (string name ):CmdSimple(name)
 // Algorithme :
@@ -70,7 +65,18 @@ CODERETOUR CmdSave::Execute(bool afficheMsg) {
         ofstream file(resultat[1].c_str());
         if(file.good())
         {
+#ifdef CALCUL_PERF
+                double debut = give_time();
+#endif
             geoEdit.Sauvegarder(file);
+#ifdef CALCUL_PERF
+                double fin = give_time();
+                cerr<<fin - debut<<endl;
+#endif
+
+#ifdef VERBOSE
+        cout<<OK<<endl;
+#endif
             return GOOD;
         }
         else

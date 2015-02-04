@@ -38,8 +38,6 @@ public:
     // Contrat : Aucun
     //
 
-
-
 //-------------------------------------------- Constructeurs - destructeur
     Ligne ( const Ligne & unLigne );
     // Mode d'emploi (constructeur de copie) :

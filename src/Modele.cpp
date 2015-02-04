@@ -55,9 +55,9 @@ Modele::~Modele ( )
         delete it->second;
     }
 
+    // libération des piles de commandes restantes
     liberePileUndo();
     liberePileRedo();
-
 
 
 } //----- Fin de ~Modele
@@ -131,10 +131,11 @@ void Modele::Undo() {
         cmdToRedo.push(cmdToUndo.top());// met la commande sur les commandes à Redo
         cmdToUndo.top()->UnExecute(); // Annule la commande
         cmdToUndo.pop(); // Depilement
+    }
 #ifdef VERBOSE
            cout<<OK<<endl;
 #endif
-    }
+
 }
 
 void Modele::Redo()
@@ -144,11 +145,11 @@ void Modele::Redo()
         cmdToRedo.top()->Execute(false); // Execution
         cmdToUndo.push(cmdToRedo.top()); //Empilement sur Undo
         cmdToRedo.pop(); // Depilement de Redo
+    }
 #ifdef VERBOSE
            cout<<OK<<endl;
 #endif
 
-    }
 }
 
 void Modele::EraseForme(string name)
@@ -186,7 +187,8 @@ vector<Forme *> Modele::GetFormeSelection(Point p1, Point p2) const
     return formesSelectionnees;
 }
 
-void Modele::CasserLien(const Forme *uneForme) {
+void Modele::CasserLien(const Forme *uneForme)
+{
     /* récuperation de la liste des Selection à qui on doit signaler qu'une
      de leur forme vient d'etre supprimée */
     vector<string> lesSelections = uneForme->GetSelections();
@@ -196,11 +198,12 @@ void Modele::CasserLien(const Forme *uneForme) {
     for(unsigned int i =0; i<lesSelections.size(); ++i)
     {
         Forme * f = GetForme(lesSelections[i]);
-        f->CasserLienVersForme(nomForme);
+        f->EnleveForme(nomForme);
     }
 }
 
-Formes Modele::GetMAPFormes() const {
+Formes Modele::GetMAPFormes() const
+{
     return formes;
 }
 
@@ -208,6 +211,6 @@ void Modele::Clear() {
     formes.clear();
 }
 
-void Modele::SetMAP(Formes &uneMap) {
+void Modele::SetMAP(const Formes &uneMap) {
     formes = uneMap;
 }

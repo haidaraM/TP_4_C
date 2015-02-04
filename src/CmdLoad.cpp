@@ -17,7 +17,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "CmdLoad.h"
-
+#include "Heure.h"
 //------------------------------------------------------------- Constantes
 
 //---------------------------------------------------- Variables de classe
@@ -29,12 +29,7 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-// type CmdLoad::Méthode ( liste de paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-
+//#define CALCUL_PERF // A decomenter pour voir le temps du LOAD
 
 CmdLoad::CmdLoad (string name ):Commande(name)
 // Algorithme :
@@ -100,7 +95,9 @@ CODERETOUR CmdLoad::Execute(bool afficheMsg)
             ifstream file(fileName);
             if (file.good())
             {
-
+#ifdef CALCUL_PERF
+                double debut = give_time();
+#endif
                 while (std::getline(file, ligne))
                 {
                     // on ignore les commentaires
@@ -121,14 +118,18 @@ CODERETOUR CmdLoad::Execute(bool afficheMsg)
                         cmds.push_back(cmd); // ajout dans la pile
                     }
                 }
-
+#ifdef CALCUL_PERF
+                double fin = give_time();
+                cerr<<fin - debut<<endl;
+#endif
 
 #ifdef VERBOSE
         afficherConfirmation(fileName,nbFormes);
 #endif
                 return resCmd;
             }
-            else {
+            else
+            {
 #ifdef VERBOSE
             cerr <<ERREUR<<endl;
             cerr << COMMENTAIRES<<"Probleme de lecture du fichier "<<fileName << endl;

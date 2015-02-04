@@ -44,21 +44,22 @@ public:
     //
     
     void Deplacer(long abs, long ord);
-    // Mode d'emploi : déplace toutes les formes de la selection selon le
-    // vecteur formé par abs, ord
+    // Mode d'emploi : Déplace toutes les formes de la selection selon le
+    // vecteur formé par abs, ord.
     //
     // Contrat : aucun
     //
     
     bool InclusDans(Point p1, Point p2)const;
     // Mode d'emploi : Une selection ne peut pas être inclue dans une autre
-    //séléction. Renvoie systématiquement false
+    // selection. Renvoie systématiquement false
     //
-    // Contrat :
+    // Contrat : Aucun
     //
 
-    void CasserLienVersForme(string nomForme);
-    // Mode d'emploi : Casse le lien entre de la Selection vers la Forme
+    void EnleveForme(string nomForme);
+    // Mode d'emploi : Enlève la Forme de la selection
+    //
 
     vector <Forme*> GetFormesSelectionnees()const;
     // Mode d'emploi : Renvoie un vecteur de Forme composant la selection

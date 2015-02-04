@@ -27,8 +27,10 @@ int main()
 {
     Modele & geoEdit = Modele::Instance(); // Instance principale de l'appli
     string ligneCourante; // chaine representant la commande courante
+    bool notDone = true;
 
-    do{
+    while (notDone)
+    {
         // recuperation de la ligne
         getline(cin, ligneCourante, '\n');
 
@@ -124,8 +126,19 @@ int main()
             cmd->Execute();
             geoEdit.Empiler(cmd);
         }
+        else if (type == "EXIT")
+        {
+            notDone = false;
+        }
+        else
+        {
+#ifdef VERBOSE
+            cerr<<ERREUR<<endl;
+            cerr<<COMMENTAIRES<<"Commande inconnue!"<<endl;
+#endif
+        }
 
-    }while (ligneCourante != "EXIT");
+    }
 
     return 0;
 }

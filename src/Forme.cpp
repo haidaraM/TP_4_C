@@ -30,15 +30,11 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-// type Forme::Méthode ( liste de paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-
 void Forme::Supprimer()
 {
-    // On vide le tableau
+    /* La supppression d'une forme, entraine sa suppression dans toutes les
+    les selections dans lesquelles elle se trouve.
+     */
     selections.clear();
 }
 
@@ -82,13 +78,13 @@ string Forme::GetNom() const {
     return nom;
 }
 
-void Forme::CasserLienVersForme(string nomForme) {
+void Forme::EnleveForme(string nomForme) {
     // Ne fais rien si c'est pas une selection
     // Pourra etre reutilisée pour des amériolations futures
 }
 
 vector<Forme *> Forme::GetFormesSelectionnees() const {
-    // Ne fais rien si c'est pas une selection
+    // Par défaut on envoie un vecteur vide
     vector<Forme*> vf;
     return vf;
 }

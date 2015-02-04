@@ -38,8 +38,6 @@ public:
     // Contrat : Aucun
     //
 
-
-
 //-------------------------------------------- Constructeurs - destructeur
     Rectangle ( const Rectangle & unRectangle );
     // Mode d'emploi (constructeur de copie) :
