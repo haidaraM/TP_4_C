@@ -52,7 +52,14 @@ CODERETOUR CmdAjout::AjouterCercle(bool afficheMsg) {
         string name = arguments[1];
         long abscisse = strtol(arguments[2].c_str(), NULL, 10);
         long ordonnee = strtol(arguments[3].c_str(), NULL, 10);
-        unsigned int rayon =(unsigned int) strtol(arguments[4].c_str(), NULL, 10);
+        long rayon = (long) strtol(arguments[4].c_str(), NULL, 10);
+
+        if(rayon <  0)
+        {
+            cerr<<ERREUR<<endl;
+            cerr<<COMMENTAIRES<<"Rayon négatif"<<endl;
+            return ERR_SYNTAXE;
+        }
 
         // Verification de la présence d'une autre Forme ayant le meme nom
         if(!geoEdit.FormeExiste(name))

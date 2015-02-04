@@ -83,8 +83,8 @@ public:
     // Contrat : Aucun
 
     Forme *GetForme(string name)const;
-    // Mode d'emploi : renvoie un pointeur sur la Forme si elle existe,
-    // Null sinon
+    // Mode d'emploi : Renvoie un pointeur sur la Forme dont le nom est passé en paramètre.
+    // Si la forme n'existe pas, on renvoie null.
     //
     // Contrat :
 

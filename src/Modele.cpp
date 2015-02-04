@@ -157,7 +157,8 @@ void Modele::EraseForme(string name)
     formes.erase(name);
 }
 
-void Modele::liberePileUndo() {
+void Modele::liberePileUndo()
+{
     while(!cmdToUndo.empty())
     {
         delete cmdToUndo.top();
