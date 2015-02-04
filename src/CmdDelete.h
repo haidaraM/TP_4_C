@@ -6,8 +6,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <CmdDelete> (fichier CmdDelete.h) ------
-#if ! defined ( CMD_SUPPRESSION_H )
-#define CMD_SUPPRESSION_H
+#if ! defined ( CMD_DELETE_H )
+#define CMD_DELETE_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Forme.h"
@@ -30,12 +30,18 @@ public:
 //----------------------------------------------------- Méthodes publiques
     CODERETOUR Execute(bool afficheMsg = true);
     // Mode d'emploi : Execute la commande
+    //
+    // COntrat :
+    // Retour : ERR_SYNTAXE
+    //          ERR_UNKNOWN_NAME
+    //          GOOD
 
     CODERETOUR UnExecute(bool afficheMsg = false);
     // Mode d'emploi : Annule la commande
     // Remarque :le UNDO de la suppression d'une forme n'entraine pas sa remise dans les
     // selections dans lesquelles elles étaient
-    // Contrat : commande excutée une fois
+    //
+    // Contrat : commande exécutée une fois
 
 //-------------------------------------------- Constructeurs - destructeur
     CmdDelete(string name );
@@ -78,4 +84,4 @@ private:
 
 //----------------------------------------- Types dépendants de <CmdDelete>
 
-#endif // CMD_SUPPRESSION_H
+#endif // CMD_DELETE_H

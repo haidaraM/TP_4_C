@@ -17,9 +17,9 @@
 
 //------------------------------------------------------------------------ 
 // Rôle de la classe <Point>
-// Classe permettant de gérer un Point
-//
-//------------------------------------------------------------------------ 
+// Classe permettant de gérer un Point définie par une abscisse et une
+// ordonnée
+//------------------------------------------------------------------------
 
 class Point
 {

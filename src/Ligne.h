@@ -20,7 +20,7 @@
 
 //------------------------------------------------------------------------ 
 // Rôle de la classe <Ligne>
-// Classe permettant de gérer une Ligne
+// Classe permettant de gérer une Ligne définit par deux points
 //
 //------------------------------------------------------------------------ 
 

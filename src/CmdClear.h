@@ -31,12 +31,18 @@ class CmdClear : public Commande
 public:
 //----------------------------------------------------- Méthodes publiques
     CODERETOUR Execute(bool afficheMsg = true);
-    // Mode d'emploi : Execute la commande
+    // Mode d'emploi : Execute la commande qui supprime toutes les formes
+    // du modèle
+    //
+    // Contrat :
+    // Retour : GOOD
+
 
     CODERETOUR UnExecute(bool afficheMsg = true);
     // Mode d'emploi : Annule la commande
     //
-    // Contrat : commande excutée une fois
+    // Contrat : commande exécutée une fois
+    // Retouur : GOOD
 
     CmdClear (string name );
     // Mode d'emploi : Constructeur par défaut

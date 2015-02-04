@@ -6,8 +6,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <CmdSimple> (fichier CmdSimple.h) ------
-#if ! defined ( CMDSIMPLE_H )
-#define CMDSIMPLE_H
+#if ! defined ( CMD_SIMPLE_H )
+#define CMD_SIMPLE_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Commande.h"
@@ -87,4 +87,4 @@ private:
 
 //----------------------------------------- Types dépendants de <CmdSimple>
 
-#endif // CMDSIMPLE_H
+#endif // CMD_SIMPLE_H

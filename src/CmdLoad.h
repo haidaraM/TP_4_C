@@ -6,8 +6,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <CmdLoad> (fichier CmdLoad.h) ------
-#if ! defined ( CMDLOAD_H )
-#define CMDLOAD_H
+#if ! defined ( CMD_LOAD_H )
+#define CMD_LOAD_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include <stack>
@@ -32,11 +32,19 @@ public:
 //----------------------------------------------------- Méthodes publiques
     CODERETOUR Execute(bool afficheMsg = false);
     // Mode d'emploi : Execute toutes les commande du fichier
+    //
+    // Contrat :
+    // Retour : ERR_SYNTAXE
+    //          ERR_READING_FILE
+    //          ERR_FILE
+    //          GOOD
+
 
     CODERETOUR UnExecute(bool afficheMsg = false);
     // Mode d'emploi : Annule toutes les commandes du fichier
     //
-    // Contrat : commande excutée une fois
+    // Contrat : commande exécutée une fois
+    // Retour : GOOD
 
 //-------------------------------------------- Constructeurs - destructeur
     CmdLoad (string name );
@@ -87,4 +95,4 @@ private:
 
 //----------------------------------------- Types dépendants de <CmdLoad>
 
-#endif // CMDLOAD_H
+#endif // CMD_LOAD_H

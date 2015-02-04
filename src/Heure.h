@@ -4,6 +4,9 @@
 #include <sys/resource.h>
 #include <sys/time.h>
 
+/* Petite interface permettant le calcul du temps que le programme à passé
+ dans une suite d'instructions */
+
 inline double give_time()
 {
     struct rusage ru;

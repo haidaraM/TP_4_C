@@ -29,12 +29,16 @@ public:
     // Mode d'emploi : Execute la commande
     //
     // Contrat :
+    // Retour : ERR_UNKNOWN_NAME : si la forme à déplacer n'existe pas
+    //          ERR_SYNTAXE
+    //          GOOD
 
     CODERETOUR UnExecute(bool afficheMsg = true);
     // Mode d'emploi : Annule la commande c'est à dire le déplacement de la
     // forme
     //
-    // Contrat : commande excutée une fois
+    // Contrat : commande exécutée une fois
+    // Retour : GOOD
 
 //-------------------------------------------- Constructeurs - destructeur
     CmdMove (string name );

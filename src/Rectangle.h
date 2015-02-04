@@ -9,8 +9,8 @@
 #include "Polyligne.h"
 #include "Point.h"
 
-#if ! defined (RECTANGLE__H )
-#define RECTANGLE__H
+#if ! defined (RECTANGLE_H )
+#define RECTANGLE_H
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -20,7 +20,7 @@
 
 //------------------------------------------------------------------------ 
 // Rôle de la classe <Rectangle>
-// Classe permettant de gérer un Rectangle définit par deux points
+// Classe permettant de gérer un Rectangle définit par deux points.
 //
 //------------------------------------------------------------------------ 
 
@@ -81,4 +81,4 @@ private:
 
 //----------------------------------------- Types dépendants de <Rectangle>
 
-#endif // RECTANGLE__H
+#endif // RECTANGLE_H

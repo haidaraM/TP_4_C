@@ -9,8 +9,8 @@
 #include "Polyligne.h"
 #include "Point.h"
 
-#if ! defined (SELECTION__H )
-#define SELECTION__H
+#if ! defined (SELECTION_H )
+#define SELECTION_H
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -21,7 +21,7 @@
 //------------------------------------------------------------------------ 
 // Rôle de la classe <Selection>
 // Classe permettant de gérer une Selection qui contient des pointeurs vers
-// des Forme
+// des Forme.
 //------------------------------------------------------------------------ 
 
 class Selection : public Forme
@@ -32,7 +32,7 @@ public:
 //----------------------------------------------------- Méthodes publiques
 
     void Afficher(ostream & flux)const;
-    // Mode d'emploi : N'affiche rien pour une Selection
+    // Mode d'emploi : Une selection n'est pas affichable
     //
     // Contrat : Aucun
     //
@@ -60,6 +60,7 @@ public:
     void EnleveForme(string nomForme);
     // Mode d'emploi : Enlève la Forme de la selection
     //
+    // Contrat :
 
     vector <Forme*> GetFormesSelectionnees()const;
     // Mode d'emploi : Renvoie un vecteur de Forme composant la selection
@@ -105,6 +106,6 @@ private:
 
 //----------------------------------------- Types dépendants de <Selection>
 
-#endif // Ligne__H
+#endif // SELECTION_H
 
 

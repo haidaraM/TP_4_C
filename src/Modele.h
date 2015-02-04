@@ -103,7 +103,7 @@ public:
     //
     // Contrat : ancienne map vide
 
-    vector<Forme *> GetFormeSelection(Point p1, Point p2) const;
+    vector<Forme *> GetFormeSelection(const Point & p1,const Point& p2) const;
     // Mode d'emploi : Renvoi les Formes qui sont comprises entre
     // p1 et p2
 

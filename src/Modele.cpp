@@ -173,7 +173,7 @@ void Modele::liberePileRedo() {
     }
 }
 
-vector<Forme *> Modele::GetFormeSelection(Point p1, Point p2) const
+vector<Forme *> Modele::GetFormeSelection(const Point &p1, const Point& p2) const
 {
     vector<Forme *> formesSelectionnees;
     Formes::const_iterator it;

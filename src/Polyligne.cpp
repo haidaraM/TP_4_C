@@ -23,11 +23,7 @@ using namespace std;
 //----------------------------------------------------------- Types privés
 
 //----------------------------------------------------- Méthodes publiques
-// type Polyligne::Méthode ( liste de paramétres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
+
 
 void Polyligne::Afficher(ostream & flux)const
 {
