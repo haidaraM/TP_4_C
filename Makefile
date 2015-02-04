@@ -35,7 +35,7 @@ MESSAGE		= "Compilation réussie"
 $(EXE): $(OBJ) $(MAIN_OBJ)
 	$(LINK) -o $(EXE) $^ $(EDLFLAGS)
 	$(ECHO) $(MESSAGE)
-	cp $(EXE) ./Tests/
+	cp $(EXE) ./tests/
 
 #Mettre les dependances particulieres ici
 $(MAIN_OBJ): $(INT)
