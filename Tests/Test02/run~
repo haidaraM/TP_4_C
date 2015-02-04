@@ -1,8 +1,0 @@
-PATH=$PATH:../../
-geoEdit
-C c1 0 0 10
-R r1 0 0 10 10
-PL pl1 5 5 20 30
-DELETE pl1
-LIST
-EXIT

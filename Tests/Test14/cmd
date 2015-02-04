@@ -1,7 +1,0 @@
-C c1 2 2 20 
-PL pl2 3 3 50 20
-LIST
-LOAD a.txt
-LIST
-EXIT
-
