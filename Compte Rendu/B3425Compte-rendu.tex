@@ -1,0 +1,138 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}  
+\usepackage[francais]{babel}   
+\usepackage{fancyhdr}
+\usepackage[top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{blindtext}
+\usepackage[colorlinks=true,urlcolor=black,linkcolor=black]{hyperref}
+\definecolor{grey}{rgb}{0.3,0.3,0.3}
+\usepackage{graphicx}
+
+\lstset{
+language=C++,
+basicstyle=\footnotesize\ttfamily,
+numberstyle=\normalsize,
+numbersep=7pt,
+keywordstyle=\color{blue},
+commentstyle=\color{grey}
+}
+
+\newcommand\Titre{TP4 Héritage, Polymorphisme}
+\newcommand\Dater{Pour le 6 février 2015}
+\newcommand{\Numbi}{B3425}
+\newcommand{\Membres}{\textsc{Bai} Emilien,
+\newline \textsc{Haidara} Mohamed}
+
+\title{\Titre \newline \large Document de conception}
+\author{Bin\^ome \Numbi{}: \Membres}
+\date{\Dater}
+
+\begin{document}
+
+\pagestyle{fancy}
+\renewcommand{\footrulewidth}{1pt}
+\renewcommand{\headheight}{1cm}
+\renewcommand{\contentsname}{Table des matières}
+
+
+
+\lhead{\Membres}
+\chead{\Titre}
+\rhead{\Numbi}
+
+\begin{center}
+\begin{LARGE}
+\begin{bfseries}
+
+\vspace{1\baselineskip}
+
+\underline{\Titre}
+~\newline~\newline \begin{large} Document de conception\end{large}
+\end{bfseries}
+\end{LARGE}
+\end{center}
+
+\tableofcontents
+
+\section*{Introduction}
+Dans ce 4ème TP de C++ il nous était demandé d'implémenter un éditeur de formes géométriques : Cercle, Rectangle, Ligne, Polyligne et certaines opérations sur ces formes telles que la suppression, le déplacement, la sélection.
+Les objectifs du TP étaient principalement de (re)voir des notions telles que:
+\begin{itemize}
+\item l'héritage
+\item le polymorphisme
+\item l'utilisation des design pattern (ou patrons de conception)
+\item l'évaluation des performances d'un programme
+\end{itemize}
+Nous avons ainsi pu mettre en pratique les notions vues en cours. Dans ce document vous trouverez une explication détaillée de notre programme et des choix effectués. 
+
+
+\section{Conception}
+\subsection{Design Pattern}
+Pour la réalisation du TP, nous avons combiné deux design patterns :
+\begin{itemize}
+\item \textbf{Pattern Singleton :} qui permet de restreindre l'instanciation d’une classe à un seul objet. Ainsi il n’y aura qu’une seule instance de l’application principale qui sera accessible par les autres classes qui en auront besoin directement notamment les commandes.
+\item \textbf{Pattern Commande :} qui permet une séparation optimale du code initiateur de l’action du code de l’action elle-même. A Chaque commande, doit correspondre une classe qui possède deux méthodes publiques : une permettant d’exécuter la commande, l’autre d’annuler l’effet de la commande. 
+\end{itemize}
+De l’utilisation de ces deux commandes, a découlé une séparation de l’application en deux grosses parties :
+\begin{itemize}
+\item le \textbf{c\oe{}ur} de l’application appelée \textbf{Modele} avec une seule instance (geoEdit) composée de classes représentant les différentes formes géométriques.
+\item la classe \textbf{Commande} avec ses descendants permettant de gérer les entrées et sorties. Cette modélisation permet dans le futur de réutiliser le c\oe{}ur de l’application avec une interface graphique par exemple
+\end{itemize}
+
+\subsection{Diagramme de Classes}
+\begin{figure}[ht]
+\begin{center}
+\includegraphics*[scale = 0.5]{Tp4-Modele.png}
+\end{center}
+\caption{Modele}
+\label{Coeur de l'application}
+\end{figure}
+
+\begin{figure}[Ht]
+\begin{center}
+\includegraphics[scale = 0.44]{Tp4-Commande.png}
+\end{center}
+\caption{Commande}
+\label{Commande}
+\end{figure}
+~
+\newline
+\section{Spécifications}
+Ici seront présentées les principales et leur méthodes et l’interaction qui se fait entre les classes.
+\subsection{Modele et Commande}
+La classe Modele, en tant que classe principale, peut être vue comme une base de données qui se charge de stocker toutes les formes et les commandes et fournis un certain nombre d’opérations aux commandes qui interagiront avec elles. 
+
+Les formes sont stockées dans une MAP de type : map<string, Forme*>. A coté de cela nous avons deux piles de pointeurs sur Commande permettant de gérer le UNDO et le REDO des commandes exécutées.
+ 
+Tous les objets de la classe Commande partagent un \textbf{attribut static geoEdit} qui référence la classe principale Modele. Ainsi chaque objet Commande pourra modifier directement le Modele et ils partageront tous le même état de la base de données. Parmi les principales, méthodes fournies par le Modele, on peut citer :
+\newline
+\begin{itemize}
+\item \textbf{void Ajouter(string name, Forme * forme ) :}
+
+Cette méthode reçoit une Forme crée par une Commande et l’ajoute dans la map. Les vérifications sont effectuées par la classe commande qui s’assure qu’une autre forme ayant le même nom ne soit pas déjà présente.
+
+\item \textbf{void Clear() :}
+
+Supprime toutes les formes actuellement présentes dans la map. Mais avant de vider la map, on en réalise une copie au préalable. Ce mécanisme permet d’optimiser l’annulation de la commande CLEAR qui n’aura pas à récréer toutes les formes qui étaient déjà présentes dans la map.
+
+\item  \textbf{void Undo() :}
+
+Annule la dernière commande
+\end{itemize}
+
+\subsection{Forme}
+Cette \textbf{classe abstraite} constitue la classe de base dont va hériter toutes les formes géométrique.
+
+\section{Tests}
+L’application que nous avons réalisé a subi une batterie de Test décomposée en deux catégories :
+\begin{itemize}
+\item Les tests des fonctions “de base” sans conflit possible ou erreur de syntaxe : ces tests modélisent une utilisation sans erreur de l’application. Ils reprennent les fonctions telles qu’ajouter des formes ou des sélections, les déplacer, les supprimer, ou encore tester l’annulation d’une commande, sa reprise, l’enregistrement de la figure courante ainsi que le chargement d’une figure existante.
+\item Les tests des fonctions “avancées” de l’application. Ces tests sont là pour vérifier que le programme ne plante pas en cas d’une utilisation différente de la syntaxe définie par le cahier des charges.
+\end{itemize}
+La liste des tests effectués est répertoriée dans le fichier tests/Liste\_des\_Tests.txt. Le script permettant d’effectuer la batterie de test mktest.sh . Ce script effectue à la suite tous les tests et réalise le bilan des résultats obtenus en répertoriant le nombre de tests passés, échoués ou mal formés.
+\end{document}
