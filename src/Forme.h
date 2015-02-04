@@ -21,7 +21,7 @@ using namespace std;
 
 //------------------------------------------------------------------------ 
 // Rôle de la classe <Forme>
-//
+// Cette classe abstraite sert de base pour les formes géométriques.
 //
 //------------------------------------------------------------------------ 
 

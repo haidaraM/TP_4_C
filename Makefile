@@ -46,6 +46,10 @@ $(OBJ_DIR)/CmdDelete.o: $(SRC_DIR)/Commande.h $(SRC_DIR)/Forme.h $(SRC_DIR)/Mode
 
 $(OBJ_DIR)/CmdAjout.o: $(SRC_DIR)/CmdSimple.h $(SRC_DIR)/Modele.h
 
+$(OBJ_DIR)/Commande.o: $(SRC_DIR)/Modele.h
+
+$(OBJ_DIR)/CmdAjout.o: $(SRC_DIR)/CmdAjout.h $(SRC_DIR)/Heure.h
+
 #Generation des fichiers obj
 $(OBJ_DIR)/%.o:$(SRC_DIR)/%.cpp
 	$(ECHO) "Compilation de $< (generation de $@)"

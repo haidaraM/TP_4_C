@@ -94,6 +94,7 @@ CODERETOUR CmdDelete::UnExecute(bool afficheMsg)
 {
     for(unsigned int i=0; i<formesSupprimees.size(); ++i)
     {
+        // on remet toutes les formes qu'on avait supprimées
         if(formesSupprimees[i]!=NULL)
             geoEdit.Ajouter(formesSupprimees[i]->GetNom(), formesSupprimees[i]);
     }

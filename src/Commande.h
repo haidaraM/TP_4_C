@@ -56,7 +56,6 @@ public:
     //          ERR_FILE : s'il y'a eu un problème lors de l'ouverture d'un fichier
     //          ERR_READING_FILE : s'il y'a eu un problème lors de la lecture d'un fichier
 
-
     virtual CODERETOUR UnExecute(bool afficheMsg = false)=0;
     // Mode d'emploi : Annule la commande
     // Par défaut on n'affiche pas de message de confirmation.
