@@ -32,6 +32,7 @@ using namespace std;
 //
 //{
 //} //----- Fin de Méthode
+
 void Selection::Afficher(ostream & flux)const
 {
 	//on n'affiche pas les selections
@@ -62,11 +63,29 @@ void Selection::Deplacer(long abs, long ord)
     }
 }
 
-bool Selection::InclusDans(Point p1, Point p2)const
+bool Selection::InclusDans(const Point & p1, const Point & p2)const
 {
 	// Une selection ne peut pas être selectionnée donc pas de vérification d'inclusion
     // Dans le futur il suffira de modifier cette méthode si on souhaite cette fonctionnalité
     return false;
+}
+
+
+void Selection::EnleveForme(string nomForme)
+{
+    bool ok = false;
+    for(unsigned int i=0; i<contenues.size() && !ok; ++i)
+    {
+        if(contenues[i]!= NULL && contenues[i]->GetNom() == nomForme)
+        {
+            contenues[i] = NULL;
+            ok = true;
+        }
+    }
+}
+
+vector<Forme *> Selection::GetFormesSelectionnees() const {
+    return contenues;
 }
 
 
@@ -109,18 +128,3 @@ void Selection::majFormeSelectionnees() {
 
 }
 
-void Selection::EnleveForme(string nomForme) {
-    bool ok = false;
-    for(unsigned int i=0; i<contenues.size() && !ok; ++i)
-    {
-        if(contenues[i]!= NULL && contenues[i]->GetNom() == nomForme)
-        {
-            contenues[i] = NULL;
-            ok = true;
-        }
-    }
-}
-
-vector<Forme *> Selection::GetFormesSelectionnees() const {
-    return contenues;
-}

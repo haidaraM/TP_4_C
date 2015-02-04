@@ -37,7 +37,7 @@ public:
     // Contrat : Aucun
     //
     
-    virtual bool InclusDans(Point p1, Point p2) const;
+    virtual bool InclusDans(const  Point& p1,const  Point& p2) const;
     // Mode d'emploi : renvoie true si tous les points sont compris dans 
     // le rectangle formé par p1, p2
     //

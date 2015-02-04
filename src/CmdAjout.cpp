@@ -35,25 +35,6 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-CmdAjout::CmdAjout (string cmd ):CmdSimple(cmd)
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de <CmdAjout>" << endl;
-#endif
-} //----- Fin de CmdAjout
-
-
-CmdAjout::~CmdAjout ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au destructeur de <CmdAjout>" << endl;
-#endif
-} //----- Fin de ~CmdAjout
-
 
 
 CODERETOUR CmdAjout::AjouterCercle(bool afficheMsg) {
@@ -148,6 +129,7 @@ CODERETOUR CmdAjout::AjouterPolyligne(bool afficheMsg) {
         }
     }
 }//----- Fin de AjouterPolyligne
+
 
 CODERETOUR CmdAjout::AjouterRectangle(bool afficheMsg) {
     // découpage de la commande
@@ -297,3 +279,23 @@ void CmdAjout::afficheConfirmation(string type, string nom) const {
     cout <<OK<<endl;
     cout <<COMMENTAIRES<<"Nouvel Objet => "<<type<<" : "<<nom<<endl;
 }
+
+
+CmdAjout::CmdAjout (string cmd ):CmdSimple(cmd)
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <CmdAjout>" << endl;
+#endif
+} //----- Fin de CmdAjout
+
+
+CmdAjout::~CmdAjout ( )
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au destructeur de <CmdAjout>" << endl;
+#endif
+} //----- Fin de ~CmdAjout

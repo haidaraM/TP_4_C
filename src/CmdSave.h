@@ -31,11 +31,17 @@ public:
 //----------------------------------------------------- Méthodes publiques
     CODERETOUR Execute(bool afficheMsg = true);
     // Mode d'emploi : Sauvegarde le modele courant dans un fichier
+    //
     // COntrat :
+    // Retour : ERR_SYNTAXE : si la syntaxe n'est pas correcte
+    //          ERR_FILE : problème de fichier
+    //          GOOD tout s'est bien passé comme prévu
 
     CODERETOUR UnExecute(bool afficheMsg = true);
-    // Mode d'emploi : Ne fais rien car une sauvegarde n'est pas UNDOABLE
+    // Mode d'emploi : Ne fais rien car une sauvegarde n'est pas annulable
+    //
     // Contrat : Aucun
+    // Retour : GOOD
 
 //-------------------------------------------- Constructeurs - destructeur
     CmdSave (string name );

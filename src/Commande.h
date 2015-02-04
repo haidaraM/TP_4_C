@@ -47,12 +47,21 @@ public:
 
     virtual CODERETOUR Execute(bool afficheMsg = true)=0;
     // Mode d'emploi : Execute la commande
+    // Par défaut on affiche un message de confirmation.
+    // Retour : ERR_SYNTAXE : en cas d'erreur de syntaxe
+    //          ERR_NAME_EXISTS : si une forme de meme nom existait déjà
+    //          GOOD : si tout s'est bien déroulé
+    //          ERR_UNKNOWN_NAME : si le nom de la forme devait être connu mais
+    //                               ce n'etait pas le cas
+    //          ERR_FILE : s'il y'a eu un problème lors de l'ouverture d'un fichier
+    //          ERR_READING_FILE : s'il y'a eu un problème lors de la lecture d'un fichier
 
 
     virtual CODERETOUR UnExecute(bool afficheMsg = false)=0;
     // Mode d'emploi : Annule la commande
-    //
+    // Par défaut on n'affiche pas de message de confirmation.
     // Contrat : commande excutée une fois
+    // Retour : GOOD
 
     Commande (string cmd );
     // Mode d'emploi : constructeur par defaut

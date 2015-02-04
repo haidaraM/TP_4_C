@@ -50,7 +50,7 @@ public:
     // Contrat : aucun
     //
     
-    bool InclusDans(Point p1, Point p2)const;
+    bool InclusDans(const Point & p1, const Point & p2)const;
     // Mode d'emploi : Une selection ne peut pas être inclue dans une autre
     // selection. Renvoie systématiquement false
     //

@@ -51,7 +51,8 @@ CmdSave::~CmdSave ( )
 } //----- Fin de ~CmdSave
 
 
-CODERETOUR CmdSave::Execute(bool afficheMsg) {
+CODERETOUR CmdSave::Execute(bool afficheMsg)
+{
     // découpage de la commande
     vector<string> resultat = decoupe();
 
@@ -84,6 +85,8 @@ CODERETOUR CmdSave::Execute(bool afficheMsg) {
     }
 }//----- Fin de Execute
 
-CODERETOUR CmdSave::UnExecute(bool afficheMsg) {
+CODERETOUR CmdSave::UnExecute(bool afficheMsg)
+{
+    // Un save n'est pas annulable
     return GOOD;
 }

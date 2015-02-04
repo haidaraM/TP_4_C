@@ -66,6 +66,8 @@ private:
 
     Formes formes;
     // La map contenant toutes les formes (Cercle, Rectangle...)
+    // Elle servira à stocker le modele qui sera restitué lors qu'on
+    // effectuera un UNDO
 
 //---------------------------------------------------------- Classes amies
 

@@ -38,7 +38,7 @@ public:
     // Contrat : fournir un flux valide
     //
 
-    virtual bool InclusDans(Point p1, Point p2)const =0;
+    virtual bool InclusDans(const Point& p1,const Point & p2)const =0;
     // Mode d'emploi : Verifie si la forme se trouve entre p1 et p2
     // Renvoie vrai si c'est le cas, 0 sinon
     //

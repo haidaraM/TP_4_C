@@ -43,7 +43,7 @@ void Polyligne::Afficher(ostream & flux)const
 	flux<<endl;
 }
 
-bool Polyligne::InclusDans(Point p1, Point p2) const
+bool Polyligne::InclusDans(const Point & p1,const Point& p2) const
 {
 	long x;
 	long y;

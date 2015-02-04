@@ -197,7 +197,9 @@ void Modele::CasserLien(const Forme *uneForme)
     // parcours des selections dans lesquelles la forme se trouvait
     for(unsigned int i =0; i<lesSelections.size(); ++i)
     {
+        // on recupère la selection
         Forme * f = GetForme(lesSelections[i]);
+        // on enleve la forme de la selection
         f->EnleveForme(nomForme);
     }
 }
@@ -207,10 +209,12 @@ Formes Modele::GetMAPFormes() const
     return formes;
 }
 
-void Modele::Clear() {
+void Modele::Clear()
+{
     formes.clear();
 }
 
-void Modele::SetMAP(const Formes &uneMap) {
+void Modele::SetMAP(const Formes &uneMap)
+{
     formes = uneMap;
 }

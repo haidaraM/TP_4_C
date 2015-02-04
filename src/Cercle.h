@@ -38,7 +38,7 @@ public:
     // Mode d'emploi : Deplace le centre du cercle
     //
 
-    bool InclusDans(Point p1, Point p2) const;
+    bool InclusDans(const Point & p1, const Point & p2) const;
     // Mode d'emploi : Renvoie vrai le cercle est inclus dans le rectangle definis
     // par p1 et p2.
     // Contrat :

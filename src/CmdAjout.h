@@ -31,26 +31,38 @@ public:
 
     CODERETOUR AjouterCercle(bool afficheMsg = true);
     // Mode d'emploi : Ajout d'un cercle
-    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+    //
+    // Retour : ERR_SYNTAXE en cas d'erreur de syntaxe
+    //          ERR_NAME_EXISTS si une forme de meme nom existait déjà
+    //          GOOD si tout s'est bien déroulé
 
     CODERETOUR AjouterPolyligne(bool afficheMsg = true);
     // Mode d'emploi : AJout d'un polyligne
-    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+    //
+    // Retour : ERR_SYNTAXE en cas d'erreur de syntaxe
+    //          ERR_NAME_EXISTS si une forme de meme nom existait déjà
+    //          GOOD si tout s'est bien déroulé
 
     CODERETOUR AjouterRectangle(bool afficheMsg = true);
     // Mode d'emploi : Ajoute un rectangle à la Map
-    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+    //
+    // Retour : ERR_SYNTAXE en cas d'erreur de syntaxe
+    //          ERR_NAME_EXISTS si une forme de meme nom existait déjà
+    //          GOOD si tout s'est bien déroulé
 
     CODERETOUR AjouterLigne(bool afficheMsg = true);
     // Mode d'emploi : Ajoute une ligne à la Map
-    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
+    //
+    // Retour : ERR_SYNTAXE en cas d'erreur de syntaxe
+    //          ERR_NAME_EXISTS si une forme de meme nom existait déjà
+    //          GOOD si tout s'est bien déroulé
 
     CODERETOUR AjouterSelection(bool afficheMsg = true);
     // Mode d'emploi : Ajoute  une selection
-    // Si le nom de la forme existe déja, l'ajout ne sera pas effectif
-    // Retour : 1 si la commande s'est bien exécutée
-    //          0 si la syntaxe est incorrecte
-    //          -1 si le nom de la selection existe déja
+    //
+    // Retour : ERR_SYNTAXE en cas d'erreur de syntaxe
+    //          ERR_NAME_EXISTS si une forme de meme nom existait déjà
+    //          GOOD si tout s'est bien déroulé
 
 //-------------------------------------------- Constructeurs - destructeur
     CmdAjout (string cmd );

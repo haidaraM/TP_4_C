@@ -30,13 +30,20 @@ public:
 //----------------------------------------------------- Méthodes publiques
 
     virtual CODERETOUR Execute(bool afficheMsg = true);
-    // Mode d'emploi : Execute la commande
+    // Mode d'emploi : Execute la commande (SAVE ou ajout d'une nouvelle forme)
     // Par défaut on affiche un message de confirmation
+    //
+    // Retour : ERR_SYNTAXE : en cas d'erreur de syntaxe
+    //          ERR_NAME_EXISTS : si une forme de meme nom existait déjà
+    //          GOOD : si tout s'est bien déroulé
+    //          ERR_FILE : s'il y'a eu un problème lors de l'ouverture d'un fichier
 
     virtual CODERETOUR UnExecute(bool afficheMsg = true);
     // Mode d'emploi : Annule la commande
     // Par défaut on affiche un message de confirmation.
-    // Contrat : commande excutée une fois
+    //
+    // Contrat : commande executée une fois
+    // Retour : GOOD
 
 
 //-------------------------------------------- Constructeurs - destructeur

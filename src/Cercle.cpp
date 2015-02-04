@@ -38,7 +38,7 @@ void Cercle::Afficher(ostream & flux)const
     flux<<"C "<<nom<<" "<<centre.GetAbscisse()<<" "<<centre.GetOrdonnee()<<" "<<rayon<<endl;
 }
 
-bool Cercle::InclusDans(Point p1, Point p2)const
+bool Cercle::InclusDans(const Point& p1,const Point & p2)const
 {
 	long absmin = centre.GetAbscisse() - rayon;
 	long absmax = centre.GetAbscisse() + rayon;

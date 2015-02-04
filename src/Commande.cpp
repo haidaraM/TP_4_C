@@ -98,7 +98,8 @@ vector<string> Commande::decoupe(char delim) const
     return resultat;
 }
 
-void AfficherErreurCommande() {
+void AfficherErreurCommande()
+{
 
     cerr<<ERREUR<<endl;
     cerr<<COMMENTAIRES<<CMD_PARAM_ERR<<endl;
