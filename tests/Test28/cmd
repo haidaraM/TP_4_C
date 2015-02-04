@@ -1,0 +1,10 @@
+C c1 2 2 1
+C c2 3 3 2
+S s1 0 0 10 10
+MOVE c1 20 20
+SAVE a.txt
+CLEAR
+LOAD a.txt
+MOVE s1 -20 -20
+LIST
+EXIT

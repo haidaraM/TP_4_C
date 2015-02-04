@@ -1,0 +1,2 @@
+DELETE une forme d'une selection puis UNDO puis MOVE la selection
+La forme supprimé puis recrée ne doit plus être dans la selection

@@ -1,0 +1,7 @@
+C c1 1 1 10
+R r1 1 1 10 10
+PL pl1 20 20 50 50
+S sel1 -10 -10 15 15
+DELETE sel1
+LIST
+EXIT

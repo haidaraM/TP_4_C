@@ -1,0 +1,3 @@
+LOAD a.txt
+LIST
+EXIT

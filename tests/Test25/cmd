@@ -1,0 +1,6 @@
+C c1 10 10 10
+C c2 20 20 10
+C c3 10 5 
+UNDO
+LIST
+EXIT
