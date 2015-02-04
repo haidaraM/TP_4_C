@@ -65,13 +65,15 @@ CmdClear::~CmdClear ( )
 //----------------------------------------------------- Méthodes protégées
 
 //------------------------------------------------------- Méthodes privées
-CODERETOUR CmdClear::UnExecute(bool afficheMsg) {
+CODERETOUR CmdClear::UnExecute(bool afficheMsg)
+{
     geoEdit.SetMAP(formes);
     formes.clear();
     return GOOD;
 }
 
 CODERETOUR CmdClear::Execute(bool afficheMsg)
+// Algorithme : On fait une copie de la MAP actuelle et on la vide
 {
     formes = geoEdit.GetMAPFormes();
     geoEdit.Clear();

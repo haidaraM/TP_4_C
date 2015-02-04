@@ -79,7 +79,10 @@ CODERETOUR CmdDelete::Execute(bool afficheMsg)
         {
             if(!geoEdit.FormeExiste(arguments[i]))
             {
-                cout <<"Forme : "<<arguments[i]<<" inconnue!"<<endl;
+#ifdef VERBOSE
+                cout<<ERREUR<<endl;
+                cout<<COMMENTAIRES<<"Forme "<<arguments[i]<<" inconnue!"<<endl;
+#endif
                 return ERR_UNKNOWN_NAME;
             }
         }

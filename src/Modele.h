@@ -38,13 +38,14 @@ public:
 //----------------------------------------------------- Méthodes publiques
 
     void Ajouter(string name,  Forme *uneForme);
-    // Mode d'emploi : Ajoute une Forme à la Map
+    // Mode d'emploi : Ajoute une Forme à la Map.
+    // Si une forme du même nom est déja présente, l'ajout ne s'effectuera pas
     //
     // Contrat : Aucun
 
     void Undo();
     // Mode d'emploi : Annule la derniere commande (s'il y en a) effectuée qui a eu un effet sur
-    // le modèle
+    // le modèle.
     //
     // Contrat : Aucun
 

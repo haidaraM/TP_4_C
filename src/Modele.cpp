@@ -55,9 +55,9 @@ Modele::~Modele ( )
         delete it->second;
     }
 
+    // libération des piles de commandes restantes
     liberePileUndo();
     liberePileRedo();
-
 
 
 } //----- Fin de ~Modele
@@ -131,10 +131,11 @@ void Modele::Undo() {
         cmdToRedo.push(cmdToUndo.top());// met la commande sur les commandes à Redo
         cmdToUndo.top()->UnExecute(); // Annule la commande
         cmdToUndo.pop(); // Depilement
+    }
 #ifdef VERBOSE
            cout<<OK<<endl;
 #endif
-    }
+
 }
 
 void Modele::Redo()
@@ -144,11 +145,11 @@ void Modele::Redo()
         cmdToRedo.top()->Execute(false); // Execution
         cmdToUndo.push(cmdToRedo.top()); //Empilement sur Undo
         cmdToRedo.pop(); // Depilement de Redo
+    }
 #ifdef VERBOSE
            cout<<OK<<endl;
 #endif
 
-    }
 }
 
 void Modele::EraseForme(string name)

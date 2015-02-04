@@ -21,7 +21,7 @@
 //------------------------------------------------------------------------ 
 // Rôle de la classe <CmdClear>
 // Gestion de la Commande CLEAR qui supprime tous les objets présents dans
-//
+// le Modele.
 //------------------------------------------------------------------------ 
 
 class CmdClear : public Commande
