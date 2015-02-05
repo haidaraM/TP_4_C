@@ -1,0 +1,115 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}  
+\usepackage{fancyhdr}
+\usepackage[top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{blindtext}
+\usepackage[colorlinks=true,urlcolor=black,linkcolor=black]{hyperref}
+\definecolor{grey}{rgb}{0.3,0.3,0.3}
+\usepackage{graphicx}
+
+\lstset{
+language=C++,
+basicstyle=\footnotesize\ttfamily,
+numberstyle=\normalsize,
+numbersep=7pt,
+keywordstyle=\color{blue},
+commentstyle=\color{grey}
+}
+
+\newcommand\Titre{TP4 : H\'eritage, Polymorphisme}
+\newcommand\Dater{Pour le 6 février 2015}
+\newcommand{\Numbi}{B3425}
+\newcommand{\Membres}{\textsc{Bai} Emilien,
+\newline \textsc{Haidara} Mohamed}
+
+\title{\Titre \newline \large Document de conception}
+\author{Bin\^ome \Numbi{}: \Membres}
+\date{\Dater}
+
+\begin{document}
+
+\pagestyle{fancy}
+\renewcommand{\footrulewidth}{1pt}
+\renewcommand{\headheight}{1cm}
+\renewcommand{\contentsname}{Table des matières}
+
+
+
+\lhead{\Membres}
+\chead{\Titre}
+\rhead{\Numbi}
+
+\begin{center}
+\begin{LARGE}
+\begin{bfseries}
+
+\vspace{1\baselineskip}
+
+\underline{\Titre}
+~\newline~\newline \begin{large} \'Evaluation des performances\end{large}
+\end{bfseries}
+\end{LARGE}
+\end{center}
+~\\
+Nos tests de performance ont \'et\'e r\'ealis\'es sur les machines du d\'epartement, en lecture d'un fichier avec la commande LOAD (cf. tableau \ref{tab:Performances en lecture}) ainsi qu'en \'ecriture d'une sauvegarde (cf figure \ref{tab:Performances en \'ecriture}) et sans traces sur la sortie standard, car elle s'av\`erent tr\`es chronophages. Chacun des ajouts a \'et\'e effectu\'e 10 fois en lecture et 100 fois en \'ecriture afin d'obtenir un temps moyen au plus proche de la r\'ealit\'e. Les temps ont \'et\'e r\'ecup\'er\'es gr\^ace \`a l'usage de traceurs plac\'es au d\'ebut et \`a la fin de l'\'ex\'ecution
+
+\begin{figure}[!h]
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+~~Nombre d'ajouts de cercles du fichier en lecture (LOAD)~~ & Temps moyen en secondes\\
+\hline
+1000 & 0,005\\
+\hline
+10000 & 0,06\\
+\hline
+100000 & 0,6\\
+\hline
+500000 & 2,97\\
+\hline
+1000000 & 6\\
+\hline
+1500000 & 9,2\\
+\hline
+2000000 & 12,51\\
+\hline
+\end{tabular}
+\caption{Performances en lecture}
+\label{tab:Performances en lecture}
+\end{center}
+\end{figure}
+
+\begin{figure}[!h]
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Nombre de sauvegardes de cercles avec la commande SAVE & Temps moyen en secondes \\
+\hline
+1000 & 0,0006\\
+\hline
+10000 & 0,005\\
+\hline
+100000 & 0,06 \\
+\hline
+500000 & 0,29\\
+\hline 
+1000000 & 0,61\\
+\hline
+1500000 & 0,91\\
+\hline
+2000000 & 1,19\\
+\hline
+\end{tabular}
+\caption{Performances en \'ecriture}
+\label{tab:Performances en \'ecriture}
+\end{center}
+\end{figure}
+
+
+\end{document}
