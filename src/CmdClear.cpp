@@ -27,11 +27,24 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-// type CmdClear::Méthode ( liste de paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
+CODERETOUR CmdClear::UnExecute(bool afficheMsg)
+{
+    geoEdit.SetMAP(formes);
+    formes.clear();
+    return GOOD;
+}
+
+CODERETOUR CmdClear::Execute(bool afficheMsg)
+// Algorithme : On fait une copie de la MAP actuelle et on la vide
+{
+    formes = geoEdit.GetMAPFormes();
+    geoEdit.Clear();
+#ifdef VERBOSE
+           cout<<OK<<endl;
+           cout<<COMMENTAIRES<<"Modèle vidé"<<endl;
+#endif
+    return GOOD;
+}
 
 
 CmdClear::CmdClear (string name ):Commande(name)
@@ -65,21 +78,3 @@ CmdClear::~CmdClear ( )
 //----------------------------------------------------- Méthodes protégées
 
 //------------------------------------------------------- Méthodes privées
-CODERETOUR CmdClear::UnExecute(bool afficheMsg)
-{
-    geoEdit.SetMAP(formes);
-    formes.clear();
-    return GOOD;
-}
-
-CODERETOUR CmdClear::Execute(bool afficheMsg)
-// Algorithme : On fait une copie de la MAP actuelle et on la vide
-{
-    formes = geoEdit.GetMAPFormes();
-    geoEdit.Clear();
-#ifdef VERBOSE
-           cout<<OK<<endl;
-           cout<<COMMENTAIRES<<"Modèle vidé"<<endl;
-#endif
-    return GOOD;
-}
