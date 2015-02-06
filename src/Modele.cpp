@@ -31,43 +31,6 @@ Modele Modele::m_modele=Modele();
 
 //----------------------------------------------------- Méthodes publiques
 
-
-Modele::Modele ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de <Modele>" << endl;
-#endif
-} //----- Fin de Modele
-
-
-Modele::~Modele ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au destructeur de <Modele>" << endl;
-#endif
-    // Libération des formes
-    for(Formes::iterator it = formes.begin(); it != formes.end(); it++)
-    {
-        delete it->second;
-    }
-
-    // libération des piles de commandes restantes
-    liberePileUndo();
-    liberePileRedo();
-
-
-} //----- Fin de ~Modele
-
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées
-
-//------------------------------------------------------- Méthodes privées
 Modele &Modele::Instance() {
     return m_modele;
 }
@@ -157,22 +120,6 @@ void Modele::EraseForme(string name)
     formes.erase(name);
 }
 
-void Modele::liberePileUndo()
-{
-    while(!cmdToUndo.empty())
-    {
-        delete cmdToUndo.top();
-        cmdToUndo.pop();
-    }
-}
-
-void Modele::liberePileRedo() {
-    while(!cmdToRedo.empty())
-    {
-        delete cmdToRedo.top();
-        cmdToRedo.pop();
-    }
-}
 
 vector<Forme *> Modele::GetFormeSelection(const Point &p1, const Point& p2) const
 {
@@ -219,3 +166,57 @@ void Modele::SetMAP(const Formes &uneMap)
 {
     formes = uneMap;
 }
+
+
+//------------------------------------------------------------------ PRIVE
+
+//----------------------------------------------------- Méthodes protégées
+
+//------------------------------------------------------- Méthodes privées
+
+Modele::Modele ( )
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <Modele>" << endl;
+#endif
+} //----- Fin de Modele
+
+void Modele::liberePileUndo()
+{
+    while(!cmdToUndo.empty())
+    {
+        delete cmdToUndo.top();
+        cmdToUndo.pop();
+    }
+}
+
+void Modele::liberePileRedo() {
+    while(!cmdToRedo.empty())
+    {
+        delete cmdToRedo.top();
+        cmdToRedo.pop();
+    }
+}
+
+Modele::~Modele ( )
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au destructeur de <Modele>" << endl;
+#endif
+    // Libération des formes
+    for(Formes::iterator it = formes.begin(); it != formes.end(); it++)
+    {
+        delete it->second;
+    }
+
+    // libération des piles de commandes restantes
+    liberePileUndo();
+    liberePileRedo();
+
+
+} //----- Fin de ~Modele
+
