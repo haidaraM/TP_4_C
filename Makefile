@@ -59,7 +59,7 @@ $(OBJ_DIR)/%.o:$(SRC_DIR)/%.cpp
 
 clean:
 	$(ECHO) "Nettoyage..."
-	$(RM) -fv $(OBJ_DIR)/*.o $(EXE)
+	$(RM) -fvr $(OBJ_DIR)/*.o $(EXE)
 	$(RM) -fv ./tests/$(EXE)
 
 backup: clean
@@ -67,7 +67,7 @@ backup: clean
 	$(ECHO) "Creation de l'arborescence des répertoires..."
 	@mkdir -p B3425
 	$(ECHO) "Copie des repertoires..."
-	@cp -r $(SRC_DIR)/ $(OBJ_DIR)/ Makefile doc/ tests/ B3425
+	@cp -r $(SRC_DIR)/ $(OBJ_DIR)/ Makefile doc/ tests/ README.md B3425 
 	$(ECHO) "Generation de l'archive B3425.tar..."
 	$(ECHO) "	=> Compréssion des fichiers..."
 	@tar -cf "B3425.tar" B3425
