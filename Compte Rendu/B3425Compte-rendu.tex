@@ -104,27 +104,30 @@ Une version d'une meilleur résolution du diagramme de classe est fournie dans l
 \end{figure}
 
 \section{Spécifications}
-Ici seront présentées les principales et leur méthodes et l’interaction qui se fait entre les classes.
+Ici seront présentées les principales classes et leur méthodes et l’interaction qui se fait entre les classes.
 \subsection{Modele et Commande}
-La classe Modele, en tant que classe principale, peut être vue comme une base de données qui se charge de stocker toutes les formes et les commandes et fournis un certain nombre d’opérations aux commandes qui interagiront avec elles. 
+La classe Modele, en tant que classe principale, peut être vue comme \textit{ une base de données} qui se charge de stocker toutes les formes et les commandes et fournis un certain nombre d’opérations aux commandes qui interagiront avec elles. 
 
-Les formes sont stockées dans une MAP de type : map<string, Forme*>. A coté de cela nous avons deux piles de pointeurs sur Commande permettant de gérer le UNDO et le REDO des commandes exécutées.
- 
-Tous les objets de la classe Commande partagent un \textbf{attribut static geoEdit} qui référence la classe principale Modele. Ainsi chaque objet Commande pourra modifier directement le Modele et ils partageront tous le même état de la base de données. Parmi les principales, méthodes fournies par le Modele, on peut citer :
+Les formes sont stockées dans une MAP de type : \textit{ map<const string, Forme*> }. Ainsi une forme peut être retrouvée grâce à son nom.
+\\A coté de cela, nous avons deux piles de pointeurs sur Commande permettant de gérer le UNDO et le REDO des commandes exécutées : 
+\newline
+\begin{itemize}
+\item \textbf{Undo :} Cette méthode de la classe principale vérifie si la \textit{ pile cmdToUndo} est vide. Si ce n'est pas le cas, empile la dernière commande sur la deuxième \textit{pile cmdToRedo}, annule l'effet de la commande grâce à la méthode \textbf{UnExecute} de la classe commande et dépile \textit{cmdToUndo}.
+\item \textbf{Redo :} Exécute les mêmes actions mais en dépilant sur	\textit{cmdToRedo} pour empiler sur \textit{cmdToUndo} et exécuter la méthode \textbf{Execute} sur la commande manipulée.
+\end{itemize}
+
+Tous les objets de la classe Commande partagent un \textbf{attribut static geoEdit} qui référence la classe principale Modele. Ainsi chaque objet Commande pourra modifier directement le Modele et ils partageront tous le même état de \textit{ la base de données.} Parmi les principales, méthodes fournies par le Modele, on peut citer :
 \newline
 \begin{itemize}
 \item \textbf{void Ajouter(string name, Forme * forme ) :}
 
-Cette méthode reçoit une Forme crée par une Commande et l’ajoute dans la map. Les vérifications sont effectuées par la classe commande qui s’assure qu’une autre forme ayant le même nom ne soit pas déjà présente.
+Cette méthode reçoit une Forme crée par une Commande et l’ajoute dans la map. Les vérifications sont effectuées par la commande qui s’assure qu’une autre forme ayant le même nom ne soit pas déjà présente à travers une méthode fournie par la classe principale.
 
 \item \textbf{void Clear() :}
 
-Supprime toutes les formes actuellement présentes dans la map. Mais avant de vider la map, on en réalise une copie au préalable. Ce mécanisme permet d’optimiser l’annulation de la commande CLEAR qui n’aura pas à récréer toutes les formes qui étaient déjà présentes dans la map.
-
-\item  \textbf{void Undo() :}
-
-Annule la dernière commande
+Supprime toutes les formes actuellement présentes dans la map. Mais avant de supprimer les formes, on réalise une copie au préalable. Ce mécanisme permet d’optimiser l’annulation de la commande CLEAR qui n’aura pas à récréer toutes les formes qui étaient déjà présentes dans la map.
 \end{itemize}
+Une autre optimisation a été au niveau de la commande LOAD plus précisément la classe \textit{ cmdLoad} qui permet de charger un ensemble de Forme à partir d'un fichier. Cette classe est composée d'autres commandes appelées \textit{cmdAjout} qui se chargeront de vérifier la syntaxe de toutes les lignes du fichier. Après avoir lu un fichier, on garde une indépendance totale vis à vis de celui-ci ce qui permet de pouvoir UNDO et REDO un LOAD sans lire encore une fois le fichier.
 
 \subsection{Forme}
 Cette \textbf{classe abstraite} constitue la classe de base dont va hériter toutes les formes géométrique. Elle engendre directement les classe \textbf{Cercle}, \textbf{Polyligne} et \textbf{Selection}. La classe sélection est considérée comme une forme car cela rend plus facile la recherche lors d'un l'appel pouvant concerner une "vraie" forme ou une sélection (MOVE, DELETE\ldots)  Les classes \textbf{Ligne} et \textbf{Rectangle} héritent elles de Polyligne. Toutes ces classes ont en commun les méthodes
