@@ -1,8 +1,8 @@
 /*************************************************************************
                            CmdLoad  -  description
                              -------------------
-    début                : ${date}
-    copyright            : (C) ${year} par ${user}
+    début                : 30/01/2015
+    copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
 
 //---------- Réalisation de la classe <CmdLoad> (fichier CmdLoad.cpp) --

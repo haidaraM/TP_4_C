@@ -1,8 +1,8 @@
 /*************************************************************************
                     CmdSimple  -  description
--------------------
-début                : ${date}
-copyright            : (C) ${year} par ${user}
+                        -------------------
+    début                : 16/01/2015
+    copyright            : (C) 2015 par Emilien BAI - Mohamed HAIDARA - B3425
 *************************************************************************/
 
 //---------- Réalisation de la classe <CmdSimple> (fichier CmdSimple.cpp) --

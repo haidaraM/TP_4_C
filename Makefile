@@ -35,7 +35,7 @@ MESSAGE		= "Compilation réussie"
 $(EXE): $(OBJ) $(MAIN_OBJ)
 	$(LINK) -o $(EXE) $^ $(EDLFLAGS)
 	$(ECHO) $(MESSAGE)
-	cp $(EXE) ./tests/
+	@cp $(EXE) ./tests/
 
 #Mettre les dependances particulieres ici
 $(MAIN_OBJ): $(INT)
@@ -71,6 +71,7 @@ backup: clean
 	$(ECHO) "Generation de l'archive B3425.tar..."
 	$(ECHO) "	=> Compréssion des fichiers..."
 	@tar -cf "B3425.tar" B3425
+	$(RM) -fr B3425
 	$(ECHO) "	=> Archive crée"
 	$(ECHO)	"Backup terminé"
 

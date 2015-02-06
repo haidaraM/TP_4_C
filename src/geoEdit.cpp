@@ -19,9 +19,6 @@ using namespace std;
 #include "CmdMove.h"
 #include "CmdClear.h"
 
-//------------------------------------------------------------- Constantes
-
-//---------------------------------------------------- Variables de classe
 
 int main()
 {
