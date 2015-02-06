@@ -22,7 +22,7 @@ keywordstyle=\color{blue},
 commentstyle=\color{grey}
 }
 
-\newcommand\Titre{TP4 Héritage, Polymorphisme}
+\newcommand\Titre{TP4 : Héritage, Polymorphisme}
 \newcommand\Dater{Pour le 6 février 2015}
 \newcommand{\Numbi}{B3425}
 \newcommand{\Membres}{\textsc{Bai} Emilien,
@@ -80,28 +80,29 @@ Pour la réalisation du TP, nous avons combiné deux design patterns :
 \end{itemize}
 De l’utilisation de ces deux commandes, a découlé une séparation de l’application en deux grosses parties :
 \begin{itemize}
-\item le \textbf{c\oe{}ur} de l’application appelée \textbf{Modele} avec une seule instance (geoEdit) composée de classes représentant les différentes formes géométriques.
-\item la classe \textbf{Commande} avec ses descendants permettant de gérer les entrées et sorties. Cette modélisation permet dans le futur de réutiliser le c\oe{}ur de l’application avec une interface graphique par exemple
+\item le \textbf{c\oe{}ur} de l’application appelée \textbf{Modele} (cf. figure \ref{fig:Modele}) avec une seule instance (geoEdit) composée de classes représentant les différentes formes géométriques.
+\item la classe \textbf{Commande} (cf. figure \ref{fig:Commande}) avec ses descendants permettant de gérer les entrées et sorties. Cette modélisation permet dans le futur de réutiliser le c\oe{}ur de l’application avec une interface graphique par exemple
 \end{itemize}
 
 \subsection{Diagramme de Classes}
-\begin{figure}[ht]
+Une version d'une meilleur résolution du diagramme de classe est fournie dans le répertoire /doc. Il s'agit des fichiers TP4-Modele et TP4-Commande. 
+\begin{figure}[!h]
 \begin{center}
-\includegraphics*[scale = 0.5]{Tp4-Modele.png}
+\includegraphics*[scale = 0.40]{Tp4-Modele.png}
+\caption{C\oe{}ur de l'application}
+\label{fig:Modele}
+
 \end{center}
-\caption{Modele}
-\label{Coeur de l'application}
 \end{figure}
 
-\begin{figure}[Ht]
+\begin{figure}
 \begin{center}
 \includegraphics[scale = 0.44]{Tp4-Commande.png}
-\end{center}
 \caption{Commande}
-\label{Commande}
+\label{fig:Commande}
+\end{center}
 \end{figure}
-~
-\newline
+
 \section{Spécifications}
 Ici seront présentées les principales et leur méthodes et l’interaction qui se fait entre les classes.
 \subsection{Modele et Commande}
@@ -126,13 +127,102 @@ Annule la dernière commande
 \end{itemize}
 
 \subsection{Forme}
-Cette \textbf{classe abstraite} constitue la classe de base dont va hériter toutes les formes géométrique.
+Cette \textbf{classe abstraite} constitue la classe de base dont va hériter toutes les formes géométrique. Elle engendre directement les classe \textbf{Cercle}, \textbf{Polyligne} et \textbf{Selection}. La classe sélection est considérée comme une forme car cela rend plus facile la recherche lors d'un l'appel pouvant concerner une "vraie" forme ou une sélection (MOVE, DELETE\ldots)  Les classes \textbf{Ligne} et \textbf{Rectangle} héritent elles de Polyligne. Toutes ces classes ont en commun les méthodes
+\begin{itemize}
+\item\textbf{void Afficher (ostream \&)}\\
+Cette méthode redéfinie l'affichage sur la sortie standard pour chacun des types de forme. Elle ne renvoie rien pour une sélection qui ne doit pas apparaître lors de l'affichage des formes.
+\item \textbf{bool InclusDans(const \& Point, const \& Point)}\\
+ Cette méthode permet de définir si la forme est contenue entièrement dans le rectangle formé par les deux points passés en paramètre. Comme il n'est pas possible de sélectionner une sélection, la méthode renvoie systématiquement \textbf{false}.
+\item\textbf{void Deplacer (long, long)}\\
+Cette méthode déplace point par point, la forme pour laquelle elle est appelée, ou dans le cas d'une sélection, appelle la méthode Deplacer pour chacune des formes la constituant.
+\end{itemize}
 
 \section{Tests}
+\subsection{Présentation}
 L’application que nous avons réalisé a subi une batterie de Test décomposée en deux catégories :
 \begin{itemize}
 \item Les tests des fonctions “de base” sans conflit possible ou erreur de syntaxe : ces tests modélisent une utilisation sans erreur de l’application. Ils reprennent les fonctions telles qu’ajouter des formes ou des sélections, les déplacer, les supprimer, ou encore tester l’annulation d’une commande, sa reprise, l’enregistrement de la figure courante ainsi que le chargement d’une figure existante.
-\item Les tests des fonctions “avancées” de l’application. Ces tests sont là pour vérifier que le programme ne plante pas en cas d’une utilisation différente de la syntaxe définie par le cahier des charges.
+\item Les tests des fonctions “avancées” de l’application : ces tests sont là pour vérifier que le programme ne plante pas en cas d’une utilisation différente de la syntaxe définie par le cahier des charges. Ce sont aussi des tests plus avancés cherchant à vérifier le bon déroulement de l'exécution de l'application même quand un enchaînement de commande est plus compliqué ou piégeux.
 \end{itemize}
-La liste des tests effectués est répertoriée dans le fichier tests/Liste\_des\_Tests.txt. Le script permettant d’effectuer la batterie de test mktest.sh . Ce script effectue à la suite tous les tests et réalise le bilan des résultats obtenus en répertoriant le nombre de tests passés, échoués ou mal formés.
+
+\begin{figure}[!h]
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{\large{n\degres du test}} & \textbf{\large {Description du test}}\\
+\hline
+\multicolumn{2}{|c|}{\textbf{\large{Test des fonctions "de base"}}}\\
+\hline
+01 & Ajout Multiple et Lister\\
+\hline
+02 & Ajout d'un objet puis suppression\\
+\hline
+03 & Déplacement d'objet\\
+\hline
+04 & Déplacement d'une sélection\\
+\hline
+05 & Ajout de Forme puis UNDO\\
+\hline
+06 & Ajout de Forme puis UNDO puis REDO\\
+\hline
+07 & Suppression d'une sélection\\
+\hline
+08 & SAVE un fichier\\
+\hline
+09 & Test de la commande LOAD pour un fichier existant\\
+\hline
+10 & Test de la comande CLEAR\\
+\hline
+11 & Commande CLEAR puis UNDO\\
+\hline
+12 & Commande LOAD puis UNDO\\
+\hline
+13 & LOAD dans une application sans conflit de nom\\
+\hline
+14 & Enchainement LOAD UNDO REDO\\
+\hline
+
+\multicolumn{2}{|c|}{\textbf{\large{Test des fonctions "avancées"}}}\\
+\hline
+15 & Ajout de deux Formes ayant le même nom (conflit de nom)\\
+\hline
+16 & LOAD dans une application avec conflit de nom\\
+\hline
+17 & MOVE un objet inexistant\\
+\hline
+18 & MOVE un objet supprimé\\
+\hline
+19 & DELETE un objet inexistant\\
+\hline
+20 & DELETE un objet supprime\\
+\hline
+21 & DELETE selection, UNDO, MOVE sélection\\
+\hline
+22 & DELETE une forme d'une sélection puis UNDO puis MOVE la sélection\\
+\hline
+23 & Appel de UNDO plus de fois qu'il n'y a d'événement\\
+\hline
+24 & Appel de REDO plus de fois qu'il n'y a eu de UNDO\\
+\hline
+25 & Ajout avec mauvais parametres puis UNDO\\
+\hline
+26 & LOAD d'un fichier corrompu\\
+\hline
+27 & Ajout d'une forme ayant le nom d'une forme supprimee puis UNDOx2\\
+\hline
+28 & LOAD d'un fichier contenant des selections et test sur ces selections\\
+\hline
+29 & Enchainement de commandes non définies par le cahier des charges\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Liste des Tests}
+\label{tab:Liste des Tests}
+\end{figure}
+\subsection{Exécution}
+Pour effectuer notre panel de test, nous avons réutilisé un script shell fourni lors d'un précédant TP. Ce script se trouve dans le répertoire /tests et se nomme mktest.sh. Il exécute à la suite tous les textes définis dans la figure \ref{tab:Liste des Tests} et affiche sur la sortie standard le résultat unitaire de chaque test ainsi qu'un bilan répertoriant le nombre de tests passés, échoués ou mal formés. Lors de cette exécution, tous les tests que nous avons définis se sont exécutés avec succès. 
+
+\section{Performances}
+Nous avons aussi testé les performances de notre programme grâce à un script permettant à la fois de générer un fichier de commande qui sera passé en entrée de notre application. Nous appelons ensuite notre application plusieurs fois pour réaliser la moyenne des temps d'ajout nécessaires. Les tests ont été réalisés sur des machines du département, en enlevant les traces de la sortie standard (OK \ldots) qui ont étés pensées en compilation conditionnelle. Le document perfs\_B3425.pdf situé dans le répertoire doc/ consigne les résultats des tests effectués.
+
 \end{document}
