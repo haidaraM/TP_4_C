@@ -65,7 +65,8 @@ cout <<"Empilement de la commande "<<endl;
 #endif
     cmdToUndo.push(uneCommande);
 
-    liberePileRedo(); // vide la pile des Redo
+    // vide la pile des Redo
+    liberePileRedo();
 
 
 #ifdef MAP
@@ -91,8 +92,8 @@ Forme *Modele::GetForme(string name)const  {
 void Modele::Undo() {
     if(!cmdToUndo.empty())
     {
-        cmdToRedo.push(cmdToUndo.top());// met la commande sur les commandes à Redo
         cmdToUndo.top()->UnExecute(); // Annule la commande
+        cmdToRedo.push(cmdToUndo.top());// met la commande sur les commandes à Redo
         cmdToUndo.pop(); // Depilement
     }
 #ifdef VERBOSE
