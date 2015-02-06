@@ -35,7 +35,7 @@ MESSAGE		= "Compilation réussie"
 $(EXE): $(OBJ) $(MAIN_OBJ)
 	$(LINK) -o $(EXE) $^ $(EDLFLAGS)
 	$(ECHO) $(MESSAGE)
-	@cp $(EXE) ./tests/
+	@cp $(EXE) ./tests/geoEdit
 
 #Mettre les dependances particulieres ici
 $(MAIN_OBJ): $(INT)
@@ -61,6 +61,7 @@ clean:
 	$(ECHO) "Nettoyage..."
 	$(RM) -fvr $(OBJ_DIR)/*.o $(EXE)
 	$(RM) -fv ./tests/$(EXE)
+	$(RM) -fv ./tests/geoEdit
 
 backup: clean
 	$(ECHO) "Creation d'un dossier propre pour rendu et archivage des répertoires src, doc, Tests et Makefile..."
