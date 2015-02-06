@@ -112,21 +112,26 @@ Les formes sont stockées dans une MAP de type : \textit{ map<const string, Form
 \\A coté de cela, nous avons deux piles de pointeurs sur Commande permettant de gérer le UNDO et le REDO des commandes exécutées : 
 \newline
 \begin{itemize}
-\item \textbf{Undo :} Cette méthode de la classe principale vérifie si la pile \textit{ cmdToUndo} est vide. Si ce n'est pas le cas, annule la dernière commande ayant modifiée le modèle grâce à la méthode \textbf{UnExecute} de la classe commande, empile cett sur la pile \textit{cmdToRedo} et dépile \textit{cmdToUndo}.
-\item \textbf{Redo :} Exécute les mêmes actions mais en dépilant	\textit{cmdToRedo} pour empiler sur \textit{cmdToUndo} et appelle la méthode \textbf{Execute}. \\
-Les opérations d'empilement sont effectuées grâce à la méthode \textbf{void Empiler} qui videra la pile \textit{cmdToRedo} à chaque empilement. Il est à noter que toutes les commandes ne sont pas \textit{undoable} comme par exemple la commande LIST, SAVE et la commande de création d'une sélection. Notre architecture gère un nombre indéterminé de UNDO et REDO contrairement à la limite de 20 qui avait été fixée.
+\item \textbf{void Undo(bool)}\\
+Cette méthode de la classe principale vérifie si la pile \textit{ cmdToUndo} est vide. Si ce n'est pas le cas, annule la dernière commande ayant modifiée le modèle grâce à la méthode \textbf{UnExecute} de la classe commande, empile cette commande sur la pile \textit{cmdToRedo} et dépile \textit{cmdToUndo}.
+
+\item \textbf{void Redo(bool)}\\
+Exécute les mêmes actions mais en dépilant	\textit{cmdToRedo} pour empiler sur \textit{cmdToUndo} et appelle la méthode \textbf{Execute}. \\
+Les opérations d'empilement sont effectuées grâce à la méthode \\ \textbf{void Empiler(Commande *)} qui videra la pile \textit{cmdToRedo} à chaque empilement. Il est à noter que toutes les commandes ne sont pas \textit{undoable} comme par exemple la commande LIST, SAVE et la commande de création d'une sélection. Notre architecture gère un nombre indéterminé de UNDO et REDO contrairement à la limite de 20 qui avait été fixée.
 \end{itemize}
 
-Tous les objets de la classe Commande partagent un \textbf{attribut static geoEdit} qui référence la classe principale Modele. Ainsi chaque objet Commande pourra modifier directement le Modele et ils partageront tous le même état de \textit{ la base de données.} Parmi les principales, méthodes fournies par le Modele, on peut citer :
+Tous les objets de la classe Commande partagent un \textbf{attribut static geoEdit} qui référence la classe principale Modele. Ainsi chaque objet Commande pourra modifier directement le Modele et ils partageront tous le même état de \textit{ la base de données.} Parmi les autres principales méthodes fournies par le Modele, on peut citer :
 \newline
 \begin{itemize}
-\item \textbf{void Ajouter(string name, Forme * forme ) :}
-
+\item \textbf{void Ajouter(string name, Forme * )}\\
 Cette méthode reçoit une Forme crée par une Commande et l’ajoute dans la map. Les vérifications sont effectuées par la commande qui s’assure qu’une autre forme ayant le même nom ne soit pas déjà présente à travers une méthode fournie par la classe principale.
 
-\item \textbf{void Clear() :}
-
+\item \textbf{void Clear()}\\
 Supprime toutes les formes actuellement présentes dans la map. Mais avant de supprimer les formes, on réalise une copie au préalable. Ce mécanisme permet d’optimiser l’annulation de la commande CLEAR qui n’aura pas à récréer toutes les formes qui étaient déjà présentes dans la map.
+
+\item \textbf{void CasserLien(const Forme*)}\\
+Cette méthode, lors d'une commande DELETE, se chargera de signaler à toutes les selections qui contiennent l'objet passé en paramètre qu'elle n'en fait plus partie.
+
 \end{itemize}
 Une autre optimisation a été au niveau de la commande LOAD plus précisément la classe \textit{ cmdLoad} qui permet de charger un ensemble de Forme à partir d'un fichier. Cette classe est composée d'autres commandes appelées \textit{cmdAjout} qui se chargeront de vérifier la syntaxe de toutes les lignes du fichier. Après avoir lu un fichier, on garde une indépendance totale vis à vis de celui-ci ce qui permet de pouvoir UNDO et REDO un LOAD sans lire encore une fois le fichier.
 
@@ -136,7 +141,7 @@ Cette \textbf{classe abstraite} constitue la classe de base dont va hériter tou
 \item\textbf{void Afficher (ostream \&)}\\
 Cette méthode redéfinie l'affichage sur la sortie standard pour chacun des types de forme. Elle ne renvoie rien pour une sélection qui ne doit pas apparaître lors de l'affichage des formes. Elle permet aussi de sauvegarder les Forme dans un fichier en recevant le flux vers celui-ci.
 \item \textbf{bool InclusDans(const \& Point, const \& Point)}\\
- Cette méthode permet de définir si la forme est contenue entièrement dans le rectangle formé par les deux points passés en paramètre. Comme il n'est pas possible de sélectionner une sélection, la méthode renvoie systématiquement \textbf{false}.
+ Cette méthode permet de définir si la forme est contenue entièrement dans le rectangle formé par les deux points passés en paramètre. Comme il n'est pas possible de sélectionner une sélection, la méthode renvoie systématiquement \textbf{false} dans le cas où elle est appelée sur une selection qui un \textit{genre particulier} de Forme.
 \item\textbf{void Deplacer (long, long)}\\
 Cette méthode déplace point par point, la forme pour laquelle elle est appelée, ou dans le cas d'une sélection, appelle la méthode Deplacer pour chacune des formes la constituant.
 \end{itemize}
@@ -228,6 +233,6 @@ Pour la mémoire, on a utilisé \textit{valgrind} pour détecter les fuites de m
 Pour effectuer notre panel de test, nous avons réutilisé un script shell fourni lors d'un précédant TP. Ce script se trouve dans le répertoire ./tests et se nomme mktest.sh. Il exécute à la suite tous les textes définis dans la figure \ref{tab:Liste des Tests} et affiche sur la sortie standard le résultat unitaire de chaque test ainsi qu'un bilan répertoriant le nombre de tests passés, échoués ou mal formés. Lors de cette exécution, tous les tests que nous avons définis se sont exécutés avec succès. 
 
 \section{Performances}
-Nous avons aussi testé les performances de notre programme grâce à un script permettant à la fois de générer un fichier de commande qui sera passé en entrée de notre application. Nous appelons ensuite notre application plusieurs fois pour réaliser la moyenne des temps d'ajout nécessaires. Les tests ont été réalisés sur des machines du département, en enlevant les traces de la sortie standard (OK \ldots) qui ont étés pensées en compilation conditionnelle. Le document perfs\_B3425.pdf situé dans le répertoire doc/ consigne les résultats des tests effectués.
+Nous avons aussi testé les performances de notre programme grâce à un script permettant à la fois de générer un fichier de commande qui sera passé en entrée de notre application. Nous appelons ensuite notre application plusieurs fois pour réaliser la moyenne des temps d'ajout nécessaires. Les tests ont été réalisés sur des machines du département, en enlevant les traces de la sortie standard (OK \ldots) qui ont été pensées en compilation conditionnelle. Le document perfs\_B3425.pdf situé dans le répertoire ./doc consigne les résultats des tests effectués.
 
 \end{document}
