@@ -100,6 +100,8 @@ CODERETOUR CmdLoad::Execute(bool afficheMsg)
 #endif
                 while (std::getline(file, ligne))
                 {
+					if( ligne.length() != 0)
+					{
                     // on ignore les commentaires
                     if(ligne[0] !='#')
                     {
@@ -118,6 +120,7 @@ CODERETOUR CmdLoad::Execute(bool afficheMsg)
                         cmds.push_back(cmd); // ajout dans la pile
                     }
                 }
+			}
 #ifdef CALCUL_PERF
                 double fin = give_time();
                 cerr<<fin - debut<<endl;
