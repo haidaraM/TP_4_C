@@ -75,6 +75,7 @@ CODERETOUR CmdMove::Execute(bool afficheMsg)
         {
             geoEdit.GetForme(name)->Deplacer(dx, dy);
 #ifdef VERBOSE
+    if(afficheMsg)
             cout<<OK<<endl;
             cout<<COMMENTAIRES<<"Forme : "<<name<<" déplacée."<<endl;
 #endif
