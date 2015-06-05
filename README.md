@@ -1,2 +1,4 @@
-# TP_4_C
-Tp héritage et polymorphisme
+# TP C++ : Héritage et polymorphisme
+
+Voir le fichier *SujetTP.pdf* pour plus de détails
+
