@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 echo "-----------------------------------------------------------"
 
 execDir=`pwd`
@@ -17,7 +18,7 @@ else
   fi
 fi
 
-cd $Directory
+cd ${Directory}
 
 if [ -r "description" ]
 then 
@@ -57,12 +58,12 @@ then
   sRun="$sRun 2>temperr.txt"
 fi
 
-echo $sRun
+echo ${sRun}
 # execute the command line
-eval $sRun
+eval ${sRun}
 returnCode=$?
 
-resultGlobal=1
+resultGlobal=0
 
 # compare return code if concerned
 resultRC=2
@@ -75,7 +76,7 @@ then
   else
     echo "                                       Return Code : FAILED"
     resultRC=0
-    resultGlobal=0
+    resultGlobal=1
   fi
 fi
 
@@ -91,7 +92,7 @@ then
   else
     echo "                                       Stdout      : FAILED"
     resultOut=0
-    resultGlobal=0
+    resultGlobal=1
   fi
   # clean temporary out file
   rm temp.txt
@@ -109,7 +110,7 @@ then
   else
     echo "                                       Stderr      : FAILED"
     resultErr=0
-    resultGlobal=0
+    resultGlobal=1
   fi
   # clean temporary out file
   rm temperr.txt
@@ -122,34 +123,34 @@ then
   number=1
   for i in *.outfile
   do
-    fileName=`basename $i .outfile`
-    if [ -r $fileName ]
+    fileName=`basename ${i} .outfile`
+    if [ -r ${fileName} ]
     then
-      diff -wB $i $fileName
+      diff -wB ${i} ${fileName}
       if [ $? -eq 0 ]
       then
         echo "                                       File #$number     : PASSED"
       else
         echo "                                       File #$number     : FAILED"
         resultFiles=0
-        resultGlobal=0
+        resultGlobal=1
       fi  
-      rm $fileName
+      rm ${fileName}
     else  
       echo "                                       File #$number     : FAILED"
       resultFiles=0
-      resultGlobal=0
+      resultGlobal=1
     fi
     let "number=$number+1"
   done
-  if [ $resultFiles -eq 2 ]
+  if [ ${resultFiles} -eq 2 ]
   then
     resultFiles=1
   fi
 fi
 
 echo "                                       --------------------"
-if [ $resultGlobal -eq 0 ]
+if [ ${resultGlobal} -eq 1 ]
 then
   echo "                                       Global      : FAILED"
 else
@@ -158,7 +159,7 @@ fi
 echo "-----------------------------------------------------------"
 echo 
 
-cd $execDir
+cd ${execDir}
 
 # log result in $2 if filename provided
 if [ "$2" != "" ]
@@ -173,5 +174,5 @@ then
   fi
 fi
 
-exit $resultGlobal
+exit ${resultGlobal}
 
