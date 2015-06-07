@@ -1,5 +1,8 @@
 language: cpp
-compiler: gcc
+compiler: gcc-4.8
+before_install:
+  - sudo apt-get update
+  - sudo apt-get -qq install g++-4.8
 before_script:
   - mkdir obj
   - make
