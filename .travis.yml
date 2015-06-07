@@ -1,0 +1,10 @@
+language: cpp
+compiler: gcc
+before_script:
+  - mkdir obj
+  - make
+  - cd tests
+script:
+  - ./mktest
+after_failure:
+  - python printCSV.py
