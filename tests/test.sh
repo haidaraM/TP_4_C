@@ -84,7 +84,7 @@ fi
 resultOut=2
 if [ -r "std.out" ]
 then 
-  diff -wB temp.txt std.out >/dev/null
+  diff -wB -I '#.*' temp.txt std.out >/dev/null
   if [ $? -eq 0 ]
   then
     echo "                                       Stdout      : PASSED"

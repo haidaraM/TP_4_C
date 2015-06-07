@@ -27,6 +27,7 @@
 *.out
 *.app
 B3425
+results.csv
 
 #autres
 geoEdit
