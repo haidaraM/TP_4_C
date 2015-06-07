@@ -13,6 +13,6 @@ before_script:
 script:
   - make
   - cd tests
-  - ./mktest
+  - ./mktest.sh
 after_failure:
   - python printCSV.py
