@@ -28,14 +28,8 @@ Compte Rendu/B3425Compte-rendu.synctex.gz
 *.out
 *.app
 B3425
-results.csv
+load.txt
 
-#autres
-geoEdit
 rmtemp.sh
-B3425Compte-rendu.aux
-B3425Compte-rendu.log
-B3425Compte-rendu.out.syntex.gz
-B3425Compte-rendu.toc
 
 
