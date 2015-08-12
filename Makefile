@@ -35,7 +35,7 @@ MESSAGE		= "Compilation réussie"
 $(EXE): $(OBJ) $(MAIN_OBJ)
 	$(LINK) -o $(EXE) $^ $(EDLFLAGS)
 	$(ECHO) $(MESSAGE)
-	@cp $(EXE) ./tests/geoEdit
+	@cp $(EXE) ./tests/geoEdit # executable pour éffectuer les tests
 
 #Mettre les dependances particulieres ici
 $(MAIN_OBJ): $(INT)

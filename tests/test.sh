@@ -170,7 +170,7 @@ then
   fi
   if [ -w "$2" ]
   then
-    echo "$Directory;$resultRC;$resultOut;$resultErr;$resultFiles;$resultGlobal" >>$2
+    echo "$Directory,$resultRC,$resultOut;$resultErr,$resultFiles,$resultGlobal" >>$2
   fi
 fi
 

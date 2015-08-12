@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-echo "Test ID;Return code validation;Out result;StdErr result;File creation result;Global result" >results.csv
+echo "Test ID,Return code validation,Out result,StdErr result,File creation result,Global result" >results.csv
 nOk=0
 nKo=0
 nTotal=0
@@ -27,6 +27,7 @@ echo "Misformed tests  : $nMis"
 echo "-----------------------"
 echo "Total            : $nTotal"
 
+# Au moins une erreur, ya échec donc on retourne 1
 if ! [ ${nKo} -eq 0 ]
 then
 	exit 1

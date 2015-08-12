@@ -12,8 +12,7 @@ Change log :
 
 - repertoire indique le répertoire dans lequel se trouvent les fichiers de
 configuration du test
-- fichier.csv indique un fichier dans lequel les résultats du tests seront
-ajoutés
+- fichier.csv indique un fichier dans lequel les résultats du tests seront ajoutés
 
 En l'absence d'arguments, le script traitera le répertoire courant
 
